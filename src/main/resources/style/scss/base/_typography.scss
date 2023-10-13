@@ -1,0 +1,19 @@
+@use '../sass-utils/variables' as *;
+
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+    p {
+        font-size: $font-size_text;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        font-style: italic;
+    }
+}
