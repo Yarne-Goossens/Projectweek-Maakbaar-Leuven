@@ -1,0 +1,65 @@
+header {
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+}
+header h1 {
+  display: flex;
+  justify-content: center;
+}
+header nav ul {
+  list-style-type: none;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: auto;
+}
+header nav ul a {
+  display: block;
+  font-size: 1.8rem;
+  transition: all 0.3s ease 0s;
+  color: rgb(0, 0, 0);
+}
+header nav ul .current a {
+  color: rgb(255, 93, 120);
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+html p {
+  font-size: 1.2rem;
+}
+html a {
+  text-decoration: none;
+}
+html a:hover {
+  font-style: italic;
+}
+
+main .over_ons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main button {
+  background-color: rgb(242, 185, 80);
+  border-radius: 32px;
+  font-size: 2rem;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+main #faq_hyperlink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home_screen {
+  max-width: 75ch;
+  margin: auto;
+  text-align: center;
+}/*# sourceMappingURL=style.css.map */
