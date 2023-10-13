@@ -20,6 +20,7 @@ public class Repair {
     private String dateOfRepair;
     private String location;
     
+    
 
     public Repair() {
     }
