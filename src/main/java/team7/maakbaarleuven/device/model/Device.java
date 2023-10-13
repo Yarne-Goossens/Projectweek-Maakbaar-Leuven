@@ -1,11 +1,20 @@
 package team7.maakbaarleuven.device.model;
 
-import java.util.List;
 
+
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+@Entity
+@Table(name = "devices")
 public class Device {
     
-
-    
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id 
+    public long id;
     private int deviceModelNumber;
     private int energyConsumption;
     private int buildYear;
