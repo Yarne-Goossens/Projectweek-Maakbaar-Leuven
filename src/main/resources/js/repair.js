@@ -3,13 +3,11 @@ const displayMainDiv = () => {
     const div = document.getElementById('maindiv');
     createDropDown();
     createNextButton();
-    document.querySelector('button').addEventListener('click', () => {
+    document.getElementById('next').addEventListener('click', () => {
         const value = document.querySelector('select').value;
         console.log(value);
-        div.innerHTML = ""
+        clearDiv();
         enterModel();
-
-    
     });
     
 }
@@ -41,6 +39,18 @@ const enterAndPostDeviceInfo = async () => {
     
 }
 
+const getRepairs = async () =>{
+    const response = await fetch("http://localhost:8080/api/devices/overview", {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        }
+    });
+    const result = await response.json()
+    console.log(result)
+}
+
 
 const enterModel = () =>{
     const div = document.getElementById('maindiv')
@@ -69,6 +79,8 @@ const enterModel = () =>{
     const startbutton = document.getElementById('start');
     startbutton.addEventListener('click', () => {
         enterAndPostDeviceInfo();
+        getRepairs();
+        clearDiv();
     });
 }
 
@@ -93,7 +105,7 @@ const createDropDown = () => {
 const createNextButton = () => {
     const button = document.createElement('button');
     button.innerHTML = 'Volgende';
-    button.id = "repair_form"
+    button.id = "next"
     
     const div = document.getElementById('maindiv');
     div.appendChild(button);
