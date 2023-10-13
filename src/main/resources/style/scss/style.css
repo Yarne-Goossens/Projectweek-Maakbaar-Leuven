@@ -45,6 +45,18 @@ main .over_ons {
   flex-direction: column;
   align-items: center;
 }
+main button {
+  background-color: rgb(242, 185, 80);
+  border-radius: 32px;
+  font-size: 2rem;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+main #faq_hyperlink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .home_screen {
   max-width: 75ch;

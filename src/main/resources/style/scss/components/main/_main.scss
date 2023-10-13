@@ -8,6 +8,19 @@ main {
         align-items: center;
     }
 
+    button {
+        background-color: rgb(242, 185, 80);
+        border-radius: 32px;
+        font-size: 2rem;
+        width: fit-content;
+    }
+
+    #faq_hyperlink {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
 }
 .home_screen {
     max-width: 75ch;
