@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import team7.maakbaarleuven.repair.model.Repair;
 import team7.maakbaarleuven.repair.service.RepairService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
 @RequestMapping("/api/repairs")
 

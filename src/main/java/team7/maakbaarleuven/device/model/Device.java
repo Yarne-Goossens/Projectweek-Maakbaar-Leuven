@@ -15,9 +15,9 @@ public class Device {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id 
     public long id;
-    private int deviceModelNumber;
-    private int energyConsumption;
-    private int buildYear;
+    public int deviceModelNumber;
+    public int energyConsumption;
+    public int buildYear;
     public Device () {   
     }
 
@@ -34,7 +34,7 @@ public class Device {
     public int getDeviceModelNumber() {
         return this.deviceModelNumber;
     }
-    
+
     public void setEnergyConsumption(int energyConsumption) {
         this.energyConsumption = energyConsumption;
     }

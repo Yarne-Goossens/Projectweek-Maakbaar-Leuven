@@ -11,23 +11,51 @@ const displayMainDiv = () => {
 
     
     });
-
+    
 }
+
+const enterAndPostDeviceInfo = async () => {
+    const input1 = document.getElementById('input1').value;
+    const input2 = document.getElementById('input2').value;
+    const input3 = document.getElementById('input3').value;
+    const device = {deviceModelNumber:input1, energyConsumption:input2, buildYear:input3};
+    const response = await fetch("http://localhost:8080/api/devices/add", {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(device),
+    });
+    const result = await response.json();
+    if (response.status === 400) {
+        Object.keys(result).forEach((fieldName) => {
+            document.getElementById(`${fieldName}-error`).innerText =
+                result[fieldName];
+        });
+        console.log("Device is not added.");
+    } else {
+        console.log("werkt wel");
+        console.log(input1,input2,input3)
+    }
+    
+}
+
 
 const enterModel = () =>{
     const div = document.getElementById('maindiv')
     const label1 = document.createElement('label')
-    label1.innerHTML = "req1"
+    label1.innerHTML = "Device Model Number: "
     const input1 = document.createElement('input')
-    input1.innerHTML = "req1"
+    input1.id= "input1"
     const label2 = document.createElement('label')
-    label2.innerHTML = "req1"
+    label2.innerHTML = "Energieverbruik"
     const input2 = document.createElement('input')
-    input2.innerHTML = "req1"
+    input2.id= "input2"
     const label3 = document.createElement('label')
-    label3.innerHTML = "req1"
+    label3.innerHTML = "Bouwjaar"
     const input3 = document.createElement('input')
-    input3.innerHTML = "req1"
+    input3.id= "input3"
     div.appendChild(label1)
     div.appendChild(input1)
     div.appendChild(label2)
@@ -36,8 +64,12 @@ const enterModel = () =>{
     div.appendChild(input3)
     const button = document.createElement('button')
     button.innerHTML = "Start"
-    div.appendChild(button)
-    
+    button.id = "start"
+    div.appendChild(button)   
+    const startbutton = document.getElementById('start');
+    startbutton.addEventListener('click', () => {
+        enterAndPostDeviceInfo();
+    });
 }
 
 const createDropDown = () => {
