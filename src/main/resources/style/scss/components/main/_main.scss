@@ -1,0 +1,16 @@
+@use '../../sass-utils/variables' as *;
+
+main {
+
+    .over_ons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+.home_screen {
+    max-width: 75ch;
+    margin: auto;
+    text-align: center;
+}
