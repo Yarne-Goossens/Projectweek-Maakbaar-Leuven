@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import team7.maakbaarleuven.device.model.Device;
 import team7.maakbaarleuven.device.service.DeviceService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:5500")
 @RestController
 @RequestMapping("/api")
 public class DeviceRestController {
