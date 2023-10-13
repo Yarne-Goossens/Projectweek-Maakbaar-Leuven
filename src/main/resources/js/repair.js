@@ -81,6 +81,7 @@ const enterModel = () =>{
         enterAndPostDeviceInfo();
         getRepairs();
         clearDiv();
+        displayBranchQuestion();
     });
 }
 
@@ -110,5 +111,45 @@ const createNextButton = () => {
     const div = document.getElementById('maindiv');
     div.appendChild(button);
 }
+const displayBranchQuestion = () => {
+    const div = document.getElementById('maindiv');
+    const data = matrix[0];
+    let index = 1;
+    data.forEach((element) => {
+        const label = document.createElement('label');
+        label.innerHTML = element;
+        div.appendChild(label);
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.id = `${index}`;
+        input.name= "vraag1";
+        div.appendChild(input);
+        index++;
+        
+    })
+    const vraag1button = document.createElement('button');
+    vraag1button.innerHTML = 'Volgende';
+    vraag1button.id = "vraag1button"
+    div.appendChild(vraag1button);
+
+    vraag1button.addEventListener('click', () => {
+        const radioButtons = document.getElementsByName("vraag1");
+        console.log(radioButtons)
+        for (let i = 0; i < radioButtons.length; i++) {
+            console.log(radioButtons[i])
+            if (radioButtons[i].checked) {
+                console.log(i)
+                console.log(matrix[0][i]);
+            }
+        clearDiv();
+
+        }}
+    )
+    
+    ;
+
+};
+
+
 
 displayMainDiv();
