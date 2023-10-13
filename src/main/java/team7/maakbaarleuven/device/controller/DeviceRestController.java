@@ -22,7 +22,7 @@ public class DeviceRestController {
         @Autowired
         private DeviceService deviceService;
     
-        @GetMapping
+        @GetMapping("/overview")
         public List<Device> getAllDevices() {
             return deviceService.getAllDevices();
         }
