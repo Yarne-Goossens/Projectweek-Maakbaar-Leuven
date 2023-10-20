@@ -64,7 +64,7 @@ main #faq_hyperlink {
   text-align: center;
 }
 
-#vraag1div {
+#vraag1div, #treediv {
   display: flex;
   flex-direction: column;
 }/*# sourceMappingURL=style.css.map */

@@ -3,7 +3,7 @@
 @use './components/main/main';
 
 
-#vraag1div {
+#vraag1div,#treediv {
     display: flex;
     flex-direction: column;
 }

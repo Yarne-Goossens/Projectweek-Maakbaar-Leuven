@@ -155,15 +155,82 @@ const displayBranchQuestion = () => {
 
     vraag1button.addEventListener('click', () => {
         clearDiv("vraag1div");
+        div.setAttribute('id', 'treediv');
         const BranchDecider = clickedInputId;
-        console.log(BranchDecider)
+        
+        branchNavigation(BranchDecider);
     }
     )
-    
     ;
-
 };
+let index = -1;
+let result = [];
+const branchNavigation = (BranchDecider) =>{
+    
+    const div = document.getElementById('treediv');
+    const p = document.createElement('p');
+    p.innerHTML = matrix[BranchDecider][index];
+    div.appendChild(p);
 
+    const label1 = document.createElement('label');
+    label1.innerHTML = 'Ja';
+    const label2 = document.createElement('label');
+    label2.innerHTML = 'Nee';
+
+    const input1 = document.createElement('input');
+    input1.type = 'radio';
+    input1.name  = 'tree'
+    input1.id = 1;
+
+    input1.addEventListener('click',(event)=>{
+        const clickedInput = event.target;
+        clickedInputId = clickedInput.id;
+        
+
+    })
+
+    const input2 = document.createElement('input');
+    input2.type = 'radio';
+    input2.name  = 'tree'
+    input2.id = 0;
+
+    input2.addEventListener('click',(event)=>{
+        const clickedInput = event.target;
+        clickedInputId = clickedInput.id;
+        
+
+    })
+
+    div.appendChild(label1);
+    div.appendChild(input1);
+    div.appendChild(label2);
+    div.appendChild(input2);
+
+    const treeButton = document.createElement('button');
+    treeButton.innerHTML = 'Volgende';
+    treeButton.id = 'treebutton';
+    div.appendChild(treeButton);
+
+    treeButton.addEventListener('click', () => {
+        
+        index++
+        console.log(index)
+        if(matrix[BranchDecider].length >= index +1){
+            //POST result
+            //clearDiv("treediv");
+            clearDiv("treediv");
+            branchNavigation(BranchDecider);
+            result.push(clickedInputId);
+            
+        }else{
+            console.log('einde bereikt');
+            console.log(result);
+        }
+
+        
+    })
+
+}
 
 
 displayMainDiv();
