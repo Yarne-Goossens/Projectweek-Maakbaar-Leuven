@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spring Boot PDF Example</title>
+</head>
+<body>
+    <h1>Welcome to My Spring Boot PDF Example</h1>
+    <p>This is a sample HTML content.</p>
+    
+    <!-- Add a button for downloading the PDF -->
+    <button id="download-pdf-button">Download PDF</button>
+
+    <script>
+        // JavaScript to trigger PDF generation and download
+        document.getElementById('download-pdf-button').addEventListener('click', function() {
+            // Make an AJAX request to generate and download the PDF
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://127.0.0.1:8080/api/devices/generate-pdf', true);
+            xhr.responseType = 'blob'; // Response type should be 'blob' for binary data
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var blob = new Blob([xhr.response], { type: 'application/pdf' });
+                    var url = window.URL.createObjectURL(blob);
+                    var a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'current_page.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                } else {
+                    console.error('Failed to generate PDF.');
+                }
+            };
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
