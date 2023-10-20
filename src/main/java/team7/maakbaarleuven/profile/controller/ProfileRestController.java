@@ -30,7 +30,7 @@ public class ProfileRestController {
         return profileService.addProfile(profile);
     }
 
-    @DeleteMapping("/delete") 
+    @DeleteMapping("/delete/") 
     public Profile deleteProfile(Profile profile) {
         return profileService.deleteProfile(profile);
     }
