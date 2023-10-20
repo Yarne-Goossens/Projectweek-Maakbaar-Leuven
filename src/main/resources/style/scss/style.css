@@ -116,6 +116,74 @@ main #button_FAQ a:hover {
   text-align: center;
 }
 
+/* Use the original naming conventions */
+#vraag1div, #treediv, #maindiv, #nextdiv {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Common styles for select and input elements */
+select, input {
+  width: 50%; /* Adjust the width as needed */
+  padding: 5px;
+  margin: 5px 0;
+}
+
+/* Common styles for buttons */
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Specific styles for #maindiv */
+#maindiv {
+  align-items: center;
+  text-align: center;
+}
+
+/* Specific styles for #nextdiv */
+#nextdiv {
+  align-items: center;
+  text-align: center;
+}
+
+/* Styles for labels inside #nextdiv */
+#nextdiv label {
+  font-weight: bold;
+}
+
+/* Styles for error text inside #nextdiv */
+#nextdiv #error {
+  color: red;
+}
+
+#vraag1div {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style the radio buttons and labels */
+#vraag1div label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#vraag1div input[type=radio] {
+  margin-right: 5px;
+}
+
+/* Center the button */
+#vraag1button {
+  display: block;
+  margin: 10px auto;
+}
+
 footer {
   position: sticky;
   top: 100%;

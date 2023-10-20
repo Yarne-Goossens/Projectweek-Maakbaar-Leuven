@@ -15,32 +15,32 @@ public class Device {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id 
     public long id;
-    private int deviceModelNumber;
-    private int energyConsumption;
-    private int buildYear;
+    public String deviceModelNumber;
+    public int purchasePrice;
+    public int buildYear;
     public Device () {   
     }
 
-    public Device (int deviceModelNumber, int energyConsumption, int buildYear) {
+    public Device (String deviceModelNumber, int purchasePrice, int buildYear) {
         this.deviceModelNumber = deviceModelNumber;
-        this.energyConsumption = energyConsumption;
+        this.purchasePrice = purchasePrice;
         this.buildYear = buildYear;
     }
 
-    public void setDeviceModelNumber(int deviceModelNumber) {
+    public void setDeviceModelNumber(String deviceModelNumber) {
         this.deviceModelNumber = deviceModelNumber;
     }
 
-    public int getDeviceModelNumber() {
+    public String getDeviceModelNumber() {
         return this.deviceModelNumber;
     }
-    
-    public void setEnergyConsumption(int energyConsumption) {
-        this.energyConsumption = energyConsumption;
+
+    public void setPurchasePrice(int purchasePrice) {
+        this.purchasePrice = purchasePrice;
     }
 
-    public int getEnergyConsumption() {
-        return this.energyConsumption;
+    public int getPurchasePrice() {
+        return this.purchasePrice;
     }
 
     public void setBuildYear(int buildYear) {
