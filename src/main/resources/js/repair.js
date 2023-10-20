@@ -163,7 +163,7 @@ const displayBranchQuestion = () => {
     )
     ;
 };
-let index = -1;
+let index = 0;
 let result = [];
 const branchNavigation = (BranchDecider) =>{
     
@@ -214,17 +214,17 @@ const branchNavigation = (BranchDecider) =>{
     treeButton.addEventListener('click', () => {
         
         index++
-        console.log(index)
-        if(matrix[BranchDecider].length >= index +1){
+        if(matrix[BranchDecider].length === index ){
             //POST result
             //clearDiv("treediv");
             clearDiv("treediv");
-            branchNavigation(BranchDecider);
             result.push(clickedInputId);
+            console.log(result)
             
         }else{
-            console.log('einde bereikt');
-            console.log(result);
+            clearDiv("treediv");
+            branchNavigation(BranchDecider);
+            result.push(clickedInputId);
         }
 
         
