@@ -116,6 +116,10 @@ main #button_FAQ a:hover {
   text-align: center;
 }
 
+body {
+  min-height: 100vh;
+}
+
 /* Use the original naming conventions */
 #vraag1div, #treediv, #maindiv, #nextdiv {
   display: flex;
