@@ -68,7 +68,7 @@ const enterModel = () =>{
     const input1 = document.createElement('input')
     input1.id= "input1"
     const label2 = document.createElement('label')
-    label2.innerHTML = "Energieverbruik"
+    label2.innerHTML = "Energy Consumption:"
     const input2 = document.createElement('input')
     input2.id= "input2"
     const label3 = document.createElement('label')
@@ -220,6 +220,8 @@ const branchNavigation = (BranchDecider) =>{
             clearDiv("treediv");
             result.push(clickedInputId);
             console.log(result)
+            div.setAttribute('id', 'solutiondiv');
+            displaySolution(BranchDecider);
             
         }
         else{
@@ -227,11 +229,44 @@ const branchNavigation = (BranchDecider) =>{
             branchNavigation(BranchDecider);
             result.push(clickedInputId);
         }
+        
 
         
     })
 
+    
+
 }
 
+
+const displaySolution = (BranchDecider) =>{
+
+    //Create header
+
+    const div = document.getElementById('solutiondiv');
+    const header = document.createElement('h1');
+    header.innerHTML = "Doe het zelf stappen";
+    div.appendChild(header);
+
+    //Loop to get correct solutions
+
+    let solution = [];
+    let i = 0;
+    result.forEach((element)=>{
+        if(element==1){
+            if(!solution.includes(solution_matrix[BranchDecider-1][i])){
+                solution.push(solution_matrix[BranchDecider-1][i])
+                i++
+            }
+        }else{i++}
+    })
+    console.log(solution)
+    solution.forEach((element)=>{
+        const p = document.createElement('p');
+        p.innerHTML = element;
+        div.appendChild(p);
+    })
+
+}
 
 displayMainDiv();

@@ -10,7 +10,16 @@ const matrix = [
     ["Heb je de juiste app gedownload?","Is er wifibereik tot aan het laadstation?","Zijn smartphone en robot op hetzelfde wifinetwerk én -frequentie aangesloten?","Heb je de stofzuiger al eens uitgeschakeld en na vijf minuten weer aangeschakeld?","Lukt het helemaal niet om een verbinding met de robotstofzuiger te maken?"]
 ]
 
-
+const solution_matrix= [
+    ["Controleer aansluiting en stofzuigerzak","Controleer aansluiting en stofzuigerzak","Controleer aansluiting en stofzuigerzak","Controleer aansluiting en stofzuigerzak","Controleer aansluiting en stofzuigerzak","Controleer aansluiting en stofzuigerzak","Vervang de aan/uit schakelaar","Vervang de batterij van de stofzuiger","Controleer laadstation","Laat de motor en elektronica van je stofzuiger herstellen"],
+    ["Verwijder stinkend voorwerp uit de stofzuigerzak","Verwijder stinkend voorwerp uit de stofzuigerzak","Verwijder stinkend voorwerp uit de stofzuigerzak","vervang verband onderdeel van je stofzuiger"],
+    ["Maak het snoer van je stofzuiger schoon","Smeer het oprolmechanisme van je stofzuiger"],
+    ["Vervang de batterij van de stofzuiger","Vervang het laadstation van je robotstofzuiger","Vervang het laadstation van je robotstofzuiger"],
+    ["Verwijder de verstopping uit je stofzuiger", "Verwijder de verstopping uit je stofzuiger", "Verwijder de verstopping uit je stofzuiger", "Vervang verbrand onderdeel van je stofzuiger", "Vervang verbrand onderdeel van je stofzuiger"],
+    ["Pas de zuigkrachtregeling van je stofzuiger aan", "Vervang stofzuigerzak", "Verwijder de verstopping uit je stofzuiger", "Verwijder de verstopping uit je stofzuiger", "Herstel een lek", "Herstel een lek", "Verwijder de stofzuigerslang"],
+    ["Maak de wieltjes van je stofzuiger schoon.", "Vervang de wieltjes van je stofzuiger."],
+    ["Controleer het netwerk.", "Controleer het netwerk.", "Controleer het netwerk.", "Controleer het netwerk.", "Laat de elektronica van je stofzuiger herstellen"]
+]
 
 
 
