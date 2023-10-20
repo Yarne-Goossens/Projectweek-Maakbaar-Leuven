@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import team7.maakbaarleuven.profile.model.Profile;
 import team7.maakbaarleuven.profile.service.ProfileService;
 
@@ -44,9 +42,12 @@ public class ProfileRestController {
         return profileService.deleteProfile(profile);
     }
 
-    @PostMapping("/authenticate/{email}")
-    public String authenticateProfile(@RequestBody String password, @RequestParam("email") String email) {
-        if (profileService.authenticate(email, password)) {
+    @PostMapping("/authenticate")
+    public String authenticateProfile(@RequestBody Profile request) {
+        Profile profile = profileService.getProfileByEmail(request.getEmail());
+        String password = request.getPassword();
+
+        if (profileService.authenticate(profile, password)) {
             return "Login successful";
         } else {
             return "Username or password incorrect";
