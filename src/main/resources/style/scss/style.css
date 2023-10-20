@@ -116,6 +116,10 @@ main #button_FAQ a:hover {
   text-align: center;
 }
 
+body {
+  min-height: 100vh;
+}
+
 footer {
   position: sticky;
   top: 100%;
