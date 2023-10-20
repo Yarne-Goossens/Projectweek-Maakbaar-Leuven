@@ -1,5 +1,6 @@
 package team7.maakbaarleuven.profile.model;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,14 +21,15 @@ public class Profile {
     public Profile() {
     }
 
-    public Profile(String email, String firstname, String lastname, String password, Role role ){
+    public Profile(String email, String firstname, String lastname, String password, Role role) {
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.password = password;
+        setPassword(password);
         this.role = role;
     }
-    public String getEmail(){
+
+    public String getEmail() {
         return this.email;
     }
 
@@ -64,8 +66,8 @@ public class Profile {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        // Hash the password before storing it
+        this.password = new BCryptPasswordEncoder().encode(password);
     }
-    
-    
+
 }
