@@ -221,7 +221,8 @@ const branchNavigation = (BranchDecider) =>{
             result.push(clickedInputId);
             console.log(result)
             
-        }else{
+        }
+        else{
             clearDiv("treediv");
             branchNavigation(BranchDecider);
             result.push(clickedInputId);
