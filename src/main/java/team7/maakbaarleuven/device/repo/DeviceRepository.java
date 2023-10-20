@@ -6,7 +6,7 @@ import team7.maakbaarleuven.device.model.Device;
 
 
 public interface DeviceRepository extends JpaRepository<Device, Long>{
-    public Device findByDeviceModelNumber(int deviceModelNumber);
+    public Device findByDeviceModelNumber(String deviceModelNumber);
     
     public Device save(Device device);
     

@@ -15,23 +15,23 @@ public class Device {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id 
     public long id;
-    public int deviceModelNumber;
+    public String deviceModelNumber;
     public int purchasePrice;
     public int buildYear;
     public Device () {   
     }
 
-    public Device (int deviceModelNumber, int purchasePrice, int buildYear) {
+    public Device (String deviceModelNumber, int purchasePrice, int buildYear) {
         this.deviceModelNumber = deviceModelNumber;
         this.purchasePrice = purchasePrice;
         this.buildYear = buildYear;
     }
 
-    public void setDeviceModelNumber(int deviceModelNumber) {
+    public void setDeviceModelNumber(String deviceModelNumber) {
         this.deviceModelNumber = deviceModelNumber;
     }
 
-    public int getDeviceModelNumber() {
+    public String getDeviceModelNumber() {
         return this.deviceModelNumber;
     }
 

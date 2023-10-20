@@ -60,13 +60,55 @@ const getRepairs = async () =>{
     console.log(result)
 }
 
+const isEmpty = () =>{
+    const input1 = document.getElementById('input1').value;
+    const input2 = document.getElementById('input2').value;
+    const input3 = document.getElementById('input3').value;
+    if(input1==""||input2==""||input3==""){
+        return true
+    }else{return false}
+}
+
+const isInt = (value) => {
+    // Use parseInt to attempt to convert the value to an integer
+    // If the conversion is successful, and the result is not NaN, it's an integer
+    return !isNaN(parseInt(value, 10)) && Number.isInteger(parseFloat(value));
+  };
+
+const isString = (value) => {
+    return typeof value === 'string';
+  };
+  
+
+const ofTypeInt = () => {
+    const input2 = document.getElementById('input2').value;
+    const input3 = document.getElementById('input3').value;
+    if(isInt(input2) && isInt(input3)){
+        return true
+    }else{
+        return false
+    }
+};
+
+const ofTypeString = () => {
+    const input1 = document.getElementById('input1').value;
+    
+    if(isString(input1)){
+        return true
+    }else{
+        return false
+    }
+};
 
 const enterModel = () =>{
     const div = document.getElementById('nextdiv')
     const label1 = document.createElement('label')
     label1.innerHTML = "Model Nummer Apparaat: "
     const input1 = document.createElement('input')
+    
     input1.id= "input1"
+    input1.required = true
+    // input1.setAttribute('required','true')
     const label2 = document.createElement('label')
     label2.innerHTML = "Aankoopprijs:"
     const input2 = document.createElement('input')
@@ -87,11 +129,34 @@ const enterModel = () =>{
     div.appendChild(button)   
     const startbutton = document.getElementById('start');
     startbutton.addEventListener('click', () => {
-        enterAndPostDeviceInfo();
-        getRepairs();
-        clearDiv("nextdiv");
-        div.setAttribute('id', 'vraag1div');
-        displayBranchQuestion();
+        if(isEmpty()){
+            const p = document.createElement('p')
+            p.innerHTML = "Vul alle velden in"
+
+            p.id = "error"
+            div.appendChild(p)
+
+        }else if(ofTypeInt()==false){
+            const p = document.createElement('p')
+            p.innerHTML = "Vul een getal in bij aankoopprijs en bouwjaar"
+
+            p.id = "error"
+            div.appendChild(p)
+        }else if(ofTypeString()==false){
+            const p = document.createElement('p')
+            p.innerHTML = "Vul een tekst in bij model nummer"
+
+            p.id = "error"
+            div.appendChild(p)
+        }
+        else{
+            enterAndPostDeviceInfo();
+            getRepairs();
+            clearDiv("nextdiv");
+            div.setAttribute('id', 'vraag1div');
+            displayBranchQuestion();
+        }
+        
 
     });
 }
@@ -135,6 +200,7 @@ const displayBranchQuestion = () => {
         input.type = 'radio';
         input.id = `${index}`;
         input.name= "vraag1";
+        // input.setAttribute('required','true')
         div.appendChild(input);
         index++;
 
@@ -261,11 +327,16 @@ const displaySolution = (BranchDecider) =>{
         }else{i++}
     })
     console.log(solution)
-    solution.forEach((element)=>{
-        const p = document.createElement('p');
-        p.innerHTML = element;
-        div.appendChild(p);
-    })
+    if(solution.length==0){
+        header.innerHTML = "Er zijn geen doe het zelf stappen voor dit probleem"
+    }else{
+        solution.forEach((element)=>{
+            const p = document.createElement('p');
+            p.innerHTML = element;
+            div.appendChild(p);
+        })
+    }
+
 
 }
 

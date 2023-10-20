@@ -164,6 +164,9 @@ button {
   padding: 10px 20px;
   cursor: pointer;
 }
+#nextdiv #error {
+  color: red;
+}
 
 footer {
   position: sticky;

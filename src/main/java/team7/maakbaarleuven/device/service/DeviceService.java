@@ -19,7 +19,7 @@ public class DeviceService {
         return deviceRepository.findAll();
     }
 
-    public Device getDevice(int deviceModelNumber) {
+    public Device getDevice(String deviceModelNumber) {
         return deviceRepository.findByDeviceModelNumber(deviceModelNumber);
     }
 
