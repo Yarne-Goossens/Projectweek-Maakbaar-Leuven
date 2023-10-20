@@ -62,4 +62,9 @@ main #faq_hyperlink {
   max-width: 75ch;
   margin: auto;
   text-align: center;
+}
+
+#vraag1div {
+  display: flex;
+  flex-direction: column;
 }/*# sourceMappingURL=style.css.map */

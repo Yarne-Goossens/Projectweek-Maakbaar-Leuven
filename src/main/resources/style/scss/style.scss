@@ -1,3 +1,9 @@
 @use './components/header/header';
 @use './base/typography';
 @use './components/main/main';
+
+
+#vraag1div {
+    display: flex;
+    flex-direction: column;
+}

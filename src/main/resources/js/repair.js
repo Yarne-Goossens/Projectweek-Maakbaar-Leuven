@@ -1,13 +1,22 @@
+const generateMainDiv = () => {
+    const div = document.createElement('div');
+    div.id = 'maindiv';
+    const main = document.querySelector('main');
+    main.appendChild(div);
 
+};
 const displayMainDiv = () => {
+    generateMainDiv();
     const div = document.getElementById('maindiv');
     createDropDown();
     createNextButton();
     document.getElementById('next').addEventListener('click', () => {
         const value = document.querySelector('select').value;
         console.log(value);
-        clearDiv();
+        clearDiv("maindiv");
+        div.setAttribute('id', 'nextdiv');
         enterModel();
+        
     });
     
 }
@@ -53,7 +62,7 @@ const getRepairs = async () =>{
 
 
 const enterModel = () =>{
-    const div = document.getElementById('maindiv')
+    const div = document.getElementById('nextdiv')
     const label1 = document.createElement('label')
     label1.innerHTML = "Device Model Number: "
     const input1 = document.createElement('input')
@@ -80,8 +89,10 @@ const enterModel = () =>{
     startbutton.addEventListener('click', () => {
         enterAndPostDeviceInfo();
         getRepairs();
-        clearDiv();
+        clearDiv("nextdiv");
+        div.setAttribute('id', 'vraag1div');
         displayBranchQuestion();
+
     });
 }
 
@@ -112,8 +123,9 @@ const createNextButton = () => {
     div.appendChild(button);
 }
 const displayBranchQuestion = () => {
-    const div = document.getElementById('maindiv');
+    const div = document.getElementById('vraag1div');
     const data = matrix[0];
+    let clickedInputId = 0;
     let index = 1;
     data.forEach((element) => {
         const label = document.createElement('label');
@@ -125,6 +137,15 @@ const displayBranchQuestion = () => {
         input.name= "vraag1";
         div.appendChild(input);
         index++;
+
+
+        // test
+
+        input.addEventListener('click', (event) => {
+            const clickedInput = event.target;
+            clickedInputId = clickedInput.id;
+            console.log(`Clicked input ID : ${clickedInputId}`);
+        });
         
     })
     const vraag1button = document.createElement('button');
@@ -133,17 +154,10 @@ const displayBranchQuestion = () => {
     div.appendChild(vraag1button);
 
     vraag1button.addEventListener('click', () => {
-        const radioButtons = document.getElementsByName("vraag1");
-        console.log(radioButtons)
-        for (let i = 0; i < radioButtons.length; i++) {
-            console.log(radioButtons[i])
-            if (radioButtons[i].checked) {
-                console.log(i)
-                console.log(matrix[0][i]);
-            }
-        clearDiv();
-
-        }}
+        clearDiv("vraag1div");
+        const BranchDecider = clickedInputId;
+        console.log(BranchDecider)
+    }
     )
     
     ;

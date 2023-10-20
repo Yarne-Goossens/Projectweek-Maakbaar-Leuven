@@ -1,4 +1,4 @@
-const clearDiv = () => {
-    const div = document.getElementById('maindiv')
+const clearDiv = (id) => {
+    const div = document.getElementById(id)
     div.innerHTML = ""
 }    
