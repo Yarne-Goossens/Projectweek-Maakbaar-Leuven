@@ -25,7 +25,7 @@ const enterAndPostDeviceInfo = async () => {
     const input1 = document.getElementById('input1').value;
     const input2 = document.getElementById('input2').value;
     const input3 = document.getElementById('input3').value;
-    const device = {deviceModelNumber:input1, energyConsumption:input2, buildYear:input3};
+    const device = {deviceModelNumber:input1, purchasePrice:input2, buildYear:input3};
     const response = await fetch("http://localhost:8080/api/devices/add", {
         method: "POST",
         headers: {
@@ -64,11 +64,11 @@ const getRepairs = async () =>{
 const enterModel = () =>{
     const div = document.getElementById('nextdiv')
     const label1 = document.createElement('label')
-    label1.innerHTML = "Device Model Number: "
+    label1.innerHTML = "Model Nummer Apparaat: "
     const input1 = document.createElement('input')
     input1.id= "input1"
     const label2 = document.createElement('label')
-    label2.innerHTML = "Energy Consumption:"
+    label2.innerHTML = "Aankoopprijs:"
     const input2 = document.createElement('input')
     input2.id= "input2"
     const label3 = document.createElement('label')

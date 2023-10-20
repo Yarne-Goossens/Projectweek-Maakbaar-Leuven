@@ -16,14 +16,14 @@ public class Device {
     @Id 
     public long id;
     public int deviceModelNumber;
-    public int energyConsumption;
+    public int purchasePrice;
     public int buildYear;
     public Device () {   
     }
 
-    public Device (int deviceModelNumber, int energyConsumption, int buildYear) {
+    public Device (int deviceModelNumber, int purchasePrice, int buildYear) {
         this.deviceModelNumber = deviceModelNumber;
-        this.energyConsumption = energyConsumption;
+        this.purchasePrice = purchasePrice;
         this.buildYear = buildYear;
     }
 
@@ -35,12 +35,12 @@ public class Device {
         return this.deviceModelNumber;
     }
 
-    public void setEnergyConsumption(int energyConsumption) {
-        this.energyConsumption = energyConsumption;
+    public void setPurchasePrice(int purchasePrice) {
+        this.purchasePrice = purchasePrice;
     }
 
-    public int getEnergyConsumption() {
-        return this.energyConsumption;
+    public int getPurchasePrice() {
+        return this.purchasePrice;
     }
 
     public void setBuildYear(int buildYear) {
