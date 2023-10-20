@@ -20,7 +20,6 @@ public class Device {
     private int buildYear;
     public Device () {   
     }
-
     public Device (int deviceModelNumber, int energyConsumption, int buildYear) {
         this.deviceModelNumber = deviceModelNumber;
         this.energyConsumption = energyConsumption;
