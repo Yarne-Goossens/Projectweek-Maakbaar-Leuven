@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-
+@Entity
 public class Profile {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
