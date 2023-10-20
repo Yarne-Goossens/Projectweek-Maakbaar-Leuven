@@ -1,0 +1,315 @@
+header {
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+  background-color: rgb(47, 57, 64);
+  position: relative;
+}
+header h1 {
+  display: flex;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+}
+header #login {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgb(242, 185, 80);
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 20px; /* Rounded edges */
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+  position: absolute;
+  top: 1.76rem;
+  right: 2rem;
+}
+header #login:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+header #login:active, header #login button:focus {
+  outline: none; /* Remove the focus outline */
+  transform: scale(0.95);
+}
+header nav ul {
+  list-style-type: none;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: auto;
+}
+header nav ul a {
+  display: block;
+  font-size: 1.8rem;
+  transition: all 0.3s ease 0s;
+  color: rgb(255, 255, 255);
+}
+header nav ul a:hover {
+  transform: scale(1.05);
+}
+header nav ul .current a {
+  color: rgb(242, 185, 80);
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+html p {
+  font-size: 1.2rem;
+}
+html a {
+  text-decoration: none;
+}
+
+main .over_ons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main #repair_form {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgb(242, 185, 80);
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 20px; /* Rounded edges */
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+main #repair_form:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+main #repair_form:active, main #repair_form button:focus {
+  outline: none; /* Remove the focus outline */
+  transform: scale(0.95);
+}
+main #button_FAQ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main #button_FAQ a {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
+}
+main #button_FAQ a:hover {
+  transition: all 0.3s ease 0s;
+  transform: scale(1.05);
+}
+
+.home_screen {
+  max-width: 75ch;
+  margin: auto;
+  text-align: center;
+}
+
+footer {
+  position: sticky;
+  top: 100%;
+  display: grid;
+  grid-template-columns: 65% 0%;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  background-color: rgb(47, 57, 64);
+}
+footer h3 {
+  text-transform: capitalize;
+  line-height: 3rem;
+  font-size: 1.8rem;
+  margin: auto;
+}
+footer div {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  line-height: 1.2rem;
+  margin: 0.8rem;
+  gap: 1rem;
+  flex-direction: column;
+}
+footer ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+}
+footer .socials {
+  flex-direction: row;
+  gap: 1rem;
+  font-size: 3.5rem;
+  vertical-align: auto;
+}
+footer .socials :hover {
+  transition: all 0.3s ease 0s;
+  color: rgb(242, 185, 80);
+  transform: scale(1.05);
+}
+footer .socials li a {
+  color: white;
+}
+footer p {
+  text-transform: capitalize;
+  max-width: none;
+  width: 100%;
+  text-align: center;
+  padding: 0.8rem;
+  word-spacing: 0.07rem;
+  margin-bottom: 0;
+}
+footer span {
+  text-transform: uppercase;
+  font-weight: 200;
+}
+
+.kader {
+  display: flex;
+  padding: 2rem;
+  margin-left: 20rem;
+  margin-right: 20rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background: whitesmoke;
+  border-radius: 10px;
+  flex-direction: column;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.vraag {
+  display: flex;
+  background: whitesmoke;
+  border-radius: 10px;
+  flex-direction: column;
+}
+
+.antwoord {
+  display: flex;
+  padding: 2rem;
+  background: rgb(168, 168, 168);
+  border-radius: 10px;
+  flex-direction: column;
+}
+
+.vraag:hover {
+  cursor: pointer;
+}
+
+.deactivate {
+  display: none;
+}
+
+.activate {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+body.login {
+  background: #fbfbfb;
+  background-repeat: no-repeat;
+}
+
+label {
+  font-family: "Raleway", sans-serif;
+  font-size: 11pt;
+}
+
+#forgot-pass {
+  color: #432c2c;
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  margin-top: 0.7rem;
+  text-align: right;
+}
+
+#card {
+  background: -webkit-linear-gradient(bottom, #F2A950, #F2B950);
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: 410px;
+  margin: 6rem auto 8.1rem auto;
+  width: 329px;
+}
+
+#card-content {
+  padding: 12px 44px;
+}
+
+#card-title {
+  font-family: "Raleway Thin", sans-serif;
+  letter-spacing: 4px;
+  padding-bottom: 23px;
+  padding-top: 13px;
+  text-align: center;
+}
+
+#signup {
+  color: #432c2c;
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  margin-top: 16px;
+  text-align: center;
+}
+
+#submit-btn {
+  background: -webkit-linear-gradient(right, #0D0D0D, #2F3940);
+  border: none;
+  border-radius: 21px;
+  cursor: pointer;
+  color: white;
+  font-family: "Raleway SemiBold", sans-serif;
+  height: 42.3px;
+  margin: 0 auto;
+  margin-top: 50px;
+  transition: 0.25s;
+  width: 153px;
+}
+
+#submit-btn:hover {
+  transition: all 0.3s ease 0s;
+  transform: scale(1.05);
+}
+
+.form {
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-border {
+  height: 1px;
+  width: 100%;
+}
+
+.form-content {
+  background: #fbfbfb;
+  border: none;
+  outline: none;
+  padding-top: 14px;
+}
+
+.underline-title {
+  background: -webkit-linear-gradient(right, #0D0D0D, #2F3940);
+  height: 2px;
+  margin: -1.1rem auto 0 auto;
+  width: 89px;
+}/*# sourceMappingURL=style.css.map */
