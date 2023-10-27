@@ -120,6 +120,7 @@ body {
   min-height: 100vh;
 }
 
+
 /* Use the original naming conventions */
 #vraag1div, #treediv, #maindiv, #nextdiv {
   display: flex;
@@ -187,7 +188,6 @@ button {
   display: block;
   margin: 10px auto;
 }
-
 footer {
   position: sticky;
   top: 100%;
@@ -491,3 +491,8 @@ label {
 .input-padding {
   padding: 0.5rem;
 }/*# sourceMappingURL=style.css.map */
+
+
+.error {
+  color: red;
+}

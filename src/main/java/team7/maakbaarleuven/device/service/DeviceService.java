@@ -1,5 +1,4 @@
 package team7.maakbaarleuven.device.service;
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,4 +22,9 @@ public class DeviceService {
     public Device addDevice(Device device) {
         return deviceRepository.save(device);
     }
+
+    public Device getDeviceById(long id) {
+        return getDeviceById(id);
+    }
+
 }

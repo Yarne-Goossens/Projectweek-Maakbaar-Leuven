@@ -6,6 +6,4 @@ import team7.maakbaarleuven.repair.model.Repair;
 
 public interface RepairRepository extends JpaRepository<Repair, Long> {
     public Repair findByEntryNumber(int entryNumber);
-
-    public Repair save(Repair repair);
 }
