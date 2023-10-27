@@ -11,10 +11,10 @@ const registerUser = async () => {
     console.log(email);
 
 
-    // new RegExp("/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/");
-    let regex = new RegExp("/^[a-zA-Z]+$/")
+    const regex=new RegExp("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+    console.log(regex.test(email))
     if (!regex.test(email)) {
-        console.log("Yes")
+        console.log("Yes");
         throw new addStatusError("Email not valid");
         return;
     }
