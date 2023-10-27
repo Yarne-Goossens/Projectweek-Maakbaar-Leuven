@@ -14,8 +14,11 @@
         // JavaScript to trigger PDF generation and download
         document.getElementById('download-pdf-button').addEventListener('click', function() {
             // Make an AJAX request to generate and download the PDF
+            // Get the HTML content of the current page
+            var currentHtml = document.documentElement.outerHTML;
+
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'http://127.0.0.1:8080/api/devices/generate-pdf', true);
+            xhr.open('GET', 'http://127.0.0.1:8080/api/devices/generate-pdf' + "?param1=" + currentHtml, true);
             xhr.responseType = 'blob'; // Response type should be 'blob' for binary data
             xhr.onload = function() {
                 if (xhr.status === 200) {
