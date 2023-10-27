@@ -328,13 +328,16 @@ const displaySolution = (BranchDecider) => {
 
     const div = document.getElementById('solutiondiv');
     const header = document.createElement('h1');
-    const title2 = document.createElement('h2');
+    const h2Repair = document.createElement('h2');
     const h2DoeHetZelf = document.createElement('h2');
     header.innerHTML = "Oplossingen";
-    title2.innerHTML = "Laten Vermaken";
+    h2Repair.innerHTML = "Laten Vermaken";
     h2DoeHetZelf.innerHTML = "Doe Het Zelf"
     div.appendChild(header);
-    div.appendChild(title2);
+    div.appendChild(h2Repair);
+    const pCost = document.createElement('p');
+    pCost.innerHTML = `De geschatte prijs van reparatie: €${getCalculatedCost()}`;
+    div.appendChild(pCost);
     div.appendChild(h2DoeHetZelf);
 
     //Loop to get correct solutions
@@ -373,7 +376,7 @@ const getCalculatedCost = () => {
     var min = 0.05 * price;
     var max = 0.70 * price;
     var scaledRandomNumber = min + (randomNumber * (max - min));
-    return scaledRandomNumber;
+    return Math.ceil(scaledRandomNumber);
 }
 
 displayMainDiv();
