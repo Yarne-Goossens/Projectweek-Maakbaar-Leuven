@@ -187,7 +187,6 @@ main {
   flex-direction: column;
   align-items: center;
   margin-top: 5rem;
-  height: 10vh; /* Center vertically on the viewport */
 }
 
 /* Styles for buttons */
@@ -202,6 +201,7 @@ div {
   margin: 5px;
   padding: 20px;
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .form-button {
