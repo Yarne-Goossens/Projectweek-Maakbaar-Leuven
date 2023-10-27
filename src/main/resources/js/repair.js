@@ -331,12 +331,12 @@ const displaySolution = (BranchDecider) => {
     const h2Repair = document.createElement('h2');
     const h2DoeHetZelf = document.createElement('h2');
     header.innerHTML = "Oplossingen";
-    h2Repair.innerHTML = "Laten Vermaken";
+    h2Repair.innerHTML = "Prijs";
     h2DoeHetZelf.innerHTML = "Doe Het Zelf"
     div.appendChild(header);
     div.appendChild(h2Repair);
     const pCost = document.createElement('p');
-    pCost.innerHTML = `De geschatte prijs van reparatie: €${getCalculatedCost()}`;
+    pCost.innerHTML = `De geschatte prijs van het toestel nu: €${getWaardeBepaling()}`;
     div.appendChild(pCost);
     div.appendChild(h2DoeHetZelf);
 
@@ -354,7 +354,9 @@ const displaySolution = (BranchDecider) => {
     })
     console.log(solution)
     if (solution.length == 0) {
-        header.innerHTML = "Er zijn geen doe het zelf stappen voor dit probleem"
+        const p = document.createElement('p');
+        p.innerHTML = "Er zijn geen doe het zelf stappen voor dit probleem"
+        div.appendChild(p);
     } else {
         solution.forEach((element) => {
             const p = document.createElement('p');
@@ -365,18 +367,6 @@ const displaySolution = (BranchDecider) => {
 }
 const getWaardeBepaling = () => {
     return price - ((0.01 * price) * age);
-}
-
-const getCalculatedCost = () => {
-    var seed = modelnummer.toString();
-    var randomGenerator = new Math.seedrandom(seed);
-
-    var randomNumber = randomGenerator();
-
-    var min = 0.05 * price;
-    var max = 0.70 * price;
-    var scaledRandomNumber = min + (randomNumber * (max - min));
-    return Math.ceil(scaledRandomNumber);
 }
 
 displayMainDiv();
