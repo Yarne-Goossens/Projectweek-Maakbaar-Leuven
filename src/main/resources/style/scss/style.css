@@ -419,3 +419,8 @@ label {
 .input-padding {
   padding: 0.5rem;
 }/*# sourceMappingURL=style.css.map */
+
+
+.error {
+  color: red;
+}
