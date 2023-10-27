@@ -7,74 +7,45 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../style/scss/style.css">
     <link rel="icon" type="image/png" href="../images/MaakbaarLeuven_jpg.jpg">
+    <script type="text/javascript" src="../js/load_fragment.js" defer></script>
     <title>MaakbaarLeuven</title>
 </head>
 <body>
-    <header>
-        <div class="title_login">
-            <h1>MaakbaarLeuven</h1>
-            <button id="login">Login</button>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="herstel.html">Herstel</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="headerContainer"></div>
     <section>
         <article class="kader" onClick="myClick('a1')" id="kader">
             <p class="vraag">1. Wat is een Repair Café?</p>
             <p class="deactivate" id = "a1">Een repair café is een bijeenkomst die draait om samen spullen repareren. Je kan er als particulier naartoe komen met iets dat stuk is. Het kan bijvoorbeeld gaan om kapotte elektrische apparaten, fietsen, speelgoed, kledij... Vrijwillige herstellers met de nodige reparatiekennis en -vaardigheden buigen zich dan over het probleem, gratis en voor niets.</p>
         </article>
-        
         <article class="kader" onClick="myClick('a2')" id="kader">
             <p class="vraag">2. Wanneer zijn er Repair Cafés?</p>
             <p class="deactivate" id = "a2">We proberen elke maand minstens 1 a 2 repair cafés te organiseren! Voor de specifieke data houdt je best https://www.maakbaarleuven.be/index.php/agenda/ in de gaten.</p>
         </article>
-
         <article class="kader" onClick="myClick('a3')" id="kader">
             <p class="vraag">3. Wat is het doel van Maakbaar?</p>
             <p class="deactivate" id = "a3"> 
                 Onze doelen zijn:<br> <br>
-                    Samen repareren:
-                    <br>Repair cafés zijn kleine evenementen waar sfeer en gezelligheid, en het leren van en met elkaar, minstens even belangrijk zijn als het herstellen zelf! Neem een lekker kopje koffie, en help de hersteller met het uit elkaar vijzen van je toestel met één van de tools uit de aanwezige gereedschapskoffers. Samen kunnen we meer dan elk apart.<br>
-                    <br>
-                    Duurzame impact:
-                    <br>We registreren de herstellingen die op de repair cafés gebeuren met de digitale tool Repair Connects. Zo kunnen we onze positieve milieu-impact zichtbaar maken, en meten wat we door te herstellen bijdragen aan het verkleinen van de elektro-afvalberg.
-                    <br>
-                    <br>
-                    Kennis delen:
-                    <br>In Repair Connects houden we ook extra informatie bij over herstellingen, zoals wat het precieze probleem was, welke stappen de hersteller heeft gezet om het probleem op te lossen, en of er een wisselstuk is gebruikt. Al deze informatie wordt opgeslagen in de online database, waar andere herstellers dan gebruik van kunnen maken bij een volgende herstelling. Zo bouwen we samen aan meer en gedeelde herstelkennis! 
-                
+                Samen repareren:
+                <br>Repair cafés zijn kleine evenementen waar sfeer en gezelligheid, en het leren van en met elkaar, minstens even belangrijk zijn als het herstellen zelf! Neem een lekker kopje koffie, en help de hersteller met het uit elkaar vijzen van je toestel met één van de tools uit de aanwezige gereedschapskoffers. Samen kunnen we meer dan elk apart.<br>
+                <br>
+                Duurzame impact:
+                <br>We registreren de herstellingen die op de repair cafés gebeuren met de digitale tool Repair Connects. Zo kunnen we onze positieve milieu-impact zichtbaar maken, en meten wat we door te herstellen bijdragen aan het verkleinen van de elektro-afvalberg.
+                <br>
+                <br>
+                Kennis delen:
+                <br>In Repair Connects houden we ook extra informatie bij over herstellingen, zoals wat het precieze probleem was, welke stappen de hersteller heeft gezet om het probleem op te lossen, en of er een wisselstuk is gebruikt. Al deze informatie wordt opgeslagen in de online database, waar andere herstellers dan gebruik van kunnen maken bij een volgende herstelling. Zo bouwen we samen aan meer en gedeelde herstelkennis! 
             </p>
         </article>
-
     </section>
     <script> 
     function myClick(id){
         kader = document.getElementById(id);
-        // console.log(kader.getAttribute("class"))
         if (kader.getAttribute("class") == "deactivate")
-
             kader.setAttribute("class","activate") 
         else
             kader.setAttribute("class","deactivate") 
-        
     }
     </script>
-    <footer>
-        <div>
-            <img src="../images/MaakbaarLeuven_jpg.jpg" alt="placeholder-logo" height="145px">
-        </div>
-        <div>
-            <ul class="socials">
-                <li><a href="https://www.facebook.com/maakbaarleuven"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="https://www.instagram.com/maakbaar.leuven/"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="https://www.linkedin.com/company/maakbaar-leuven/"><i class="fa fa-linkedin-square"></i></a></li>
-            </ul>
-        </div>
-    </footer>
+    <div id="footerContainer"></div>
 </body>
 </html

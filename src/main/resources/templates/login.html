@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,22 +8,11 @@
     <link rel="stylesheet" href="../style/scss/style.css">
     <link rel="icon" type="image/png" href="../images/MaakbaarLeuven_jpg.jpg">
     <script src="../js1/login.js" defer></script>
+    <script type="text/javascript" src="../js/load_fragment.js" defer></script>
     <title>MaakbaarLeuven</title>
 </head>
-
 <body class="login">
-    <header>
-        <div class="title_login">
-            <h1>MaakbaarLeuven</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="herstel.html">Herstel</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="headerContainer"></div>
     <main class="login_page">
         <div id="card">
             <div id="card-content">
@@ -32,39 +20,22 @@
                     <h2>LOGIN</h2>
                     <div class="underline-title"></div>
                 </div>
-                <form id="login_form" class="form">
-                    <label for="user-email" style="padding-top:13px">
-                        &nbsp;Email
-                    </label>
+                <form method="post" id="login_form" class="form">
+                    <label for="user-email" style="padding-top:13px">Email</label>
                     <input id="user-email" class="form-content" type="email" name="email" autocomplete="on" required />
                     <div class="form-border"></div>
-                    <label for="user-password" style="padding-top:22px">&nbsp;Password
-                    </label>
+                    <label for="user-password" style="padding-top:22px">Password</label>
                     <input id="user-password" class="form-content" type="password" name="password" required />
                     <div class="form-border"></div>
-                    <a href="#">
-                        <legend id="forgot-pass">Forgot password?</legend>
-                    </a>
-                    <div id="status"></div>
+
                     <button id="submit-btn">Login</button>
+
+                    <input id="submit-btn" type="submit" name="submit" value="LOGIN" />
                     <a href="register.html" id="signup">Don't have account yet?</a>
                 </form>
             </div>
         </div>
     </main>
-    <footer>
-        <div>
-            <img src="../images/MaakbaarLeuven_jpg.jpg" alt="placeholder-logo" height="145px">
-        </div>
-        <div>
-            <ul class="socials">
-                <li><a href="https://www.facebook.com/maakbaarleuven"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="https://www.instagram.com/maakbaar.leuven/"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="https://www.linkedin.com/company/maakbaar-leuven/"><i
-                            class="fa fa-linkedin-square"></i></a></li>
-            </ul>
-        </div>
-    </footer>
+    <div id="footerContainer"></div>
 </body>
-
 </html>

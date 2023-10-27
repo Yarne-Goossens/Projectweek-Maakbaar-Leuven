@@ -26,6 +26,7 @@ public class ProfileRestController {
         return profileService.getAllProfiles();
     }
 
+
     @GetMapping("/{email}")
     public Profile getProfileByEmail(@PathVariable("email") String email) {
         return profileService.getProfileByEmail(email);
