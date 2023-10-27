@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="../images/MaakbaarLeuven_jpg.jpg">
     <link rel="stylesheet" href="../style/scss/normalize.css">
     <title>MaakbaarLeuven</title>
+    <script type="text/javascript" src="../javascript/register_user_form.js" defer></script>
     <script type="text/javascript" src="../js/submit_form.js" defer></script>
     <script type="text/javascript" src="../js/load_fragment.js" defer></script>
 </head>
@@ -29,7 +30,9 @@
                     <input id= "Lastname" type="text" name="Lastname" class="input-padding">
                     <label for="user-password" class="label-padding">Wachtwoord</label>
                     <input id="user-password" type="password" name="password" required class="input-padding" />
-                    <input id="submit-btn" type="submit" name="submit" value="REGISTER" />
+                    <input id="submit-btn" type="submit" name="submit" value="REGISTER" />           
+                    <div id="statusError">
+                    </div>
                 </form>
             </div>
         </div>

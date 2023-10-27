@@ -22,6 +22,7 @@ public class ProfileService {
     }
 
     public Profile addProfile(Profile profile) {
+        profile.setPassword(new BCryptPasswordEncoder().encode(profile.getPassword()));
         return profileRepository.save(profile);
     }
 
@@ -35,9 +36,7 @@ public class ProfileService {
         return profileRepository.findByEmail(email);
     }
 
-    public boolean authenticate(String email, String password) {
-        Profile profile = profileRepository.findByEmail(email);
-
+    public boolean authenticate(Profile profile, String password) {
         if (profile != null) {
             return passwordEncoder.matches(password, profile.getPassword());
         }

@@ -1,4 +1,9 @@
 @use '../../sass-utils/variables' as *;
+
+body {
+    min-height: 100vh;
+}
+
 footer {
 
     position: sticky;
