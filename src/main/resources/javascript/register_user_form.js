@@ -2,7 +2,7 @@ addStatusError = (status) => {
     document.getElementById("statusError").innerHTML = "<p class='error'>" + status + "</p>";
   };
 
-  const clearStatus = (status) =>
+const clearStatus = (status) =>
   (document.getElementById("statusError").innerHTML = "");
 
 const registerUser = async () => {
@@ -19,7 +19,7 @@ const registerUser = async () => {
     }
 
     const regex_firstname=new RegExp("[A-Za-z]+-?[A-Za-z]+$");
-    console.log(regex_firstname.test(firstname))
+    // console.log(regex_firstname.test(firstname))
     if (!regex_firstname.test(firstname)) {
         console.log("Yes");
         addStatusError("Voornaam is niet geldig");
@@ -27,18 +27,50 @@ const registerUser = async () => {
     }
 
     const regex_lastname=new RegExp("[A-Za-z]+-?[A-Za-z]+$");
-    console.log(regex_lastname.test(lastname))
+    // console.log(regex_lastname.test(lastname))
     if (!regex_lastname.test(lastname)) {
         console.log("Yes");
         addStatusError("Achternaam is niet geldig");
         return;
     }
-
-    if(password.length < 8) {
-        addStatusError("Wachtwoord moet minimaal 8 karakters bevatten");
-        return;
-    }
     
+        // Define regular expressions to check for various criteria
+        const lengthRegex = /.{8,}/; // Minimum length of 8 characters
+        const uppercaseRegex = /[A-Z]/; // At least one uppercase letter
+        const lowercaseRegex = /[a-z]/; // At least one lowercase letter
+        const digitRegex = /\d/; // At least one digit
+        const specialCharacterRegex = /[!@#\$%^&*()_+{}\[\]:;<>,.?~\\-]/; // At least one special character
+
+        // Check each criterion
+        const isLengthValid = lengthRegex.test(password);
+        const isUppercaseValid = uppercaseRegex.test(password);
+        const isLowercaseValid = lowercaseRegex.test(password);
+        const isDigitValid = digitRegex.test(password);
+        const isSpecialCharacterValid = specialCharacterRegex.test(password);
+
+
+        // Calculate the overall strength
+        if (!isLengthValid) {
+            addStatusError("Wachtwoord moet minstens 8 characters lang zijn.")
+            return;
+        }
+        if (!isUppercaseValid){
+            addStatusError("Wachtwoord moet minstens 1 grote letter hebben.")
+            return;
+        }
+        if (!isLowercaseValid) {
+            addStatusError("Wachtwoord moet minstens 1 kleine character bevatten.")
+            return;
+        }
+        if (!isDigitValid){
+            addStatusError("Wachtwoord moet minstens 1 getal hebben.")
+            return;
+        }
+        if (!isSpecialCharacterValid) {
+            addStatusError("Wachtwoord moet minstens 1 speciale character bevatten.");
+            return;
+        }
+
     clearStatus();
 
     const profile = {
