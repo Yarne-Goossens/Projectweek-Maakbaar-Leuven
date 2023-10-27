@@ -16,7 +16,6 @@ import team7.maakbaarleuven.profile.service.ProfileService;
 
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:5500")
 @RequestMapping("/api/profile")
 public class ProfileRestController {
 
