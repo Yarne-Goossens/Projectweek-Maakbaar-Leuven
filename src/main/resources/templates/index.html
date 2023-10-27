@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +10,7 @@
     <title>MaakbaarLeuven</title>
 </head>
 <body>
+    <header th:replace="fragments/general.html :: header"></header>
     <header>
         <div class="title_login">
             <h1>MaakbaarLeuven</h1>
