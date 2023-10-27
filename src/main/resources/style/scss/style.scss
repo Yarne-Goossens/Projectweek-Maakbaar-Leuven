@@ -2,5 +2,6 @@
 @use './base/typography';
 @use './components/main/main';
 @use './components/footer/footer';
-@use'./components/faq/faq';
-@use'./components/login/login.scss';
+@use './components/faq/faq';
+@use './components/login/login';
+@use './components/register/register';
