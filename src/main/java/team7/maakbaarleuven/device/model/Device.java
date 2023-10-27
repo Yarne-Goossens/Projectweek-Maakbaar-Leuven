@@ -1,23 +1,22 @@
 package team7.maakbaarleuven.device.model;
 
-
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
 @Entity
 @Table(name = "devices")
 public class Device {
-    
+
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Id 
+    @Id
     public long id;
     public String deviceModelNumber;
     public int purchasePrice;
     public int buildYear;
+  
     public Device () {   
     }
 
@@ -50,5 +49,4 @@ public class Device {
     public int getBuildYear() {
         return this.buildYear;
     }
-
 }
