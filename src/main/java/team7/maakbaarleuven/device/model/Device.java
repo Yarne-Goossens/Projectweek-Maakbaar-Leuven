@@ -15,15 +15,17 @@ public class Device {
     public long id;
     public String deviceModelNumber;
     public int purchasePrice;
-    public int buildYear;
+    public int bereidTeBetalen;
+    public int ageInMonths;
   
     public Device () {   
     }
 
-    public Device (String deviceModelNumber, int purchasePrice, int buildYear) {
+    public Device(String deviceModelNumber, int purchasePrice, int bereidTeBetalen, int ageInMonths) {
         this.deviceModelNumber = deviceModelNumber;
         this.purchasePrice = purchasePrice;
-        this.buildYear = buildYear;
+        this.bereidTeBetalen = bereidTeBetalen;
+        this.ageInMonths = ageInMonths;
     }
 
     public void setDeviceModelNumber(String deviceModelNumber) {
@@ -42,11 +44,19 @@ public class Device {
         return this.purchasePrice;
     }
 
-    public void setBuildYear(int buildYear) {
-        this.buildYear = buildYear;
+    public void setBereidTeBetalen(int bereidTeBetalen) {
+        this.bereidTeBetalen = bereidTeBetalen;
     }
 
-    public int getBuildYear() {
-        return this.buildYear;
+    public int getBereidTeBetalen() {
+        return this.bereidTeBetalen;
+    }
+
+    public int getAgeInMonths() {
+        return this.ageInMonths;
+    }
+
+    public void setAgeInMonths(int age) {
+        this.ageInMonths = age;
     }
 }
