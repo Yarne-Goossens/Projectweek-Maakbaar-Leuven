@@ -164,7 +164,8 @@ const enterModel = () =>{
 
 const createDropDown = () => {
     const label = document.createElement('label');
-    label.innerHTML = 'Selecteer een apparaat: ';
+    label.innerHTML = 'Selecteer uw apparaat: ';
+    label.id = "dropdownlabel"
     const select = document.createElement('select');
     select.id = 'devices';
     label.appendChild(select);

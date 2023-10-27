@@ -3,18 +3,23 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh; /* Center vertically on the viewport */
+    margin-top: 5rem;
+    height: 10vh; /* Center vertically on the viewport */
   }
   
   /* Styles for buttons */
  
-  
+div {
+  display: flex;
+  flex-direction: column;
+}
   #emailButton, #formButton {
     background-color: rgb(242, 185, 80);
-    color: white;
+    color:black;
     margin: 5px;
-    padding: 20px
+    padding: 20px;
+    margin-top:2rem;
+
   }
   
   .form-button {
