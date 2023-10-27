@@ -24,8 +24,9 @@ const main = async () => {
 }
 
 const authenticate = async (profile) => {
+    console.log("in auth");
     try {
-        const response = await fetch(`http://localhost:8080/api/profile/authenticate`, {
+        const response = await fetch(`http://127.0.0.1:8080/api/profile/authenticate`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
