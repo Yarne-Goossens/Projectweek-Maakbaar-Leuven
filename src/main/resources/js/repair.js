@@ -340,4 +340,4 @@ const displaySolution = (BranchDecider) =>{
 
 }
 
-displayMainDiv();
+// displayMainDiv();
