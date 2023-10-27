@@ -1,5 +1,7 @@
 
 
+
+
 const displayEmailMain = () =>{
     const divMain = document.createElement('div');
     divMain.id = 'emailMain';
@@ -8,16 +10,18 @@ const displayEmailMain = () =>{
     
     const emailButton = createButton('Hulp nodig met het formulier? Stuur een mail!', 'emailButton')
     divMain.appendChild(emailButton);
+    emailButton.id = 'emailButton';
     
     const formButton = createButton('Vul het formulier zelf in', 'formButton')
     divMain.appendChild(formButton);
+    formButton.id = 'formButton';
 
     emailButton.addEventListener('click', () => {
-        divMain.innerHTML = "";
+        clearDiv("emailMain")
         displayEmailForm();
     });
     formButton.addEventListener('click', () => {
-        divMain.innerHTML = "";
+        clearDiv("emailMain");
         displayMainDiv();
     });
 }

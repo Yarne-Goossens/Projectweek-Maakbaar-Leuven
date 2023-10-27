@@ -128,9 +128,10 @@ const enterModel = () =>{
     button.id = "start"
     div.appendChild(button)   
     const startbutton = document.getElementById('start');
+    const p = document.createElement('p')
     startbutton.addEventListener('click', () => {
         if(isEmpty()){
-            const p = document.createElement('p')
+            
             p.innerHTML = "Vul alle velden in"
 
             p.id = "error"

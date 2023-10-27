@@ -72,7 +72,7 @@ main .over_ons {
   flex-direction: column;
   align-items: center;
 }
-main #repair_form {
+main button {
   display: inline-block;
   padding: 10px 20px;
   background-color: rgb(242, 185, 80);
@@ -83,13 +83,14 @@ main #repair_form {
   text-align: center;
   text-decoration: none;
   transition: background-color 0.3s, transform 0.2s;
+  margin: 1rem;
   cursor: pointer;
 }
-main #repair_form:hover {
+main button:hover {
   cursor: pointer;
   transform: scale(1.05);
 }
-main #repair_form:active, main #repair_form button:focus {
+main button:active, main button button:focus {
   outline: none; /* Remove the focus outline */
   transform: scale(0.95);
 }
@@ -134,14 +135,6 @@ select, input {
 }
 
 /* Common styles for buttons */
-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
 /* Specific styles for #maindiv */
 #maindiv {
   align-items: center;
@@ -198,16 +191,11 @@ main {
 }
 
 /* Styles for buttons */
-.button {
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
-
-.email-button {
-  background-color: #0074D9;
+#emailButton, #formButton {
+  background-color: rgb(242, 185, 80);
   color: white;
   margin: 5px;
+  padding: 20px;
 }
 
 .form-button {
