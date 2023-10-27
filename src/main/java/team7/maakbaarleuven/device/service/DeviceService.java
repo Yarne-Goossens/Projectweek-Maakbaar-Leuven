@@ -1,10 +1,7 @@
 package team7.maakbaarleuven.device.service;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import team7.maakbaarleuven.device.model.Device;
 import team7.maakbaarleuven.device.repo.DeviceRepository;
 

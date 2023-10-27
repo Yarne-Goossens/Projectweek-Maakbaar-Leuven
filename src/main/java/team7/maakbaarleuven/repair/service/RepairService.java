@@ -19,5 +19,4 @@ public class RepairService {
     public Repair addRepair(Repair repair) {
         return repairRepository.save(repair);
     }
-  
 }

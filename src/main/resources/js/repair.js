@@ -119,7 +119,6 @@ const enterModel = () => {
 
     input1.id = "input1"
     input1.required = true
-    // input1.setAttribute('required','true')
     const label2 = document.createElement('label')
     label2.innerHTML = "Aankoopprijs:"
     const input2 = document.createElement('input')
@@ -173,8 +172,6 @@ const enterModel = () => {
             div.setAttribute('id', 'vraag1div');
             displayBranchQuestion();
         }
-
-
     });
 }
 
@@ -221,15 +218,12 @@ const displayBranchQuestion = () => {
         div.appendChild(input);
         index++;
 
-
         // test
-
         input.addEventListener('click', (event) => {
             const clickedInput = event.target;
             clickedInputId = clickedInput.id;
             console.log(`Clicked input ID : ${clickedInputId}`);
         });
-
     })
     const vraag1button = document.createElement('button');
     vraag1button.innerHTML = 'Volgende';
@@ -242,9 +236,7 @@ const displayBranchQuestion = () => {
         const BranchDecider = clickedInputId;
 
         branchNavigation(BranchDecider);
-    }
-    )
-        ;
+    });
 };
 let index = 0;
 let result = [];
@@ -268,8 +260,6 @@ const branchNavigation = (BranchDecider) => {
     input1.addEventListener('click', (event) => {
         const clickedInput = event.target;
         clickedInputId = clickedInput.id;
-
-
     })
 
     const input2 = document.createElement('input');
@@ -280,8 +270,6 @@ const branchNavigation = (BranchDecider) => {
     input2.addEventListener('click', (event) => {
         const clickedInput = event.target;
         clickedInputId = clickedInput.id;
-
-
     })
 
     div.appendChild(label1);
@@ -299,33 +287,21 @@ const branchNavigation = (BranchDecider) => {
         index++
         if (matrix[BranchDecider].length === index) {
             //POST result
-            //clearDiv("treediv");
             clearDiv("treediv");
             result.push(clickedInputId);
             console.log(result)
             div.setAttribute('id', 'solutiondiv');
-            displaySolution(BranchDecider);
-
-        }
-        else {
+            displaySolution(BranchDecider); 
+        } else{
             clearDiv("treediv");
             branchNavigation(BranchDecider);
             result.push(clickedInputId);
         }
-
-
-
     })
-
-
-
 }
 
-
-const displaySolution = (BranchDecider) => {
-
+const displaySolution = (BranchDecider) =>{
     //Create header
-
     const div = document.getElementById('solutiondiv');
     const header = document.createElement('h1');
     const h2Repair = document.createElement('h2');
@@ -341,7 +317,6 @@ const displaySolution = (BranchDecider) => {
     div.appendChild(h2DoeHetZelf);
 
     //Loop to get correct solutions
-
     let solution = [];
     let i = 0;
     result.forEach((element) => {
@@ -370,3 +345,4 @@ const getWaardeBepaling = () => {
 }
 
 displayMainDiv();
+

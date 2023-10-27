@@ -17,8 +17,8 @@ public class Device {
     public int purchasePrice;
     public int bereidTeBetalen;
     public int ageInMonths;
-
-    public Device() {
+  
+    public Device () {   
     }
 
     public Device(String deviceModelNumber, int purchasePrice, int bereidTeBetalen, int ageInMonths) {
@@ -59,5 +59,4 @@ public class Device {
     public void setAgeInMonths(int age) {
         this.ageInMonths = age;
     }
-
 }

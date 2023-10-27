@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../style/scss/style.css">
+    <link rel="icon" type="image/png" href="../images/MaakbaarLeuven_jpg.jpg">
+    <link rel="stylesheet" href="../style/scss/normalize.css">
+    <title>MaakbaarLeuven</title>
+    <script type="text/javascript" src="../js/register_user_form.js" defer></script>
+    <script type="text/javascript" src="../js/submit_form.js" defer></script>
+    <script type="text/javascript" src="../js/load_fragment.js" defer></script>
+</head>
+<body class="register">
+    <header id="headerContainer"></header>
+    <main class="login_page">
+        <div id="card">
+            <div id="card-content">
+                <div id="card-title">
+                    <h2>REGISTER</h2>
+                    <div class="underline-title"></div>
+                </div>
+                <form method="post" class="form" id="register_form">
+                    <label for="user-email">Email</label>
+                    <input id="user-email" type="email" name="email" autocomplete="on" required class="input-padding"/> 
+                    <label for="Firstname" class="label-padding">Voornaam</label>
+                    <input id= "Firstname" type="text" name="Firstname" class="input-padding">
+                    <label for="Lastname" class="label-padding">Achternaam</label>
+                    <input id= "Lastname" type="text" name="Lastname" class="input-padding">
+                    <label for="user-password" class="label-padding">Wachtwoord</label>
+                    <input id="user-password" type="password" name="password" required class="input-padding" />
+                    <input id="submit-btn" type="submit" name="submit" value="REGISTER" />           
+                    <div id="statusError">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer id="footerContainer"></footer>
+</body>
+</html>
