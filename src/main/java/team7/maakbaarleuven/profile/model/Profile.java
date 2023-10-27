@@ -1,4 +1,5 @@
 package team7.maakbaarleuven.profile.model;
+
 import jakarta.persistence.Column;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import jakarta.persistence.Entity;
@@ -71,7 +72,7 @@ public class Profile {
         // Hash the password before storing it
         this.password = new BCryptPasswordEncoder().encode(password);
     }
-  
+
     public String getRole() {
         return role;
     }

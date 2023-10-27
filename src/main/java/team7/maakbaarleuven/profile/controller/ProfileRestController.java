@@ -18,7 +18,7 @@ import team7.maakbaarleuven.profile.service.ProfileService;
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RequestMapping("/api/profile")
 public class ProfileRestController {
-    
+
     @Autowired
     private ProfileService profileService;
 
@@ -27,12 +27,12 @@ public class ProfileRestController {
         return profileService.getAllProfiles();
     }
 
-    @PostMapping("/add") 
+    @PostMapping("/add")
     public Profile addProfile(@RequestBody Profile profile) {
         return profileService.addProfile(profile);
     }
 
-    @DeleteMapping("/delete/") 
+    @DeleteMapping("/delete/")
     public Profile deleteProfile(Profile profile) {
         return profileService.deleteProfile(profile);
     }

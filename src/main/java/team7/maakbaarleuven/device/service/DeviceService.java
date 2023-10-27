@@ -1,9 +1,8 @@
 package team7.maakbaarleuven.device.service;
-import java.util.List;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import team7.maakbaarleuven.device.model.Device;
 import team7.maakbaarleuven.device.repo.DeviceRepository;
 
@@ -12,8 +11,6 @@ public class DeviceService {
 
     @Autowired
     private DeviceRepository deviceRepository;
-
-
 
     public List<Device> getAllDevices() {
         return deviceRepository.findAll();
@@ -26,12 +23,4 @@ public class DeviceService {
     public Device addDevice(Device device) {
         return deviceRepository.save(device);
     }
-
-
-
-
-
-
-
-    
 }
