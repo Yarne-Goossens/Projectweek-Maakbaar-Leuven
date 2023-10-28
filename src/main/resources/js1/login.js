@@ -2,38 +2,41 @@ const clearStatus = (status) =>
     (document.getElementById("status").innerHTML = "");
 
 const addStatus = (status) => {
-    clearStatus();
     document.getElementById("status").innerHTML += "<p class='error'>" + status + "</p>";
 };
 const main = async () => {
-    console.log("hier");
     const login_button = document.getElementById('submit-btn');
-    login_button.addEventListener('click', async () => {
+    login_button.addEventListener('click', async (event) => {
+        event.preventDefault();
+        clearStatus();
         const password_input = document.getElementById('user-password').value;
-        console.log(`passw_input: ${password_input}`);
         const email_input = document.getElementById('user-email').value;
-        console.log(`email_input: ${email_input}`);
-        const profile = { email: email_input, password: password_input };
-        console.log(profile);
-        console.log("voor auth");
+        const profile = {
+            email: email_input, 
+            password: password_input,
+        };
         const status = await authenticate(profile);
-        console.log("status:" + status);
-        console.log("na auth")
-        addStatus(status);
+        console.log(status);
+        if(status) {
+            addStatus("login gelukt");
+        } else {
+            addStatus("login mislukt");
+        }
+        
     });
 }
 
 const authenticate = async (profile) => {
-    console.log("in auth");
     try {
         const response = await fetch(`http://127.0.0.1:8080/api/profile/authenticate`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(profile),
         });
+        console.log(response);
 
         if (!response.ok) {
             throw new Error(`Failed to fetch: ${response.status} - ${response.statusText}`);
