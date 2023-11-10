@@ -35,3 +35,4 @@ public class DeviceRestController {
         return deviceService.addDevice(device);
 
     }
+}
