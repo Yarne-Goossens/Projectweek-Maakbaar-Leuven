@@ -22,7 +22,9 @@ const main = async () => {
             const user = await getUser(profile.email);
             console.log(user)
             sessionStorage.setItem('user', user.firstname);
-            window.location.href = "http://127.0.0.1:5500/wpp-2324-team-07/src/main/resources/templates/user.html";
+            sessionStorage.setItem('role', user.role);
+            window.location.href = "user.html";
+            checkUserLogin();
         } else {
             addStatus("login mislukt");
         }
@@ -79,23 +81,4 @@ const getUser = async (email) => {
     }
 };
 
-checkUserLogin = () => {
-    if (sessionStorage.getItem('user')) {
-        const loginButton = document.getElementById('login');
-        loginButton.remove();
-
-        var navigationList = document.getElementById("navigation_list");
-        var newListItem = document.createElement("li");
-        var newLink = document.createElement("a");
-        newLink.href = "user.html";
-        newLink.textContent = "Profile";
-
-        newListItem.appendChild(newLink);
-        navigationList.appendChild(newListItem);
-    }
-
-};
-
-
 main();
-window.addEventListener('load', checkUserLogin());

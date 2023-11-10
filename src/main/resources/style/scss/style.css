@@ -5,18 +5,22 @@ header {
   background-color: rgb(47, 57, 64);
   position: relative;
 }
+
 header h1 {
   display: flex;
   justify-content: center;
   color: rgb(255, 255, 255);
 }
-header #login {
+
+header #login,
+#logout {
   display: inline-block;
   padding: 10px 20px;
   background-color: rgb(242, 185, 80);
   color: rgb(0, 0, 0);
   border: none;
-  border-radius: 20px; /* Rounded edges */
+  border-radius: 20px;
+  /* Rounded edges */
   font-size: 16px;
   text-align: center;
   text-decoration: none;
@@ -26,14 +30,19 @@ header #login {
   top: 1.76rem;
   right: 2rem;
 }
+
 header #login:hover {
   cursor: pointer;
   transform: scale(1.05);
 }
-header #login:active, header #login button:focus {
-  outline: none; /* Remove the focus outline */
+
+header #login:active,
+header #login button:focus {
+  outline: none;
+  /* Remove the focus outline */
   transform: scale(0.95);
 }
+
 header nav ul {
   list-style-type: none;
   padding: 20px;
@@ -42,15 +51,18 @@ header nav ul {
   max-width: 1000px;
   margin: auto;
 }
+
 header nav ul a {
   display: block;
   font-size: 1.8rem;
   transition: all 0.3s ease 0s;
   color: rgb(255, 255, 255);
 }
+
 header nav ul a:hover {
   transform: scale(1.05);
 }
+
 header nav ul .current a {
   color: rgb(242, 185, 80);
 }
@@ -60,9 +72,11 @@ html {
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 html p {
   font-size: 1.2rem;
 }
+
 html a {
   text-decoration: none;
 }
@@ -72,13 +86,15 @@ main .over_ons {
   flex-direction: column;
   align-items: center;
 }
+
 main button {
   display: inline-block;
   padding: 10px 20px;
   background-color: rgb(242, 185, 80);
   color: rgb(0, 0, 0);
   border: none;
-  border-radius: 20px; /* Rounded edges */
+  border-radius: 20px;
+  /* Rounded edges */
   font-size: 16px;
   text-align: center;
   text-decoration: none;
@@ -86,19 +102,25 @@ main button {
   margin: 1rem;
   cursor: pointer;
 }
+
 main button:hover {
   cursor: pointer;
   transform: scale(1.05);
 }
-main button:active, main button button:focus {
-  outline: none; /* Remove the focus outline */
+
+main button:active,
+main button button:focus {
+  outline: none;
+  /* Remove the focus outline */
   transform: scale(0.95);
 }
+
 main #button_FAQ {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 main #button_FAQ a {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -106,6 +128,7 @@ main #button_FAQ a {
   color: rgb(0, 0, 0);
   text-decoration: underline;
 }
+
 main #button_FAQ a:hover {
   transition: all 0.3s ease 0s;
   transform: scale(1.05);
@@ -123,7 +146,10 @@ body {
 
 
 /* Use the original naming conventions */
-#vraag1div, #treediv, #maindiv, #nextdiv {
+#vraag1div,
+#treediv,
+#maindiv,
+#nextdiv {
   display: flex;
   flex-direction: column;
 }
@@ -161,8 +187,10 @@ body {
 }
 
 /* Common styles for select and input elements */
-select, input {
-  width: 50%; /* Adjust the width as needed */
+select,
+input {
+  width: 50%;
+  /* Adjust the width as needed */
   padding: 5px;
   margin: 5px 0;
 }
@@ -240,7 +268,8 @@ div {
   flex-direction: column;
 }
 
-#emailButton, #formButton {
+#emailButton,
+#formButton {
   background-color: rgb(242, 185, 80);
   color: black;
   margin: 5px;
@@ -281,12 +310,14 @@ footer {
   margin: 0;
   background-color: rgb(47, 57, 64);
 }
+
 footer h3 {
   text-transform: capitalize;
   line-height: 3rem;
   font-size: 1.8rem;
   margin: auto;
 }
+
 footer div {
   align-self: center;
   display: flex;
@@ -297,26 +328,31 @@ footer div {
   gap: 1rem;
   flex-direction: column;
 }
+
 footer ul {
   list-style: none;
   padding-left: 0;
   display: flex;
   flex-direction: column;
 }
+
 footer .socials {
   flex-direction: row;
   gap: 1rem;
   font-size: 3.5rem;
   vertical-align: auto;
 }
+
 footer .socials :hover {
   transition: all 0.3s ease 0s;
   color: rgb(242, 185, 80);
   transform: scale(1.05);
 }
+
 footer .socials li a {
   color: white;
 }
+
 footer p {
   text-transform: capitalize;
   max-width: none;
@@ -326,6 +362,7 @@ footer p {
   word-spacing: 0.07rem;
   margin-bottom: 0;
 }
+
 footer span {
   text-transform: uppercase;
   font-weight: 200;
@@ -341,9 +378,12 @@ footer span {
   background: whitesmoke;
   border-radius: 10px;
   flex-direction: column;
-  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
+  -webkit-user-select: none;
+  /* Safari */
+  /* IE 10 and IE 11 */
   -moz-user-select: none;
-       user-select: none; /* Standard syntax */
+  user-select: none;
+  /* Standard syntax */
 }
 
 .vraag {
@@ -573,7 +613,9 @@ label {
 
 .input-padding {
   padding: 0.5rem;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
 
 
 .error {
