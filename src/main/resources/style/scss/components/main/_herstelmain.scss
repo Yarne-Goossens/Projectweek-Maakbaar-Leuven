@@ -6,6 +6,38 @@
     flex-direction: column;
 }
 
+#vraag1div {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 10px;
+}
+
+#vraag1div label {
+    grid-column: 0,1;
+}
+
+#vraag1div input[type="radio"] {
+    grid-column: 1,2;
+}
+
+#treediv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+#treediv p {
+    grid-column: span 2;
+    
+
+}
+#treediv label {
+    grid-column: 0,1;
+}
+
+#treediv input[type="radio"] {
+    grid-column: 1,2;
+}
+
 /* Common styles for select and input elements */
 select, input {
     width: 50%; /* Adjust the width as needed */
@@ -37,6 +69,21 @@ select, input {
 #nextdiv #error {
     color: red;
 }
+#vraag1div #error {
+    color: red;
+    display: block;
+    margin: 10px auto;
+
+}
+#treediv #error {
+    color: red;
+    display: block;
+    margin: 10px auto;
+
+
+}
+
+
 
 #vraag1div {
     width: 80%;

@@ -192,7 +192,7 @@ const createNextButton = () => {
 const displayBranchQuestion = () => {
     const div = document.getElementById('vraag1div');
     const data = matrix[0];
-    let clickedInputId = 0;
+    let clickedInputId = null;
     let index = 1;
     data.forEach((element) => {
         const label = document.createElement('label');
@@ -220,13 +220,21 @@ const displayBranchQuestion = () => {
     vraag1button.innerHTML = 'Volgende';
     vraag1button.id = "vraag1button"
     div.appendChild(vraag1button);
-
+    const p = document.createElement('p');
     vraag1button.addEventListener('click', () => {
+        if (clickedInputId == null) {
+
+            
+            p.innerHTML = "Selecteer een optie";
+            p.id = "error";
+            div.appendChild(p);
+        } else {
         clearDiv("vraag1div");
         div.setAttribute('id', 'treediv');
         const BranchDecider = clickedInputId;
         
         branchNavigation(BranchDecider);
+    }
     }
     )
     ;
@@ -234,6 +242,7 @@ const displayBranchQuestion = () => {
 let index = 0;
 let result = [];
 const branchNavigation = (BranchDecider) =>{
+    let clickedInputId = null;
     
     const div = document.getElementById('treediv');
     const p = document.createElement('p');
@@ -278,8 +287,13 @@ const branchNavigation = (BranchDecider) =>{
     treeButton.innerHTML = 'Volgende';
     treeButton.id = 'treebutton';
     div.appendChild(treeButton);
-
+    const p2 = document.createElement('p');
     treeButton.addEventListener('click', () => {
+        if (clickedInputId == null) {
+            p2.innerHTML = "Selecteer een optie";
+            p2.id = "error";
+            div.appendChild(p2);
+        } else {
         
         index++
         if(matrix[BranchDecider].length === index ){
@@ -297,6 +311,7 @@ const branchNavigation = (BranchDecider) =>{
             branchNavigation(BranchDecider);
             result.push(clickedInputId);
         }
+    }
         
 
         
