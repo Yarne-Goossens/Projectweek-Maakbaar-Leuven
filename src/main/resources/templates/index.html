@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/scss/normalize.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../style/scss/style.css">
-    <link rel="icon" type="image/png" href="../images/MaakbaarLeuven_jpg.jpg">
-    <script type="text/javascript" src="../js/load_fragment.js" defer></script>
-    <title>MaakbaarLeuven</title>
-</head>
-<body>
-    <header id="headerContainer"></header>
-    <main class="home_screen">
-        <img src="../images/maakbaarleuven_logo.png" alt="placeholder-logo">
-        <section class="over_ons">
-            <h2>Over ons</h2>
-            <p>Maakbaar Leuven is een beweging, een bonte verzameling vrijwilligers, partner-organisaties en bedrijven,
-                met een hart voor herstellen en duurzaamheid. We weigeren ons neer te leggen bij de vuilnisbak als
-                ultieme eindbestemming voor kapotte toestellen en voorwerpen. We geloven dat we samen het tij kunnen
-                keren en Leuven upcyclen tot een circulaire en duurzame stad!</p>
-        </section>
-        <div id="button_FAQ">
-            <button id="repair_form">Start het proces</button>
-            <script>
-                document.getElementById('repair_form').addEventListener('click', function() {
-                    var link = document.createElement('a');
-                    link.href = 'herstel.html';
-                    link.click();
-                    
-                });
-            </script>
-            <a href="faq.html">FAQ</a>
-        </div>
-    </main>
-    <footer id="footerContainer"></footer>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../style/scss/normalize.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="../style/scss/style.css" />
+        <link rel="icon" type="image/png" href="../images/MaakbaarLeuven_jpg.jpg" />
+        <script type="text/javascript" src="../js/load_fragment.js" defer></script>
+        <title>MaakbaarLeuven</title>
+    </head>
+    <body>
+        <header id="headerContainer"></header>
+        <main class="home_screen">
+            <img src="../images/maakbaarleuven_logo.png" alt="placeholder-logo" />
+            <section class="over_ons">
+                <h2>Over ons</h2>
+                <p>
+                    Maakbaar Leuven is een beweging, een bonte verzameling vrijwilligers, partner-organisaties en bedrijven, met een hart voor
+                    herstellen en duurzaamheid. We weigeren ons neer te leggen bij de vuilnisbak als ultieme eindbestemming voor kapotte toestellen en
+                    voorwerpen. We geloven dat we samen het tij kunnen keren en Leuven upcyclen tot een circulaire en duurzame stad!
+                </p>
+            </section>
+            <div id="button_FAQ">
+                <button id="repair_form">Start het proces</button>
+                <script>
+                    document.getElementById("repair_form").addEventListener("click", function () {
+                        var link = document.createElement("a");
+                        link.href = "herstel.html";
+                        link.click();
+                    });
+                </script>
+                <a href="faq.html">FAQ</a>
+            </div>
+        </main>
+        <footer id="footerContainer"></footer>
+    </body>
 </html>
