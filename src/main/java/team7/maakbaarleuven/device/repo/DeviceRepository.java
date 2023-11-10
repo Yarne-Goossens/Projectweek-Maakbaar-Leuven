@@ -8,4 +8,3 @@ public interface DeviceRepository extends JpaRepository<Device, Long> {
 
     public Device findById(long id);
 }
-

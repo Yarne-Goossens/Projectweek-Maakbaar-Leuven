@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.micrometer.core.ipc.http.HttpSender.Response;
 import team7.maakbaarleuven.profile.model.Profile;
 import team7.maakbaarleuven.profile.service.ProfileService;
 
@@ -43,15 +45,21 @@ public class ProfileRestController {
     }
 
     @PostMapping("/authenticate")
-    public String authenticateProfile(@RequestBody Profile request) {
+    public Boolean authenticateProfile(@RequestBody Profile request) {
+        System.out.println(request.getPassword());
         Profile profile = profileService.getProfileByEmail(request.getEmail());
         String password = request.getPassword();
+        System.out.println(request.getEmail());
 
         if (profileService.authenticate(profile, password)) {
-            return "Login successful";
+            System.out.println("gelukt");
+            return true;
         } else {
-            return "Username or password incorrect";
+            System.out.println("mislukt");
+            return false;
         }
     }
 
 }
+
+//Reverting commits
