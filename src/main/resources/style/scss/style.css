@@ -72,7 +72,7 @@ main .over_ons {
   flex-direction: column;
   align-items: center;
 }
-main #repair_form {
+main button {
   display: inline-block;
   padding: 10px 20px;
   background-color: rgb(242, 185, 80);
@@ -83,13 +83,14 @@ main #repair_form {
   text-align: center;
   text-decoration: none;
   transition: background-color 0.3s, transform 0.2s;
+  margin: 1rem;
   cursor: pointer;
 }
-main #repair_form:hover {
+main button:hover {
   cursor: pointer;
   transform: scale(1.05);
 }
-main #repair_form:active, main #repair_form button:focus {
+main button:active, main button button:focus {
   outline: none; /* Remove the focus outline */
   transform: scale(0.95);
 }
@@ -127,6 +128,38 @@ body {
   flex-direction: column;
 }
 
+#vraag1div {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 10px;
+}
+
+#vraag1div label {
+  grid-column: 0, 1;
+}
+
+#vraag1div input[type=radio] {
+  grid-column: 1, 2;
+}
+
+#treediv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+#treediv p {
+  grid-column: span 2;
+}
+
+#treediv label {
+  grid-column: 0, 1;
+}
+
+#treediv input[type=radio] {
+  grid-column: 1, 2;
+}
+
 /* Common styles for select and input elements */
 select, input {
   width: 50%; /* Adjust the width as needed */
@@ -135,14 +168,6 @@ select, input {
 }
 
 /* Common styles for buttons */
-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
 /* Specific styles for #maindiv */
 #maindiv {
   align-items: center;
@@ -163,6 +188,18 @@ button {
 /* Styles for error text inside #nextdiv */
 #nextdiv #error {
   color: red;
+}
+
+#vraag1div #error {
+  color: red;
+  display: block;
+  margin: 10px auto;
+}
+
+#treediv #error {
+  color: red;
+  display: block;
+  margin: 10px auto;
 }
 
 #vraag1div {
@@ -188,6 +225,52 @@ button {
   display: block;
   margin: 10px auto;
 }
+
+/* Center everything within the main element */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+/* Styles for buttons */
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+#emailButton, #formButton {
+  background-color: rgb(242, 185, 80);
+  color: black;
+  margin: 5px;
+  padding: 20px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form-button {
+  background-color: #2ECC40;
+  color: white;
+  margin: 5px;
+}
+
+.send-button {
+  background-color: #FF4136;
+  color: white;
+  margin: 10px 0;
+}
+
+/* Styles for labels and inputs */
+label {
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+}
+
+
 footer {
   position: sticky;
   top: 100%;

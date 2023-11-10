@@ -8,7 +8,7 @@ main {
         align-items: center;
     }
 
-    #repair_form {
+    button {
         display: inline-block;
         padding: 10px 20px;
         background-color: rgb(242, 185, 80);
@@ -19,6 +19,7 @@ main {
         text-align: center;
         text-decoration: none;
         transition: background-color 0.3s, transform 0.2s;
+        margin: 1rem;
         cursor: pointer;
 
         &:hover {
