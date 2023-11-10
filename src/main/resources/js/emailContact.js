@@ -55,11 +55,16 @@ const displayEmailForm = () =>{
     button.addEventListener("click", function() {
         window.location.href = "index.html";
       });
+    const LabelOf = document.createElement('label');
+    LabelOf.innerText = 'Of maak meteen een afspraak';
+    LabelOf.style.textAlign = 'center';
     const buttonAfspraak = createButton('Maak een afspraak', 'sendButton');
     buttonAfspraak.addEventListener("click", function() {
         window.location.href = "booking.html";
       });
+    buttonAfspraak.setAttribute('class', 'buttonLayout2');
     mainDiv.appendChild(button);
+    mainDiv.appendChild(LabelOf);
     mainDiv.appendChild(buttonAfspraak);
 
 }
