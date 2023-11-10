@@ -45,7 +45,8 @@ public class ProfileRestController {
     }
 
     @PostMapping("/authenticate")
-    public Boolean authenticateProfile(@RequestBody Profile request, Response response) {
+    public Boolean authenticateProfile(@RequestBody Profile request) {
+        System.out.println(request.getPassword());
         Profile profile = profileService.getProfileByEmail(request.getEmail());
         String password = request.getPassword();
         System.out.println(request.getEmail());

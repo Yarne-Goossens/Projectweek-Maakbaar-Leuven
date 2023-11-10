@@ -38,9 +38,9 @@ const authenticate = async (profile) => {
         });
         console.log(response);
 
-        if (!response.ok) {
-            throw new Error(`Failed to fetch: ${response.status} - ${response.statusText}`);
-        }
+        // if (!response.ok) {
+        //     throw new Error(`Failed to fetch: ${response.status} - ${response.statusText}`);
+        // }
 
         const result = await response.json();
         return result;
