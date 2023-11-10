@@ -326,16 +326,33 @@ const displaySolution = (BranchDecider) =>{
     const header = document.createElement('h1');
     const h2Repair = document.createElement('h2');
     const h2DoeHetZelf = document.createElement('h2');
+    const articlePrijs = document.createElement('article');
+    const articleDoehetZelf = document.createElement('article');
+
     header.innerHTML = "Oplossingen";
     h2Repair.innerHTML = "Prijs";
-    h2DoeHetZelf.innerHTML = "Doe Het Zelf"
+    h2DoeHetZelf.innerHTML = "Doe Het Zelf";
     div.appendChild(header);
     div.appendChild(h2Repair);
     const pCost = document.createElement('p');
     pCost.innerHTML = `De geschatte prijs van het toestel nu: €${getWaardeBepaling()}`;
     div.appendChild(pCost);
     div.appendChild(h2DoeHetZelf);
+    
+    // articlePrijs.appendChild(h2Repair);
+    // articlePrijs.appendChild(pCost);
+    console.log(articlePrijs);
 
+
+    
+    articleDoehetZelf.appendChild(h2DoeHetZelf);
+    articlePrijs.appendChild(h2Repair);
+    articlePrijs.appendChild(pCost);
+    div.appendChild(articleDoehetZelf);
+    div.appendChild(articlePrijs);
+
+    // h2DoeHetZelf.setAttribute("class","activate");
+    // h2Repair.setAttribute("class","activate");
     //Loop to get correct solutions
     let solution = [];
     let i = 0;
@@ -350,15 +367,39 @@ const displaySolution = (BranchDecider) =>{
     console.log(solution)
     if (solution.length == 0) {
         const p = document.createElement('p');
-        p.innerHTML = "Er zijn geen doe het zelf stappen voor dit probleem"
+        p.innerHTML = "Er zijn geen doe het zelf stappen voor dit probleem.";
         div.appendChild(p);
     } else {
         solution.forEach((element) => {
             const p = document.createElement('p');
             p.innerHTML = element;
-            div.appendChild(p);
+            articleDoehetZelf.appendChild(p);
+            // p.setAttribute("class","deactivate");
+            div.appendChild(articleDoehetZelf);
+            // articleDoehetZelf.addEventListener("click",()=> myClick(p));
         })
     }
+
+
+     //style kader 
+    [articleDoehetZelf,articlePrijs].forEach((element)=>{
+        element.setAttribute("id","kader")
+        
+    })
+    
+    // const myClick = (element)=> {
+    //     if (element.getAttribute("class") == "deactivate"){
+    //         element.setAttribute("class","activate") 
+    //         console.log("activaded")
+    //     }
+    //     else{
+    //         element.setAttribute("class","deactivate") 
+    //     }
+    // }
+    
+    // articlePrijs.addEventListener("click",()=> myClick(pCost))
+
+    
 }
 const getWaardeBepaling = () => {
     return price - ((0.01 * price) * age);
