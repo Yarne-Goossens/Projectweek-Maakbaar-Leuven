@@ -120,7 +120,6 @@ body {
   min-height: 100vh;
 }
 
-
 /* Use the original naming conventions */
 #vraag1div, #treediv, #maindiv, #nextdiv {
   display: flex;
@@ -188,6 +187,35 @@ button {
   display: block;
   margin: 10px auto;
 }
+
+#kader {
+  display: flex;
+  padding: 2rem;
+  margin-left: 20rem;
+  margin-right: 20rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background: whitesmoke;
+  border-radius: 10px;
+  flex-direction: column;
+  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
+}
+
+.deactivate * {
+  display: none;
+  color: magenta;
+}
+
+.activate * {
+  display: block;
+}
+
+body {
+  min-height: 100vh;
+}
+
 footer {
   position: sticky;
   top: 100%;
@@ -491,8 +519,3 @@ label {
 .input-padding {
   padding: 0.5rem;
 }/*# sourceMappingURL=style.css.map */
-
-
-.error {
-  color: red;
-}

@@ -67,3 +67,26 @@ button {
     display: block;
     margin: 10px auto;
 }
+
+#kader{
+    display: flex;
+    padding: 2rem;
+    margin-left: 20rem;
+    margin-right: 20rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background: whitesmoke;
+    border-radius: 10px; 
+    flex-direction: column;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.deactivate * { 
+    display: none;
+    color: magenta; 
+} 
+.activate * { 
+    display: block; 
+}
