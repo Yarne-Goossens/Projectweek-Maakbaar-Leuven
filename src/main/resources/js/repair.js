@@ -144,9 +144,9 @@ const enterModel = () => {
     button.id = "start"
     div.appendChild(button)
     const startbutton = document.getElementById('start');
+    const p = document.createElement('p')
     startbutton.addEventListener('click', () => {
-        if (isEmpty()) {
-            const p = document.createElement('p')
+        if(isEmpty()){
             p.innerHTML = "Vul alle velden in"
 
             p.id = "error"
@@ -177,7 +177,8 @@ const enterModel = () => {
 
 const createDropDown = () => {
     const label = document.createElement('label');
-    label.innerHTML = 'Selecteer een apparaat: ';
+    label.innerHTML = 'Selecteer uw apparaat: ';
+    label.id = "dropdownlabel"
     const select = document.createElement('select');
     select.id = 'devices';
     label.appendChild(select);
@@ -204,7 +205,7 @@ const createNextButton = () => {
 const displayBranchQuestion = () => {
     const div = document.getElementById('vraag1div');
     const data = matrix[0];
-    let clickedInputId = 0;
+    let clickedInputId = null;
     let index = 1;
     data.forEach((element) => {
         const label = document.createElement('label');
@@ -229,19 +230,30 @@ const displayBranchQuestion = () => {
     vraag1button.innerHTML = 'Volgende';
     vraag1button.id = "vraag1button"
     div.appendChild(vraag1button);
-
+    const p = document.createElement('p');
     vraag1button.addEventListener('click', () => {
+        if (clickedInputId == null) {
+
+            
+            p.innerHTML = "Selecteer een optie";
+            p.id = "error";
+            div.appendChild(p);
+        } else {
         clearDiv("vraag1div");
         div.setAttribute('id', 'treediv');
         const BranchDecider = clickedInputId;
 
         branchNavigation(BranchDecider);
-    });
+    }
+    }
+    )
+    ;
 };
 let index = 0;
 let result = [];
-const branchNavigation = (BranchDecider) => {
-
+const branchNavigation = (BranchDecider) =>{
+    let clickedInputId = null;
+    
     const div = document.getElementById('treediv');
     const p = document.createElement('p');
     p.innerHTML = matrix[BranchDecider][index];
@@ -281,8 +293,15 @@ const branchNavigation = (BranchDecider) => {
     treeButton.innerHTML = 'Volgende';
     treeButton.id = 'treebutton';
     div.appendChild(treeButton);
-
+    const p2 = document.createElement('p');
     treeButton.addEventListener('click', () => {
+
+        if (clickedInputId == null) {
+            p2.innerHTML = "Selecteer een optie";
+            p2.id = "error";
+            div.appendChild(p2);
+        } else {
+        
 
         index++
         if (matrix[BranchDecider].length === index) {
@@ -297,6 +316,7 @@ const branchNavigation = (BranchDecider) => {
             branchNavigation(BranchDecider);
             result.push(clickedInputId);
         }
+    }
     })
 }
 
@@ -385,5 +405,5 @@ const getWaardeBepaling = () => {
     return price - ((0.01 * price) * age);
 }
 
-displayMainDiv();
+// displayMainDiv();
 
