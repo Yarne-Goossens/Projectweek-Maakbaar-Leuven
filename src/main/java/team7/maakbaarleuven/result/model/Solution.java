@@ -31,6 +31,4 @@ public class Solution {
     public List<Integer> getSolution() {
         return this.solution;
     }
-    
-    
 }

@@ -19,8 +19,6 @@ public class Repair {
     private int deviceModelNumber;
     private String dateOfRepair;
     private String location;
-    
-    
 
     public Repair() {
     }
@@ -81,6 +79,4 @@ public class Repair {
     public String getLocation() {
         return this.location;
     }
-
-    
 }

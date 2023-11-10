@@ -22,7 +22,4 @@ public class Result {
     public Result(List<Integer> result) {
         this.result = result;
     }
-    
-    
-    
 }
