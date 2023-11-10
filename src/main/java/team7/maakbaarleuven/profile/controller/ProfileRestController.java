@@ -17,7 +17,6 @@ import team7.maakbaarleuven.profile.model.Profile;
 import team7.maakbaarleuven.profile.service.ProfileService;
 
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:5500")
 @RequestMapping("/api/profile")
 public class ProfileRestController {
 
@@ -28,6 +27,7 @@ public class ProfileRestController {
     public List<Profile> getAllProfiles() {
         return profileService.getAllProfiles();
     }
+
 
     @GetMapping("/{email}")
     public Profile getProfileByEmail(@PathVariable("email") String email) {
