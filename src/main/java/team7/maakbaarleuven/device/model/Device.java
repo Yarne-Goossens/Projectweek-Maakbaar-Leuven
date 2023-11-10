@@ -1,53 +1,62 @@
 package team7.maakbaarleuven.device.model;
 
-
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
 @Entity
 @Table(name = "devices")
 public class Device {
-    
+
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Id 
+    @Id
     public long id;
-    private int deviceModelNumber;
-    private int energyConsumption;
-    private int buildYear;
+    public String deviceModelNumber;
+    public int purchasePrice;
+    public int bereidTeBetalen;
+    public int ageInMonths;
+  
     public Device () {   
     }
-    public Device (int deviceModelNumber, int energyConsumption, int buildYear) {
+
+    public Device(String deviceModelNumber, int purchasePrice, int bereidTeBetalen, int ageInMonths) {
         this.deviceModelNumber = deviceModelNumber;
-        this.energyConsumption = energyConsumption;
-        this.buildYear = buildYear;
+        this.purchasePrice = purchasePrice;
+        this.bereidTeBetalen = bereidTeBetalen;
+        this.ageInMonths = ageInMonths;
     }
 
-    public void setDeviceModelNumber(int deviceModelNumber) {
+    public void setDeviceModelNumber(String deviceModelNumber) {
         this.deviceModelNumber = deviceModelNumber;
     }
 
-    public int getDeviceModelNumber() {
+    public String getDeviceModelNumber() {
         return this.deviceModelNumber;
     }
-    
-    public void setEnergyConsumption(int energyConsumption) {
-        this.energyConsumption = energyConsumption;
+
+    public void setPurchasePrice(int purchasePrice) {
+        this.purchasePrice = purchasePrice;
     }
 
-    public int getEnergyConsumption() {
-        return this.energyConsumption;
+    public int getPurchasePrice() {
+        return this.purchasePrice;
     }
 
-    public void setBuildYear(int buildYear) {
-        this.buildYear = buildYear;
+    public void setBereidTeBetalen(int bereidTeBetalen) {
+        this.bereidTeBetalen = bereidTeBetalen;
     }
 
-    public int getBuildYear() {
-        return this.buildYear;
+    public int getBereidTeBetalen() {
+        return this.bereidTeBetalen;
     }
 
+    public int getAgeInMonths() {
+        return this.ageInMonths;
+    }
+
+    public void setAgeInMonths(int age) {
+        this.ageInMonths = age;
+    }
 }

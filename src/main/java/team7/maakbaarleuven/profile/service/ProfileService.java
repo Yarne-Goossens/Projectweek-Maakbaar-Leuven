@@ -30,7 +30,6 @@ public class ProfileService {
         Profile deletedProfile = profileRepository.deleteByEmail(profile.getEmail());
         profileRepository.delete(profile);
         return deletedProfile;
-
     }
 
     public Profile getProfileByEmail(String email) {
@@ -44,5 +43,4 @@ public class ProfileService {
 
         return false; // Email not found in the database.
     }
-
 }

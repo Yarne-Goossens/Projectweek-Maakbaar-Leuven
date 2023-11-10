@@ -1,0 +1,45 @@
+/* Center everything within the main element */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+  }
+  
+  /* Styles for buttons */
+ 
+div {
+  display: flex;
+  flex-direction: column;
+}
+  #emailButton, #formButton {
+    background-color: rgb(242, 185, 80);
+    color:black;
+    margin: 5px;
+    padding: 20px;
+    margin-top:2rem;
+    margin-bottom: 2rem;
+
+  }
+  
+  .form-button {
+    background-color: #2ECC40;
+    color: white;
+    margin: 5px;
+  }
+  
+  .send-button {
+    background-color: #FF4136;
+    color: white;
+    margin: 10px 0;
+  }
+  
+  /* Styles for labels and inputs */
+  label {
+    font-weight: bold;
+  }
+  
+  input {
+    width: 100%;
+  }
+  
