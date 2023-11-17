@@ -3,6 +3,14 @@ const clearStatus = (status) => (document.getElementById("status").innerHTML = "
 const addStatus = (status) => {
     document.getElementById("status").innerHTML += "<p class='error'>" + status + "</p>";
 };
+
+function showToast(message, duration = 3000) {
+    const toast = document.getElementById("toast");
+    toast.className = "toast show";
+    toast.textContent = message; // Set the text to your message
+    setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, duration);
+}
+
 const main = async () => {
     const login_button = document.getElementById("submit-btn");
     login_button.addEventListener("click", async (event) => {
@@ -17,9 +25,14 @@ const main = async () => {
         const status = await authenticate(profile);
         console.log(status);
         if (status) {
-            addStatus("login gelukt");
+            //addStatus("login gelukt");
+            showToast("Login is gelukt! Welkom!", 5000); // Show toast for 5 seconds
+            setTimeout(function() {
+                window.location.href = "index.html"; // Replace with your desired URL
+                }, 3000); // 3000 milliseconds = 3 seconds
         } else {
-            addStatus("login mislukt");
+            //addStatus("login mislukt");
+            showToast("Login is misgelukt!", 5000); // Show toast for 5 seconds
         }
     });
 };
