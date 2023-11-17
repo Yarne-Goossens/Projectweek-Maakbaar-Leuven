@@ -481,7 +481,7 @@ const displaySolution = (BranchDecider) => {
 
     // articlePrijs.addEventListener("click",()=> myClick(pCost))
 
-};
+
 
 
 const getWaardeBepaling = () => {

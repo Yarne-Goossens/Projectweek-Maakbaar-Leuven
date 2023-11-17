@@ -51,7 +51,7 @@ header nav ul a {
 header nav ul a:hover {
   transform: scale(1.05);
 }
-header nav ul .current a {
+header nav ul .current {
   color: rgb(242, 185, 80);
 }
 
