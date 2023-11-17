@@ -385,7 +385,7 @@ const displaySolution = (BranchDecider) => {
     if (solution.length == 0) {
         const p = document.createElement("p");
         p.innerHTML = "Er zijn geen doe het zelf stappen voor dit probleem.";
-        div.appendChild(p);
+        articleDoehetZelf.appendChild(p);
     } else {
         solution.forEach((element) => {
             const p = document.createElement("p");
