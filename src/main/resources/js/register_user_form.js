@@ -4,6 +4,14 @@ addStatusError = (status) => {
 
 const clearStatus = (status) => (document.getElementById("statusError").innerHTML = "");
 
+function showToast(message, duration = 3000) {
+    const toast = document.getElementById("toast");
+    toast.className = "toast show";
+    toast.textContent = message; // Set the text to your message
+    setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, duration);
+}
+
+
 const registerUser = async () => {
     const firstname = document.getElementById("Firstname").value;
     const lastname = document.getElementById("Lastname").value;
@@ -87,6 +95,11 @@ const registerUser = async () => {
         },
         body: JSON.stringify(profile),
     });
+
+    showToast("Registreren is gelukt!", 5000); // Show toast for 5 seconds
+    setTimeout(function() {
+        window.location.href = "index.html"; // Replace with your desired URL
+    }, 3000); // 3000 milliseconds = 3 seconds
 };
 
 document.getElementById("register_form").addEventListener("submit", (event) => {
