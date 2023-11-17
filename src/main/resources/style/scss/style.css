@@ -257,6 +257,10 @@ select, input {
   display: block;
 }
 
+.videoMargin {
+  margin-top: 2rem;
+}
+
 #map {
   height: 180px;
 }
