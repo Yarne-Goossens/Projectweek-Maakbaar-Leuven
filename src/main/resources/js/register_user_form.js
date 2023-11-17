@@ -96,9 +96,9 @@ const registerUser = async () => {
         body: JSON.stringify(profile),
     });
 
-    showToast("Registreren is gelukt!", 5000); // Show toast for 5 seconds
+    showToast("Registreren is gelukt!", 3000); // Show toast for 5 seconds
     setTimeout(function() {
-        window.location.href = "http://www.example.com"; // Replace with your desired URL
+        window.location.href = "index.html"; // Replace with your desired URL
     }, 5000); // 5000 milliseconds = 5 seconds
 };
 
