@@ -104,3 +104,42 @@ const solution_matrix = [
         "Laat de elektronica van je stofzuiger herstellen",
     ],
 ];
+
+const matrixProblems = [
+        "Vacuum cleaner isn't working",
+        "It smells bad",
+        "Cord doesn't coil",
+        "It isn't charging",
+        "It broke down",
+        "Suction isn't working properly",
+        "Wheels aren't roling well",
+        "Connection problems with the app",
+]
+
+const matrixDIYLinks = [
+    [
+        "https://www.youtube.com/watch?v=jb9giwMlJc0"
+    ],
+    [
+        "https://www.youtube.com/watch?v=EqNVrcuDays", "https://www.youtube.com/watch?v=OeBpbHHWxyg"
+    ],
+    [
+        "https://www.youtube.com/watch?v=yigM39gjsHc"
+    ],
+    [
+        "https://www.youtube.com/watch?v=IRYkuah3ooc"
+    ],
+    [
+        "https://www.youtube.com/watch?v=YNchPUcEv7Q"
+    ],
+    [
+        "https://www.youtube.com/watch?v=VvX476IRn7g"
+    ],
+    [
+        "https://www.youtube.com/watch?v=t_IznrzBsJE"
+    ],
+    [
+        "https://www.youtube.com/watch?v=jb9giwMlJc0"
+    ],
+]
+

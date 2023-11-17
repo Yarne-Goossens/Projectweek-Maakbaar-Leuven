@@ -196,6 +196,9 @@ const createNextButton = () => {
     const div = document.getElementById("maindiv");
     div.appendChild(button);
 };
+
+let selectedInput = 0;
+
 const displayBranchQuestion = () => {
     const div = document.getElementById("vraag1div");
     const data = matrix[0];
@@ -217,6 +220,7 @@ const displayBranchQuestion = () => {
         input.addEventListener("click", (event) => {
             const clickedInput = event.target;
             clickedInputId = clickedInput.id;
+            selectedInput = clickedInput.id;
             console.log(`Clicked input ID : ${clickedInputId}`);
         });
     });
@@ -308,6 +312,29 @@ const branchNavigation = (BranchDecider) => {
 };
 
 const displaySolution = (BranchDecider) => {
+
+    const extractVideoId = (url) => {
+        const match1 = url.match(/[?&]v=([^&]+)/);
+        const match2 = url.match('\/embed\/([a-zA-Z0-9_-]+)\?');
+        const match3 = url.match('\/youtu\.be\/([a-zA-Z0-9_-]+)\?');
+
+        //id=match1 ? match1[1] : null
+        if (match1) {
+            return match1 ? match1[1] : null;
+        } else if (match2) {
+            return match2 ? match2[1] : null;
+        } else if (match3) {
+            return match3 ? match3[1] : null;
+        }
+    }
+
+    // Create the embed link for the youtube video
+    const createYouTubeEmbedCode = (videoId) => {
+       return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+    }
+
+    
+    
     //Create header
     const div = document.getElementById("solutiondiv");
     const header = document.createElement("h1");
@@ -315,6 +342,28 @@ const displaySolution = (BranchDecider) => {
     const h2DoeHetZelf = document.createElement("h2");
     const articlePrijs = document.createElement("article");
     const articleDoehetZelf = document.createElement("article");
+    const articleProblem = document.createElement("article");
+    const probleemText = document.createElement("p");
+    let selectedProblem = "";
+    
+    console.log(matrixProblems[0])
+    const problemHeader = document.createElement("h2");
+    problemHeader.innerHTML = "Probleem"
+    
+    const articleVideo = document.createElement("article")
+    const videoHeader = document.createElement("h2")
+    videoHeader.innerHTML = "DIY videos"
+    articleVideo.appendChild(videoHeader);
+        
+    matrixDIYLinks[selectedInput - 1].forEach((link) => {
+        const div = document.createElement("div")
+        div.setAttribute("class", "videoMargin");
+        div.innerHTML = createYouTubeEmbedCode(extractVideoId(link));
+        
+        articleVideo.appendChild(div)
+        
+    });
+
 
     header.innerHTML = "Oplossingen";
     h2Repair.innerHTML = "Prijs";
@@ -325,19 +374,23 @@ const displaySolution = (BranchDecider) => {
     pCost.innerHTML = `De geschatte prijs van het toestel nu: €${getWaardeBepaling()}`;
     div.appendChild(pCost);
     div.appendChild(h2DoeHetZelf);
-
-    // articlePrijs.appendChild(h2Repair);
-    // articlePrijs.appendChild(pCost);
     console.log(articlePrijs);
+    
+    probleemText.innerHTML = `${matrixProblems[selectedInput - 1]}`
+    
+    articleProblem.appendChild(problemHeader);
+    articleProblem.appendChild(probleemText);
 
     articleDoehetZelf.appendChild(h2DoeHetZelf);
     articlePrijs.appendChild(h2Repair);
     articlePrijs.appendChild(pCost);
+
+    
+    div.appendChild(articleProblem);
     div.appendChild(articleDoehetZelf);
     div.appendChild(articlePrijs);
-
-    // h2DoeHetZelf.setAttribute("class","activate");
-    // h2Repair.setAttribute("class","activate");
+    div.appendChild(articleVideo);
+    
     //Loop to get correct solutions
     let solution = [];
     let i = 0;
@@ -368,7 +421,7 @@ const displaySolution = (BranchDecider) => {
     }
 
     //style kader
-    [articleDoehetZelf, articlePrijs].forEach((element) => {
+    [articleDoehetZelf, articlePrijs,articleProblem,articleVideo].forEach((element) => {
         element.setAttribute("id", "kader");
     });
 
@@ -383,7 +436,12 @@ const displaySolution = (BranchDecider) => {
     // }
 
     // articlePrijs.addEventListener("click",()=> myClick(pCost))
+    
+    
+
 };
+
+
 const getWaardeBepaling = () => {
     return price - 0.01 * price * age;
 };
