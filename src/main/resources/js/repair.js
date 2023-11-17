@@ -2,6 +2,19 @@ let price = 0;
 let age = 0;
 let bereid_te_betalen = 0;
 let modelnummer = "";
+
+const getRole = async (email) => {
+    const response = await fetch(`http://localhost:8080/api/profile/${email}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        }
+    });
+    const result = await response.json()
+    console.log(result.role)
+}
+getRole("jules@jules.com")
 const generateMainDiv = () => {
     const div = document.createElement('div');
     div.id = 'maindiv';
