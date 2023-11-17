@@ -3,6 +3,20 @@ let age = 0;
 let bereid_te_betalen = 0;
 let modelnummer = "";
 
+const addDiagnose = async (id, diagnose) => {
+    const response = await fetch(`http://localhost:8080/api/devices/addDiagnose/${id}`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: diagnose,
+    });
+    const result = await response.json();
+    return result;
+}
+    
+
 const getRole = async (email) => {
     const response = await fetch(`http://localhost:8080/api/profile/${email}`, {
         method: "GET",
@@ -47,7 +61,7 @@ const enterAndPostDeviceInfo = async () => {
     bereid_te_betalen = input3;
     const input4 = document.getElementById('input4').value;
     age = input4;
-    const device = { deviceModelNumber: input1, purchasePrice: input2, bereidteBetalen: input3, ageInMonths: input4 };
+    const device = { deviceModelNumber: input1, purchasePrice: input2, bereidteBetalen: input3, ageInMonths: input4, diagnose: "", userId: sessionStorage.getItem("id") };
     const response = await fetch("http://localhost:8080/api/devices/add", {
         method: "POST",
         headers: {
@@ -67,6 +81,19 @@ const enterAndPostDeviceInfo = async () => {
         console.log("werkt wel");
         console.log(input1, input2, input3)
     }
+    const currentDate = new Date();
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    const dateOfRepair = currentDate.toLocaleDateString('en-US', options);
+    const repair = {devicetype: "stofzuiger", status: "in afwachting", deviceModelNumber: device.deviceModelNumber, dateOfRepair: dateOfRepair, location: "online" }
+    const repairesponse = await fetch(`http://localhost:8080/api/profile/${sessionStorage.getItem('id')}addRepair`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(repair),
+    });
+    await repairesponse.json();
 
 }
 
@@ -339,9 +366,18 @@ const displaySolution = (BranchDecider) =>{
     const header = document.createElement('h1');
     const h2Repair = document.createElement('h2');
     const h2DoeHetZelf = document.createElement('h2');
+    
+    const diagnose = document.createElement('h2');
+    diagnose.innerHTML = "Diagnose";
+    const pDiagnose = document.createElement('p');
+    pDiagnose.innerHTML = "voorlopige diagnose";
+    addDiagnose(sessionStorage.getItem("id"), pDiagnose.innerHTML);
+    
+    diagnose.appendChild(pDiagnose);
     header.innerHTML = "Oplossingen";
     h2Repair.innerHTML = "Prijs";
     h2DoeHetZelf.innerHTML = "Doe Het Zelf"
+    div.appendChild(diagnose);
     div.appendChild(header);
     div.appendChild(h2Repair);
     const pCost = document.createElement('p');

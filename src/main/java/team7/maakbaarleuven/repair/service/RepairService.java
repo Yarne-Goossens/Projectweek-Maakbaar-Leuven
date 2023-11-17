@@ -26,7 +26,7 @@ public class RepairService {
 
     public Repair changeStatus(long id, String status) {
         Repair repair = repairRepository.findById(id);
-        System.out.println(status);
+
         repair.setStatus(status);
         repairRepository.save(repair);
         return repair;
