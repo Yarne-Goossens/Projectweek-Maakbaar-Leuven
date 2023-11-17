@@ -1,75 +1,66 @@
-
-
-
-
-const displayEmailMain = () =>{
-    const divMain = document.createElement('div');
-    divMain.id = 'emailMain';
-    const main = document.querySelector('main');
+const displayEmailMain = () => {
+    const divMain = document.createElement("div");
+    divMain.id = "emailMain";
+    const main = document.querySelector("main");
     main.appendChild(divMain);
-    
-    const emailButton = createButton('Hulp nodig met het formulier? Stuur een mail!', 'emailButton')
-    divMain.appendChild(emailButton);
-    emailButton.id = 'emailButton';
-    
-    const formButton = createButton('Vul het formulier zelf in', 'formButton')
-    divMain.appendChild(formButton);
-    formButton.id = 'formButton';
 
-    emailButton.addEventListener('click', () => {
-        clearDiv("emailMain")
+    const emailButton = createButton("Hulp nodig met het formulier? Stuur een mail!", "emailButton");
+    divMain.appendChild(emailButton);
+    emailButton.id = "emailButton";
+
+    const formButton = createButton("Vul het formulier zelf in", "formButton");
+    divMain.appendChild(formButton);
+    formButton.id = "formButton";
+
+    emailButton.addEventListener("click", () => {
+        clearDiv("emailMain");
         displayEmailForm();
     });
-    formButton.addEventListener('click', () => {
+    formButton.addEventListener("click", () => {
         clearDiv("emailMain");
         displayMainDiv();
     });
-}
+};
 
-const createButton = (text, id) =>{
-    const button = document.createElement('button');
+const createButton = (text, id) => {
+    const button = document.createElement("button");
     button.innerText = text;
     button.id = id;
     return button;
-}
+};
 
-const displayEmailForm = () =>{
-    const form = document.createElement('form');
-    const mainDiv = document.getElementById('emailMain');
-    mainDiv.id = 'emailForm';
-    const label1 = document.createElement('label');
-    label1.innerText = 'Email-adres';
-    const emailInput = document.createElement('input');
-    emailInput.type = 'email';
-    const label2 = document.createElement('label');
-    label2.innerText = 'Telefoonnummer';
-    const phoneInput = document.createElement('input');
+const displayEmailForm = () => {
+    const form = document.createElement("form");
+    const mainDiv = document.getElementById("emailMain");
+    mainDiv.id = "emailForm";
+    const label1 = document.createElement("label");
+    label1.innerText = "Email-adres";
+    const emailInput = document.createElement("input");
+    emailInput.type = "email";
+    const label2 = document.createElement("label");
+    label2.innerText = "Telefoonnummer";
+    const phoneInput = document.createElement("input");
     form.appendChild(label1);
     form.appendChild(emailInput);
     form.appendChild(label2);
     form.appendChild(phoneInput);
     mainDiv.appendChild(form);
 
-
-    const button = createButton('Verstuur je gegevens', 'sendButton');
-    button.addEventListener("click", function() {
+    const button = createButton("Verstuur je gegevens", "sendButton");
+    button.addEventListener("click", function () {
         window.location.href = "index.html";
-      });
-    const LabelOf = document.createElement('label');
-    LabelOf.innerText = 'Of maak meteen een afspraak';
-    LabelOf.style.textAlign = 'center';
-    const buttonAfspraak = createButton('Maak een afspraak', 'sendButton');
-    buttonAfspraak.addEventListener("click", function() {
+    });
+    const LabelOf = document.createElement("label");
+    LabelOf.innerText = "Of maak meteen een afspraak";
+    LabelOf.style.textAlign = "center";
+    const buttonAfspraak = createButton("Maak een afspraak", "sendButton");
+    buttonAfspraak.addEventListener("click", function () {
         window.location.href = "booking.html";
-      });
-    buttonAfspraak.setAttribute('class', 'buttonLayout2');
+    });
+    buttonAfspraak.setAttribute("class", "buttonLayout2");
     mainDiv.appendChild(button);
     mainDiv.appendChild(LabelOf);
     mainDiv.appendChild(buttonAfspraak);
-
-}
+};
 
 displayEmailMain();
-
-
-
