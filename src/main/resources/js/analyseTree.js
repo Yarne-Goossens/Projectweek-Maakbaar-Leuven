@@ -1,13 +1,13 @@
 const matrix = [
     [
-        "Vacuum cleaner isn't working",
-        "It smells bad",
-        "Cord doesn't coil",
-        "It isn't charging",
-        "It broke down",
-        "Suction isn't working properly",
-        "Wheels aren't roling well",
-        "Connection problems with the app",
+        "De stofzuiger werkt niet",
+        "De stofzuiger zorgt voor een slechte geur",
+        "De snoer rolt niet op",
+        "De stofzuiger laadt niet op",
+        "De stofzuiger is uitgevallen",
+        "De zuigkracht is vermindert",
+        "De wieltjes rollen niet meer goed",
+        "Er zijn verbindingsproblemen met de app",
     ],
     [
         "Zit de stekker goed in het stopcontact?",
@@ -28,8 +28,8 @@ const matrix = [
     ],
     ["Rolt het snoer niet meer goed op?", "Draait het oprolmechanisme niet goed?"],
     [
-        "Werkt het toestl met een nieuwe batterij?",
-        "Is het laadstation aangesloten op een wekend stopcontact?",
+        "Werkt het toestel met een nieuwe batterij?",
+        "Is het laadstation aangesloten op een weekend stopcontact?",
         "Kan je een andere batterij opladen aan dit laadstation?",
     ],
     [
@@ -45,7 +45,7 @@ const matrix = [
         "Voel je zuigkracht?",
         "Voel je geen zuigkracht?",
         "Zit er een lek in de plastic slang?",
-        "Zit er een rubberen afsluiting los of is er een afsluting kapot?",
+        "Zit er een rubberen afsluiting los of is er een afsluiting kapot?",
         "Is de plastic slang kapot dicht bij een uiteinde?",
     ],
     ["Draaien de wieltjes niet meer goed?", "Draaien de wieltjes nog steeds niet goed na schoonmaken?"],
