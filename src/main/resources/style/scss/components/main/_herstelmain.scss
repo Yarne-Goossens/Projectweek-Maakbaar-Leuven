@@ -1,0 +1,132 @@
+// 
+
+/* Use the original naming conventions */
+#vraag1div, #treediv, #maindiv, #nextdiv {
+    display: flex;
+    flex-direction: column;
+}
+
+#vraag1div {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 10px;
+}
+
+#vraag1div label {
+    grid-column: 0,1;
+}
+
+#vraag1div input[type="radio"] {
+    grid-column: 1,2;
+}
+
+#treediv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+#treediv p {
+    grid-column: span 2;
+    
+
+}
+#treediv label {
+    grid-column: 0,1;
+}
+
+#treediv input[type="radio"] {
+    grid-column: 1,2;
+}
+
+/* Common styles for select and input elements */
+select, input {
+    width: 50%; /* Adjust the width as needed */
+    padding: 5px;
+    margin: 5px 0;
+}
+
+/* Common styles for buttons */
+
+
+/* Specific styles for #maindiv */
+#maindiv {
+    align-items: center;
+    text-align: center;
+}
+
+/* Specific styles for #nextdiv */
+#nextdiv {
+    align-items: center;
+    text-align: center;
+}
+
+/* Styles for labels inside #nextdiv */
+#nextdiv label {
+    font-weight: bold;
+}
+
+/* Styles for error text inside #nextdiv */
+#nextdiv #error {
+    color: red;
+}
+#vraag1div #error {
+    color: red;
+    display: block;
+    margin: 10px auto;
+
+}
+#treediv #error {
+    color: red;
+    display: block;
+    margin: 10px auto;
+
+
+}
+
+
+
+#vraag1div {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the radio buttons and labels */
+#vraag1div label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#vraag1div input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Center the button */
+#vraag1button {
+    display: block;
+    margin: 10px auto;
+}    
+
+#kader{
+    display: flex;
+    padding: 2rem;
+    margin-left: 20rem;
+    margin-right: 20rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background: whitesmoke;
+    border-radius: 10px; 
+    flex-direction: column;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.deactivate * { 
+    display: none;
+} 
+.activate * { 
+    display: block; 
+}

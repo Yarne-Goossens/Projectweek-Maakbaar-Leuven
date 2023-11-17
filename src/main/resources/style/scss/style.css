@@ -51,7 +51,7 @@ header nav ul a {
 header nav ul a:hover {
   transform: scale(1.05);
 }
-header nav ul .current a {
+header nav ul .current {
   color: rgb(242, 185, 80);
 }
 
@@ -72,7 +72,7 @@ main .over_ons {
   flex-direction: column;
   align-items: center;
 }
-main #repair_form {
+main button {
   display: inline-block;
   padding: 10px 20px;
   background-color: rgb(242, 185, 80);
@@ -83,13 +83,14 @@ main #repair_form {
   text-align: center;
   text-decoration: none;
   transition: background-color 0.3s, transform 0.2s;
+  margin: 1rem;
   cursor: pointer;
 }
-main #repair_form:hover {
+main button:hover {
   cursor: pointer;
   transform: scale(1.05);
 }
-main #repair_form:active, main #repair_form button:focus {
+main button:active, main button button:focus {
   outline: none; /* Remove the focus outline */
   transform: scale(0.95);
 }
@@ -114,6 +115,195 @@ main #button_FAQ a:hover {
   max-width: 75ch;
   margin: auto;
   text-align: center;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.buttonLayout2 {
+  background-color: white;
+  border: solid rgb(242, 185, 80);
+}
+
+.iframe {
+  margin-bottom: 2rem;
+}
+
+/* Use the original naming conventions */
+#vraag1div, #treediv, #maindiv, #nextdiv {
+  display: flex;
+  flex-direction: column;
+}
+
+#vraag1div {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 10px;
+}
+
+#vraag1div label {
+  grid-column: 0, 1;
+}
+
+#vraag1div input[type=radio] {
+  grid-column: 1, 2;
+}
+
+#treediv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+#treediv p {
+  grid-column: span 2;
+}
+
+#treediv label {
+  grid-column: 0, 1;
+}
+
+#treediv input[type=radio] {
+  grid-column: 1, 2;
+}
+
+/* Common styles for select and input elements */
+select, input {
+  width: 50%; /* Adjust the width as needed */
+  padding: 5px;
+  margin: 5px 0;
+}
+
+/* Common styles for buttons */
+/* Specific styles for #maindiv */
+#maindiv {
+  align-items: center;
+  text-align: center;
+}
+
+/* Specific styles for #nextdiv */
+#nextdiv {
+  align-items: center;
+  text-align: center;
+}
+
+/* Styles for labels inside #nextdiv */
+#nextdiv label {
+  font-weight: bold;
+}
+
+/* Styles for error text inside #nextdiv */
+#nextdiv #error {
+  color: red;
+}
+
+#vraag1div #error {
+  color: red;
+  display: block;
+  margin: 10px auto;
+}
+
+#treediv #error {
+  color: red;
+  display: block;
+  margin: 10px auto;
+}
+
+#vraag1div {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style the radio buttons and labels */
+#vraag1div label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#vraag1div input[type=radio] {
+  margin-right: 5px;
+}
+
+/* Center the button */
+#vraag1button {
+  display: block;
+  margin: 10px auto;
+}
+
+
+/* Center everything within the main element */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+/* Styles for buttons */
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+#emailButton, #formButton {
+  background-color: rgb(242, 185, 80);
+  color: black;
+  margin: 5px;
+  padding: 20px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form-button {
+  background-color: #2ECC40;
+  color: white;
+  margin: 5px;
+}
+
+.send-button {
+  background-color: #FF4136;
+  color: white;
+  margin: 10px 0;
+}
+
+/* Styles for labels and inputs */
+label {
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+}
+#kader {
+  display: flex;
+  padding: 2rem;
+  margin-left: 20rem;
+  margin-right: 20rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background: whitesmoke;
+  border-radius: 10px;
+  flex-direction: column;
+  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
+}
+
+.deactivate * {
+  display: none;
+  color: magenta;
+}
+
+.activate * {
+  display: block;
+}
+
+body {
+  min-height: 100vh;
 }
 
 footer {
@@ -216,4 +406,206 @@ footer span {
 
 .activate {
   display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+body.login {
+  background: #fbfbfb;
+  background-repeat: no-repeat;
+}
+
+label {
+  font-family: "Raleway", sans-serif;
+  font-size: 11pt;
+}
+
+#forgot-pass {
+  color: #432c2c;
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  margin-top: 0.7rem;
+  text-align: right;
+}
+
+#card {
+  background: -webkit-linear-gradient(bottom, #F2A950, #F2B950);
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: 410px;
+  margin: 6rem auto 8.1rem auto;
+  width: 329px;
+}
+
+#card-content {
+  padding: 12px 44px;
+}
+
+#card-title {
+  font-family: "Raleway Thin", sans-serif;
+  letter-spacing: 4px;
+  padding-bottom: 23px;
+  padding-top: 13px;
+  text-align: center;
+}
+
+#signup {
+  color: #432c2c;
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  margin-top: 16px;
+  text-align: center;
+}
+
+#submit-btn {
+  background: -webkit-linear-gradient(right, #0D0D0D, #2F3940);
+  border: none;
+  border-radius: 21px;
+  cursor: pointer;
+  color: white;
+  font-family: "Raleway SemiBold", sans-serif;
+  height: 42.3px;
+  margin: 0 auto;
+  margin-top: 50px;
+  transition: 0.25s;
+  width: 153px;
+}
+
+#submit-btn:hover {
+  transition: all 0.3s ease 0s;
+  transform: scale(1.05);
+}
+
+.form {
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-border {
+  height: 1px;
+  width: 100%;
+}
+
+.form-content {
+  background: #fbfbfb;
+  border: none;
+  outline: none;
+  padding-top: 14px;
+}
+
+.underline-title {
+  background: -webkit-linear-gradient(right, #0D0D0D, #2F3940);
+  height: 2px;
+  margin: -1.1rem auto 0 auto;
+  width: 89px;
+}
+
+a {
+  text-decoration: none;
+}
+
+body.register {
+  background: #fbfbfb;
+  background-repeat: no-repeat;
+}
+
+label {
+  font-family: "Raleway", sans-serif;
+  font-size: 11pt;
+}
+
+#forgot-pass {
+  color: #432c2c;
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  margin-top: 0.7rem;
+  text-align: right;
+}
+
+#card {
+  background: -webkit-linear-gradient(bottom, #F2A950, #F2B950);
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 6rem auto 8.1rem auto;
+  width: 329px;
+}
+
+#card-content {
+  padding: 12px 44px;
+}
+
+#card-title {
+  font-family: "Raleway Thin", sans-serif;
+  letter-spacing: 4px;
+  padding-bottom: 23px;
+  padding-top: 13px;
+  text-align: center;
+}
+
+#signup {
+  color: #432c2c;
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  margin-top: 16px;
+  text-align: center;
+}
+
+#submit-btn {
+  background: -webkit-linear-gradient(right, #0D0D0D, #2F3940);
+  border: none;
+  border-radius: 21px;
+  cursor: pointer;
+  color: white;
+  font-family: "Raleway SemiBold", sans-serif;
+  height: 42.3px;
+  margin: 1.5rem auto;
+  transition: 0.25s;
+  width: 153px;
+}
+
+#submit-btn:hover {
+  transition: all 0.3s ease 0s;
+  transform: scale(1.05);
+}
+
+.form {
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-border {
+  height: 1px;
+  width: 100%;
+}
+
+.form-content {
+  background: #fbfbfb;
+  border: none;
+  outline: none;
+  padding-top: 14px;
+}
+
+.underline-title {
+  background: -webkit-linear-gradient(right, #0D0D0D, #2F3940);
+  height: 2px;
+  margin: -1.1rem auto 0 auto;
+  width: 89px;
+}
+
+.label-padding {
+  border: none;
+  outline: none;
+  padding: 0.3rem 0;
+}
+
+.input-padding {
+  padding: 0.5rem;
 }/*# sourceMappingURL=style.css.map */
