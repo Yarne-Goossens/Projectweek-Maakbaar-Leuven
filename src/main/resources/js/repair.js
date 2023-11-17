@@ -344,6 +344,9 @@ const displaySolution = (BranchDecider) => {
     const articleDoehetZelf = document.createElement("article");
     const articleProblem = document.createElement("article");
     const probleemText = document.createElement("p");
+    const pr30 = document.createElement('p');
+    const pr50 = document.createElement('p');
+    const pCost = document.createElement('p');
     let selectedProblem = "";
     
     console.log(matrixProblems[0])
@@ -364,15 +367,41 @@ const displaySolution = (BranchDecider) => {
         
     });
 
-
     header.innerHTML = "Oplossingen";
+    header.setAttribute("class", "SolutionHeader");
     h2Repair.innerHTML = "Prijs";
     h2DoeHetZelf.innerHTML = "Doe Het Zelf";
+    pCost.innerHTML = `De waarde van het apparaat op dit moment: €${getWaardeBepaling()}`;
+    pr30.innerHTML = `Uit onderzoek blijkt dat mensen bereid zijn om 30% van de aankoopprijs te betalen voor een reparatie: ${getWaardeBepaling() * 0.3} of 50% van de nieuw koopprijs te betalen voor een reparatie: to be done`
+
+
+    const h2RepairCaféLocaties = document.createElement("h2");
+    const h2EndOfLife = document.createElement("h2");
+    const descriptionEndOfLife = document.createElement("p")
+    descriptionEndOfLife.innerHTML = "U kan eventueel langskomen bij een van de repaircafé's om het defecte apparaat binnen te brengen.\n Dit kunnen wij dan gebruiken als wisselstukken."
+
+
+
+
+    const articleLocaties = document.createElement("article");
+    const articleEndOfLife = document.createElement("article");
+
+    h2RepairCaféLocaties.innerHTML = "Repair Café Locaties";
+    h2EndOfLife.innerHTML = "End of Life toestel";
+
+    const linkMapRepairCafés = document.createElement('a');
+    linkMapRepairCafés.href = "https://www.leuvenfixt.be/repair-leuven";
+    linkMapRepairCafés.innerHTML = "Leuvenfixt"
+
+
+
+    articleLocaties.appendChild(h2RepairCaféLocaties);
+    articleEndOfLife.appendChild(h2EndOfLife);
+    articleEndOfLife.appendChild(descriptionEndOfLife)
+
     div.appendChild(header);
-    div.appendChild(h2Repair);
-    const pCost = document.createElement("p");
-    pCost.innerHTML = `De geschatte prijs van het toestel nu: €${getWaardeBepaling()}`;
-    div.appendChild(pCost);
+    // div.appendChild(h2Repair);
+    // div.appendChild(pCost);
     div.appendChild(h2DoeHetZelf);
     console.log(articlePrijs);
     
@@ -384,13 +413,16 @@ const displaySolution = (BranchDecider) => {
     articleDoehetZelf.appendChild(h2DoeHetZelf);
     articlePrijs.appendChild(h2Repair);
     articlePrijs.appendChild(pCost);
-
+    articlePrijs.appendChild(pr30);
+    articleLocaties.appendChild(linkMapRepairCafés);
     
     div.appendChild(articleProblem);
     div.appendChild(articleDoehetZelf);
     div.appendChild(articlePrijs);
     div.appendChild(articleVideo);
-    
+    div.appendChild(articleLocaties);
+    div.appendChild(articleEndOfLife);
+
     //Loop to get correct solutions
     let solution = [];
     let i = 0;
@@ -408,7 +440,7 @@ const displaySolution = (BranchDecider) => {
     if (solution.length == 0) {
         const p = document.createElement("p");
         p.innerHTML = "Er zijn geen doe het zelf stappen voor dit probleem.";
-        div.appendChild(p);
+        articleDoehetZelf.appendChild(p);
     } else {
         solution.forEach((element) => {
             const p = document.createElement("p");
@@ -425,6 +457,18 @@ const displaySolution = (BranchDecider) => {
         element.setAttribute("id", "kader");
     });
 
+     //style kader 
+    [articleDoehetZelf,articlePrijs, articleLocaties, articleEndOfLife].forEach((element)=>{
+        element.setAttribute("id","kader")
+    })
+    
+    //const mapDiv = document.createElement('div');
+    //mapDiv.id = 'map';
+    //const map = document.querySelector('map');
+    //articleLocaties.appendChild(mapDiv);
+
+};
+
     // const myClick = (element)=> {
     //     if (element.getAttribute("class") == "deactivate"){
     //         element.setAttribute("class","activate")
@@ -433,11 +477,9 @@ const displaySolution = (BranchDecider) => {
     //     else{
     //         element.setAttribute("class","deactivate")
     //     }
-    // }
+    // }    
 
     // articlePrijs.addEventListener("click",()=> myClick(pCost))
-    
-    
 
 };
 

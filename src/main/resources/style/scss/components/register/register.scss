@@ -102,3 +102,33 @@ label {
 .input-padding{
     padding: 0.5rem;
 }
+
+.toast {
+    visibility: hidden; // Hidden by default
+    min-width: 250px; // Set a default minimum width
+    background-color: #333; // Black background color
+    color: #fff; // White text color
+    text-align: center; // Centered text
+    border-radius: 2px; // Rounded borders
+    padding: 16px; // Padding
+    position: fixed; // Sit on top of the screen
+    z-index: 1; // Add a z-index if needed
+    left: 50%; // Center the toast
+    bottom: 30px; // 30px from the bottom
+    transform: translateX(-50%); // Center horizontally
+
+    &.show {
+        visibility: visible;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
