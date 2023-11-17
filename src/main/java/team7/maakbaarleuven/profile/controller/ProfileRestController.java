@@ -3,7 +3,7 @@ package team7.maakbaarleuven.profile.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
+//import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.micrometer.core.ipc.http.HttpSender.Response;
+//import io.micrometer.core.ipc.http.HttpSender.Response;
 import team7.maakbaarleuven.profile.model.Profile;
 import team7.maakbaarleuven.profile.service.ProfileService;
+import team7.maakbaarleuven.repair.model.Repair;
 
 @RestController
 @RequestMapping("/api/profile")
@@ -27,7 +28,6 @@ public class ProfileRestController {
     public List<Profile> getAllProfiles() {
         return profileService.getAllProfiles();
     }
-
 
     @GetMapping("/{email}")
     public Profile getProfileByEmail(@PathVariable("email") String email) {
@@ -60,6 +60,8 @@ public class ProfileRestController {
         }
     }
 
+    @PostMapping("/{profileId}/addRepair")
+    public Profile addRepair(@PathVariable("profileId") long id, @RequestBody Repair repair) {
+        return profileService.addRepair(id, repair);
+    }
 }
-
-//Reverting commits

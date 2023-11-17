@@ -11,12 +11,17 @@ import team7.maakbaarleuven.repair.repo.RepairRepository;
 public class RepairService {
     @Autowired
     private RepairRepository repairRepository;
-    
-    public List<Repair> getAllRepairs(){
+
+    public List<Repair> getAllRepairs() {
         return repairRepository.findAll();
+    }
+
+    public List<Repair> getAllRepairsByProfileId(long id) {
+        return repairRepository.findRepairsByProfileId(id);
     }
 
     public Repair addRepair(Repair repair) {
         return repairRepository.save(repair);
     }
+
 }

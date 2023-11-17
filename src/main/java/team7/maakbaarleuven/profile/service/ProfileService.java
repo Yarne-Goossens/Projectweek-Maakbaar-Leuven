@@ -7,12 +7,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import team7.maakbaarleuven.profile.model.Profile;
 import team7.maakbaarleuven.profile.repo.ProfileRepository;
+import team7.maakbaarleuven.repair.model.Repair;
+import team7.maakbaarleuven.repair.repo.RepairRepository;
 
 @Service
 public class ProfileService {
 
     @Autowired
     private ProfileRepository profileRepository;
+
+    @Autowired
+    private RepairRepository repairRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -42,5 +47,15 @@ public class ProfileService {
         }
 
         return false; // Email not found in the database.
+    }
+
+    public Profile addRepair(long id, Repair repair) {
+        Profile profile = profileRepository.findById(id);
+        profile.addRepair(repair);
+        repair.setProfile(profile);
+        repairRepository.save(repair);
+        profileRepository.save(profile);
+
+        return profile;
     }
 }

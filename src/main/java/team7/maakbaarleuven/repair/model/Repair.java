@@ -1,17 +1,22 @@
 package team7.maakbaarleuven.repair.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import team7.maakbaarleuven.profile.model.Profile;
 
 @Entity
 @Table(name = "repairs")
 public class Repair {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long id;
     private int entryNumber;
     private String deviceType;
@@ -19,11 +24,16 @@ public class Repair {
     private int deviceModelNumber;
     private String dateOfRepair;
     private String location;
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    @JsonBackReference
+    public Profile profile;
 
     public Repair() {
     }
 
-    public Repair(int entryNumber, String deviceType, String status, int deviceModelNumber, String dateOfRepair, String location) {
+    public Repair(int entryNumber, String deviceType, String status, int deviceModelNumber, String dateOfRepair,
+            String location) {
         this.entryNumber = entryNumber;
         this.deviceType = deviceType;
         this.status = status;
@@ -78,5 +88,13 @@ public class Repair {
 
     public String getLocation() {
         return this.location;
+    }
+
+    public Profile getProfile() {
+        return this.profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 }

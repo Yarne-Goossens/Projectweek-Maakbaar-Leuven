@@ -23,6 +23,7 @@ const main = async () => {
             console.log(user)
             sessionStorage.setItem('user', user.firstname);
             sessionStorage.setItem('role', user.role);
+            sessionStorage.setItem('id', user.id);
             window.location.href = "user.html";
             checkUserLogin();
         } else {

@@ -1,24 +1,34 @@
 package team7.maakbaarleuven.profile.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import team7.maakbaarleuven.repair.model.Repair;
 
 @Entity
 @Table(name = "profile")
 public class Profile {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    @Id
     public long id;
     private String email;
     private String firstname;
     private String lastname;
     private String password;
     public String role;
+    @OneToMany(mappedBy = "profile")
+    @JsonManagedReference
+    public Set<Repair> repairs;
 
     public Profile() {
     }
@@ -83,4 +93,20 @@ public class Profile {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public Set<Repair> getRepairs() {
+        if (repairs == null) {
+            repairs = new HashSet<>();
+        }
+
+        return repairs;
+    }
+
+    public void addRepair(Repair repair) {
+        this.repairs.add(repair);
+    }
+
+    // public void removeRepair(Repair repair) {
+    // this.repairs.remove(repair);
+    // }
 }
