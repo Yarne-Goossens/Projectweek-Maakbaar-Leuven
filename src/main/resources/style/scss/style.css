@@ -51,7 +51,7 @@ header nav ul a {
 header nav ul a:hover {
   transform: scale(1.05);
 }
-header nav ul .current {
+header nav ul .current a {
   color: rgb(242, 185, 80);
 }
 
@@ -234,6 +234,28 @@ select, input {
   margin: 10px auto;
 }
 
+#kader {
+  display: flex;
+  padding: 2rem;
+  margin-left: 20rem;
+  margin-right: 20rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background: whitesmoke;
+  border-radius: 10px;
+  flex-direction: column;
+  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
+}
+
+#map {
+  height: 180px;
+}
+
+.SolutionHeader {
+  text-align: center;
+}
 
 /* Center everything within the main element */
 main {
@@ -277,29 +299,6 @@ label {
 
 input {
   width: 100%;
-}
-#kader {
-  display: flex;
-  padding: 2rem;
-  margin-left: 20rem;
-  margin-right: 20rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  background: whitesmoke;
-  border-radius: 10px;
-  flex-direction: column;
-  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
-  -moz-user-select: none;
-       user-select: none; /* Standard syntax */
-}
-
-.deactivate * {
-  display: none;
-  color: magenta;
-}
-
-.activate * {
-  display: block;
 }
 
 body {
