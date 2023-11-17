@@ -20,7 +20,7 @@ main = async () => {
         console.log('in repairlist');
         repairs.forEach(repair => {
             const newListItem = document.createElement('div');
-            //newListItem.id = repairItem;
+            newListItem.id = "repairItem";
             const deviceType = document.createElement('p');
             deviceType.innerHTML = repair.deviceType;
             const status = document.createElement('p');
