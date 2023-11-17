@@ -124,9 +124,15 @@ select, input {
     user-select: none; /* Standard syntax */
 }
 
-.deactivate * { 
-    display: none;
-} 
-.activate * { 
-    display: block; 
+
+#map {height: 180px;}
+// .deactivate * { 
+//     display: none;
+// } 
+// .activate * { 
+//     display: block; 
+// }
+
+.SolutionHeader {
+    text-align: center;
 }
