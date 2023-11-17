@@ -257,6 +257,14 @@ select, input {
   display: block;
 }
 
+#map {
+  height: 180px;
+}
+
+.SolutionHeader {
+  text-align: center;
+}
+
 /* Center everything within the main element */
 main {
   display: flex;

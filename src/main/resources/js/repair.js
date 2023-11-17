@@ -309,35 +309,65 @@ const branchNavigation = (BranchDecider) => {
 
 const displaySolution = (BranchDecider) => {
     //Create header
-    const div = document.getElementById("solutiondiv");
-    const header = document.createElement("h1");
-    const h2Repair = document.createElement("h2");
-    const h2DoeHetZelf = document.createElement("h2");
-    const articlePrijs = document.createElement("article");
-    const articleDoehetZelf = document.createElement("article");
+    const div = document.getElementById('solutiondiv');
+    const header = document.createElement('h1');
+    const h2Repair = document.createElement('h2');
+    const h2DoeHetZelf = document.createElement('h2');
+    const articlePrijs = document.createElement('article');
+    const articleDoehetZelf = document.createElement('article');
+    const pr30 = document.createElement('p');
+    const pr50 = document.createElement('p');
+    const pCost = document.createElement('p');
 
     header.innerHTML = "Oplossingen";
+    header.setAttribute("class", "SolutionHeader");
     h2Repair.innerHTML = "Prijs";
     h2DoeHetZelf.innerHTML = "Doe Het Zelf";
-    div.appendChild(header);
-    div.appendChild(h2Repair);
-    const pCost = document.createElement("p");
-    pCost.innerHTML = `De geschatte prijs van het toestel nu: €${getWaardeBepaling()}`;
-    div.appendChild(pCost);
-    div.appendChild(h2DoeHetZelf);
+    pCost.innerHTML = `De waarde van het apparaat op dit moment: €${getWaardeBepaling()}`;
+    pr30.innerHTML = `Uit onderzoek blijkt dat mensen bereid zijn om 30% van de aankoopprijs te betalen voor een reparatie: ${getWaardeBepaling() * 0.3} of 50% van de nieuw koopprijs te betalen voor een reparatie: to be done`
 
-    // articlePrijs.appendChild(h2Repair);
-    // articlePrijs.appendChild(pCost);
-    console.log(articlePrijs);
+
+    const h2RepairCaféLocaties = document.createElement("h2");
+    const h2EndOfLife = document.createElement("h2");
+    const descriptionEndOfLife = document.createElement("p")
+    descriptionEndOfLife.innerHTML = "U kan eventueel langskomen bij een van de repaircafé's om het defecte apparaat binnen te brengen.\n Dit kunnen wij dan gebruiken als wisselstukken."
+
+
+
+
+    const articleLocaties = document.createElement("article");
+    const articleEndOfLife = document.createElement("article");
+
+    h2RepairCaféLocaties.innerHTML = "Repair Café Locaties";
+    h2EndOfLife.innerHTML = "End of Life toestel";
+
+    const linkMapRepairCafés = document.createElement('a');
+    linkMapRepairCafés.href = "https://www.leuvenfixt.be/repair-leuven";
+    linkMapRepairCafés.innerHTML = "Leuvenfixt"
+
+
+
+    articleLocaties.appendChild(h2RepairCaféLocaties);
+    articleEndOfLife.appendChild(h2EndOfLife);
+    articleEndOfLife.appendChild(descriptionEndOfLife)
+
+    div.appendChild(header);
+    // div.appendChild(h2Repair);
+    // div.appendChild(pCost);
+    div.appendChild(h2DoeHetZelf);
 
     articleDoehetZelf.appendChild(h2DoeHetZelf);
     articlePrijs.appendChild(h2Repair);
     articlePrijs.appendChild(pCost);
-    div.appendChild(articleDoehetZelf);
-    div.appendChild(articlePrijs);
+    articlePrijs.appendChild(pr30);
+    articleLocaties.appendChild(linkMapRepairCafés);
 
-    // h2DoeHetZelf.setAttribute("class","activate");
-    // h2Repair.setAttribute("class","activate");
+    div.appendChild(articlePrijs);
+    div.appendChild(articleDoehetZelf);
+    div.appendChild(articleLocaties);
+    div.appendChild(articleEndOfLife);
+    // articlePrijs.appendChild(pr50);
+
     //Loop to get correct solutions
     let solution = [];
     let i = 0;
@@ -355,7 +385,7 @@ const displaySolution = (BranchDecider) => {
     if (solution.length == 0) {
         const p = document.createElement("p");
         p.innerHTML = "Er zijn geen doe het zelf stappen voor dit probleem.";
-        div.appendChild(p);
+        articleDoehetZelf.appendChild(p);
     } else {
         solution.forEach((element) => {
             const p = document.createElement("p");
@@ -372,6 +402,18 @@ const displaySolution = (BranchDecider) => {
         element.setAttribute("id", "kader");
     });
 
+     //style kader 
+    [articleDoehetZelf,articlePrijs, articleLocaties, articleEndOfLife].forEach((element)=>{
+        element.setAttribute("id","kader")
+    })
+    
+    //const mapDiv = document.createElement('div');
+    //mapDiv.id = 'map';
+    //const map = document.querySelector('map');
+    //articleLocaties.appendChild(mapDiv);
+
+};
+
     // const myClick = (element)=> {
     //     if (element.getAttribute("class") == "deactivate"){
     //         element.setAttribute("class","activate")
@@ -380,10 +422,10 @@ const displaySolution = (BranchDecider) => {
     //     else{
     //         element.setAttribute("class","deactivate")
     //     }
-    // }
+    // }    
 
     // articlePrijs.addEventListener("click",()=> myClick(pCost))
-};
+
 const getWaardeBepaling = () => {
     return price - 0.01 * price * age;
 };
