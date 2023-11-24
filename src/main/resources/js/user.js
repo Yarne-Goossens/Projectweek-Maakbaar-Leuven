@@ -23,7 +23,7 @@ checkUserLogin = () => {
 			var newListItem = document.createElement("li");
 			var newLink = document.createElement("a");
 			newLink.href = "user.html";
-			newLink.textContent = "Profile";
+			newLink.textContent = "Profiel";
 
 			newListItem.appendChild(newLink);
 			navigationList.appendChild(newListItem);
