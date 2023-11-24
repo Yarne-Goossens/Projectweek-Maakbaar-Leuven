@@ -374,7 +374,12 @@ const displaySolution = (BranchDecider) => {
        return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
     }
 
-    
+    const createVitoTool = ()=>{
+        return `<iframe height="450" src="https://www.guidance.sharepair.org/en/repair-impact-result?productCategory=coffee maker senseo&productAge=${age}" title="Vito Tool" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+    }
+    const createMap = () => {
+        return `<iframe class='leafletMap' height="450" src="https://www.leuvenfixt.be/repair-leuven/" title="Vito Tool" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+    }
     
     //Create header
     const div = document.getElementById("solutiondiv");
@@ -388,14 +393,21 @@ const displaySolution = (BranchDecider) => {
     const pr30 = document.createElement('p');
     const pr50 = document.createElement('p');
     const pCost = document.createElement('p');
+    const vitoTitle = document.createElement('h2');
+    const vitoLinkDiv = document.createElement("div")
     let selectedProblem = "";
-    
+    vitoLinkDiv.innerHTML = createVitoTool()
     console.log(matrixProblems[0])
     const problemHeader = document.createElement("h2");
     problemHeader.innerHTML = "Probleem"
+
+
+    //document.getElementByClassName('leafletMap').contents().find(".md:h-screen leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom").focus();
     
-    const articleVideo = document.createElement("article")
-    const videoHeader = document.createElement("h2")
+    
+    const articleVito = document.createElement('article');
+    const articleVideo = document.createElement("article");
+    const videoHeader = document.createElement("h2");
     videoHeader.innerHTML = "DIY videos"
     articleVideo.appendChild(videoHeader);
         
@@ -413,6 +425,7 @@ const displaySolution = (BranchDecider) => {
     h2Repair.innerHTML = "Prijs";
 
     h2DoeHetZelf.innerHTML = "Doe Het Zelf";
+    vitoTitle.innerHTML = "Vito tool";
     pCost.innerHTML = `De waarde van het apparaat op dit moment: €${getWaardeBepaling()}`;
     pr30.innerHTML = `Uit onderzoek blijkt dat mensen bereid zijn om 30% van de aankoopprijs te betalen voor een reparatie: ${getWaardeBepaling() * 0.3} of 50% van de nieuw koopprijs te betalen voor een reparatie: to be done`
 
@@ -427,22 +440,20 @@ const displaySolution = (BranchDecider) => {
     h2RepairCaféLocaties.innerHTML = "Repair Café Locaties";
     h2EndOfLife.innerHTML = "End of Life toestel";
 
-    const linkMapRepairCafés = document.createElement('a');
-    linkMapRepairCafés.href = "https://www.leuvenfixt.be/repair-leuven";
-    linkMapRepairCafés.innerHTML = "Leuvenfixt"
+    const mapRepairCafés = document.createElement('div');
+    //linkMapRepairCafés.href = "https://www.leuvenfixt.be/repair-leuven";
+    //linkMapRepairCafés.innerHTML = "Leuvenfixt"
 
     articleLocaties.appendChild(h2RepairCaféLocaties);
     articleEndOfLife.appendChild(h2EndOfLife);
     articleEndOfLife.appendChild(descriptionEndOfLife)
-
+    
     div.appendChild(header);
-    // div.appendChild(h2Repair);
-    // div.appendChild(pCost);
     div.appendChild(h2DoeHetZelf);
     console.log(articlePrijs);
     
     probleemText.innerHTML = `${matrixProblems[selectedInput - 1]}`
-    
+    mapRepairCafés.innerHTML = createMap()
     articleProblem.appendChild(problemHeader);
     articleProblem.appendChild(probleemText);
 
@@ -450,7 +461,9 @@ const displaySolution = (BranchDecider) => {
     articlePrijs.appendChild(h2Repair);
     articlePrijs.appendChild(pCost);
     articlePrijs.appendChild(pr30);
-    articleLocaties.appendChild(linkMapRepairCafés);
+    articleVito.appendChild(vitoTitle);
+    articleVito.appendChild(vitoLinkDiv);
+    articleLocaties.appendChild(mapRepairCafés);
     
     div.appendChild(articleProblem);
     div.appendChild(articleDoehetZelf);
@@ -458,6 +471,7 @@ const displaySolution = (BranchDecider) => {
     div.appendChild(articleVideo);
     div.appendChild(articleLocaties);
     div.appendChild(articleEndOfLife);
+    div.appendChild(articleVito)
 
     //Loop to get correct solutions
     let solution = [];
@@ -489,14 +503,9 @@ const displaySolution = (BranchDecider) => {
     }
 
     //style kader
-    [articleDoehetZelf, articlePrijs,articleProblem,articleVideo].forEach((element) => {
+    [articleDoehetZelf, articlePrijs, articleProblem, articleVideo, articleVito, articleLocaties, articleEndOfLife].forEach((element) => {
         element.setAttribute("id", "kader");
     });
-
-     //style kader 
-    [articleDoehetZelf,articlePrijs, articleLocaties, articleEndOfLife].forEach((element)=>{
-        element.setAttribute("id","kader")
-    })
     
     //const mapDiv = document.createElement('div');
     //mapDiv.id = 'map';
@@ -517,6 +526,7 @@ const displaySolution = (BranchDecider) => {
 
     // articlePrijs.addEventListener("click",()=> myClick(pCost))
 
+// };
 
 
 
