@@ -134,8 +134,8 @@ showClickedOnRepair = (repair) => {
 showAllRepairs = async () => {
     const repairList = document.getElementById('repairList');
     const role = sessionStorage.getItem('role');
-    if (repairList && role === "USER") {
-        const repairs = await getUserRepairs();
+    const repairs = await getUserRepairs();
+    if (repairs.length > 0 && role === "USER") {
         for (const repair of repairs) {
             const link = document.createElement('a');
             const newListItem = document.createElement('div');
@@ -161,7 +161,7 @@ showAllRepairs = async () => {
                 showClickedOnRepair(repair);
             });
         }
-    } else if (repairList && role === "REPAIR") {
+    } else if (repairs.length > 0 && role === "REPAIR") {
         const allRepairs = await getAllRepairs();
         for (const repair of allRepairs) {
             email = await getUserFromRepair(repair.id);
@@ -187,12 +187,51 @@ showAllRepairs = async () => {
             link.appendChild(newListItem);
             repairList.appendChild(link);
 
+
             link.addEventListener("click", () => {
                 clearRepairOverview();
                 showClickedOnRepair(repair);
             });
         }
+    } else {
+        const noRepariParagraph = document.createElement('p');
+        noRepariParagraph.innerHTML = "Er zijn nog geen reparaties";
+        repairList.appendChild(noRepariParagraph);
     }
 };
+
+const getUser = async (email) => {
+    const response = await fetch(`http://localhost:8080/api/profile/${email}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+};
+
+
+const displayUserInfo = async () => {
+    const user = await getUser(sessionStorage.getItem('email'));
+    const userdiv = document.getElementById('userInfo');
+
+    const card = document.createElement('article');
+    card.id = 'userCard';
+
+    const cardContent = `
+        <h2>${user.firstname} ${user.lastname}</h2>
+        <p>${user.email}</p>
+    `;
+
+    card.innerHTML = cardContent;
+    
+
+    userdiv.appendChild(card);
+}
+
+displayUserInfo();
 
 showAllRepairs();

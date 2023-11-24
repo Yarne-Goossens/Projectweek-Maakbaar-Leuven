@@ -39,6 +39,7 @@ const main = async () => {
 			sessionStorage.setItem("user", user.firstname);
 			sessionStorage.setItem("role", user.role);
 			sessionStorage.setItem("id", user.id);
+			sessionStorage.setItem("email", user.email);
 			//             window.location.href = "user.html";
 			checkUserLogin();
 		} else {
