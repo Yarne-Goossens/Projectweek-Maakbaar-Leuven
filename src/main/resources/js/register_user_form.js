@@ -86,6 +86,27 @@ const registerUser = async () => {
         role: "USER",
     };
 
+    getProfiles = async () => {
+        const response = await fetch(`http://127.0.0.1:8080/api/profile/overview`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+        });
+        const result = await response.json();
+
+        for (const profile of result) {
+            if (profile.email === email) {
+                addStatusError("Email is al in gebruik");
+                return 0;
+            }
+        }
+        return 0;
+    }
+
+    getProfiles();
+
     const respons = await fetch("http://localhost:8080/api/profile/add",
         {
             method: "POST",
