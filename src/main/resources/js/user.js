@@ -30,6 +30,18 @@ checkUserLogin = () => {
             navigationList.appendChild(newListItem);
         }
     }
+    if (sessionStorage.getItem('role') === 'ADMIN') {
+        var navigationList = document.getElementById("navigation_list");
+        if (navigationList) {
+            var newListItem = document.createElement("li");
+            var newLink = document.createElement("a");
+            newLink.href = "admin.html";
+            newLink.textContent = "Admin";
+
+            newListItem.appendChild(newLink);
+            navigationList.appendChild(newListItem);
+        }
+    }
 
 };
 
