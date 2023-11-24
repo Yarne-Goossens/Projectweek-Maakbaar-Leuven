@@ -1,6 +1,5 @@
 checkUserLogin = () => {
 	if (sessionStorage.getItem("user")) {
-		console.log("hier2");
 		const loginButton = document.getElementById("login");
 		if (loginButton) {
 			loginButton.innerHTML = "Logout";

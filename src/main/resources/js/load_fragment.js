@@ -27,10 +27,10 @@ function highlightCurrentPage() {
     const currentPageUrl = window.location.href;
     var match = currentPageUrl.match(/\/([^\/?#]+)$/);
     var currentPage = match ? match[1] : null;
-    console.log(currentPage);
+    // console.log(currentPage);
 
     const menuItem = document.querySelector('#menu a[href="' + currentPage + '"]');
-    console.log(menuItem);
+    // console.log(menuItem);
     if (menuItem) {
         menuItem.classList.add("current");
     }
