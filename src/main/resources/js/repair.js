@@ -2,6 +2,33 @@ let price = 0;
 let age = 0;
 let bereid_te_betalen = 0;
 let modelnummer = "";
+
+const addDiagnose = async (id, diagnose) => {
+    const response = await fetch(`http://localhost:8080/api/devices/addDiagnose/${id}`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: diagnose,
+    });
+    const result = await response.json();
+    return result;
+}
+    
+
+const getRole = async (email) => {
+    const response = await fetch(`http://localhost:8080/api/profile/${email}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        }
+    });
+    const result = await response.json()
+    console.log(result.role)
+}
+getRole("jules@jules.com")
 const generateMainDiv = () => {
     const div = document.createElement("div");
     div.id = "maindiv";
@@ -31,7 +58,7 @@ const enterAndPostDeviceInfo = async () => {
     bereid_te_betalen = input3;
     const input4 = document.getElementById("input4").value;
     age = input4;
-    const device = { deviceModelNumber: input1, purchasePrice: input2, bereidteBetalen: input3, ageInMonths: input4 };
+    const device = { deviceModelNumber: input1, purchasePrice: input2, bereidteBetalen: input3, ageInMonths: input4, diagnose: "", userId: sessionStorage.getItem("id") };
     const response = await fetch("http://localhost:8080/api/devices/add", {
         method: "POST",
         headers: {
@@ -50,6 +77,20 @@ const enterAndPostDeviceInfo = async () => {
         console.log("werkt wel");
         console.log(input1, input2, input3);
     }
+    const currentDate = new Date();
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    const dateOfRepair = currentDate.toLocaleDateString('en-US', options);
+    const repair = {devicetype: "stofzuiger", status: "in afwachting", deviceModelNumber: device.deviceModelNumber, dateOfRepair: dateOfRepair, location: "online" }
+    const repairesponse = await fetch(`http://localhost:8080/api/profile/${sessionStorage.getItem('id')}addRepair`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(repair),
+    });
+    await repairesponse.json();
+
 };
 
 const getRepairs = async () => {
@@ -382,17 +423,16 @@ const displaySolution = (BranchDecider) => {
     header.innerHTML = "Oplossingen";
     header.setAttribute("class", "SolutionHeader");
     h2Repair.innerHTML = "Prijs";
+
     h2DoeHetZelf.innerHTML = "Doe Het Zelf";
     vitoTitle.innerHTML = "Vito tool";
     pCost.innerHTML = `De waarde van het apparaat op dit moment: €${getWaardeBepaling()}`;
     pr30.innerHTML = `Uit onderzoek blijkt dat mensen bereid zijn om 30% van de aankoopprijs te betalen voor een reparatie: ${getWaardeBepaling() * 0.3} of 50% van de nieuw koopprijs te betalen voor een reparatie: to be done`
 
-
     const h2RepairCaféLocaties = document.createElement("h2");
     const h2EndOfLife = document.createElement("h2");
     const descriptionEndOfLife = document.createElement("p")
     descriptionEndOfLife.innerHTML = "U kan eventueel langskomen bij een van de repaircafé's om het defecte apparaat binnen te brengen.\n Dit kunnen wij dan gebruiken als wisselstukken."
-
 
     const articleLocaties = document.createElement("article");
     const articleEndOfLife = document.createElement("article");
@@ -487,6 +527,7 @@ const displaySolution = (BranchDecider) => {
     // articlePrijs.addEventListener("click",()=> myClick(pCost))
 
 // };
+
 
 
 const getWaardeBepaling = () => {

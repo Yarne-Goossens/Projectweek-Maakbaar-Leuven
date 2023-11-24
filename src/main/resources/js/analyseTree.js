@@ -2,7 +2,7 @@ const matrix = [
     [
         "De stofzuiger werkt niet",
         "De stofzuiger zorgt voor een slechte geur",
-        "De snoer rolt niet op",
+        "Het snoer rolt niet op",
         "De stofzuiger laadt niet op",
         "De stofzuiger is uitgevallen",
         "De zuigkracht is vermindert",
@@ -106,14 +106,14 @@ const solution_matrix = [
 ];
 
 const matrixProblems = [
-        "Vacuum cleaner isn't working",
-        "It smells bad",
-        "Cord doesn't coil",
-        "It isn't charging",
-        "It broke down",
-        "Suction isn't working properly",
-        "Wheels aren't roling well",
-        "Connection problems with the app",
+    "De stofzuiger werkt niet",
+    "De stofzuiger zorgt voor een slechte geur",
+    "Het snoer rolt niet op",
+    "De stofzuiger laadt niet op",
+    "De stofzuiger is uitgevallen",
+    "De zuigkracht is vermindert",
+    "De wieltjes rollen niet meer goed",
+    "Er zijn verbindingsproblemen met de app",
 ]
 
 const matrixDIYLinks = [
