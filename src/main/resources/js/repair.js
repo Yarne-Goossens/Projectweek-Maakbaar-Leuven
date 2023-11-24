@@ -377,13 +377,6 @@ const displaySolution = (BranchDecider) => {
     
     
     //Create header
-    const diagnose = document.createElement('h2');
-    diagnose.innerHTML = "Diagnose";
-    const pDiagnose = document.createElement('p');
-    pDiagnose.innerHTML = "voorlopige diagnose";
-    addDiagnose(sessionStorage.getItem("id"), pDiagnose.innerHTML);
-    diagnose.appendChild(pDiagnose);
-
     const div = document.getElementById("solutiondiv");
     const header = document.createElement("h1");
     const h2Repair = document.createElement("h2");
@@ -418,8 +411,6 @@ const displaySolution = (BranchDecider) => {
     header.innerHTML = "Oplossingen";
     header.setAttribute("class", "SolutionHeader");
     h2Repair.innerHTML = "Prijs";
-
-    div.appendChild(diagnose);
 
     h2DoeHetZelf.innerHTML = "Doe Het Zelf";
     pCost.innerHTML = `De waarde van het apparaat op dit moment: €${getWaardeBepaling()}`;
