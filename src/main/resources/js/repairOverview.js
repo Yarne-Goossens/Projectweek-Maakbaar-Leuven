@@ -150,7 +150,7 @@ const displayUserInfo = async () => {
     const user = await getUser(sessionStorage.getItem('email'));
     const userdiv = document.getElementById('userInfo');
 
-    const card = document.createElement('div');
+    const card = document.createElement('article');
     card.id = 'userCard';
 
     const cardContent = `
@@ -159,6 +159,7 @@ const displayUserInfo = async () => {
     `;
 
     card.innerHTML = cardContent;
+    card.setAttribute("id", "kader");
 
     userdiv.appendChild(card);
 }
