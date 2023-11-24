@@ -96,13 +96,18 @@ const registerUser = async () => {
             body: JSON.stringify(profile),
         });
     console.log(respons);
-
+    if(respons.status === 500){
+        addStatusError("Email is al in gebruik");
+        return 0;
+    }
+    else{
     showToast("Registreren is gelukt!", 5000); // Show toast for 5 seconds
     setTimeout(function() {
         window.location.href = "index.html"; // Replace with your desired URL
     }, 3000); // 3000 milliseconds = 3 seconds
   
     return 1;
+}
 };
 
 document.getElementById("register_form").addEventListener("click", async (event) => {

@@ -28,7 +28,8 @@ public class ProfileService {
 
     public Profile addProfile(Profile profile) {
         profile.setPassword(new BCryptPasswordEncoder().encode(profile.getPassword()));
-        return profileRepository.save(profile);
+        if (getProfileByEmail(profile.getEmail()) != null) throw new IllegalArgumentException("Email already exists.");
+        else return profileRepository.save(profile);
     }
 
     public Profile deleteProfile(Profile profile) {
