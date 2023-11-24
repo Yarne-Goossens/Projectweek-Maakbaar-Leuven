@@ -38,7 +38,7 @@ showClickedOnRepair = (repair) => {
     newListItem.id = "repairItem";
     const deviceType = document.createElement('p');
     deviceType.innerHTML = "Toestel: " + repair.deviceType;
-    
+
     const status = document.createElement('p');
     status.innerHTML = "Status: "
 
@@ -70,10 +70,10 @@ showClickedOnRepair = (repair) => {
     dateOfRepair.innerHTML = "Datum: " + repair.dateOfRepair;
     const location = document.createElement('p');
     location.innerHTML = "Locatie: " + repair.location;
-    
+
     const diagnosis = document.createElement('p');
     diagnosis.innerHTML = "Diagnose: TODO"
-    
+
     newListItem.appendChild(deviceType);
     newListItem.appendChild(diagnosis);
     newListItem.appendChild(status);
@@ -88,18 +88,18 @@ showClickedOnRepair = (repair) => {
     bodyRepair.appendChild(terugButton);
 
     terugButton.addEventListener("click", async () => {
-    if (sendPostRequest) {
-        await changeStatus(repair.id, selectedStatus);
-    }
-    clearRepairOverview();
-    showAllRepairs();
-})
+        if (sendPostRequest) {
+            await changeStatus(repair.id, selectedStatus);
+        }
+        clearRepairOverview();
+        showAllRepairs();
+    })
 };
 
 showAllRepairs = async () => {
     const repairs = await getUserRepairs();
     const repairList = document.getElementById('repairList');
-    if (repairList) {
+    if (repairs.length > 0) {
         for (const repair of repairs) {
             const link = document.createElement('a');
             const newListItem = document.createElement('div');
@@ -119,12 +119,16 @@ showAllRepairs = async () => {
             newListItem.appendChild(location);
             link.appendChild(newListItem);
             repairList.appendChild(link);
-            
+
             link.addEventListener("click", () => {
                 clearRepairOverview();
                 showClickedOnRepair(repair);
             });
         }
+    } else {
+        const noRepariParagraph = document.createElement('p');
+        noRepariParagraph.innerHTML = "U heeft nog geen reparaties";
+        repairList.appendChild(noRepariParagraph);
     }
 };
 

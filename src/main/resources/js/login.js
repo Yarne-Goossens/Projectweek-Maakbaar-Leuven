@@ -32,13 +32,14 @@ const main = async () => {
 			setTimeout(function () {
 				window.location.href = "index.html"; // Replace with your desired URL
 			}, 3000); // 3000 milliseconds = 3 seconds
-            
+
 			addStatus("login gelukt");
 			const user = await getUser(profile.email);
 			console.log(user);
 			sessionStorage.setItem("user", user.firstname);
 			sessionStorage.setItem("role", user.role);
 			sessionStorage.setItem("id", user.id);
+			sessionStorage.setItem("email", user.email);
 			//             window.location.href = "user.html";
 			checkUserLogin();
 		} else {
