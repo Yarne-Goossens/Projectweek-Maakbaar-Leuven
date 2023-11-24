@@ -2,7 +2,7 @@ const matrix = [
     [
         "De stofzuiger werkt niet",
         "De stofzuiger zorgt voor een slechte geur",
-        "De snoer rolt niet op",
+        "Het snoer rolt niet op",
         "De stofzuiger laadt niet op",
         "De stofzuiger is uitgevallen",
         "De zuigkracht is vermindert",
@@ -108,7 +108,7 @@ const solution_matrix = [
 const matrixProblems = [
     "De stofzuiger werkt niet",
     "De stofzuiger zorgt voor een slechte geur",
-    "De snoer rolt niet op",
+    "Het snoer rolt niet op",
     "De stofzuiger laadt niet op",
     "De stofzuiger is uitgevallen",
     "De zuigkracht is vermindert",
