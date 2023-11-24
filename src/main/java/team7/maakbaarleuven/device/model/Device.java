@@ -17,15 +17,19 @@ public class Device {
     public int purchasePrice;
     public int bereidTeBetalen;
     public int ageInMonths;
-  
-    public Device () {   
+    public String diagnose;
+    public long userId;
+
+    public Device() {
     }
 
-    public Device(String deviceModelNumber, int purchasePrice, int bereidTeBetalen, int ageInMonths) {
+    public Device(String deviceModelNumber, int purchasePrice, int bereidTeBetalen, int ageInMonths, String diagnose,
+            long userId) {
         this.deviceModelNumber = deviceModelNumber;
         this.purchasePrice = purchasePrice;
         this.bereidTeBetalen = bereidTeBetalen;
         this.ageInMonths = ageInMonths;
+        this.diagnose = diagnose;
     }
 
     public void setDeviceModelNumber(String deviceModelNumber) {
@@ -58,5 +62,21 @@ public class Device {
 
     public void setAgeInMonths(int age) {
         this.ageInMonths = age;
+    }
+
+    public String getDiagnose() {
+        return this.diagnose;
+    }
+
+    public void setDiagnose(String diagnose) {
+        this.diagnose = diagnose;
+    }
+
+    public long getUserId() {
+        return this.userId;
+    }
+
+    public void setUserId(long id) {
+        this.userId = id;
     }
 }

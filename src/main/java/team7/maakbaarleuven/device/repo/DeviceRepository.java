@@ -7,4 +7,6 @@ public interface DeviceRepository extends JpaRepository<Device, Long> {
     public Device findByDeviceModelNumber(String deviceModelNumber);
 
     public Device findById(long id);
+
+    public Device findDeviceByDeviceModelNumber(String deviceModelNumber);
 }
