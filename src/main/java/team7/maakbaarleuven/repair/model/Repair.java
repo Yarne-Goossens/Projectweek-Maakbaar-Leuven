@@ -21,7 +21,7 @@ public class Repair {
     private int entryNumber;
     private String deviceType;
     private String status;
-    private int deviceModelNumber;
+    private String deviceModelNumber;
     private String dateOfRepair;
     private String location;
     @ManyToOne
@@ -32,7 +32,7 @@ public class Repair {
     public Repair() {
     }
 
-    public Repair(int entryNumber, String deviceType, String status, int deviceModelNumber, String dateOfRepair,
+    public Repair(int entryNumber, String deviceType, String status, String deviceModelNumber, String dateOfRepair,
             String location) {
         this.entryNumber = entryNumber;
         this.deviceType = deviceType;
@@ -66,11 +66,11 @@ public class Repair {
         return this.status;
     }
 
-    public void setDeviceModelNumber(int deviceModelNumber) {
+    public void setDeviceModelNumber(String deviceModelNumber) {
         this.deviceModelNumber = deviceModelNumber;
     }
 
-    public int getDeviceModelNumber() {
+    public String getDeviceModelNumber() {
         return this.deviceModelNumber;
     }
 
