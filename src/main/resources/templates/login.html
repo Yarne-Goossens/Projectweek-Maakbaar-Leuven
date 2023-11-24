@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
         <link rel="stylesheet" href="../style/scss/style.css" />
         <link rel="icon" type="image/png" href="../images/MaakbaarLeuven_jpg.jpg" />
+        <script type="text/javascript" src="../js/user.js" defer></script>
         <script type="text/javascript" src="../js/login.js" defer></script>
         <script type="text/javascript" src="../js/load_fragment.js" defer></script>
         <title>MaakbaarLeuven</title>
@@ -27,15 +28,13 @@
                         <label for="user-password" style="padding-top: 22px">&nbsp;Password </label>
                         <input id="user-password" class="form-content" type="password" name="password" required />
                         <div class="form-border"></div>
-                        <a href="#">
-                            <legend id="forgot-pass">Forgot password?</legend>
-                        </a>
                         <div id="status"></div>
                         <button id="submit-btn">Login</button>
                         <a href="register.html" id="signup">Don't have account yet?</a>
                     </form>
                 </div>
             </div>
+            <div id="toast" class="toast"></div>
         </main>
         <footer id="footerContainer"></footer>
     </body>

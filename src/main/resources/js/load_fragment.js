@@ -1,3 +1,4 @@
+// Create a custom event for header loaded
 const headerLoadedEvent = new Event("headerLoaded");
 
 function loadHeader() {
@@ -35,4 +36,7 @@ function highlightCurrentPage() {
     }
 }
 
+window.addEventListener('load', loadFooter);
+window.addEventListener('load', loadHeader);
+window.addEventListener('headerLoaded', checkUserLogin); // Listen for the custom event
 window.addEventListener("headerLoaded", highlightCurrentPage);

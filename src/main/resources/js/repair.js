@@ -2,6 +2,33 @@ let price = 0;
 let age = 0;
 let bereid_te_betalen = 0;
 let modelnummer = "";
+
+const addDiagnose = async (id, diagnose) => {
+    const response = await fetch(`http://localhost:8080/api/devices/addDiagnose/${id}`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: diagnose,
+    });
+    const result = await response.json();
+    return result;
+}
+    
+
+const getRole = async (email) => {
+    const response = await fetch(`http://localhost:8080/api/profile/${email}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        }
+    });
+    const result = await response.json()
+    console.log(result.role)
+}
+getRole("jules@jules.com")
 const generateMainDiv = () => {
     const div = document.createElement("div");
     div.id = "maindiv";
@@ -31,7 +58,7 @@ const enterAndPostDeviceInfo = async () => {
     bereid_te_betalen = input3;
     const input4 = document.getElementById("input4").value;
     age = input4;
-    const device = { deviceModelNumber: input1, purchasePrice: input2, bereidteBetalen: input3, ageInMonths: input4 };
+    const device = { deviceModelNumber: input1, purchasePrice: input2, bereidteBetalen: input3, ageInMonths: input4, diagnose: "", userId: sessionStorage.getItem("id") };
     const response = await fetch("http://localhost:8080/api/devices/add", {
         method: "POST",
         headers: {
@@ -50,6 +77,20 @@ const enterAndPostDeviceInfo = async () => {
         console.log("werkt wel");
         console.log(input1, input2, input3);
     }
+    const currentDate = new Date();
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    const dateOfRepair = currentDate.toLocaleDateString('en-US', options);
+    const repair = {devicetype: "stofzuiger", status: "in afwachting", deviceModelNumber: device.deviceModelNumber, dateOfRepair: dateOfRepair, location: "online" }
+    const repairesponse = await fetch(`http://localhost:8080/api/profile/${sessionStorage.getItem('id')}addRepair`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(repair),
+    });
+    await repairesponse.json();
+
 };
 
 const getRepairs = async () => {
@@ -196,6 +237,9 @@ const createNextButton = () => {
     const div = document.getElementById("maindiv");
     div.appendChild(button);
 };
+
+let selectedInput = 0;
+
 const displayBranchQuestion = () => {
     const div = document.getElementById("vraag1div");
     const data = matrix[0];
@@ -217,6 +261,7 @@ const displayBranchQuestion = () => {
         input.addEventListener("click", (event) => {
             const clickedInput = event.target;
             clickedInputId = clickedInput.id;
+            selectedInput = clickedInput.id;
             console.log(`Clicked input ID : ${clickedInputId}`);
         });
     });
@@ -308,6 +353,29 @@ const branchNavigation = (BranchDecider) => {
 };
 
 const displaySolution = (BranchDecider) => {
+
+    const extractVideoId = (url) => {
+        const match1 = url.match(/[?&]v=([^&]+)/);
+        const match2 = url.match('\/embed\/([a-zA-Z0-9_-]+)\?');
+        const match3 = url.match('\/youtu\.be\/([a-zA-Z0-9_-]+)\?');
+
+        //id=match1 ? match1[1] : null
+        if (match1) {
+            return match1 ? match1[1] : null;
+        } else if (match2) {
+            return match2 ? match2[1] : null;
+        } else if (match3) {
+            return match3 ? match3[1] : null;
+        }
+    }
+
+    // Create the embed link for the youtube video
+    const createYouTubeEmbedCode = (videoId) => {
+       return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+    }
+
+    
+    
     //Create header
     const div = document.getElementById("solutiondiv");
     const header = document.createElement("h1");
@@ -315,29 +383,82 @@ const displaySolution = (BranchDecider) => {
     const h2DoeHetZelf = document.createElement("h2");
     const articlePrijs = document.createElement("article");
     const articleDoehetZelf = document.createElement("article");
+    const articleProblem = document.createElement("article");
+    const probleemText = document.createElement("p");
+    const pr30 = document.createElement('p');
+    const pr50 = document.createElement('p');
+    const pCost = document.createElement('p');
+    let selectedProblem = "";
+    
+    console.log(matrixProblems[0])
+    const problemHeader = document.createElement("h2");
+    problemHeader.innerHTML = "Probleem"
+    
+    const articleVideo = document.createElement("article")
+    const videoHeader = document.createElement("h2")
+    videoHeader.innerHTML = "DIY videos"
+    articleVideo.appendChild(videoHeader);
+        
+    matrixDIYLinks[selectedInput - 1].forEach((link) => {
+        const div = document.createElement("div")
+        div.setAttribute("class", "videoMargin");
+        div.innerHTML = createYouTubeEmbedCode(extractVideoId(link));
+        
+        articleVideo.appendChild(div)
+        
+    });
 
     header.innerHTML = "Oplossingen";
+    header.setAttribute("class", "SolutionHeader");
     h2Repair.innerHTML = "Prijs";
-    h2DoeHetZelf.innerHTML = "Doe Het Zelf";
-    div.appendChild(header);
-    div.appendChild(h2Repair);
-    const pCost = document.createElement("p");
-    pCost.innerHTML = `De geschatte prijs van het toestel nu: €${getWaardeBepaling()}`;
-    div.appendChild(pCost);
-    div.appendChild(h2DoeHetZelf);
 
-    // articlePrijs.appendChild(h2Repair);
-    // articlePrijs.appendChild(pCost);
+    h2DoeHetZelf.innerHTML = "Doe Het Zelf";
+    pCost.innerHTML = `De waarde van het apparaat op dit moment: €${getWaardeBepaling()}`;
+    pr30.innerHTML = `Uit onderzoek blijkt dat mensen bereid zijn om 30% van de aankoopprijs te betalen voor een reparatie: ${getWaardeBepaling() * 0.3} of 50% van de nieuw koopprijs te betalen voor een reparatie: to be done`
+
+    const h2RepairCaféLocaties = document.createElement("h2");
+    const h2EndOfLife = document.createElement("h2");
+    const descriptionEndOfLife = document.createElement("p")
+    descriptionEndOfLife.innerHTML = "U kan eventueel langskomen bij een van de repaircafé's om het defecte apparaat binnen te brengen.\n Dit kunnen wij dan gebruiken als wisselstukken."
+
+    const articleLocaties = document.createElement("article");
+    const articleEndOfLife = document.createElement("article");
+
+    h2RepairCaféLocaties.innerHTML = "Repair Café Locaties";
+    h2EndOfLife.innerHTML = "End of Life toestel";
+
+    const linkMapRepairCafés = document.createElement('a');
+    linkMapRepairCafés.href = "https://www.leuvenfixt.be/repair-leuven";
+    linkMapRepairCafés.innerHTML = "Leuvenfixt"
+
+    articleLocaties.appendChild(h2RepairCaféLocaties);
+    articleEndOfLife.appendChild(h2EndOfLife);
+    articleEndOfLife.appendChild(descriptionEndOfLife)
+
+    div.appendChild(header);
+    // div.appendChild(h2Repair);
+    // div.appendChild(pCost);
+    div.appendChild(h2DoeHetZelf);
     console.log(articlePrijs);
+    
+    probleemText.innerHTML = `${matrixProblems[selectedInput - 1]}`
+    
+    articleProblem.appendChild(problemHeader);
+    articleProblem.appendChild(probleemText);
 
     articleDoehetZelf.appendChild(h2DoeHetZelf);
     articlePrijs.appendChild(h2Repair);
     articlePrijs.appendChild(pCost);
+    articlePrijs.appendChild(pr30);
+    articleLocaties.appendChild(linkMapRepairCafés);
+    
+    div.appendChild(articleProblem);
     div.appendChild(articleDoehetZelf);
     div.appendChild(articlePrijs);
+    div.appendChild(articleVideo);
+    div.appendChild(articleLocaties);
+    div.appendChild(articleEndOfLife);
 
-    // h2DoeHetZelf.setAttribute("class","activate");
-    // h2Repair.setAttribute("class","activate");
     //Loop to get correct solutions
     let solution = [];
     let i = 0;
@@ -355,7 +476,7 @@ const displaySolution = (BranchDecider) => {
     if (solution.length == 0) {
         const p = document.createElement("p");
         p.innerHTML = "Er zijn geen doe het zelf stappen voor dit probleem.";
-        div.appendChild(p);
+        articleDoehetZelf.appendChild(p);
     } else {
         solution.forEach((element) => {
             const p = document.createElement("p");
@@ -368,9 +489,21 @@ const displaySolution = (BranchDecider) => {
     }
 
     //style kader
-    [articleDoehetZelf, articlePrijs].forEach((element) => {
+    [articleDoehetZelf, articlePrijs,articleProblem,articleVideo].forEach((element) => {
         element.setAttribute("id", "kader");
     });
+
+     //style kader 
+    [articleDoehetZelf,articlePrijs, articleLocaties, articleEndOfLife].forEach((element)=>{
+        element.setAttribute("id","kader")
+    })
+    
+    //const mapDiv = document.createElement('div');
+    //mapDiv.id = 'map';
+    //const map = document.querySelector('map');
+    //articleLocaties.appendChild(mapDiv);
+
+};
 
     // const myClick = (element)=> {
     //     if (element.getAttribute("class") == "deactivate"){
@@ -380,10 +513,13 @@ const displaySolution = (BranchDecider) => {
     //     else{
     //         element.setAttribute("class","deactivate")
     //     }
-    // }
+    // }    
 
     // articlePrijs.addEventListener("click",()=> myClick(pCost))
-};
+
+
+
+
 const getWaardeBepaling = () => {
     return price - 0.01 * price * age;
 };

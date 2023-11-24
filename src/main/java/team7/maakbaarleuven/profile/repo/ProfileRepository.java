@@ -7,4 +7,6 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
     Profile deleteByEmail(String email);
 
     Profile findByEmail(String email);
+
+    Profile findById(long id);
 }
