@@ -394,9 +394,9 @@ footer span {
   background: whitesmoke;
   border-radius: 10px;
   flex-direction: column;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
 }
 
 .vraag {
@@ -549,6 +549,7 @@ label {
   background-repeat: no-repeat;
   border-radius: 8px;
   box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: -moz-fit-content;
   height: fit-content;
   margin: 6rem auto 8.1rem auto;
   width: 329px;
@@ -627,36 +628,6 @@ label {
   padding: 0.5rem;
 }
 
-.bodyRepair {
-  font-family: "Arial", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
-
-#repairList {
-  font-family: "Arial", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  justify-content: center;
-}
-
-#repairItem {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: center;
-}
-
-p {
-  margin: 0;
-
 .toast {
   visibility: hidden;
   min-width: 250px;
@@ -695,4 +666,73 @@ p {
     bottom: 0;
     opacity: 0;
   }
+}
+.bodyRepair {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+#repairList {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+#repairItem {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+table {
+  border: none;
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Arial", sans-serif;
+}
+table th, table td {
+  padding: 15px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid #e1e1e1;
+}
+table th {
+  background: linear-gradient(145deg, #6c757d, #5D6975);
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+table tr:hover {
+  background-color: #f5f5f5;
+}
+
+#updateButton {
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  align-items: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 2px 2px;
+  cursor: hand;
 }/*# sourceMappingURL=style.css.map */
