@@ -218,11 +218,9 @@ select, input {
 }
 
 #vraag1div {
-  width: 80%;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
 }
 
 /* Style the radio buttons and labels */
@@ -266,6 +264,9 @@ select, input {
 
 .videoMargin {
   margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #map {
@@ -626,6 +627,38 @@ label {
 
 .input-padding {
   padding: 0.5rem;
+}
+
+
+.bodyRepair {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+#repairList {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+#repairItem {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+p {
+  margin: 0;
 }
 
 .toast {
