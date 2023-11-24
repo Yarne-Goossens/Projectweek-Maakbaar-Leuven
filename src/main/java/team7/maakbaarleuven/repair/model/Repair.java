@@ -18,7 +18,7 @@ public class Repair {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long id;
-    private int entryNumber;
+    // private int entryNumber;
     private String deviceType;
     private String status;
     private String deviceModelNumber;
@@ -32,9 +32,9 @@ public class Repair {
     public Repair() {
     }
 
-    public Repair(int entryNumber, String deviceType, String status, String deviceModelNumber, String dateOfRepair,
+    public Repair(String deviceType, String status, String deviceModelNumber, String dateOfRepair,
             String location) {
-        this.entryNumber = entryNumber;
+        // this.entryNumber = entryNumber;
         this.deviceType = deviceType;
         this.status = status;
         this.deviceModelNumber = deviceModelNumber;
@@ -42,13 +42,13 @@ public class Repair {
         this.location = location;
     }
 
-    public void setEntryNumber(int entryNumber) {
-        this.entryNumber = entryNumber;
-    }
+    // public void setEntryNumber(int entryNumber) {
+    // this.entryNumber = entryNumber;
+    // }
 
-    public int getEntryNumber() {
-        return this.entryNumber;
-    }
+    // public int getEntryNumber() {
+    // return this.entryNumber;
+    // }
 
     public void setDeviceType(String deviceType) {
         this.deviceType = deviceType;

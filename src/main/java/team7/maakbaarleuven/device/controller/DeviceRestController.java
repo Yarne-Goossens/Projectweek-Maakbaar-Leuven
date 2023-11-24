@@ -30,9 +30,20 @@ public class DeviceRestController {
         return deviceService.getDeviceById(id);
     }
 
+    @GetMapping("/{deviceModelNumber}")
+    public Device getDeviceByModelNumber(@PathVariable("deviceModelNumber") String deviceModelNumber) {
+        return deviceService.getDeviceByModelNumber(deviceModelNumber);
+    }
+
     @PostMapping("/add")
     public Device addDevice(@RequestBody Device device) {
         return deviceService.addDevice(device);
+
+    }
+
+    @PostMapping("/add/{id}")
+    public Device addDiagnose(@PathVariable("id") long id, @RequestBody String diagnose) {
+        return deviceService.addDiagnose(id, diagnose);
 
     }
 }

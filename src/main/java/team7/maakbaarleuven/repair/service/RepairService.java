@@ -24,4 +24,12 @@ public class RepairService {
         return repairRepository.save(repair);
     }
 
+    public Repair changeStatus(long id, String status) {
+        Repair repair = repairRepository.findById(id);
+
+        repair.setStatus(status);
+        repairRepository.save(repair);
+        return repair;
+    }
+
 }
