@@ -13,11 +13,13 @@
     <script type="text/javascript" src="../js/analyseTree.js" defer></script>
     <script type="text/javascript" src="../js/load_fragment.js" defer></script>
     <script type="text/javascript" src="../js/emailContact.js" defer></script>
-    <script>
+    <script defer>
         if (!sessionStorage.getItem('user')) {
             // Redirect to login.html if not found
+            window.alert("Log in om het herstelformulier in te vullen");
             window.location.href = 'login.html';
         }
+
     </script>
     <title>MaakbaarLeuven</title>
 </head>
@@ -25,6 +27,7 @@
 <body>
     <header id="headerContainer"></header>
     <main>
+        <div id="toast" class="toast"></div>
     </main>
     <footer id="footerContainer"></footer>
 </body>
