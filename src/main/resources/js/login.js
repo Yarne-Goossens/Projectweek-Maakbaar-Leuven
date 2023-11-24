@@ -1,16 +1,23 @@
-const clearStatus = (status) =>
-    (document.getElementById("status").innerHTML = "");
+const clearStatus = (status) => (document.getElementById("status").innerHTML = "");
 
 const addStatus = (status) => {
     document.getElementById("status").innerHTML += "<p class='error'>" + status + "</p>";
 };
+
+function showToast(message, duration = 3000) {
+    const toast = document.getElementById("toast");
+    toast.className = "toast show";
+    toast.textContent = message; // Set the text to your message
+    setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, duration);
+}
+
 const main = async () => {
-    const login_button = document.getElementById('submit-btn');
-    login_button.addEventListener('click', async (event) => {
+    const login_button = document.getElementById("submit-btn");
+    login_button.addEventListener("click", async (event) => {
         event.preventDefault();
         clearStatus();
-        const password_input = document.getElementById('user-password').value;
-        const email_input = document.getElementById('user-email').value;
+        const password_input = document.getElementById("user-password").value;
+        const email_input = document.getElementById("user-email").value;
         const profile = {
             email: email_input,
             password: password_input,
@@ -24,22 +31,28 @@ const main = async () => {
             sessionStorage.setItem('user', user.firstname);
             sessionStorage.setItem('role', user.role);
             sessionStorage.setItem('id', user.id);
-            window.location.href = "user.html";
+//             window.location.href = "user.html";
             checkUserLogin();
+          
+            //addStatus("login gelukt");
+            showToast("Login is gelukt! Welkom!", 5000); // Show toast for 5 seconds
+            setTimeout(function() {
+                window.location.href = "index.html"; // Replace with your desired URL
+                }, 3000); // 3000 milliseconds = 3 seconds
         } else {
-            addStatus("login mislukt");
+            //addStatus("login mislukt");
+            showToast("Login is misgelukt!", 5000); // Show toast for 5 seconds
         }
-
     });
-}
+};
 
 const authenticate = async (profile) => {
     try {
         const response = await fetch(`http://127.0.0.1:8080/api/profile/authenticate`, {
-            method: 'POST',
+            method: "POST",
             headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
+                Accept: "application/json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(profile),
         });

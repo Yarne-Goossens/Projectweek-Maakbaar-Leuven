@@ -2,14 +2,20 @@ addStatusError = (status) => {
     document.getElementById("statusError").innerHTML = "<p class='error'>" + status + "</p>";
 };
 
-const clearStatus = (status) =>
-    (document.getElementById("statusError").innerHTML = "");
+const clearStatus = (status) => (document.getElementById("statusError").innerHTML = "");
+
+function showToast(message, duration = 3000) {
+    const toast = document.getElementById("toast");
+    toast.className = "toast show";
+    toast.textContent = message; // Set the text to your message
+    setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, duration);
+}
 
 const registerUser = async () => {
-    const firstname = document.getElementById('Firstname').value;
-    const lastname = document.getElementById('Lastname').value;
-    const email = document.getElementById('user-email').value;
-    const password = document.getElementById('user-password').value;
+    const firstname = document.getElementById("Firstname").value;
+    const lastname = document.getElementById("Lastname").value;
+    const email = document.getElementById("user-email").value;
+    const password = document.getElementById("user-password").value;
 
     const regex_email = new RegExp("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
     if (!regex_email.test(email)) {
@@ -48,7 +54,6 @@ const registerUser = async () => {
     const isDigitValid = digitRegex.test(password);
     const isSpecialCharacterValid = specialCharacterRegex.test(password);
 
-
     // Calculate the overall strength
     if (!isLengthValid) {
         addStatusError("Wachtwoord moet minstens 8 characters lang zijn.")
@@ -78,7 +83,7 @@ const registerUser = async () => {
         lastname,
         email,
         password,
-        role: "USER"
+        role: "USER",
     };
 
     const respons = await fetch("http://localhost:8080/api/profile/add",
@@ -92,6 +97,11 @@ const registerUser = async () => {
         });
     console.log(respons);
 
+    showToast("Registreren is gelukt!", 5000); // Show toast for 5 seconds
+    setTimeout(function() {
+        window.location.href = "index.html"; // Replace with your desired URL
+    }, 3000); // 3000 milliseconds = 3 seconds
+  
     return 1;
 };
 
