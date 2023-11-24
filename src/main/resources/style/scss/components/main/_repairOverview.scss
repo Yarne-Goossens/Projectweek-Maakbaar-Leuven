@@ -23,8 +23,32 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
+    &:hover {
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+        transform: scale(1.05);
+    }
 }
 
 p {
     margin: 0;
+}
+
+#userCard {
+    display: flex;
+    padding: 1rem;
+    margin-left: 20rem;
+    margin-right: 20rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background: rgb(188, 188, 188);
+    border-radius: 10px;
+    flex-direction: column;
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+    text-align: center;
 }
