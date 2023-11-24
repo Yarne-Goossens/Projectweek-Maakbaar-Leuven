@@ -64,4 +64,6 @@ public class ProfileRestController {
     public Profile addRepair(@PathVariable("profileId") long id, @RequestBody Repair repair) {
         return profileService.addRepair(id, repair);
     }
+
+    
 }

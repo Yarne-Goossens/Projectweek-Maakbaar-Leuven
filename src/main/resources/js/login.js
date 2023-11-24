@@ -44,7 +44,7 @@ const main = async () => {
 			checkUserLogin();
 		} else {
 			//addStatus("login mislukt");
-			showToast("Login is misgelukt!", 5000); // Show toast for 5 seconds
+			showToast("Login is mislukt!", 5000); // Show toast for 5 seconds
 		}
 	});
 };
