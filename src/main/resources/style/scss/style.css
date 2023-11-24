@@ -218,11 +218,9 @@ select, input {
 }
 
 #vraag1div {
-  width: 80%;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
 }
 
 /* Style the radio buttons and labels */
