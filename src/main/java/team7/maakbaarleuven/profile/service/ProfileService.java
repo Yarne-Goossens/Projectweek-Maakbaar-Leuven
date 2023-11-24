@@ -41,6 +41,11 @@ public class ProfileService {
         return profileRepository.findByEmail(email);
     }
 
+    public Profile getProfileByRepairId(long id) {
+        long profile_id = profileRepository.findProfileIdByRepairId(id);
+        return profileRepository.findById(profile_id);
+    }
+
     public boolean authenticate(Profile profile, String password) {
         if (profile != null) {
             return passwordEncoder.matches(password, profile.getPassword());
