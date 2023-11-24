@@ -33,7 +33,6 @@ const main = async () => {
 				window.location.href = "index.html"; // Replace with your desired URL
 			}, 3000); // 3000 milliseconds = 3 seconds
 
-			addStatus("login gelukt");
 			const user = await getUser(profile.email);
 			console.log(user);
 			sessionStorage.setItem("user", user.firstname);
@@ -43,7 +42,6 @@ const main = async () => {
 			//             window.location.href = "user.html";
 			checkUserLogin();
 		} else {
-			//addStatus("login mislukt");
 			showToast("Login is mislukt!", 5000); // Show toast for 5 seconds
 		}
 	});
