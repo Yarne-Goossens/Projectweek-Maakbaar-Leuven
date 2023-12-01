@@ -13,18 +13,6 @@ getUserRepairs = async () => {
     return result;
 }
 
-deleteRepair = async (id, email) => {
-    const response = await fetch(`http://127.0.0.1:8080/api/repairs/delete/${id}/${email}`, {
-        method: 'DELETE',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
-    });
-    const result = await response.json();
-    return result;
-}
-
 getUserFromRepair = async (id) => {
 
     const response = await fetch(`http://127.0.0.1:8080/api/profile/repair/${id}`, {
@@ -73,15 +61,16 @@ changeStatus = async (id, status) => {
     return result;
 }
 
-showClickedOnRepair = (repair) => {
+showClickedOnRepair = async (repair) => {
     const originalStatus = repair.status;
     let selectedStatus = originalStatus;
     let sendPostRequest = false;
     const repairList = document.getElementById('repairList');
     const newListItem = document.createElement('div');
-    newListItem.id = "repairItemSelected";
+    newListItem.id = "repairItem";
     const deviceType = document.createElement('p');
     deviceType.innerHTML = "Toestel: " + repair.deviceType;
+    email = await getUserFromRepair(repair.id);
 
     const status = document.createElement('p');
     status.innerHTML = "Status: "
@@ -148,13 +137,14 @@ showClickedOnRepair = (repair) => {
     location.innerHTML = "Locatie: " + repair.location;
 
     const diagnosis = document.createElement('p');
-    diagnosis.innerHTML = "Diagnose: TODO"
+    diagnosis.innerHTML = `Diagnose: + <a href="">${repair.mainChoice}</a>`;
 
     newListItem.appendChild(deviceType);
     newListItem.appendChild(diagnosis);
     newListItem.appendChild(status);
     newListItem.appendChild(dateOfRepair);
     newListItem.appendChild(location);
+    newListItem.appendChild(user);
 
     if (role !== "USER") {
         const user = document.createElement('p');
@@ -189,8 +179,8 @@ showClickedOnRepair = (repair) => {
 showAllRepairs = async () => {
     const repairList = document.getElementById('repairList');
     const role = sessionStorage.getItem('role');
-    const repairs = await getUserRepairs();
     const allRepairs = await getAllRepairs();
+    const repairs = await getUserRepairs();
     if (repairs.length > 0 && role === "USER") {
         for (const repair of repairs) {
             const link = document.createElement('a');
@@ -217,7 +207,7 @@ showAllRepairs = async () => {
                 showClickedOnRepair(repair);
             });
         }
-    } else if (allRepairs.length > 0 && role === "REPAIR") {
+    } else if (allRepairs.length > 0) {
         for (const repair of allRepairs) {
             email = await getUserFromRepair(repair.id);
             const link = document.createElement('a');
