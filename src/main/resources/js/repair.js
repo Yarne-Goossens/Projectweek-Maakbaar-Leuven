@@ -60,38 +60,51 @@ const enterAndPostDeviceInfo = async () => {
     bereid_te_betalen = input3;
     const input4 = document.getElementById("input4").value;
     age = input4;
-    const device = { deviceModelNumber: input1, purchasePrice: input2, bereidteBetalen: input3, ageInMonths: input4, diagnose: "", userId: sessionStorage.getItem("id") };
-    const response = await fetch("http://localhost:8080/api/devices/add", {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(device),
-    });
-    const result = await response.json();
-    if (response.status === 400) {
-        Object.keys(result).forEach((fieldName) => {
-            document.getElementById(`${fieldName}-error`).innerText = result[fieldName];
-        });
-        console.log("Device is not added.");
-    } else {
-        console.log("werkt wel");
-        console.log(input1, input2, input3);
-    }
+	
+    // const device = { deviceModelNumber: input1, purchasePrice: input2, bereidteBetalen: input3, ageInMonths: input4, diagnose: "", userId: sessionStorage.getItem("id") };
+    // const response = await fetch("http://localhost:8080/api/devices/add", {
+    //     method: "POST",
+    //     headers: {
+    //         Accept: "application/json",
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(device),
+    // });
+    // const result = await response.json();
+    // if (response.status === 400) {
+    //     Object.keys(result).forEach((fieldName) => {
+    //         document.getElementById(`${fieldName}-error`).innerText = result[fieldName];
+    //     });
+    //     console.log("Device is not added.");
+    // } else {
+    //     console.log("werkt wel");
+    //     console.log(input1, input2, input3);
+    // }
     const currentDate = new Date();
     const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
     const dateOfRepair = currentDate.toLocaleDateString('en-US', options);
-    const repair = {devicetype: "stofzuiger", status: "in afwachting", deviceModelNumber: device.deviceModelNumber, dateOfRepair: dateOfRepair, location: "online" }
-    const repairesponse = await fetch(`http://localhost:8080/api/profile/${sessionStorage.getItem('id')}/addRepair`, {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(repair),
-    });
-    await repairesponse.json();
+    // const repair = {devicetype: "stofzuiger", status: "in afwachting", deviceModelNumber: device.deviceModelNumber, dateOfRepair: dateOfRepair, location: "online" }
+    // const repair = {
+	// 	deviceType: "stofzuiger", 
+	// 	deviceModelNumber: input1,
+	// 	purchasePrice: input2, 
+	// 	willingToPay: input3,
+	// 	ageInMonths: input4,
+	// 	mainChoice: selectedInput,
+	// 	answersIds: result, 
+	// 	location: "Online", 
+	// 	dateOfRepair: currentDate.toLocaleDateString(),
+	// 	status: "In behandling",
+	// }
+	// const repairesponse = await fetch(`http://localhost:8080/api/profile/${sessionStorage.getItem('id')}/addRepair`, {
+    //     method: "POST",
+    //     headers: {
+    //         Accept: "application/json",
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(repair),
+    // });
+    // await repairesponse.json();
 
 };
 
@@ -362,6 +375,7 @@ const branchNavigation = (BranchDecider) => {
 };
 
 const displaySolution = (BranchDecider) => {
+	addToDb();
 	const extractVideoId = (url) => {
 		const match1 = url.match(/[?&]v=([^&]+)/);
 		const match2 = url.match('\/embed\/([a-zA-Z0-9_-]+)\?');
@@ -544,23 +558,59 @@ const getWaardeBepaling = () => {
 	return price - 0.01 * price * age;
 };
 
-currentDate = new Date()
-const repair = {
-    deviceType: "Stofzuiger" , 
-    deviceModelNumber: "a12",
-    purchasePrice: 100, 
-    willingToPay: 50,
-    ageInMonths: 12,
-    mainChoice: "De stofzuiger zorgt voor een slechte geur",
-    answersIds: [0,1,1], 
-    location: "Online", 
-    dateOfRepair: currentDate.toLocaleDateString(),
-    status: "In behandling",
-}
 
-const addToDb = async (repair) => {
+
+const getRepairValue = () => {
+    const input1 = document.getElementById("input1").value;
+    modelnummer = input1;
+    const input2 = document.getElementById("input2").value;
+    price = input2;
+    const input3 = document.getElementById("input3").value;
+    bereid_te_betalen = input3;
+    const input4 = document.getElementById("input4").value;
+    age = input4;
+
+	const repair = {
+		deviceType: "stofzuiger" , 
+		deviceModelNumber: modelnummer,
+		purchasePrice: price, 
+		willingToPay: bereid_te_betalen,
+		ageInMonths: age,
+		mainChoice: selectedInput,
+		answersIds: result.toString(), 
+		location: "Online", 
+		dateOfRepair: currentDate.toLocaleDateString(),
+		status: "In behandling",
+	
+	};
+	return repair;
+}
+currentDate = new Date()
+const addToDb = async () => {
+	// const input1 =	document.getElementById("input1").value;
+	// modelnummer = input1;
+	// const input2 = document.getElementById("input2").value;
+	// price = input2;
+	// const input3 = document.getElementById("input3").value;
+	// bereid_te_betalen = input3;
+	// const input4 = document.getElementById("input4").value;
+	// age = input4;
+
+	const repair = {
+		deviceType: "stofzuiger" , 
+		deviceModelNumber: modelnummer,
+		purchasePrice: price, 
+		willingToPay: bereid_te_betalen,
+		ageInMonths: age,
+		mainChoice: selectedInput,
+		answersIds: result, 
+		location: "Online", 
+		dateOfRepair: currentDate.toLocaleDateString(),
+		status: "In behandling",
+	
+	};
     try { 
-        const response = await fetch(`http://localhost:8080/api/repairs/add`,{
+        const response = await fetch(`http://localhost:8080/api/profile/${sessionStorage.getItem("id")}/addRepair`,{
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -573,7 +623,8 @@ const addToDb = async (repair) => {
         throw error;
     };
 };
+// const testje = getRepairValue();
+// console.log("testje");
 
-addToDb(repair);
 
 // displayMainDiv();
