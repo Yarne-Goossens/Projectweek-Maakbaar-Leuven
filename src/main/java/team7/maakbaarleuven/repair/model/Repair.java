@@ -110,6 +110,9 @@ public class Repair {
         this.profile = profile;
     }
 
+    public void removeProfile() {
+        this.profile = null;
+    }
     public float getPurchasePrice() {
         return this.purchasePrice;
     }
@@ -153,6 +156,4 @@ public class Repair {
     public void setAnswers(ArrayList<Integer> answersIds) {
         this.answersIds = answersIds;
     }
-
-    
 }

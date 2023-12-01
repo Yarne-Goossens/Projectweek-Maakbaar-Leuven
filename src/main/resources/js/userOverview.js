@@ -106,4 +106,6 @@ showAllUsers = async () => {
     
 };
 
-showAllUsers();
+if (sessionStorage.getItem("role") === "ADMIN") {
+    showAllUsers();
+}

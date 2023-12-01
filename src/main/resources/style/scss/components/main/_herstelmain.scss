@@ -65,8 +65,8 @@ select, input {
     font-weight: bold;
 }
 
-/* Styles for error text inside #nextdiv */
-#nextdiv #error {
+/* Styles for error text inside #nextdiv */ 
+#error {
     color: red;
 }
 #vraag1div #error {
@@ -144,3 +144,29 @@ select, input {
     text-align: center;
 }
 
+.vraag_container{
+    min-width: 30rem;
+    font-size: 1.3rem
+  }
+  
+  .vraag_container label, .vraag_container button, .vraag_container p{
+    font-size: 1.3rem
+  }
+  
+  .solutiondiv p{
+    font-size: 1.3rem
+  }
+  
+  #maindiv label,#maindiv button{
+    font-size: 1.3rem
+  }
+  
+  #nextdiv label,#maindiv button{
+    font-size: 1.3rem
+  }
+  
+  .vraag_button, #start{
+    margin: 1rem auto;
+    grid-column: span 2;
+    width: 15rem;
+  }
