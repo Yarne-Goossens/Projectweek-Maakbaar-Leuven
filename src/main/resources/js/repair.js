@@ -4,23 +4,25 @@ let bereid_te_betalen = 0;
 let modelnummer = "";
 
 const getRole = async (email) => {
-	const response = await fetch(`http://localhost:8080/api/profile/${email}`, {
-		method: "GET",
-		headers: {
-			Accept: "application/json",
-			"Content-Type": "application/json",
-		},
-	});
-	const result = await response.json();
-	console.log(result.role);
-};
-getRole("jules@jules.com");
+    const response = await fetch(`http://localhost:8080/api/profile/${email}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        }
+    });
+    const result = await response.json()
+    console.log(result.role)
+}
+//getRole("jules@jules.com")
+
 const generateMainDiv = () => {
 	const div = document.createElement("div");
 	div.id = "maindiv";
 	const main = document.querySelector("main");
 	main.appendChild(div);
 };
+
 const displayMainDiv = () => {
 	generateMainDiv();
 	const div = document.getElementById("maindiv");
@@ -120,67 +122,68 @@ const ofTypeString = () => {
 	}
 };
 
+const label1 = document.createElement("label");
+label1.innerHTML = "Model Nummer Apparaat: ";
+const input1 = document.createElement("input");
+
+input1.id = "input1";
+input1.required = true;
+const label2 = document.createElement("label");
+label2.innerHTML = "Aankoopprijs:";
+const input2 = document.createElement("input");
+input2.id = "input2";
+const label3 = document.createElement("label");
+label3.innerHTML = "Bereid te betalen:";
+const input3 = document.createElement("input");
+input3.id = "input3";
+const label4 = document.createElement("label");
+label4.innerHTML = "Leeftijd toestel (in maanden):";
+const input4 = document.createElement("input");
+input4.id = "input4";
+
 const enterModel = () => {
-	const div = document.getElementById("nextdiv");
-	const label1 = document.createElement("label");
-	label1.innerHTML = "Model Nummer Apparaat: ";
-	const input1 = document.createElement("input");
+    const div = document.getElementById("nextdiv");
+    
+    div.appendChild(label1);
+    div.appendChild(input1);
+    div.appendChild(label2);
+    div.appendChild(input2);
+    div.appendChild(label3);
+    div.appendChild(input3);
+    div.appendChild(label4);
+    div.appendChild(input4);
+    const button = document.createElement("button");
+    button.innerHTML = "Start";
+    button.id = "start";
+    div.appendChild(button);
+    const startbutton = document.getElementById("start");
+    const p = document.createElement("p");
+    startbutton.addEventListener("click", () => {
+        if (isEmpty()) {
+            p.innerHTML = "Vul alle velden in";
 
-	input1.id = "input1";
-	input1.required = true;
-	const label2 = document.createElement("label");
-	label2.innerHTML = "Aankoopprijs:";
-	const input2 = document.createElement("input");
-	input2.id = "input2";
-	const label3 = document.createElement("label");
-	label3.innerHTML = "Bereid te betalen:";
-	const input3 = document.createElement("input");
-	input3.id = "input3";
-	const label4 = document.createElement("label");
-	label4.innerHTML = "Leeftijd toestel (in maanden):";
-	const input4 = document.createElement("input");
-	input4.id = "input4";
-	div.appendChild(label1);
-	div.appendChild(input1);
-	div.appendChild(label2);
-	div.appendChild(input2);
-	div.appendChild(label3);
-	div.appendChild(input3);
-	div.appendChild(label4);
-	div.appendChild(input4);
-	const button = document.createElement("button");
-	button.innerHTML = "Start";
-	button.id = "start";
-	div.appendChild(button);
-	const startbutton = document.getElementById("start");
-	const p = document.createElement("p");
-	startbutton.addEventListener("click", () => {
-		if (isEmpty()) {
-			p.innerHTML = "Vul alle velden in";
+            p.id = "error";
+            div.appendChild(p);
+        } else if (ofTypeInt() == false) {
+            const p = document.createElement("p");
+            p.innerHTML = "Vul een getal in bij aankoopprijs, bouwjaar en leeftijd toestel";
 
-			p.id = "error";
-			div.appendChild(p);
-		} else if (ofTypeInt() == false) {
-			const p = document.createElement("p");
-			p.innerHTML = "Vul een getal in bij aankoopprijs, bouwjaar en leeftijd toestel";
+            p.id = "error";
+            div.appendChild(p);
+        } else if (ofTypeString() == false) {
+            const p = document.createElement("p");
+            p.innerHTML = "Vul een tekst in bij model nummer";
 
-			p.id = "error";
-			div.appendChild(p);
-		} else if (ofTypeString() == false) {
-			const p = document.createElement("p");
-			p.innerHTML = "Vul een tekst in bij model nummer";
-
-			p.id = "error";
-			div.appendChild(p);
-		} else {
-			enterAndPostDeviceInfo();
-			getRepairs();
-			clearDiv("nextdiv");
-			div.setAttribute("id", "vraag1div");
-			div.setAttribute("class", "vraag_container");
-			displayBranchQuestion();
-		}
-	});
+            p.id = "error";
+            div.appendChild(p);
+        } else {
+            enterAndPostDeviceInfo();
+            getRepairs();
+            clearDiv("nextdiv");
+            div.setAttribute("id", "vraag1div");
+            displayBranchQuestion();
+        }
+    });
 };
 
 const createDropDown = () => {
@@ -505,5 +508,37 @@ const displaySolution = (BranchDecider) => {
 const getWaardeBepaling = () => {
 	return price - 0.01 * price * age;
 };
+
+currentDate = new Date()
+const repair = {
+    // deviceType:  , 
+    deviceModelNumber: input1,
+    purchasePrice: input2, 
+    willingToPay: input3,
+    ageInMonths: input4,
+    mainChoice: selectedInput,
+    answersIds: result.toString(), 
+    // location: , 
+    dateOfRepair: currentDate.toLocaleDateString(),
+    // status: ,
+}
+
+const addToDb = async (repair) => {
+    try {
+        const response = await fetch(`http://127.0.0.1:8080/api/repairs/add`,{
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+        },
+            body: JSON.stringify(repair),
+    });
+    } catch (error) {
+        console.log("Error occurred while adding repair to database");
+        throw error;
+    };
+};
+
+addToDb(repair);
 
 // displayMainDiv();
