@@ -5,13 +5,11 @@ header {
   background-color: rgb(47, 57, 64);
   position: relative;
 }
-
 header h1 {
   display: flex;
   justify-content: center;
   color: rgb(255, 255, 255);
 }
-
 header #login,
 header #logout {
   display: inline-block;
@@ -30,13 +28,11 @@ header #logout {
   top: 1.76rem;
   right: 2rem;
 }
-
 header #login:hover,
 header #logout:hover {
   cursor: pointer;
   transform: scale(1.05);
 }
-
 header #login:active,
 header #login button:focus,
 header #logout:active,
@@ -45,7 +41,6 @@ header #logout button:focus {
   /* Remove the focus outline */
   transform: scale(0.95);
 }
-
 header nav ul {
   list-style-type: none;
   padding: 20px;
@@ -54,18 +49,15 @@ header nav ul {
   max-width: 1000px;
   margin: auto;
 }
-
 header nav ul a {
   display: block;
   font-size: 1.8rem;
   transition: all 0.3s ease 0s;
   color: rgb(255, 255, 255);
 }
-
 header nav ul a:hover {
   transform: scale(1.05);
 }
-
 header nav ul .current {
   color: rgb(242, 185, 80);
 }
@@ -75,11 +67,9 @@ html {
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-
 html p {
   font-size: 1.2rem;
 }
-
 html a {
   text-decoration: none;
 }
@@ -89,15 +79,13 @@ main .over_ons {
   flex-direction: column;
   align-items: center;
 }
-
 main button {
   display: inline-block;
   padding: 10px 20px;
   background-color: rgb(242, 185, 80);
   color: rgb(0, 0, 0);
   border: none;
-  border-radius: 20px;
-  /* Rounded edges */
+  border-radius: 20px; /* Rounded edges */
   font-size: 16px;
   text-align: center;
   text-decoration: none;
@@ -105,25 +93,19 @@ main button {
   margin: 1rem;
   cursor: pointer;
 }
-
 main button:hover {
   cursor: pointer;
   transform: scale(1.05);
 }
-
-main button:active,
-main button button:focus {
-  outline: none;
-  /* Remove the focus outline */
+main button:active, main button button:focus {
+  outline: none; /* Remove the focus outline */
   transform: scale(0.95);
 }
-
 main #button_FAQ {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 main #button_FAQ a {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -131,7 +113,6 @@ main #button_FAQ a {
   color: rgb(0, 0, 0);
   text-decoration: underline;
 }
-
 main #button_FAQ a:hover {
   transition: all 0.3s ease 0s;
   transform: scale(1.05);
@@ -156,18 +137,19 @@ body {
   margin-bottom: 2rem;
 }
 
+h1 {
+  margin: 0 auto;
+}
+
 /* Use the original naming conventions */
-#vraag1div,
-#treediv,
-#maindiv,
-#nextdiv {
+#vraag1div, #treediv, #maindiv, #nextdiv {
   display: flex;
   flex-direction: column;
 }
 
 #vraag1div {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
 }
 
@@ -198,10 +180,8 @@ body {
 }
 
 /* Common styles for select and input elements */
-select,
-input {
-  width: 50%;
-  /* Adjust the width as needed */
+select, input {
+  width: 50%; /* Adjust the width as needed */
   padding: 5px;
   margin: 5px 0;
 }
@@ -242,9 +222,11 @@ input {
 }
 
 #vraag1div {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 /* Style the radio buttons and labels */
@@ -273,10 +255,9 @@ input {
   background: whitesmoke;
   border-radius: 10px;
   flex-direction: column;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
   -moz-user-select: none;
+       user-select: none; /* Standard syntax */
 }
 
 .deactivate * {
@@ -316,8 +297,7 @@ div {
   flex-direction: column;
 }
 
-#emailButton,
-#formButton {
+#emailButton, #formButton {
   background-color: rgb(242, 185, 80);
   color: black;
   margin: 5px;
@@ -361,14 +341,12 @@ footer {
   margin: 0;
   background-color: rgb(47, 57, 64);
 }
-
 footer h3 {
   text-transform: capitalize;
   line-height: 3rem;
   font-size: 1.8rem;
   margin: auto;
 }
-
 footer div {
   align-self: center;
   display: flex;
@@ -379,31 +357,26 @@ footer div {
   gap: 1rem;
   flex-direction: column;
 }
-
 footer ul {
   list-style: none;
   padding-left: 0;
   display: flex;
   flex-direction: column;
 }
-
 footer .socials {
   flex-direction: row;
   gap: 1rem;
   font-size: 3.5rem;
   vertical-align: auto;
 }
-
 footer .socials :hover {
   transition: all 0.3s ease 0s;
   color: rgb(242, 185, 80);
   transform: scale(1.05);
 }
-
 footer .socials li a {
   color: white;
 }
-
 footer p {
   text-transform: capitalize;
   max-width: none;
@@ -413,7 +386,6 @@ footer p {
   word-spacing: 0.07rem;
   margin-bottom: 0;
 }
-
 footer span {
   text-transform: uppercase;
   font-weight: 200;
@@ -429,10 +401,12 @@ footer span {
   background: whitesmoke;
   border-radius: 10px;
   flex-direction: column;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
+  -webkit-user-select: none;
+  /* Safari */
+  /* IE 10 and IE 11 */
   -moz-user-select: none;
+       user-select: none;
+  /* Standard syntax */
 }
 
 .vraag {
@@ -664,37 +638,6 @@ label {
   padding: 0.5rem;
 }
 
-.bodyRepair {
-  font-family: "Arial", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
-
-#repairList {
-  font-family: "Arial", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  justify-content: center;
-}
-
-#repairItem {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: center;
-}
-
-p {
-  margin: 0;
-}
-
 .toast {
   visibility: hidden;
   min-width: 250px;
@@ -709,7 +652,6 @@ p {
   bottom: 30px;
   transform: translateX(-50%);
 }
-
 .toast.show {
   visibility: visible;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
@@ -720,25 +662,21 @@ p {
     bottom: 0;
     opacity: 0;
   }
-
   to {
     bottom: 30px;
     opacity: 1;
   }
 }
-
 @keyframes fadeout {
   from {
     bottom: 30px;
     opacity: 1;
   }
-
   to {
     bottom: 0;
     opacity: 0;
   }
 }
-
 .bodyRepair {
   font-family: "Arial", sans-serif;
   margin: 0;
@@ -765,7 +703,6 @@ p {
   padding: 20px;
   text-align: center;
 }
-
 #repairItem:hover {
   cursor: pointer;
   transition: all 0.3s ease 0s;
@@ -788,9 +725,9 @@ p {
   flex-direction: column;
   -webkit-user-select: none;
   /* Safari */
-  -ms-user-select: none;
   /* IE 10 and IE 11 */
-  user-select: none;
+  -moz-user-select: none;
+       user-select: none;
   /* Standard syntax */
   text-align: center;
 }
