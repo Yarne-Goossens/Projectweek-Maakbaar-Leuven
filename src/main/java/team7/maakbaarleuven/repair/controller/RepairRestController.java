@@ -40,10 +40,10 @@ public class RepairRestController {
     // return repairService.addRepair(repair);
     // }
 
-    @PostMapping("/add")
-    public Repair add(@RequestBody Repair repair) {
-        return repairService.addRepair(repair);
-    };
+    // @PostMapping("/add")
+    // public Repair add(@RequestBody Repair repair) {
+    //     return repairService.addRepair(repair);
+    // };
 
     @DeleteMapping("/delete/{repairId}/{email}")
     public Repair deleteRepair(@PathVariable("repairId") long id, @PathVariable("email") String email) {
