@@ -126,17 +126,14 @@ showClickedOnRepair = (repair) => {
     newListItem.appendChild(dateOfRepair);
     newListItem.appendChild(location);
     newListItem.appendChild(user);
-    
 
-    const role = sessionStorage.getItem('role');
-    if (role === "REPAIR") {
-        const deleteIcon = document.createElement('a');
-        deleteIcon.innerHTML = `<i class="fa fa-trash"></i>`;
-        deleteIcon.addEventListener("click", () => {
-            deleteRepair(repair.id, email);
-        })
-        newListItem.appendChild(deleteIcon);
-    }
+
+    const deleteIcon = document.createElement('a');
+    deleteIcon.innerHTML = `<i class="fa fa-trash"></i>`;
+    deleteIcon.addEventListener("click", () => {
+        deleteRepair(repair.id, email);
+    })
+    newListItem.appendChild(deleteIcon);
 
     repairList.appendChild(newListItem);
 
@@ -158,7 +155,7 @@ showClickedOnRepair = (repair) => {
 showAllRepairs = async () => {
     const repairList = document.getElementById('repairList');
     const role = sessionStorage.getItem('role');
-    const repairs = await getUserRepairs();  
+    const repairs = await getUserRepairs();
     const allRepairs = await getAllRepairs();
     if (repairs.length > 0 && role === "USER") {
         for (const repair of repairs) {
@@ -251,7 +248,7 @@ const displayUserInfo = async () => {
     `;
 
     card.innerHTML = cardContent;
-    
+
 
     userdiv.appendChild(card);
 }
