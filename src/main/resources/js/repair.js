@@ -29,12 +29,14 @@ const getRole = async (email) => {
     console.log(result.role)
 }
 getRole("jules@jules.com")
+
 const generateMainDiv = () => {
     const div = document.createElement("div");
     div.id = "maindiv";
     const main = document.querySelector("main");
     main.appendChild(div);
 };
+
 const displayMainDiv = () => {
     generateMainDiv();
     const div = document.getElementById("maindiv");
@@ -148,26 +150,28 @@ const ofTypeString = () => {
     }
 };
 
+const label1 = document.createElement("label");
+label1.innerHTML = "Model Nummer Apparaat: ";
+const input1 = document.createElement("input");
+
+input1.id = "input1";
+input1.required = true;
+const label2 = document.createElement("label");
+label2.innerHTML = "Aankoopprijs:";
+const input2 = document.createElement("input");
+input2.id = "input2";
+const label3 = document.createElement("label");
+label3.innerHTML = "Bereid te betalen:";
+const input3 = document.createElement("input");
+input3.id = "input3";
+const label4 = document.createElement("label");
+label4.innerHTML = "Leeftijd toestel (in maanden):";
+const input4 = document.createElement("input");
+input4.id = "input4";
+
 const enterModel = () => {
     const div = document.getElementById("nextdiv");
-    const label1 = document.createElement("label");
-    label1.innerHTML = "Model Nummer Apparaat: ";
-    const input1 = document.createElement("input");
-
-    input1.id = "input1";
-    input1.required = true;
-    const label2 = document.createElement("label");
-    label2.innerHTML = "Aankoopprijs:";
-    const input2 = document.createElement("input");
-    input2.id = "input2";
-    const label3 = document.createElement("label");
-    label3.innerHTML = "Bereid te betalen:";
-    const input3 = document.createElement("input");
-    input3.id = "input3";
-    const label4 = document.createElement("label");
-    label4.innerHTML = "Leeftijd toestel (in maanden):";
-    const input4 = document.createElement("input");
-    input4.id = "input4";
+    
     div.appendChild(label1);
     div.appendChild(input1);
     div.appendChild(label2);
@@ -264,6 +268,7 @@ const displayBranchQuestion = () => {
             selectedInput = clickedInput.id;
             console.log(`Clicked input ID : ${clickedInputId}`);
         });
+        // return clickedInputId;x
     });
     const vraag1button = document.createElement("button");
     vraag1button.innerHTML = "Volgende";
@@ -337,7 +342,7 @@ const branchNavigation = (BranchDecider) => {
         } else {
             index++;
             if (matrix[BranchDecider].length === index) {
-                //POST result
+
                 clearDiv("treediv");
                 result.push(clickedInputId);
                 console.log(result);
@@ -353,7 +358,6 @@ const branchNavigation = (BranchDecider) => {
 };
 
 const displaySolution = (BranchDecider) => {
-
     const extractVideoId = (url) => {
         const match1 = url.match(/[?&]v=([^&]+)/);
         const match2 = url.match('\/embed\/([a-zA-Z0-9_-]+)\?');
@@ -523,5 +527,37 @@ const displaySolution = (BranchDecider) => {
 const getWaardeBepaling = () => {
     return price - 0.01 * price * age;
 };
+
+currentDate = new Date()
+const repair = {
+    // deviceType:  , 
+    deviceModelNumber: input1,
+    purchasePrice: input2, 
+    willingToPay: input3,
+    ageInMonths: input4,
+    mainChoice: selectedInput,
+    answersIds: result.toString(), 
+    // location: , 
+    dateOfRepair: currentDate.toLocaleDateString(),
+    // status: ,
+}
+
+const addToDb = async (repair) => {
+    try {
+        const response = await fetch(`http://127.0.0.1:8080/api/repairs/add`,{
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+        },
+            body: JSON.stringify(repair),
+    });
+    } catch (error) {
+        console.log("Error occurred while adding repair to database");
+        throw error;
+    };
+};
+
+addToDb(repair);
 
 // displayMainDiv();
