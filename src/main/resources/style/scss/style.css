@@ -205,7 +205,7 @@ select, input {
 }
 
 /* Styles for error text inside #nextdiv */
-#nextdiv #error {
+#error {
   color: red;
 }
 
