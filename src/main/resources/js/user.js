@@ -1,6 +1,5 @@
 checkUserLogin = () => {
 	if (sessionStorage.getItem("user")) {
-		console.log("hier2");
 		const loginButton = document.getElementById("login");
 		if (loginButton) {
 			loginButton.innerHTML = "Logout";
@@ -36,6 +35,19 @@ checkUserLogin = () => {
 			var newLink = document.createElement("a");
 			newLink.href = "admin.html";
 			newLink.textContent = "Admin";
+
+			newListItem.appendChild(newLink);
+			navigationList.appendChild(newListItem);
+		}
+	}
+
+	if (sessionStorage.getItem("role") === "REPAIR") {
+		var navigationList = document.getElementById("navigation_list");
+		if (navigationList) {
+			var newListItem = document.createElement("li");
+			var newLink = document.createElement("a");
+			newLink.href = "user.html";
+			newLink.textContent = "Herstellingen";
 
 			newListItem.appendChild(newLink);
 			navigationList.appendChild(newListItem);
