@@ -83,28 +83,7 @@ const enterAndPostDeviceInfo = async () => {
     const currentDate = new Date();
     const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
     const dateOfRepair = currentDate.toLocaleDateString('en-US', options);
-    // const repair = {devicetype: "stofzuiger", status: "in afwachting", deviceModelNumber: device.deviceModelNumber, dateOfRepair: dateOfRepair, location: "online" }
-    // const repair = {
-	// 	deviceType: "stofzuiger", 
-	// 	deviceModelNumber: input1,
-	// 	purchasePrice: input2, 
-	// 	willingToPay: input3,
-	// 	ageInMonths: input4,
-	// 	mainChoice: selectedInput,
-	// 	answersIds: result, 
-	// 	location: "Online", 
-	// 	dateOfRepair: currentDate.toLocaleDateString(),
-	// 	status: "In behandling",
-	// }
-	// const repairesponse = await fetch(`http://localhost:8080/api/profile/${sessionStorage.getItem('id')}/addRepair`, {
-    //     method: "POST",
-    //     headers: {
-    //         Accept: "application/json",
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(repair),
-    // });
-    // await repairesponse.json();
+   
 
 };
 
@@ -587,14 +566,6 @@ const getRepairValue = () => {
 }
 currentDate = new Date()
 const addToDb = async () => {
-	// const input1 =	document.getElementById("input1").value;
-	// modelnummer = input1;
-	// const input2 = document.getElementById("input2").value;
-	// price = input2;
-	// const input3 = document.getElementById("input3").value;
-	// bereid_te_betalen = input3;
-	// const input4 = document.getElementById("input4").value;
-	// age = input4;
 
 	const repair = {
 		deviceType: "stofzuiger" , 
