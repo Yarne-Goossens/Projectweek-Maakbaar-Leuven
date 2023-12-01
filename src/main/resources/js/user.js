@@ -51,15 +51,21 @@ checkUserLogin = () => {
 
 			newListItem.appendChild(newLink);
 			navigationList.appendChild(newListItem);
-			const divCalenderOverview = document.createElement("div");
-			divCalenderOverview.innerHTML = createCalenderOverview();
-			document.querySelector('main').appendChild(divCalenderOverview);
+			
+			document.querySelector('main').appendChild(createCalenderOverview());
 		}
 	}
 };
 
 const createCalenderOverview = () => {
-	return `<iframe class='leafletMap' height="450" src="https://outlook.office.com/calendar/view/month" title="Calender" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+	const p = document.createElement('p');
+	p.innerHTML = "Bekijk je "
+	const a = document.createElement('a')
+	a.href = "https://outlook.office.com/calendar/view/month"
+	a.target = "_blank"
+	a.innerHTML = "Agenda"
+	p.appendChild(a)
+	return p
 }
 
 window.addEventListener("load", checkUserLogin);
