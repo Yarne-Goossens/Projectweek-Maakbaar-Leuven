@@ -177,6 +177,7 @@ const enterModel = () => {
 			getRepairs();
 			clearDiv("nextdiv");
 			div.setAttribute("id", "vraag1div");
+			div.setAttribute("class", "vraag_container");
 			displayBranchQuestion();
 		}
 	});
@@ -205,6 +206,7 @@ const createNextButton = () => {
 	const button = document.createElement("button");
 	button.innerHTML = "Volgende";
 	button.id = "next";
+	button.class = "vraag_button";
 
 	const div = document.getElementById("maindiv");
 	div.appendChild(button);
@@ -238,6 +240,7 @@ const displayBranchQuestion = () => {
 	const vraag1button = document.createElement("button");
 	vraag1button.innerHTML = "Volgende";
 	vraag1button.id = "vraag1button";
+	vraag1button.className = "vraag_button";
 	div.appendChild(vraag1button);
 	const p = document.createElement("p");
 	vraag1button.addEventListener("click", () => {
@@ -248,6 +251,7 @@ const displayBranchQuestion = () => {
 		} else {
 			clearDiv("vraag1div");
 			div.setAttribute("id", "treediv");
+			div.setAttribute("class", "vraag_container");
 			const BranchDecider = clickedInputId;
 
 			branchNavigation(BranchDecider);
@@ -297,6 +301,7 @@ const branchNavigation = (BranchDecider) => {
 	const treeButton = document.createElement("button");
 	treeButton.innerHTML = "Volgende";
 	treeButton.id = "treebutton";
+	treeButton.className = "vraag_button";
 	div.appendChild(treeButton);
 	const p2 = document.createElement("p");
 	treeButton.addEventListener("click", () => {
@@ -390,8 +395,10 @@ const displaySolution = (BranchDecider) => {
 
 	h2DoeHetZelf.innerHTML = "Doe Het Zelf";
 	vitoTitle.innerHTML = "Vito tool";
-	pCost.innerHTML = `De waarde van het apparaat op dit moment: €${getWaardeBepaling()}`;
-	pr30.innerHTML = `Uit onderzoek blijkt dat mensen bereid zijn om 30% van de aankoopprijs te betalen voor een reparatie: ${
+	vitop = document.createElement("p");
+	vitop.innerHTML = "Deze VITO tool geeft een ecologische en economische vergelijking tussen een apparaat repareren en een nieuwe kopen";
+	pCost.innerHTML = `De waarde van het apparaat op dit moment: € ${getWaardeBepaling()}`;
+	pr30.innerHTML = `Uit onderzoek blijkt dat mensen bereid zijn om 30% van de aankoopprijs te betalen voor een reparatie: € ${
 		getWaardeBepaling() * 0.3
 	}`;
 	pr50.innerHTML = `of 50% van de nieuw koopprijs te betalen voor een reparatie: to be done`;
@@ -431,16 +438,18 @@ const displaySolution = (BranchDecider) => {
 	articlePrijs.appendChild(pr30);
 	articlePrijs.appendChild(pr50);
 	articleVito.appendChild(vitoTitle);
+	articleVito.appendChild(vitop);
 	articleVito.appendChild(vitoLinkDiv);
 	articleLocaties.appendChild(mapRepairCafés);
 
+	//Volgorde solution divs
 	div.appendChild(articleProblem);
+	div.appendChild(articleVito);
 	div.appendChild(articleDoehetZelf);
 	div.appendChild(articlePrijs);
 	div.appendChild(articleVideo);
 	div.appendChild(articleLocaties);
 	div.appendChild(articleEndOfLife);
-	div.appendChild(articleVito);
 
 	//Loop to get correct solutions
 	let solution = [];
@@ -472,7 +481,6 @@ const displaySolution = (BranchDecider) => {
 	[articleDoehetZelf, articlePrijs, articleProblem, articleVideo, articleVito, articleLocaties, articleEndOfLife].forEach((element) => {
 		element.setAttribute("id", "kader");
 	});
-
 
 	//const mapDiv = document.createElement('div');
 	//mapDiv.id = 'map';
