@@ -464,7 +464,7 @@ const displaySolution = (BranchDecider) => {
 		solution.forEach((element) => {
 			const p = document.createElement("p");
 			p.innerHTML = element;
-			div.appendChild(p);
+			articleDoehetZelf.appendChild(p);
 		});
 	}
 
