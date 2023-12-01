@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import team7.maakbaarleuven.profile.model.Profile;
 import team7.maakbaarleuven.profile.service.ProfileService;
 import team7.maakbaarleuven.repair.model.Repair;
@@ -32,6 +31,11 @@ public class ProfileRestController {
     @GetMapping("/{email}")
     public Profile getProfileByEmail(@PathVariable("email") String email) {
         return profileService.getProfileByEmail(email);
+    }
+
+    @GetMapping("/repair/{repairId}")
+    public Profile getProfileByRepairId(@PathVariable("repairId") long id) {
+        return profileService.getProfileByRepairId(id);
     }
 
     @PostMapping("/add")
@@ -64,4 +68,5 @@ public class ProfileRestController {
     public Profile addRepair(@PathVariable("profileId") long id, @RequestBody Repair repair) {
         return profileService.addRepair(id, repair);
     }
+
 }

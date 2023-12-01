@@ -1,7 +1,39 @@
+let email = "email@undefined";
 getUserRepairs = async () => {
     const id = sessionStorage.getItem('id');
 
     const response = await fetch(`http://127.0.0.1:8080/api/repairs/overview/${id}`, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
+    const result = await response.json();
+    return result;
+}
+
+getUserFromRepair = async (id) => {
+
+    const response = await fetch(`http://127.0.0.1:8080/api/profile/repair/${id}`, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
+    const result = await response.json();
+    for (let key in result) {
+        if (result.hasOwnProperty(key)) {
+            if (key === "email") {
+                return result[key];
+            }
+        }
+    }
+}
+
+getAllRepairs = async () => {
+    const response = await fetch(`http://127.0.0.1:8080/api/repairs/overview`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
@@ -38,7 +70,7 @@ showClickedOnRepair = (repair) => {
     newListItem.id = "repairItem";
     const deviceType = document.createElement('p');
     deviceType.innerHTML = "Toestel: " + repair.deviceType;
-    
+
     const status = document.createElement('p');
     status.innerHTML = "Status: "
 
@@ -56,7 +88,6 @@ showClickedOnRepair = (repair) => {
 
     statusSelect.addEventListener("change", (event) => {
         selectedStatus = event.target.value;
-        console.log(selectedStatus);
         if (selectedStatus === originalStatus) {
             sendPostRequest = false;
         } else {
@@ -70,15 +101,19 @@ showClickedOnRepair = (repair) => {
     dateOfRepair.innerHTML = "Datum: " + repair.dateOfRepair;
     const location = document.createElement('p');
     location.innerHTML = "Locatie: " + repair.location;
-    
+
     const diagnosis = document.createElement('p');
     diagnosis.innerHTML = "Diagnose: TODO"
-    
+
+    const user = document.createElement('p');
+    location.innerHTML = "Gebruiker: " + email;
+
     newListItem.appendChild(deviceType);
     newListItem.appendChild(diagnosis);
     newListItem.appendChild(status);
     newListItem.appendChild(dateOfRepair);
     newListItem.appendChild(location);
+    newListItem.appendChild(user);
     repairList.appendChild(newListItem);
 
     const terugButton = document.createElement('button');
@@ -88,18 +123,19 @@ showClickedOnRepair = (repair) => {
     bodyRepair.appendChild(terugButton);
 
     terugButton.addEventListener("click", async () => {
-    if (sendPostRequest) {
-        await changeStatus(repair.id, selectedStatus);
-    }
-    clearRepairOverview();
-    showAllRepairs();
-})
+        if (sendPostRequest) {
+            await changeStatus(repair.id, selectedStatus);
+        }
+        clearRepairOverview();
+        showAllRepairs();
+    })
 };
 
 showAllRepairs = async () => {
-    const repairs = await getUserRepairs();
     const repairList = document.getElementById('repairList');
-    if (repairList) {
+    const role = sessionStorage.getItem('role');
+    const repairs = await getUserRepairs();
+    if (repairs.length > 0 && role === "USER") {
         for (const repair of repairs) {
             const link = document.createElement('a');
             const newListItem = document.createElement('div');
@@ -119,13 +155,83 @@ showAllRepairs = async () => {
             newListItem.appendChild(location);
             link.appendChild(newListItem);
             repairList.appendChild(link);
-            
+
             link.addEventListener("click", () => {
                 clearRepairOverview();
                 showClickedOnRepair(repair);
             });
         }
+    } else if (repairs.length > 0 && role === "REPAIR") {
+        const allRepairs = await getAllRepairs();
+        for (const repair of allRepairs) {
+            email = await getUserFromRepair(repair.id);
+            const link = document.createElement('a');
+            const newListItem = document.createElement('div');
+            newListItem.id = "repairItem";
+            const deviceType = document.createElement('p');
+            deviceType.innerHTML = "Toestel: " + repair.deviceType;
+            const status = document.createElement('p');
+            status.innerHTML = "Status: " + repair.status;
+            const dateOfRepair = document.createElement('p');
+            dateOfRepair.innerHTML = "Datum: " + repair.dateOfRepair;
+            const location = document.createElement('p');
+            location.innerHTML = "Locatie: " + repair.location;
+            const user = document.createElement('p');
+            location.innerHTML = "Gebruiker: " + email;
+
+            newListItem.appendChild(deviceType);
+            newListItem.appendChild(status);
+            newListItem.appendChild(dateOfRepair);
+            newListItem.appendChild(location);
+            newListItem.appendChild(user);
+            link.appendChild(newListItem);
+            repairList.appendChild(link);
+
+
+            link.addEventListener("click", () => {
+                clearRepairOverview();
+                showClickedOnRepair(repair);
+            });
+        }
+    } else {
+        const noRepariParagraph = document.createElement('p');
+        noRepariParagraph.innerHTML = "Er zijn nog geen reparaties";
+        repairList.appendChild(noRepariParagraph);
     }
 };
+
+const getUser = async (email) => {
+    const response = await fetch(`http://localhost:8080/api/profile/${email}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+};
+
+
+const displayUserInfo = async () => {
+    const user = await getUser(sessionStorage.getItem('email'));
+    const userdiv = document.getElementById('userInfo');
+
+    const card = document.createElement('article');
+    card.id = 'userCard';
+
+    const cardContent = `
+        <h2>${user.firstname} ${user.lastname}</h2>
+        <p>${user.email}</p>
+    `;
+
+    card.innerHTML = cardContent;
+    
+
+    userdiv.appendChild(card);
+}
+
+displayUserInfo();
 
 showAllRepairs();
