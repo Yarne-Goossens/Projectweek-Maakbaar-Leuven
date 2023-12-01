@@ -77,3 +77,16 @@ body {
 h1 {
     margin: 0 auto;
 }
+
+.text_index {
+    margin-bottom: 1rem;
+}
+
+#easter_egg:visited{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+#easter_egg {
+    cursor: text;
+}

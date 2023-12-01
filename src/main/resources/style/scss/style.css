@@ -141,6 +141,19 @@ h1 {
   margin: 0 auto;
 }
 
+.text_index {
+  margin-bottom: 1rem;
+}
+
+#easter_egg:visited {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+#easter_egg {
+  cursor: text;
+}
+
 /* Use the original naming conventions */
 #vraag1div, #treediv, #maindiv, #nextdiv {
   display: flex;
@@ -163,7 +176,7 @@ h1 {
 
 #treediv {
   display: grid;
-  grid-template-columns: 9fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
 }
 
@@ -224,6 +237,8 @@ select, input {
 #vraag1div {
   margin: 0 auto;
   padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 /* Style the radio buttons and labels */
@@ -280,6 +295,33 @@ select, input {
   text-align: center;
 }
 
+.vraag_container {
+  min-width: 30rem;
+  font-size: 1.3rem;
+}
+
+.vraag_container label, .vraag_container button, .vraag_container p {
+  font-size: 1.3rem;
+}
+
+.solutiondiv p {
+  font-size: 1.3rem;
+}
+
+#maindiv label, #maindiv button {
+  font-size: 1.3rem;
+}
+
+#nextdiv label, #maindiv button {
+  font-size: 1.3rem;
+}
+
+.vraag_button, #start {
+  margin: 1rem auto;
+  grid-column: span 2;
+  width: 15rem;
+}
+
 /* Center everything within the main element */
 main {
   display: flex;
@@ -332,7 +374,7 @@ footer {
   position: sticky;
   top: 100%;
   display: grid;
-  grid-template-columns: 65% 0%;
+  grid-template-columns: 45% 10% 45%;
   width: 100%;
   height: auto;
   margin: 0;
@@ -386,6 +428,17 @@ footer p {
 footer span {
   text-transform: uppercase;
   font-weight: 200;
+}
+footer #faq {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  margin: 0 auto;
+}
+footer #faq:hover {
+  transition: all 0.3s ease 0s;
+  color: rgb(242, 185, 80);
+  transform: scale(1.05);
 }
 
 .kader {
@@ -556,6 +609,7 @@ label {
   background-repeat: no-repeat;
   border-radius: 8px;
   box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: -moz-fit-content;
   height: fit-content;
   margin: 6rem auto 8.1rem auto;
   width: 329px;
@@ -778,30 +832,3 @@ table tr:hover {
   margin: 2px 2px;
   cursor: hand;
 }/*# sourceMappingURL=style.css.map */
-
-.vraag_container{
-  min-width: 30rem;
-  font-size: 1.3rem
-}
-
-.vraag_container label, .vraag_container button, .vraag_container p{
-  font-size: 1.3rem
-}
-
-.solutiondiv p{
-  font-size: 1.3rem
-}
-
-#maindiv label,#maindiv button{
-  font-size: 1.3rem
-}
-
-#nextdiv label,#maindiv button{
-  font-size: 1.3rem
-}
-
-.vraag_button, #start{
-  margin: 1rem auto;
-  grid-column: span 2;
-  width: 15rem;
-}

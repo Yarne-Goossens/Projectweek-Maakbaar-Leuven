@@ -517,6 +517,14 @@ const displaySolution = (BranchDecider) => {
 	articleVito.appendChild(vitoLinkDiv);
 	articleLocaties.appendChild(mapRepairCafés);
 
+	const LabelOf = document.createElement("label");
+    LabelOf.innerText = "Of maak meteen een afspraak";
+    LabelOf.style.textAlign = "center";
+    const buttonAfspraak = createButton("Maak een afspraak", "sendButton");
+    buttonAfspraak.addEventListener("click", function () {
+        window.location.href = "booking.html";
+    });
+
 	//Volgorde solution divs
 	div.appendChild(articleProblem);
 	div.appendChild(articleVito);
@@ -525,6 +533,8 @@ const displaySolution = (BranchDecider) => {
 	div.appendChild(articleVideo);
 	div.appendChild(articleLocaties);
 	div.appendChild(articleEndOfLife);
+	div.appendChild(LabelOf);
+	div.appendChild(buttonAfspraak);
 
 	//Loop to get correct solutions
 	let solution = [];
