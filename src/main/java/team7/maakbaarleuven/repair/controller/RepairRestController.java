@@ -39,10 +39,10 @@ public class RepairRestController {
     // return repairService.addRepair(repair);
     // }
 
-    @PostMapping("/add")
-    public Repair add(@RequestBody Repair repair) {
-        return repairService.addRepair(repair);
-    };
+    // @PostMapping("/add")
+    // public Repair add(@RequestBody Repair repair) {
+    //     return repairService.addRepair(repair);
+    // };
 
     
 
