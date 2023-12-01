@@ -51,8 +51,15 @@ checkUserLogin = () => {
 
 			newListItem.appendChild(newLink);
 			navigationList.appendChild(newListItem);
+			const divCalenderOverview = document.createElement("div");
+			divCalenderOverview.innerHTML = createCalenderOverview();
+			document.querySelector('main').appendChild(divCalenderOverview);
 		}
 	}
 };
+
+const createCalenderOverview = () => {
+	return `<iframe class='leafletMap' height="450" src="https://outlook.office.com/calendar/view/month" title="Calender" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+}
 
 window.addEventListener("load", checkUserLogin);
