@@ -209,6 +209,7 @@ const createNextButton = () => {
 	const div = document.getElementById("maindiv");
 	div.appendChild(button);
 };
+let selectedInput = 0;
 const displayBranchQuestion = () => {
 	const div = document.getElementById("vraag1div");
 	const data = matrix[0];
@@ -230,6 +231,7 @@ const displayBranchQuestion = () => {
 		input.addEventListener("click", (event) => {
 			const clickedInput = event.target;
 			clickedInputId = clickedInput.id;
+			selectedInput = clickedInput.id;
 			console.log(`Clicked input ID : ${clickedInputId}`);
 		});
 	});
@@ -457,7 +459,7 @@ const displaySolution = (BranchDecider) => {
 	if (solution.length == 0) {
 		const p = document.createElement("p");
 		p.innerHTML = "Er zijn geen doe het zelf stappen voor dit probleem";
-		div.appendChild(p);
+		articleDoehetZelf.appendChild(p);
 	} else {
 		solution.forEach((element) => {
 			const p = document.createElement("p");
@@ -470,6 +472,7 @@ const displaySolution = (BranchDecider) => {
 	[articleDoehetZelf, articlePrijs, articleProblem, articleVideo, articleVito, articleLocaties, articleEndOfLife].forEach((element) => {
 		element.setAttribute("id", "kader");
 	});
+
 
 	//const mapDiv = document.createElement('div');
 	//mapDiv.id = 'map';
