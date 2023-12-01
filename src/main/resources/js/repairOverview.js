@@ -86,17 +86,50 @@ showClickedOnRepair = (repair) => {
     const status = document.createElement('p');
     status.innerHTML = "Status: "
 
-    const statusSelect = document.createElement('select');
-    const statusOptions = ["in behandeling", "voltooid"];
-    statusOptions.forEach(optionValue => {
-        const option = document.createElement('option');
-        option.value = optionValue;
-        option.text = optionValue;
-        if (optionValue === repair.status) {
-            option.selected = true;
+    const role = sessionStorage.getItem('role');
+    let statusOptions = "";
+    let statusSelect = "";
+    if (role === "REPAIR") {
+        statusSelect = document.createElement('select');
+        statusOptions = ["in afwachting", "in behandeling", "voltooid"];
+        statusOptions.forEach(optionValue => {
+            const option = document.createElement('option');
+            option.value = optionValue;
+            option.text = optionValue;
+            if (optionValue === repair.status) {
+                option.selected = true;
+            }
+            statusSelect.appendChild(option);
+        });
+    } else if (role === "USER") {
+        statusSelect = document.createElement('select');
+        if (repair.status === "in behandeling") {
+            statusOptions = ["in behandeling", "zelf opgelost"];
+        } else {
+            statusOptions = ["in afwachting", "zelf opgelost"];
         }
-        statusSelect.appendChild(option);
-    });
+        statusOptions.forEach(optionValue => {
+            const option = document.createElement('option');
+            option.value = optionValue;
+            option.text = optionValue;
+            if (optionValue === repair.status) {
+                option.selected = true;
+            }
+            statusSelect.appendChild(option);
+        });
+    } else if (role === "ADMIN") {
+        statusSelect = document.createElement('select');
+        statusOptions = ["in afwachting", "in behandeling", "voltooid", "zelf opgelost"];
+        statusOptions.forEach(optionValue => {
+            const option = document.createElement('option');
+            option.value = optionValue;
+            option.text = optionValue;
+            if (optionValue === repair.status) {
+                option.selected = true;
+            }
+            statusSelect.appendChild(option);
+        });
+    }
 
     statusSelect.addEventListener("change", (event) => {
         selectedStatus = event.target.value;
@@ -117,16 +150,17 @@ showClickedOnRepair = (repair) => {
     const diagnosis = document.createElement('p');
     diagnosis.innerHTML = "Diagnose: TODO"
 
-    const user = document.createElement('p');
-    location.innerHTML = "Gebruiker: " + email;
-
     newListItem.appendChild(deviceType);
     newListItem.appendChild(diagnosis);
     newListItem.appendChild(status);
     newListItem.appendChild(dateOfRepair);
     newListItem.appendChild(location);
-    newListItem.appendChild(user);
 
+    if (role !== "USER") {
+        const user = document.createElement('p');
+        location.innerHTML = "Gebruiker: " + email;
+        newListItem.appendChild(user);
+    }
 
     const deleteIcon = document.createElement('a');
     deleteIcon.innerHTML = `<i class="fa fa-trash"></i>`;
