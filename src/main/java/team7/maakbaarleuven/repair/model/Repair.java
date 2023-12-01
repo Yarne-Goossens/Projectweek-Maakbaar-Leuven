@@ -97,4 +97,8 @@ public class Repair {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
+
+    public void removeProfile() {
+        this.profile = null;
+    }
 }

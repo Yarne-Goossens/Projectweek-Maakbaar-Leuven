@@ -10,4 +10,6 @@ public interface RepairRepository extends JpaRepository<Repair, Long> {
     public List<Repair> findRepairsByProfileId(long id);
 
     public Repair findById(long id);
+
+    public void deleteById(long id);
 }
