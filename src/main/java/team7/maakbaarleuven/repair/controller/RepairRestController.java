@@ -45,11 +45,14 @@ public class RepairRestController {
         return repairService.addRepair(repair);
     };
 
-    
-
     @DeleteMapping("/delete/{repairId}/{email}")
     public Repair deleteRepair(@PathVariable("repairId") long id, @PathVariable("email") String email) {
         return repairService.deleteRepair(id, email);
+    }
+
+    @PostMapping("/status/{repairId}")
+    public Repair postMethodName(@PathVariable("repairId") long id, @RequestBody String status) {
+        return repairService.changeStatus(id, status);
     }
 
 }
