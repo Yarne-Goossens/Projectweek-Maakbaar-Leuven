@@ -19,15 +19,15 @@ public class RepairService {
 
     public List<Repair> getAllRepairs() {
         return repairRepository.findAll();
-    }
+    };
 
     public List<Repair> getAllRepairsByProfileId(long id) {
         return repairRepository.findRepairsByProfileId(id);
-    }
+    };
 
     public Repair addRepair(Repair repair) {
         return repairRepository.save(repair);
-    }
+    };
 
     public Repair changeStatus(long id, String status) {
         Repair repair = repairRepository.findById(id);
@@ -35,7 +35,11 @@ public class RepairService {
         repair.setStatus(status);
         repairRepository.save(repair);
         return repair;
-    }
+    };
+
+    public Repair add(Repair repair) {
+        return repairRepository.save(repair);
+    };
 
     public Repair deleteRepair(long id, String email) {
         if (profileRepository == null) {

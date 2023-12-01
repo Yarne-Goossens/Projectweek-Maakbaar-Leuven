@@ -14,13 +14,15 @@ const getRole = async (email) => {
 	const result = await response.json();
 	console.log(result.role);
 };
-getRole("jules@jules.com");
+//getRole("jules@jules.com")
+
 const generateMainDiv = () => {
 	const div = document.createElement("div");
 	div.id = "maindiv";
 	const main = document.querySelector("main");
 	main.appendChild(div);
 };
+
 const displayMainDiv = () => {
 	generateMainDiv();
 	const div = document.getElementById("maindiv");
@@ -120,14 +122,85 @@ const ofTypeString = () => {
 	}
 };
 
+const label1 = document.createElement("label");
+label1.innerHTML = "Model Nummer Apparaat: ";
+const input1 = document.createElement("input");
+
+input1.id = "input1";
+input1.required = true;
+const label2 = document.createElement("label");
+label2.innerHTML = "Aankoopprijs:";
+const input2 = document.createElement("input");
+input2.id = "input2";
+const label3 = document.createElement("label");
+label3.innerHTML = "Bereid te betalen:";
+const input3 = document.createElement("input");
+input3.id = "input3";
+const label4 = document.createElement("label");
+label4.innerHTML = "Leeftijd toestel (in maanden):";
+const input4 = document.createElement("input");
+input4.id = "input4";
+
 const enterModel = () => {
 	const div = document.getElementById("nextdiv");
+
+	//create merk dropdown
+	const label = document.createElement("label");
+	label.innerHTML = "Selecteer uw merk: ";
+	label.id = "dropdownlabel";
+
+	const select = document.createElement("select");
+	select.id = "merk";
+	label.appendChild(select);
+
+	const option1 = document.createElement("option");
+	option1.value = "Samsung";
+	option1.innerHTML = "Samsung";
+	select.appendChild(option1);
+
+	const option3 = document.createElement("option");
+	option3.value = "AEG";
+	option3.innerHTML = "AEG";
+	select.appendChild(option3);
+
+	const option4 = document.createElement("option");
+	option4.value = "Dyson";
+	option4.innerHTML = "Dyson";
+	select.appendChild(option4);
+
+	const option5 = document.createElement("option");
+	option5.value = "Bosch";
+	option5.innerHTML = "Bosch";
+	select.appendChild(option5);
+
+	const option6 = document.createElement("option");
+	option6.value = "Philips";
+	option6.innerHTML = "Philips";
+	select.appendChild(option6);
+
+	const option7 = document.createElement("option");
+	option7.value = "Rowenta";
+	option7.innerHTML = "Rowenta";
+	select.appendChild(option7);
+
+	const option8 = document.createElement("option");
+	option8.value = "Black&Decker";
+	option8.innerHTML = "Black&Decker";
+	select.appendChild(option8);
+
+	const option9 = document.createElement("option");
+	option9.value = "Domo";
+	option9.innerHTML = "Domo";
+	select.appendChild(option9);
+
+	div.appendChild(label);
+
 	const label1 = document.createElement("label");
 	label1.innerHTML = "Model Nummer Apparaat: ";
 	const input1 = document.createElement("input");
-
 	input1.id = "input1";
 	input1.required = true;
+
 	const label2 = document.createElement("label");
 	label2.innerHTML = "Aankoopprijs:";
 	const input2 = document.createElement("input");
@@ -140,6 +213,7 @@ const enterModel = () => {
 	label4.innerHTML = "Leeftijd toestel (in maanden):";
 	const input4 = document.createElement("input");
 	input4.id = "input4";
+
 	div.appendChild(label1);
 	div.appendChild(input1);
 	div.appendChild(label2);
@@ -205,10 +279,12 @@ const createNextButton = () => {
 	const button = document.createElement("button");
 	button.innerHTML = "Volgende";
 	button.id = "next";
+	button.class = "vraag_button";
 
 	const div = document.getElementById("maindiv");
 	div.appendChild(button);
 };
+let selectedInput = 0;
 const displayBranchQuestion = () => {
 	const div = document.getElementById("vraag1div");
 	const data = matrix[0];
@@ -230,12 +306,14 @@ const displayBranchQuestion = () => {
 		input.addEventListener("click", (event) => {
 			const clickedInput = event.target;
 			clickedInputId = clickedInput.id;
+			selectedInput = clickedInput.id;
 			console.log(`Clicked input ID : ${clickedInputId}`);
 		});
 	});
 	const vraag1button = document.createElement("button");
 	vraag1button.innerHTML = "Volgende";
 	vraag1button.id = "vraag1button";
+	vraag1button.className = "vraag_button";
 	div.appendChild(vraag1button);
 	const p = document.createElement("p");
 	vraag1button.addEventListener("click", () => {
@@ -246,6 +324,7 @@ const displayBranchQuestion = () => {
 		} else {
 			clearDiv("vraag1div");
 			div.setAttribute("id", "treediv");
+			div.setAttribute("class", "vraag_container");
 			const BranchDecider = clickedInputId;
 
 			branchNavigation(BranchDecider);
@@ -295,6 +374,7 @@ const branchNavigation = (BranchDecider) => {
 	const treeButton = document.createElement("button");
 	treeButton.innerHTML = "Volgende";
 	treeButton.id = "treebutton";
+	treeButton.className = "vraag_button";
 	div.appendChild(treeButton);
 	const p2 = document.createElement("p");
 	treeButton.addEventListener("click", () => {
@@ -342,7 +422,9 @@ const displaySolution = (BranchDecider) => {
 	};
 
 	const createVitoTool = () => {
-		return `<iframe height="450" src="https://www.guidance.sharepair.org/en/repair-impact-result?productCategory=coffee maker senseo&productAge=${age}" title="Vito Tool" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+		let type = "vacuum cleaner";
+		let years = Math.ceil(age / 12);
+		return `<iframe height="450" src="https://www.guidance.sharepair.org/en/repair-impact-result?productCategory=${type}&productAge=${years}" title="Vito Tool" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
 	};
 	const createMap = () => {
 		return `<iframe class='leafletMap' height="450" src="https://www.leuvenfixt.be/repair-leuven/" title="Vito Tool" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
@@ -388,11 +470,13 @@ const displaySolution = (BranchDecider) => {
 
 	h2DoeHetZelf.innerHTML = "Doe Het Zelf";
 	vitoTitle.innerHTML = "Vito tool";
-	pCost.innerHTML = `De waarde van het apparaat op dit moment: €${getWaardeBepaling()}`;
-	pr30.innerHTML = `Uit onderzoek blijkt dat mensen bereid zijn om 30% van de aankoopprijs te betalen voor een reparatie: ${
+	vitop = document.createElement("p");
+	vitop.innerHTML = "Deze VITO tool geeft een ecologische en economische vergelijking tussen een apparaat repareren en een nieuwe kopen";
+	pCost.innerHTML = `De waarde van het apparaat op dit moment: € ${getWaardeBepaling()}`;
+	pr30.innerHTML = `Uit onderzoek blijkt dat mensen bereid zijn om 30% van de aankoopprijs te betalen voor een reparatie: € ${
 		getWaardeBepaling() * 0.3
 	}`;
-	pr50.innerHTML = `of 50% van de nieuw koopprijs te betalen voor een reparatie: to be done`;
+	pr50.innerHTML = `of 50% van de aankoopprijs van een nieuw toestel te betalen voor een reparatie.`;
 
 	const h2RepairCaféLocaties = document.createElement("h2");
 	const h2EndOfLife = document.createElement("h2");
@@ -429,16 +513,18 @@ const displaySolution = (BranchDecider) => {
 	articlePrijs.appendChild(pr30);
 	articlePrijs.appendChild(pr50);
 	articleVito.appendChild(vitoTitle);
+	articleVito.appendChild(vitop);
 	articleVito.appendChild(vitoLinkDiv);
 	articleLocaties.appendChild(mapRepairCafés);
 
+	//Volgorde solution divs
 	div.appendChild(articleProblem);
-	div.appendChild(articleDoehetZelf);
+	div.appendChild(articleVito);
 	div.appendChild(articlePrijs);
+	div.appendChild(articleDoehetZelf);
 	div.appendChild(articleVideo);
 	div.appendChild(articleLocaties);
 	div.appendChild(articleEndOfLife);
-	div.appendChild(articleVito);
 
 	//Loop to get correct solutions
 	let solution = [];
@@ -457,12 +543,12 @@ const displaySolution = (BranchDecider) => {
 	if (solution.length == 0) {
 		const p = document.createElement("p");
 		p.innerHTML = "Er zijn geen doe het zelf stappen voor dit probleem";
-		div.appendChild(p);
+		articleDoehetZelf.appendChild(p);
 	} else {
 		solution.forEach((element) => {
 			const p = document.createElement("p");
 			p.innerHTML = element;
-			div.appendChild(p);
+			articleDoehetZelf.appendChild(p);
 		});
 	}
 
@@ -494,5 +580,37 @@ const displaySolution = (BranchDecider) => {
 const getWaardeBepaling = () => {
 	return price - 0.01 * price * age;
 };
+
+currentDate = new Date();
+const repair = {
+	// deviceType:  ,
+	deviceModelNumber: input1,
+	purchasePrice: input2,
+	willingToPay: input3,
+	ageInMonths: input4,
+	mainChoice: selectedInput,
+	answersIds: result.toString(),
+	// location: ,
+	dateOfRepair: currentDate.toLocaleDateString(),
+	// status: ,
+};
+
+const addToDb = async (repair) => {
+	try {
+		const response = await fetch(`http://127.0.0.1:8080/api/repairs/add`, {
+			method: "POST",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(repair),
+		});
+	} catch (error) {
+		console.log("Error occurred while adding repair to database");
+		throw error;
+	}
+};
+
+addToDb(repair);
 
 // displayMainDiv();
