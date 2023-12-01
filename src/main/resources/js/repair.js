@@ -231,7 +231,7 @@ const enterModel = () => {
 	startbutton.addEventListener("click", () => {
 		if (isEmpty()) {
 			p.innerHTML = "Vul alle velden in";
-			
+
 			p.id = "error";
 			div.appendChild(p);
 		} else if (ofTypeInt() == false) {
@@ -476,7 +476,7 @@ const displaySolution = (BranchDecider) => {
 	pr30.innerHTML = `Uit onderzoek blijkt dat mensen bereid zijn om 30% van de aankoopprijs te betalen voor een reparatie: € ${
 		getWaardeBepaling() * 0.3
 	}`;
-	pr50.innerHTML = `of 50% van de nieuw koopprijs te betalen voor een reparatie.`;
+	pr50.innerHTML = `of 50% van de aankoopprijs van een nieuw toestel te betalen voor een reparatie.`;
 
 	const h2RepairCaféLocaties = document.createElement("h2");
 	const h2EndOfLife = document.createElement("h2");
