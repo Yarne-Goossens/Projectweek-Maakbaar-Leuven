@@ -4,16 +4,16 @@ let bereid_te_betalen = 0;
 let modelnummer = "";
 
 const getRole = async (email) => {
-    const response = await fetch(`http://localhost:8080/api/profile/${email}`, {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        }
-    });
-    const result = await response.json()
-    console.log(result.role)
-}
+	const response = await fetch(`http://localhost:8080/api/profile/${email}`, {
+		method: "GET",
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json",
+		},
+	});
+	const result = await response.json();
+	console.log(result.role);
+};
 //getRole("jules@jules.com")
 
 const generateMainDiv = () => {
@@ -142,48 +142,118 @@ const input4 = document.createElement("input");
 input4.id = "input4";
 
 const enterModel = () => {
-    const div = document.getElementById("nextdiv");
-    
-    div.appendChild(label1);
-    div.appendChild(input1);
-    div.appendChild(label2);
-    div.appendChild(input2);
-    div.appendChild(label3);
-    div.appendChild(input3);
-    div.appendChild(label4);
-    div.appendChild(input4);
-    const button = document.createElement("button");
-    button.innerHTML = "Start";
-    button.id = "start";
-    div.appendChild(button);
-    const startbutton = document.getElementById("start");
-    const p = document.createElement("p");
-    startbutton.addEventListener("click", () => {
-        if (isEmpty()) {
-            p.innerHTML = "Vul alle velden in";
+	const div = document.getElementById("nextdiv");
 
-            p.id = "error";
-            div.appendChild(p);
-        } else if (ofTypeInt() == false) {
-            const p = document.createElement("p");
-            p.innerHTML = "Vul een getal in bij aankoopprijs, bouwjaar en leeftijd toestel";
+	//create merk dropdown
+	const label = document.createElement("label");
+	label.innerHTML = "Selecteer uw merk: ";
+	label.id = "dropdownlabel";
 
-            p.id = "error";
-            div.appendChild(p);
-        } else if (ofTypeString() == false) {
-            const p = document.createElement("p");
-            p.innerHTML = "Vul een tekst in bij model nummer";
+	const select = document.createElement("select");
+	select.id = "merk";
+	label.appendChild(select);
 
-            p.id = "error";
-            div.appendChild(p);
-        } else {
-            enterAndPostDeviceInfo();
-            getRepairs();
-            clearDiv("nextdiv");
-            div.setAttribute("id", "vraag1div");
-            displayBranchQuestion();
-        }
-    });
+	const option1 = document.createElement("option");
+	option1.value = "Samsung";
+	option1.innerHTML = "Samsung";
+	select.appendChild(option1);
+
+	const option3 = document.createElement("option");
+	option3.value = "AEG";
+	option3.innerHTML = "AEG";
+	select.appendChild(option3);
+
+	const option4 = document.createElement("option");
+	option4.value = "Dyson";
+	option4.innerHTML = "Dyson";
+	select.appendChild(option4);
+
+	const option5 = document.createElement("option");
+	option5.value = "Bosch";
+	option5.innerHTML = "Bosch";
+	select.appendChild(option5);
+
+	const option6 = document.createElement("option");
+	option6.value = "Philips";
+	option6.innerHTML = "Philips";
+	select.appendChild(option6);
+
+	const option7 = document.createElement("option");
+	option7.value = "Rowenta";
+	option7.innerHTML = "Rowenta";
+	select.appendChild(option7);
+
+	const option8 = document.createElement("option");
+	option8.value = "Black&Decker";
+	option8.innerHTML = "Black&Decker";
+	select.appendChild(option8);
+
+	const option9 = document.createElement("option");
+	option9.value = "Domo";
+	option9.innerHTML = "Domo";
+	select.appendChild(option9);
+
+	div.appendChild(label);
+
+	const label1 = document.createElement("label");
+	label1.innerHTML = "Model Nummer Apparaat: ";
+	const input1 = document.createElement("input");
+	input1.id = "input1";
+	input1.required = true;
+
+	const label2 = document.createElement("label");
+	label2.innerHTML = "Aankoopprijs:";
+	const input2 = document.createElement("input");
+	input2.id = "input2";
+	const label3 = document.createElement("label");
+	label3.innerHTML = "Bereid te betalen:";
+	const input3 = document.createElement("input");
+	input3.id = "input3";
+	const label4 = document.createElement("label");
+	label4.innerHTML = "Leeftijd toestel (in maanden):";
+	const input4 = document.createElement("input");
+	input4.id = "input4";
+
+	div.appendChild(label1);
+	div.appendChild(input1);
+	div.appendChild(label2);
+	div.appendChild(input2);
+	div.appendChild(label3);
+	div.appendChild(input3);
+	div.appendChild(label4);
+	div.appendChild(input4);
+	const button = document.createElement("button");
+	button.innerHTML = "Start";
+	button.id = "start";
+	div.appendChild(button);
+	const startbutton = document.getElementById("start");
+	const p = document.createElement("p");
+	startbutton.addEventListener("click", () => {
+		if (isEmpty()) {
+			p.innerHTML = "Vul alle velden in";
+			
+			p.id = "error";
+			div.appendChild(p);
+		} else if (ofTypeInt() == false) {
+			const p = document.createElement("p");
+			p.innerHTML = "Vul een getal in bij aankoopprijs, bouwjaar en leeftijd toestel";
+
+			p.id = "error";
+			div.appendChild(p);
+		} else if (ofTypeString() == false) {
+			const p = document.createElement("p");
+			p.innerHTML = "Vul een tekst in bij model nummer";
+
+			p.id = "error";
+			div.appendChild(p);
+		} else {
+			enterAndPostDeviceInfo();
+			getRepairs();
+			clearDiv("nextdiv");
+			div.setAttribute("id", "vraag1div");
+			displayBranchQuestion();
+		}
+	});
 };
 
 const createDropDown = () => {
@@ -352,7 +422,9 @@ const displaySolution = (BranchDecider) => {
 	};
 
 	const createVitoTool = () => {
-		return `<iframe height="450" src="https://www.guidance.sharepair.org/en/repair-impact-result?productCategory=coffee maker senseo&productAge=${age}" title="Vito Tool" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+		let type = "vacuum cleaner";
+		let years = Math.ceil(age / 12);
+		return `<iframe height="450" src="https://www.guidance.sharepair.org/en/repair-impact-result?productCategory=${type}&productAge=${years}" title="Vito Tool" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
 	};
 	const createMap = () => {
 		return `<iframe class='leafletMap' height="450" src="https://www.leuvenfixt.be/repair-leuven/" title="Vito Tool" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
@@ -404,7 +476,7 @@ const displaySolution = (BranchDecider) => {
 	pr30.innerHTML = `Uit onderzoek blijkt dat mensen bereid zijn om 30% van de aankoopprijs te betalen voor een reparatie: € ${
 		getWaardeBepaling() * 0.3
 	}`;
-	pr50.innerHTML = `of 50% van de nieuw koopprijs te betalen voor een reparatie: to be done`;
+	pr50.innerHTML = `of 50% van de nieuw koopprijs te betalen voor een reparatie.`;
 
 	const h2RepairCaféLocaties = document.createElement("h2");
 	const h2EndOfLife = document.createElement("h2");
@@ -448,8 +520,8 @@ const displaySolution = (BranchDecider) => {
 	//Volgorde solution divs
 	div.appendChild(articleProblem);
 	div.appendChild(articleVito);
-	div.appendChild(articleDoehetZelf);
 	div.appendChild(articlePrijs);
+	div.appendChild(articleDoehetZelf);
 	div.appendChild(articleVideo);
 	div.appendChild(articleLocaties);
 	div.appendChild(articleEndOfLife);
@@ -509,34 +581,34 @@ const getWaardeBepaling = () => {
 	return price - 0.01 * price * age;
 };
 
-currentDate = new Date()
+currentDate = new Date();
 const repair = {
-    // deviceType:  , 
-    deviceModelNumber: input1,
-    purchasePrice: input2, 
-    willingToPay: input3,
-    ageInMonths: input4,
-    mainChoice: selectedInput,
-    answersIds: result.toString(), 
-    // location: , 
-    dateOfRepair: currentDate.toLocaleDateString(),
-    // status: ,
-}
+	// deviceType:  ,
+	deviceModelNumber: input1,
+	purchasePrice: input2,
+	willingToPay: input3,
+	ageInMonths: input4,
+	mainChoice: selectedInput,
+	answersIds: result.toString(),
+	// location: ,
+	dateOfRepair: currentDate.toLocaleDateString(),
+	// status: ,
+};
 
 const addToDb = async (repair) => {
-    try {
-        const response = await fetch(`http://127.0.0.1:8080/api/repairs/add`,{
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-        },
-            body: JSON.stringify(repair),
-    });
-    } catch (error) {
-        console.log("Error occurred while adding repair to database");
-        throw error;
-    };
+	try {
+		const response = await fetch(`http://127.0.0.1:8080/api/repairs/add`, {
+			method: "POST",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(repair),
+		});
+	} catch (error) {
+		console.log("Error occurred while adding repair to database");
+		throw error;
+	}
 };
 
 addToDb(repair);
