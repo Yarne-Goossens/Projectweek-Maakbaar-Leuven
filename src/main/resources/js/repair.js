@@ -28,7 +28,7 @@ const getRole = async (email) => {
     const result = await response.json()
     console.log(result.role)
 }
-getRole("jules@jules.com")
+// getRole("jules@jules.com")
 
 const generateMainDiv = () => {
     const div = document.createElement("div");
@@ -83,7 +83,7 @@ const enterAndPostDeviceInfo = async () => {
     const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
     const dateOfRepair = currentDate.toLocaleDateString('en-US', options);
     const repair = {devicetype: "stofzuiger", status: "in afwachting", deviceModelNumber: device.deviceModelNumber, dateOfRepair: dateOfRepair, location: "online" }
-    const repairesponse = await fetch(`http://localhost:8080/api/profile/${sessionStorage.getItem('id')}addRepair`, {
+    const repairesponse = await fetch(`http://localhost:8080/api/profile/${sessionStorage.getItem('id')}/addRepair`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -530,21 +530,21 @@ const getWaardeBepaling = () => {
 
 currentDate = new Date()
 const repair = {
-    // deviceType:  , 
-    deviceModelNumber: input1,
-    purchasePrice: input2, 
-    willingToPay: input3,
-    ageInMonths: input4,
-    mainChoice: selectedInput,
-    answersIds: result.toString(), 
-    // location: , 
+    deviceType: "Stofzuiger" , 
+    deviceModelNumber: "a12",
+    purchasePrice: 100, 
+    willingToPay: 50,
+    ageInMonths: 12,
+    mainChoice: "De stofzuiger zorgt voor een slechte geur",
+    answersIds: [0,1,1], 
+    location: "Online", 
     dateOfRepair: currentDate.toLocaleDateString(),
-    // status: ,
+    status: "In behandling",
 }
 
 const addToDb = async (repair) => {
-    try {
-        const response = await fetch(`http://127.0.0.1:8080/api/repairs/add`,{
+    try { 
+        const response = await fetch(`http://localhost:8080/api/repairs/add`,{
             method: "POST",
             headers: {
                 Accept: "application/json",
