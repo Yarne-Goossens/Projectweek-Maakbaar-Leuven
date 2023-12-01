@@ -61,7 +61,7 @@ changeStatus = async (id, status) => {
     return result;
 }
 
-showClickedOnRepair = (repair) => {
+showClickedOnRepair = async (repair) => {
     const originalStatus = repair.status;
     let selectedStatus = originalStatus;
     let sendPostRequest = false;
@@ -70,6 +70,7 @@ showClickedOnRepair = (repair) => {
     newListItem.id = "repairItem";
     const deviceType = document.createElement('p');
     deviceType.innerHTML = "Toestel: " + repair.deviceType;
+    email = await getUserFromRepair(repair.id);
 
     const status = document.createElement('p');
     status.innerHTML = "Status: "
