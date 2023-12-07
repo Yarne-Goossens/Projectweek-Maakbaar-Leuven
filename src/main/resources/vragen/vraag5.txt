@@ -1,0 +1,64 @@
+Valt de stofzuiger uit?
+Stofzuiger met kabel, stekker zit goed in het stopcontact, 
+er is stroom, in de “aan” stand, er brandt geen licht op de stofzuiger
+    
+    Is de kabel in intact?
+    Controleer op brandvlekken of beschadigingen (uitstulpingen, indrukken)
+
+vervolg 1:kabel intact
+vervolg 2:kabel beschadigd 
+Stofzuiger met kabel, stekker zit goed in het stopcontact, 
+er is stroom, in de “aan” stand, er brandt geen licht op de stofzuiger, geen zichtbare schade aan de kabel
+
+Stofzuiger demonteren en diagnose stellen: diagnosetijd: 20min
+
+
+vervolg1.1:Schakelaar vervangen
+vervolg1.2:Kabelbreuk in de stofzuiger
+vervolg1.3:Motor vervangen
+
+vervolg1.1:
+Stofzuiger met kabel, stekker zit goed in het stopcontact, 
+er is stroom, in de “aan” stand, er brandt geen licht op de stofzuiger, geen zichtbare schade aan de kabel
+Mechanische schakelaar:
+    Stofzuiger demonteren
+    Hersteltijd: 40min
+    Wisselstukken
+Triac schakelaar
+    Stofzuiger demonteren
+    Hersteltijd: 40min
+    Wisselstukken
+
+vervolg1.2:
+Stofzuiger met kabel, zichtbare schade aan de kabel
+Kabel breuk aan de stekker:
+    Afknippen en herstellen
+    Hersteltijd: 10min
+    Nieuwe stekker: 6EUR
+Kabel breuk ergens anders:
+    Stofzuiger demonteren
+    Hersteltijd: 30min
+    Wisselstuk
+
+vervolg1.3:
+Stofzuiger met kabel, stekker zit goed in het stopcontact, 
+er is stroom, in de “aan” stand, er brandt geen licht op de stofzuiger, geen zichtbare schade aan de kabel
+    Motor vervangen:
+        Stofzuiger demonteren
+        Hersteltijd: 60min
+        Wisselstukken: 80EUR
+    Elektronische model vervangen:
+        Stofzuiger demonteren
+        Hersteltijd: 60min
+        Wisselstukken: 80EUR    
+
+Vervolg2:
+Stofzuiger met kabel, zichtbare schade aan de kabel
+    Kabel breuk aan de stekker:
+        Afknippen en herstellen
+        Hersteltijd: 10min
+        Nieuwe stekker: 6EUR
+    Kabel breuk ergens anders:
+        Stofzuiger demonteren
+        Hersteltijd: 30min
+        Wisselstuk
