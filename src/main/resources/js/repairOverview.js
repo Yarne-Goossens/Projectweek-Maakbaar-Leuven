@@ -13,6 +13,31 @@ getUserRepairs = async () => {
     return result;
 }
 
+addDevice = async (device) => {
+    const response = await fetch(`http://localhost:8080/api/profile/${sessionStorage.getItem("id")}/addDevice`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(device),
+    });
+}
+
+getUserDevices = async () => {
+    const id = sessionStorage.getItem('id');
+
+    const response = await fetch(`http://127.0.0.1:8080/api/devices/overview/${id}`, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
+    const result = await response.json();
+    return result;
+}
+
 getUserFromRepair = async (id) => {
 
     const response = await fetch(`http://127.0.0.1:8080/api/profile/repair/${id}`, {
@@ -58,6 +83,7 @@ getAllRepairs = async () => {
 
 clearRepairOverview = () => {
     document.getElementById('repairList').innerHTML = "";
+    document.getElementById('deviceList').innerHTML = "";
 }
 
 changeStatus = async (id, status) => {
@@ -239,11 +265,13 @@ showClickedOnRepair = async (repair) => {
         }
         clearRepairOverview();
         showAllRepairs();
-    })
+        showAllDevices();
+    });
 };
 
 showAllRepairs = async () => {
     const repairList = document.getElementById('repairList');
+    repairList.appendChild(document.createElement('h2')).innerHTML = "Reparaties";
     const role = sessionStorage.getItem('role');
     const allRepairs = await getAllRepairs();
     const repairs = await getUserRepairs();
@@ -355,6 +383,167 @@ const displayUserInfo = async () => {
     userdiv.appendChild(card);
 }
 
+showAllDevices = async () => {
+    const deviceList = document.getElementById('deviceList');
+    deviceList.appendChild(document.createElement('h2')).innerHTML = "Apparaten";
+    const role = sessionStorage.getItem('role');
+    const devices = await getUserDevices();
+    if (devices.length > 0) {
+        for (const device of devices) {
+            const link = document.createElement('a');
+            const newListItem = document.createElement('div');
+            newListItem.id = "repairItem";
+            const deviceType = document.createElement('p');
+            deviceType.innerHTML = "Merk: " + device.merk;
+            const modelnr = document.createElement('p');
+            modelnr.innerHTML = "Modelnummer: " + device.deviceModelNumber;
+            const age = document.createElement('p');
+            age.innerHTML = "Leeftijd: " + device.ageInMonths;
+            const bereidtbt = document.createElement('p');
+            bereidtbt.innerHTML = "Bereid te betalen: " + device.bereidTeBetalen;
+            const aankoopprijs = document.createElement('p');
+            aankoopprijs.innerHTML = "Aankoopprijs: " + device.purchasePrice;
+
+
+            newListItem.appendChild(deviceType);
+            newListItem.appendChild(modelnr);
+            newListItem.appendChild(age);
+            newListItem.appendChild(bereidtbt);
+            newListItem.appendChild(aankoopprijs);
+
+            link.appendChild(newListItem);
+            deviceList.appendChild(link);
+
+            link.addEventListener("click", () => {
+
+            });
+        }
+    } else {
+        const noRepariParagraph = document.createElement('p');
+        noRepariParagraph.innerHTML = "Er zijn nog geen Apparaten";
+        deviceList.appendChild(noRepariParagraph);
+    }
+};
+
+const deviceButton = document.getElementById('deviceButton');
+deviceButton.addEventListener("click", () => {
+    clearRepairOverview();
+    const div = document.getElementById('addDeviceDiv');
+    document.getElementById("deviceButton").style.display = "none";
+    const label = document.createElement("label");
+    label.innerHTML = "Selecteer uw merk: ";
+    label.id = "dropdownlabel";
+
+    const select = document.createElement("select");
+    select.id = "merk";
+    label.appendChild(select);
+
+    const option1 = document.createElement("option");
+    option1.value = "Samsung";
+    option1.innerHTML = "Samsung";
+    select.appendChild(option1);
+
+    const option3 = document.createElement("option");
+    option3.value = "AEG";
+    option3.innerHTML = "AEG";
+    select.appendChild(option3);
+
+    const option4 = document.createElement("option");
+    option4.value = "Dyson";
+    option4.innerHTML = "Dyson";
+    select.appendChild(option4);
+
+    const option5 = document.createElement("option");
+    option5.value = "Bosch";
+    option5.innerHTML = "Bosch";
+    select.appendChild(option5);
+
+    const option6 = document.createElement("option");
+    option6.value = "Philips";
+    option6.innerHTML = "Philips";
+    select.appendChild(option6);
+
+    const option7 = document.createElement("option");
+    option7.value = "Rowenta";
+    option7.innerHTML = "Rowenta";
+    select.appendChild(option7);
+
+    const option8 = document.createElement("option");
+    option8.value = "Black&Decker";
+    option8.innerHTML = "Black&Decker";
+    select.appendChild(option8);
+
+    const option9 = document.createElement("option");
+    option9.value = "Domo";
+    option9.innerHTML = "Domo";
+    select.appendChild(option9);
+
+    div.appendChild(label);
+
+    const label1 = document.createElement("label");
+    label1.innerHTML = "Model Nummer Apparaat: ";
+    const input1 = document.createElement("input");
+    input1.id = "input1";
+    input1.required = true;
+
+    const label2 = document.createElement("label");
+    label2.innerHTML = "Aankoopprijs:";
+    const input2 = document.createElement("input");
+    input2.id = "input2";
+    const label3 = document.createElement("label");
+    label3.innerHTML = "Bereid te betalen:";
+    const input3 = document.createElement("input");
+    input3.id = "input3";
+    const label4 = document.createElement("label");
+    label4.innerHTML = "Leeftijd toestel (in maanden):";
+    const input4 = document.createElement("input");
+    input4.id = "input4";
+
+    const button = document.createElement("button");
+    button.innerHTML = "Voeg apparaat toe";
+    button.addEventListener("click", () => {
+        const device = {
+            deviceModelNumber: document.getElementById("input1").value,
+            purchasePrice: document.getElementById("input2").value,
+            bereidTeBetalen: document.getElementById("input3").value,
+            ageInMonths: document.getElementById("input4").value,
+            merk: document.getElementById("merk").value,
+        };
+        addDevice(device);
+        document.getElementById("addDeviceDiv").innerHTML = "";
+        document.getElementById("deviceButton").style.display = "block";
+        showAllRepairs();
+        showAllDevices();
+    });
+
+    const terugButton = document.createElement('button');
+    terugButton.innerHTML = "Terug";
+    terugButton.id = "terugButton";
+    const bodyRepair = document.querySelector('#addDeviceDiv');
+
+    terugButton.addEventListener("click", async () => {
+        clearRepairOverview();
+        document.getElementById("addDeviceDiv").innerHTML = "";
+        document.getElementById("deviceButton").style.display = "block";
+        showAllRepairs();
+        showAllDevices();
+
+    });
+
+
+    div.appendChild(label1);
+    div.appendChild(input1);
+    div.appendChild(label2);
+    div.appendChild(input2);
+    div.appendChild(label3);
+    div.appendChild(input3);
+    div.appendChild(label4);
+    div.appendChild(input4);
+    div.appendChild(button);
+    div.appendChild(terugButton);
+
+});
+
 if (sessionStorage.getItem("role") === "REPAIR") {
     const createCalenderOverview = () => {
         /*const p = document.createElement('p');
@@ -384,3 +573,5 @@ if (sessionStorage.getItem("role") === "REPAIR") {
 displayUserInfo();
 
 showAllRepairs();
+
+showAllDevices();

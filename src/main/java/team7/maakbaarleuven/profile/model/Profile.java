@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import team7.maakbaarleuven.device.model.Device;
 import team7.maakbaarleuven.repair.model.Repair;
 
 @Entity
@@ -21,7 +22,7 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public long id;
-    @Column(name="email", unique = true)
+    @Column(name = "email", unique = true)
     private String email;
     private String firstname;
     private String lastname;
@@ -30,6 +31,9 @@ public class Profile {
     @OneToMany(mappedBy = "profile")
     @JsonManagedReference
     public Set<Repair> repairs;
+    @OneToMany(mappedBy = "profile")
+    @JsonManagedReference
+    public Set<Device> devices;
 
     public Profile() {
     }
@@ -109,5 +113,13 @@ public class Profile {
 
     public void removeRepair(Repair repair) {
         this.repairs.remove(repair);
+    }
+
+    public void adddevice(Device device) {
+        this.devices.add(device);
+    }
+
+    public void removedevice(Device device) {
+        this.devices.remove(device);
     }
 }
