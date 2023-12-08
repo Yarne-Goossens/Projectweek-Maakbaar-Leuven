@@ -163,7 +163,7 @@ h1 {
 
 #treediv {
   display: grid;
-  grid-template-columns: 9fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
 }
 
@@ -224,6 +224,8 @@ select, input {
 #vraag1div {
   margin: 0 auto;
   padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 /* Style the radio buttons and labels */
@@ -252,9 +254,9 @@ select, input {
   background: whitesmoke;
   border-radius: 10px;
   flex-direction: column;
-  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
-  -moz-user-select: none;
-       user-select: none; /* Standard syntax */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .deactivate * {
@@ -278,6 +280,33 @@ select, input {
 
 .SolutionHeader {
   text-align: center;
+}
+
+.vraag_container {
+  min-width: 30rem;
+  font-size: 1.3rem;
+}
+
+.vraag_container label, .vraag_container button, .vraag_container p {
+  font-size: 1.3rem;
+}
+
+.solutiondiv p {
+  font-size: 1.3rem;
+}
+
+#maindiv label, #maindiv button {
+  font-size: 1.3rem;
+}
+
+#nextdiv label, #maindiv button {
+  font-size: 1.3rem;
+}
+
+.vraag_button, #start {
+  margin: 1rem auto;
+  grid-column: span 2;
+  width: 15rem;
 }
 
 /* Center everything within the main element */
@@ -400,9 +429,9 @@ footer span {
   flex-direction: column;
   -webkit-user-select: none;
   /* Safari */
+  -ms-user-select: none;
   /* IE 10 and IE 11 */
-  -moz-user-select: none;
-       user-select: none;
+  user-select: none;
   /* Standard syntax */
 }
 
@@ -720,20 +749,27 @@ p {
 #userCard {
   display: flex;
   padding: 1rem;
+  min-width: 30rem;
   margin-left: 20rem;
   margin-right: 20rem;
-  margin-top: 2rem;
+  margin-top: 0rem;
   margin-bottom: 2rem;
-  background: rgb(188, 188, 188);
+  /* background: rgb(242, 185, 80); */
   border-radius: 10px;
   flex-direction: column;
   -webkit-user-select: none;
   /* Safari */
+  -ms-user-select: none;
   /* IE 10 and IE 11 */
-  -moz-user-select: none;
-       user-select: none;
+  user-select: none;
   /* Standard syntax */
   text-align: center;
+}
+#userCard h2 {
+  text-decoration: underline;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0rem;
 }
 
 .fa-trash:hover {
@@ -778,30 +814,3 @@ table tr:hover {
   margin: 2px 2px;
   cursor: hand;
 }/*# sourceMappingURL=style.css.map */
-
-.vraag_container{
-  min-width: 30rem;
-  font-size: 1.3rem
-}
-
-.vraag_container label, .vraag_container button, .vraag_container p{
-  font-size: 1.3rem
-}
-
-.solutiondiv p{
-  font-size: 1.3rem
-}
-
-#maindiv label,#maindiv button{
-  font-size: 1.3rem
-}
-
-#nextdiv label,#maindiv button{
-  font-size: 1.3rem
-}
-
-.vraag_button, #start{
-  margin: 1rem auto;
-  grid-column: span 2;
-  width: 15rem;
-}
