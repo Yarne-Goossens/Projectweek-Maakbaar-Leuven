@@ -62,6 +62,7 @@ changeStatus = async (id, status) => {
 }
 
 showClickedOnRepair = (repair) => {
+    console.log(repair);
     const originalStatus = repair.status;
     let selectedStatus = originalStatus;
     let sendPostRequest = false;
@@ -102,8 +103,21 @@ showClickedOnRepair = (repair) => {
     const location = document.createElement('p');
     location.innerHTML = "Locatie: " + repair.location;
 
+    const mainChoiceConverter = (mainChoice) => {
+        return matrixProblems[mainChoice - 1];
+    };
+
     const diagnosis = document.createElement('p');
-    diagnosis.innerHTML = "Diagnose: TODO"
+    diagnosis.innerHTML = `<a>Diagnose: ${mainChoiceConverter(repair.mainChoice)}</a>`
+
+    diagnosis.addEventListener("click", () => {
+        repairList.parentNode.removeChild(repairList);
+        main = document.getElementById('userMain');
+        const div = document.createElement('div');
+        div.id = "solutiondiv";
+        main.appendChild(div);
+        displaySolution(parseInt(repair.mainChoice), repair);
+    });
 
     const user = document.createElement('p');
     location.innerHTML = "Gebruiker: " + email;
@@ -227,7 +241,7 @@ const displayUserInfo = async () => {
     `;
 
     card.innerHTML = cardContent;
-    
+
 
     userdiv.appendChild(card);
 }

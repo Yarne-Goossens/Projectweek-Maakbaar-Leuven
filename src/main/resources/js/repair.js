@@ -4,29 +4,29 @@ let bereid_te_betalen = 0;
 let modelnummer = "";
 
 const addDiagnose = async (id, diagnose) => {
-    const response = await fetch(`http://localhost:8080/api/devices/addDiagnose/${id}`, {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: diagnose,
-    });
-    const result = await response.json();
-    return result;
+	const response = await fetch(`http://localhost:8080/api/devices/addDiagnose/${id}`, {
+		method: "POST",
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json",
+		},
+		body: diagnose,
+	});
+	const result = await response.json();
+	return result;
 }
-    
+
 
 const getRole = async (email) => {
-    const response = await fetch(`http://localhost:8080/api/profile/${email}`, {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        }
-    });
-    const result = await response.json()
-    console.log(result.role)
+	const response = await fetch(`http://localhost:8080/api/profile/${email}`, {
+		method: "GET",
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json",
+		}
+	});
+	const result = await response.json()
+	console.log(result.role)
 }
 // getRole("jules@jules.com")
 
@@ -52,38 +52,38 @@ const displayMainDiv = () => {
 };
 
 const enterAndPostDeviceInfo = async () => {
-    const input1 = document.getElementById("input1").value;
-    modelnummer = input1;
-    const input2 = document.getElementById("input2").value;
-    price = input2;
-    const input3 = document.getElementById("input3").value;
-    bereid_te_betalen = input3;
-    const input4 = document.getElementById("input4").value;
-    age = input4;
-	
-    // const device = { deviceModelNumber: input1, purchasePrice: input2, bereidteBetalen: input3, ageInMonths: input4, diagnose: "", userId: sessionStorage.getItem("id") };
-    // const response = await fetch("http://localhost:8080/api/devices/add", {
-    //     method: "POST",
-    //     headers: {
-    //         Accept: "application/json",
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(device),
-    // });
-    // const result = await response.json();
-    // if (response.status === 400) {
-    //     Object.keys(result).forEach((fieldName) => {
-    //         document.getElementById(`${fieldName}-error`).innerText = result[fieldName];
-    //     });
-    //     console.log("Device is not added.");
-    // } else {
-    //     console.log("werkt wel");
-    //     console.log(input1, input2, input3);
-    // }
-    const currentDate = new Date();
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    const dateOfRepair = currentDate.toLocaleDateString('en-US', options);
-   
+	const input1 = document.getElementById("input1").value;
+	modelnummer = input1;
+	const input2 = document.getElementById("input2").value;
+	price = input2;
+	const input3 = document.getElementById("input3").value;
+	bereid_te_betalen = input3;
+	const input4 = document.getElementById("input4").value;
+	age = input4;
+
+	// const device = { deviceModelNumber: input1, purchasePrice: input2, bereidteBetalen: input3, ageInMonths: input4, diagnose: "", userId: sessionStorage.getItem("id") };
+	// const response = await fetch("http://localhost:8080/api/devices/add", {
+	//     method: "POST",
+	//     headers: {
+	//         Accept: "application/json",
+	//         "Content-Type": "application/json",
+	//     },
+	//     body: JSON.stringify(device),
+	// });
+	// const result = await response.json();
+	// if (response.status === 400) {
+	//     Object.keys(result).forEach((fieldName) => {
+	//         document.getElementById(`${fieldName}-error`).innerText = result[fieldName];
+	//     });
+	//     console.log("Device is not added.");
+	// } else {
+	//     console.log("werkt wel");
+	//     console.log(input1, input2, input3);
+	// }
+	const currentDate = new Date();
+	const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+	const dateOfRepair = currentDate.toLocaleDateString('en-US', options);
+
 
 };
 
@@ -162,48 +162,48 @@ const input4 = document.createElement("input");
 input4.id = "input4";
 
 const enterModel = () => {
-    const div = document.getElementById("nextdiv");
-    
-    div.appendChild(label1);
-    div.appendChild(input1);
-    div.appendChild(label2);
-    div.appendChild(input2);
-    div.appendChild(label3);
-    div.appendChild(input3);
-    div.appendChild(label4);
-    div.appendChild(input4);
-    const button = document.createElement("button");
-    button.innerHTML = "Start";
-    button.id = "start";
-    div.appendChild(button);
-    const startbutton = document.getElementById("start");
-    const p = document.createElement("p");
-    startbutton.addEventListener("click", () => {
-        if (isEmpty()) {
-            p.innerHTML = "Vul alle velden in";
+	const div = document.getElementById("nextdiv");
 
-            p.id = "error";
-            div.appendChild(p);
-        } else if (ofTypeInt() == false) {
-            const p = document.createElement("p");
-            p.innerHTML = "Vul een getal in bij aankoopprijs, bouwjaar en leeftijd toestel";
+	div.appendChild(label1);
+	div.appendChild(input1);
+	div.appendChild(label2);
+	div.appendChild(input2);
+	div.appendChild(label3);
+	div.appendChild(input3);
+	div.appendChild(label4);
+	div.appendChild(input4);
+	const button = document.createElement("button");
+	button.innerHTML = "Start";
+	button.id = "start";
+	div.appendChild(button);
+	const startbutton = document.getElementById("start");
+	const p = document.createElement("p");
+	startbutton.addEventListener("click", () => {
+		if (isEmpty()) {
+			p.innerHTML = "Vul alle velden in";
 
-            p.id = "error";
-            div.appendChild(p);
-        } else if (ofTypeString() == false) {
-            const p = document.createElement("p");
-            p.innerHTML = "Vul een tekst in bij model nummer";
+			p.id = "error";
+			div.appendChild(p);
+		} else if (ofTypeInt() == false) {
+			const p = document.createElement("p");
+			p.innerHTML = "Vul een getal in bij aankoopprijs, bouwjaar en leeftijd toestel";
 
-            p.id = "error";
-            div.appendChild(p);
-        } else {
-            enterAndPostDeviceInfo();
-            getRepairs();
-            clearDiv("nextdiv");
-            div.setAttribute("id", "vraag1div");
-            displayBranchQuestion();
-        }
-    });
+			p.id = "error";
+			div.appendChild(p);
+		} else if (ofTypeString() == false) {
+			const p = document.createElement("p");
+			p.innerHTML = "Vul een tekst in bij model nummer";
+
+			p.id = "error";
+			div.appendChild(p);
+		} else {
+			enterAndPostDeviceInfo();
+			getRepairs();
+			clearDiv("nextdiv");
+			div.setAttribute("id", "vraag1div");
+			displayBranchQuestion();
+		}
+	});
 };
 
 const createDropDown = () => {
@@ -338,7 +338,7 @@ const branchNavigation = (BranchDecider) => {
 		} else {
 			index++;
 			if (matrix[BranchDecider].length === index) {
-				
+
 				clearDiv("treediv");
 				result.push(clickedInputId);
 				console.log(result);
@@ -398,7 +398,6 @@ const displaySolution = (BranchDecider) => {
 	const vitoLinkDiv = document.createElement("div");
 	let selectedProblem = "";
 	vitoLinkDiv.innerHTML = createVitoTool();
-	console.log(matrixProblems[0]);
 	const problemHeader = document.createElement("h2");
 	problemHeader.innerHTML = "Probleem";
 
@@ -425,9 +424,8 @@ const displaySolution = (BranchDecider) => {
 	vitop = document.createElement("p");
 	vitop.innerHTML = "Deze VITO tool geeft een ecologische en economische vergelijking tussen een apparaat repareren en een nieuwe kopen";
 	pCost.innerHTML = `De waarde van het apparaat op dit moment: € ${getWaardeBepaling()}`;
-	pr30.innerHTML = `Uit onderzoek blijkt dat mensen bereid zijn om 30% van de aankoopprijs te betalen voor een reparatie: € ${
-		getWaardeBepaling() * 0.3
-	}`;
+	pr30.innerHTML = `Uit onderzoek blijkt dat mensen bereid zijn om 30% van de aankoopprijs te betalen voor een reparatie: € ${getWaardeBepaling() * 0.3
+		}`;
 	pr50.innerHTML = `of 50% van de nieuw koopprijs te betalen voor een reparatie: to be done`;
 
 	const h2RepairCaféLocaties = document.createElement("h2");
@@ -501,15 +499,15 @@ const displaySolution = (BranchDecider) => {
 			const p = document.createElement("p");
 			p.innerHTML = element;
 			articleDoehetZelf.appendChild(p);
-// p.setAttribute("class","deactivate");
-            div.appendChild(articleDoehetZelf);
-            // articleDoehetZelf.addEventListener("click",()=> myClick(p));
+			// p.setAttribute("class","deactivate");
+			div.appendChild(articleDoehetZelf);
+			// articleDoehetZelf.addEventListener("click",()=> myClick(p));
 		});
 	}
 
 	//style kader
 	[articleDoehetZelf, articlePrijs, articleProblem, articleVideo, articleVito, articleLocaties, articleEndOfLife].forEach((element) => {
-		element.setAttribute("id", "kader");
+		element.setAttribute("class", "kader");
 	});
 
 	//const mapDiv = document.createElement('div');
@@ -540,27 +538,27 @@ const getWaardeBepaling = () => {
 
 
 const getRepairValue = () => {
-    const input1 = document.getElementById("input1").value;
-    modelnummer = input1;
-    const input2 = document.getElementById("input2").value;
-    price = input2;
-    const input3 = document.getElementById("input3").value;
-    bereid_te_betalen = input3;
-    const input4 = document.getElementById("input4").value;
-    age = input4;
+	const input1 = document.getElementById("input1").value;
+	modelnummer = input1;
+	const input2 = document.getElementById("input2").value;
+	price = input2;
+	const input3 = document.getElementById("input3").value;
+	bereid_te_betalen = input3;
+	const input4 = document.getElementById("input4").value;
+	age = input4;
 
 	const repair = {
-		deviceType: "stofzuiger" , 
+		deviceType: "stofzuiger",
 		deviceModelNumber: modelnummer,
-		purchasePrice: price, 
+		purchasePrice: price,
 		willingToPay: bereid_te_betalen,
 		ageInMonths: age,
 		mainChoice: selectedInput,
-		answersIds: result.toString(), 
-		location: "Online", 
+		answersIds: result.toString(),
+		location: "Online",
 		dateOfRepair: currentDate.toLocaleDateString(),
 		status: "In behandling",
-	
+
 	};
 	return repair;
 }
@@ -568,31 +566,31 @@ currentDate = new Date()
 const addToDb = async () => {
 
 	const repair = {
-		deviceType: "stofzuiger" , 
+		deviceType: "stofzuiger",
 		deviceModelNumber: modelnummer,
-		purchasePrice: price, 
+		purchasePrice: price,
 		willingToPay: bereid_te_betalen,
 		ageInMonths: age,
 		mainChoice: selectedInput,
-		answersIds: result, 
-		location: "Online", 
+		answersIds: result,
+		location: "Online",
 		dateOfRepair: currentDate.toLocaleDateString(),
 		status: "In behandling",
-	
+
 	};
-    try { 
-        const response = await fetch(`http://localhost:8080/api/profile/${sessionStorage.getItem("id")}/addRepair`,{
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-        },
-            body: JSON.stringify(repair),
-    });
-    } catch (error) {
-        console.log("Error occurred while adding repair to database");
-        throw error;
-    };
+	try {
+		const response = await fetch(`http://localhost:8080/api/profile/${sessionStorage.getItem("id")}/addRepair`, {
+			method: "POST",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(repair),
+		});
+	} catch (error) {
+		console.log("Error occurred while adding repair to database");
+		throw error;
+	};
 };
 // const testje = getRepairValue();
 // console.log("testje");
