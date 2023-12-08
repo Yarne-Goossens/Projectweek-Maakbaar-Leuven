@@ -938,7 +938,7 @@ label {
   text-align: center;
 }
 
-p {
+#repairItem p, #treediv p {
   margin: auto;
 }
 
