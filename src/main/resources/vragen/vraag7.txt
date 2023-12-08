@@ -1,0 +1,131 @@
+Stofzuiger reageert niet
+Geen stroomonderbreking, geen verzekering gesprongen
+
+Stofzuiger met kabel?
+    Zit de stekker goed in het stopcontact? 
+    Zet de stofzuiger in de “aan” stand.
+
+vervolg1:Er brandt een licht op de stofzuiger
+vervolg2:Er brandt geen licht op de stofzuiger
+vervolg3:Steel stofzuiger?
+vervolg4:Robot stofzuiger?
+
+vervolg1:
+Stofzuiger met kabel, stekker zit goed in het stopcontact, 
+er is stroom, er brandt licht op de stofzuiger
+Motor vervangen:
+    Stofzuiger demonteren
+    Hersteltijd: 60min
+    Wisselstukken: 80EUR
+Elektronische model vervangen:
+    Stofzuiger demonteren
+    Hersteltijd: 60min
+    Wisselstukken: 80EUR
+
+vervolg2:
+Stofzuiger met kabel, stekker zit goed in het stopcontact, 
+er brandt geen licht op de stofzuiger
+
+Stroomonderbreking?
+Zekering gesprongen bij start stofzuigen?
+Trek stofzuiger uit SC, 
+Controleer kabel
+
+vervolg 2.1:Stopcontact levert stroom
+vervolg 2.2:Stopcontact levert geen stroom
+
+vervolg2.1:
+Stofzuiger met kabel, stekker zit goed in het stopcontact, 
+stopcontact levert stroom.
+Zet schakelaar machine in de “aan” stand.
+    Op de knop drukken 
+    Draai aan de knop bij regelbare aanzuiging
+
+vervolg 2.1.1:Er brandt licht op de stofzuiger
+vervolg 2.1.2:Er brandt geen licht op de stofzuiger
+
+vervolg 2.1.1:
+Stofzuiger met kabel, stekker zit goed in het stopcontact, 
+er is stroom, in de “aan” stand, er brandt geen licht op de stofzuiger, geen zichtbare schade aan de kabel
+Motor vervangen:
+    Stofzuiger demonteren
+    Hersteltijd: 60min
+    Wisselstukken: 80EUR
+Elektronische model vervangen:
+    Stofzuiger demonteren
+    Hersteltijd: 60min
+    Wisselstukken: 80EUR
+
+vervolg 2.1.2.1:Stopcontact levert stroom
+vervolg 2.1.1.2:Stopcontact levert geen stroom
+
+vervolg 2.1.2.1:
+Stofzuiger met kabel, stekker zit goed in het stopcontact, 
+stopcontact levert stroom
+Zet schakelaar machine in de “aan” stand.
+    Op de knop drukken 
+    Draai aan de knop bij regelbare aanzuiging
+
+vervolg 2.1.2.1.1:Er brandt licht op de stofzuiger
+vervolg 2.1.2.1.2:Er brandt geen licht op de stofzuiger
+
+vervolg 2.1.2.1.1:Er brandt licht op de stofzuiger
+Stofzuiger met kabel, stekker zit goed in het stopcontact, 
+er is stroom, in de “aan” stand, er brandt geen licht op de stofzuiger, geen zichtbare schade aan de kabel
+Motor vervangen:
+    Stofzuiger demonteren
+    Hersteltijd: 60min
+    Wisselstukken: 80EUR
+Elektronische model vervangen:
+    Stofzuiger demonteren
+    Hersteltijd: 60min
+    Wisselstukken: 80EUR
+
+vervolg 2.1.2.1.2:Er brandt geen licht op de stofzuiger
+te veel 
+
+vervolg 3:
+Steelstofzuiger / Robot
+Batterij probleem
+    Vragen naar gebruik: 
+        Al opgemerkt dat de stofzuiger sneller plat is?
+        Is de oplaadduur verkort in de loop vd tijd? 
+        Hoe lang duurt het vooraleer de stofzuiger volledig opgeladen is? 
+        Hoe oud is de batterij?
+        Waar is de stockage van de batterij - stofzuiger?
+    Batterij vervangen: bestellen bij fabrikant
+
+
+vervolg 4
+Robot
+Heb je alle onderdelen, accessoires?
+
+Is de batterij opgeladen? De robot ingeschakeld?
+Geen verbinding met de app
+    Juiste app gedownload?
+    Is er Wifi bereik tot aan het laadstation?
+    Werkt de wifi?
+    Smartphone en robot op hetzelfde netwerk aangesloten?
+
+vervolg 4.1:Problemen met de batterij
+vervolg 4.2:Ander probleem
+
+vervolg4.1:
+Steelstofzuiger / Robot
+Batterij probleem
+Vragen naar gebruik: //zelfde als hierboven 
+    Al opgemerkt dat de stofzuiger sneller plat is?
+    Is de oplaadduur verkort in de loop vd tijd? 
+    Hoe lang duurt het vooraleer de stofzuiger volledig opgeladen is? 
+    Hoe oud is de batterij?
+    Waar is de stockage van de batterij - stofzuiger?
+Batterij vervangen: bestellen bij fabrikant
+
+vervolg4.2:
+Steelstofzuiger / Robot
+Geen idee van het probleem
+
+Demonteren - Diagnose - Monteren:
+
+Hersteltijd: 30min
+Wisselstukken: niet gekend

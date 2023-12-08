@@ -310,6 +310,7 @@ const displayBranchQuestion = () => {
 	let clickedInputId = null;
 	let index = 1;
 	data.forEach((element) => {
+		
 		const label = document.createElement("label");
 		label.innerHTML = element;
 		div.appendChild(label);
@@ -580,6 +581,7 @@ const displaySolution = (BranchDecider) => {
 	} else {
 		solution.forEach((element) => {
 			const p = document.createElement("p");
+			p.setAttribute("id", "DIY_p")
 			p.innerHTML = element;
 			articleDoehetZelf.appendChild(p);
 			// p.setAttribute("class","deactivate");

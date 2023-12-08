@@ -434,6 +434,8 @@ input {
 #vraag1div {
   margin: 0 auto;
   padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 /* Style the radio buttons and labels */
@@ -504,6 +506,9 @@ input {
   width: 15rem;
 }
 
+#DIY_p {
+  margin-top: 1.5rem;
+}
 /* Center everything within the main element */
 main {
   display: flex;
