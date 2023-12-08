@@ -296,14 +296,26 @@ const displayUserInfo = async () => {
 
 if (sessionStorage.getItem("role") === "REPAIR") {
     const createCalenderOverview = () => {
-        const p = document.createElement('p');
+        /*const p = document.createElement('p');
         p.innerHTML = "Bekijk je "
         const a = document.createElement('a')
         a.href = "https://outlook.office.com/calendar/view/month"
         a.target = "_blank"
         a.innerHTML = "Agenda"
         p.appendChild(a)
-        return p
+        return p*/
+        const createButton = (text, id) => {
+            const button = document.createElement("button");
+            button.innerText = text;
+            button.id = id;
+            return button;
+        };
+
+        const agendaButton = createButton("Bekijk je agenda", "agendaButton");
+        agendaButton.addEventListener("click", () => {
+            window.open("https://outlook.office.com/calendar/view/month", "_blank");
+        });
+        return agendaButton;
     }
     document.querySelector('main').appendChild(createCalenderOverview());
 }

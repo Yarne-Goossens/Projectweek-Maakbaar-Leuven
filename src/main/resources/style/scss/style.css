@@ -253,6 +253,14 @@ input:disabled {
   }
 }
 
+#agendaButton {
+  background-color: whitesmoke;
+  border-radius: 2rem;
+  border-width: 2px;
+  border: solid;
+  border-color: rgb(242, 185, 80);
+}
+
 button {
   font-size: 1rem;
   padding: 0.75rem 2rem;
