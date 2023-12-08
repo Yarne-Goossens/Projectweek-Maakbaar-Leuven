@@ -1,119 +1,134 @@
 const matrix = [
-	[
-		"De stofzuiger werkt niet",
-		"De stofzuiger zorgt voor een slechte geur",
-		"Het snoer rolt niet op",
-		"De stofzuiger laadt niet op",
-		"De stofzuiger is uitgevallen",
-		"De zuigkracht is verminderd",
-		"De wieltjes rollen niet meer goed",
-		"Er zijn verbindingsproblemen met de app",
+	[//main problemen
+		"Is de zekering gesprongen? Stroomonderbreking?",
+		"Stofzuiger reageert niet.",
+		"Is het toestel oververhit?",
+		"Zijn er geluiden die je nu hoort die je vroeger niet hoorde?",
+		"De stofzuiger is uitgevallen.",
+		"Heb je het toestel met water gepoetst?",
+		"De stofzuiger laadt niet op.",
+		"De zuigkracht is verminderd.",
+		"De wieltjes rollen niet meer goed.",
+		"Er komen krassen op de vloer.",
+		"Het snoer rolt niet op."
 	],
-	[
-		"Zit de stekker goed in het stopcontact?",
-		"Is de batterij opgeladen?",
-		"Zitten stofzak/stofbak/filters goed in de stofzuiger?",
-		"Zit klepje op de buis van de stofzuiger goed / is hij op de juiste manier gesloten?",
-		"Is het snoer nog intact / geen brandlekken of beschadigd?",
-		"Werkt het stopcontact wel?",
-		"Probleem ligt niet bij snoer of stopcontact?",
-		"Werkt niet of laadt niet goed op?",
-		"Laadstation aangesloten aan werkend stopcontact?",
+	[//"Is de zekering gesprongen? Stroomonderbreking?",
+		"Zijn er storing op het netwerk?",
+		"Is de kabel intact?",
+		"Is de kabel beschadigd?",
 	],
-	[
-		"Zit er iets vast in de voet, zuigbuis of slang?",
-		"Is de stofzuigerzak of het reservoir geleegd?",
-		"Zijn de filters schoongemaakt of vervangen?",
-		"Merk je verbrande lucht op?",
+	[//"Stofzuiger reageert niet.", 
+		"Brandt er een licht op de stofzuiger?",
+		"Is het stopcontact defect.",
+		"Is de batterij van de stofzuiger plat?"
 	],
-	["Rolt het snoer niet meer goed op?", "Draait het oprolmechanisme niet goed?"],
-	[
+	[// Is het toestel oververhit?
+		"Is de filter vol?",
+		"Zit er iets in de slang?"
+	],
+	[//Zijn er geluiden die je nu hoort die je vroeger niet hoorde?
+		"Hoor je luide motor geluiden?", 
+		"Hoor je hoge tonen/fluitende geluiden?"
+	],
+	[//De stofzuiger is uitgevallen
+		"Is de kabel intact?",
+		"Is de kabel beschadigd?",
+	],
+	[//Heb je het toestel met water gepoetst?
+		"Is de stofzuiger in contact gekomen met water aan de binnenkant of buitenkant?"
+	],
+	[//De stofzuiger laadt niet op.
 		"Werkt het toestel met een nieuwe batterij?",
-		"Is het laadstation aangesloten op een weekend stopcontact?",
+		"Is het laadstation aangesloten op een werkend stopcontact?",
 		"Kan je een andere batterij opladen aan dit laadstation?",
-	],
-	[
-		"Zit er een voorwerp vast?",
-		"Zie je niets dat vastzit? Vervang de zak of ledig het reservoir",
-		"Helpt niets tot nu toe? Maak de filters schoon of vervang ze",
-		"Merk je een verbrande lucht op?",
-		"Niets doorgebrand bij stopcontact, stekker, snoer?",
-	],
-	[
+	],//slide 23 & 24
+	[//De zuigkracht is verminderd
 		"Is de zuigkrachtregeling veranderd?",
 		"Is er minder zuigkracht?",
-		"Voel je zuigkracht?",
-		"Voel je geen zuigkracht?",
+		"Merk je een verstopping op?",
 		"Zit er een lek in de plastic slang?",
 		"Zit er een rubberen afsluiting los of is er een afsluiting kapot?",
 		"Is de plastic slang kapot dicht bij een uiteinde?",
 	],
-	["Draaien de wieltjes niet meer goed?", "Draaien de wieltjes nog steeds niet goed na schoonmaken?"],
-	[
-		"Heb je de juiste app gedownload?",
-		"Is er wifibereik tot aan het laadstation?",
-		"Zijn smartphone en robot op hetzelfde wifinetwerk én -frequentie aangesloten?",
-		"Heb je de stofzuiger al eens uitgeschakeld en na vijf minuten weer aangeschakeld?",
-		"Lukt het helemaal niet om een verbinding met de robotstofzuiger te maken?",
+	[//De wieltjes rollen niet meer goed
+		"Zitten de wieltjes vast?", 
+		"Zitten de wieltjes nog steeds vast na het schoonmaken?"
+	],
+	[//Er komen krassen op de vloer
+		"Zijn er kleine steentjes of scherp afval vast geraakt in de borstel?"
+	],
+	[//Het snoer rolt niet op.
+		"Is de veer van het snoer misschien versleten?",
+		"Heeft de stofzuiger een ontgrendelmechanisme voor het vrijgeven van het snoer?",
+		"Zijn er misschien haren, vuil of stof komen vast te zitten in het oprolmechanisme?"
 	],
 ];
 
 const solution_matrix = [
-	[
-		"Controleer aansluiting en stofzuigerzak",
-		"Controleer aansluiting en stofzuigerzak",
-		"Controleer aansluiting en stofzuigerzak",
-		"Controleer aansluiting en stofzuigerzak",
-		"Controleer aansluiting en stofzuigerzak",
-		"Controleer aansluiting en stofzuigerzak",
-		"Vervang de aan/uit schakelaar",
-		"Vervang de batterij van de stofzuiger",
-		"Controleer laadstation",
-		"Laat de motor en elektronica van je stofzuiger herstellen",
+	[//"Is de zekering gesprongen? Stroomonderbreking?",
+		"Stroomonderbreking: Algemene stroomonderbreking Elektricien bellen",
+		"Stofzuiger met kabel, stekker zit goed in het stopcontact, er is stroom, in de “aan” stand, er brandt geen licht op de stofzuiger, geen zichtbare schade aan de kabel Stofzuiger demonteren en diagnose stellen: diagnosetijd: 20min",
+		"Stofzuiger met kabel, zichtbare schade aan de kabel: Kabel breuk aan de stekker: Afknippen en herstellen Hersteltijd: 10min Nieuwe stekker: 6EUR Kabel breuk ergens anders: Stofzuiger demonteren Hersteltijd: 30min  Wisselstuk"
+	],
+	[//"Stofzuiger reageert niet.", 
+		"Check of jij de stofzuiger aan hebt gezet.",
+		"Check dat de zekering misschien niet gesprongen is bij het starten van de stofzuiger. Steek een ander elektrisch toestel in het stopcontact.Steek de stofzuiger misschien anders in een ander stopcontact.",
+		"Check of de batterij van de stofzuiger niet plat is."
+	],
+	[// Is het toestel oververhit?
+		"Zorg ervoor dat de filters leeg zijn.",
+		"Controleer of dat er geen afavl, voorwerp vastzit in de slang van de stofzuiger."
+	],
+	[//Zijn er geluiden die je nu hoort die je vroeger niet hoorde?
+		"Stofzuiger met kabel, stekker zit goed in het stopcontact, er is stroom, in de “aan” stand, er brandt geen licht op de stofzuiger, geen zichtbare schade aan de kabel Stofzuiger demonteren en diagnose stellen: diagnosetijd: 20min",
+		"Stofzuiger met kabel, zichtbare schade aan de kabel: Kabel breuk aan de stekker: Afknippen en herstellen Hersteltijd: 10min Nieuwe stekker: 6EUR Kabel breuk ergens anders: Stofzuiger demonteren Hersteltijd: 30min  Wisselstuk"
+	],
+	[//De stofzuiger is uitgevallen
+		"Verwijder de borstel,handvat en de slang. Moest er iets in vast zit verwijder dit en vergeet zeker ook niet de filter te leegen of te vravangen.",
+		"Er is een lek op een van deze locaties: Plastic slang:lek herstellen tape rubberen aansluiting: terug op zijn plaats zetten of vervangen."
+	],
+	[//Heb je het toestel met water gepoetst?
+		"Zorg dat er niks nog nat is of steek de stofzuiger later opnieuw in het stopcontact."
 	],
 	[
-		"Verwijder stinkend voorwerp uit de stofzuigerzak",
-		"Verwijder stinkend voorwerp uit de stofzuigerzak",
-		"Verwijder stinkend voorwerp uit de stofzuigerzak",
-		"vervang verband onderdeel van je stofzuiger",
-	],
-	["Maak het snoer van je stofzuiger schoon", "Smeer het oprolmechanisme van je stofzuiger"],
-	["Vervang de batterij van de stofzuiger", "Vervang het laadstation van je robotstofzuiger", "Vervang het laadstation van je robotstofzuiger"],
-	[
-		"Verwijder de verstopping uit je stofzuiger",
-		"Verwijder de verstopping uit je stofzuiger",
-		"Verwijder de verstopping uit je stofzuiger",
-		"Vervang verbrand onderdeel van je stofzuiger",
-		"Vervang verbrand onderdeel van je stofzuiger",
+		"De batterij van je apparaat is defect.",
+		"Mogelijks is de batterij van je apparaat defect.",
+		"Moglijks is de batterij van je appraat defect."
 	],
 	[
-		"Pas de zuigkrachtregeling van je stofzuiger aan",
-		"Vervang stofzuigerzak",
-		"Verwijder de verstopping uit je stofzuiger",
-		"Verwijder de verstopping uit je stofzuiger",
-		"Herstel een lek",
-		"Herstel een lek",
-		"Verwijder de stofzuigerslang",
+		"Verwijder de verstopping uit je stofzuiger.",
+		"Verwijder de verstopping uit je stofzuiger.",
+		"Verwijder de verstopping uit je stofzuiger.",
+		"Vervang verbrand onderdeel van je stofzuiger.",
+		"Vervang of zet de afsluiting terug vast.",
+		"Vervang dit gedeelte van de slang."
 	],
-	["Maak de wieltjes van je stofzuiger schoon.", "Vervang de wieltjes van je stofzuiger."],
 	[
-		"Controleer het netwerk.",
-		"Controleer het netwerk.",
-		"Controleer het netwerk.",
-		"Controleer het netwerk.",
-		"Laat de elektronica van je stofzuiger herstellen",
+		"Maak de wieltjes van de stofzuiger schoon.",
+		"Maak de wieltjes los en kuisenVervang de wielen als het bovenstaande niet helpt."
 	],
+	[
+		"Verwijder de steentjes of scherpe voorwerpen."
+	],
+	[
+		"Check of de veer van het snoer niet versleten is.",
+		"Check of de ontgrendelmechanisme aan staat.",
+		"Zorg ervoor dat er geen afval/voorwerp vastzit in het snoer."
+	]	
 ];
 
 const matrixProblems = [
-	"De stofzuiger werkt niet",
-	"De stofzuiger zorgt voor een slechte geur",
-	"Het snoer rolt niet op",
-	"De stofzuiger laadt niet op",
-	"De stofzuiger is uitgevallen",
-	"De zuigkracht is vermindert",
-	"De wieltjes rollen niet meer goed",
-	"Er zijn verbindingsproblemen met de app",
+		"Is de zekering gesprongen? Stroomonderbreking?",
+		"Stofzuiger reageert niet.",
+		"Is het toestel oververhit?",
+		"Zijn er geluiden die je nu hoort die je vroeger niet hoorde?",
+		"De stofzuiger is uitgevallen",
+		"Heb je het toestel met water gepoetst?",
+		"De stofzuiger laadt niet op.",
+		"De zuigkracht is verminderd",
+		"De wieltjes rollen niet meer goed",
+		"Er komen krassen op de vloer",
+		"Het snoer rolt niet op."
 ];
 
 const matrixDIYLinks = [
