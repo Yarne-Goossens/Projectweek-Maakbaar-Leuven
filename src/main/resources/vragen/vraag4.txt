@@ -1,0 +1,40 @@
+Afname zuigkracht
+Stofzuiger met zuigkrachtregeling: zet in gewenste stand
+Wat hoor je?
+
+vervolg1:Hoge tonen, fluitend geluid
+vervolg2:Verhogende motor geluid
+
+vervolg1:
+Wat hoor je? Fluitende toon, geluid van luchtverplaatsing
+Wisser aan de borstel ontbreekt. Nieuwe wisser kopen.
+//zelfde slide
+Lek
+Lokatie
+    plastic slang
+    thv aansluiting
+    rubberen afsluiting
+        verplaatst
+        kapot
+Oplossing
+    lek herstellen met tape
+    lek herstellen met tape
+    rubberen afsluiting
+        terug op zijn plaats zetten 
+        vervangen
+
+vervolg2:Afname zuigkracht / Motor oververhit
+Wat hoor je? Verhoogd motor geluid / niets
+Verstopping
+Verwijder
+    borstel
+    handvat
+    slang
+Zuigkracht beter?
+    verstopping in borstel
+    verstopping in handvat
+    verstopping in slang
+Filter - stofzak
+    schoonmaken, 
+    filter vervangen,
+    zak vervangen

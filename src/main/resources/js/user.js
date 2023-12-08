@@ -51,8 +51,6 @@ checkUserLogin = () => {
 
 			newListItem.appendChild(newLink);
 			navigationList.appendChild(newListItem);
-			
-			document.querySelector('main').appendChild(createCalenderOverview());
 		}
 	}
 };

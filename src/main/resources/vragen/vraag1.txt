@@ -1,0 +1,84 @@
+vraag 1
+
+Is de zekering gesprongen? Stroomonderbreking?
+
+Stofzuiger reageert niet
+    Stroomonderbreking
+        Algemene stroomonderbreking
+        Elektricien bellen
+
+        Zekering gesprongen bij start stofzuigen? 
+            Trek stofzuiger uit SC
+            Oplaadstation uit het SC halen
+            Zekering terug opzetten
+
+vervolg:Controleer kabel
+Stofzuiger reageert niet
+    Stofzuiger met kabel, stekker zit goed in het stopcontact, 
+    er is stroom, in de “aan” stand, er brandt geen licht op de stofzuiger
+        Is de kabel in intact?
+            Controleer op brandvlekken of beschadigingen (uitstulpingen, indrukken)
+vervolg 1:Kabel intact
+vervolg 2:Kabel beschadigd
+
+vervolg 1:Stofzuiger reageert niet
+Stofzuiger met kabel, stekker zit goed in het stopcontact, 
+er is stroom, in de “aan” stand, er brandt geen licht op de stofzuiger, geen zichtbare schade aan de kabel
+    Stofzuiger demonteren en diagnose stellen: diagnosetijd: 20min
+vervolg 1.1:Schakelaar vervangen
+vervolg 1.2:Kabelbreuk in de stofzuiger
+vervolg 1.3:Motor vervangen
+
+vervolg 1.1:Stofzuiger reageert niet
+    Stofzuiger met kabel, stekker zit goed in het stopcontact, 
+    er is stroom, in de “aan” stand, er brandt geen licht op de stofzuiger, geen zichtbare schade aan de kabel
+    Mechanische schakelaar:
+    Triac schakelaar
+    
+    samen{
+    Stofzuiger demonteren
+    Hersteltijd: 40min
+    Wisselstukken
+    }
+
+    {
+    Stofzuiger demonteren
+    Hersteltijd: 40min
+    Wisselstukken
+    }
+
+vervolg 1.2:Stofzuiger reageert niet
+Stofzuiger met kabel, zichtbare schade aan de kabel
+Kabel breuk aan de stekker:
+    Afknippen en herstellen
+    Hersteltijd: 10min
+    Nieuwe stekker: 6EUR
+
+Kabel breuk ergens anders:
+    Stofzuiger demonteren
+    Hersteltijd: 30min
+    Wisselstuk
+
+vervolg 1.3:Stofzuiger reageert niet
+Stofzuiger met kabel, stekker zit goed in het stopcontact, 
+er is stroom, in de “aan” stand, er brandt geen licht op de stofzuiger, geen zichtbare schade aan de kabel
+Motor vervangen:
+    Stofzuiger demonteren
+    Hersteltijd: 60min
+    Wisselstukken: 80EUR
+Elektronische model vervangen:
+    Stofzuiger demonteren
+    Hersteltijd: 60min
+    Wisselstukken: 80EUR
+
+vervolg 2:
+Stofzuiger reageert niet
+Stofzuiger met kabel, zichtbare schade aan de kabel
+Kabel breuk aan de stekker:
+    Afknippen en herstellen
+    Hersteltijd: 10min
+    Nieuwe stekker: 6EUR
+Kabel breuk ergens anders:
+    Stofzuiger demonteren
+    Hersteltijd: 30min
+    Wisselstuk

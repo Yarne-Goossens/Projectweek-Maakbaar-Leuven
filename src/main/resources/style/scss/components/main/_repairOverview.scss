@@ -39,8 +39,15 @@
     text-align: center;
 }
 
-p {
-    margin: 0;
+#repairItem p, #treediv p {
+    margin: auto;
+}
+
+
+
+#pherstel {
+    margin-left: 300px;
+    margin-right: 300px;
 }
 
 #userCard {
@@ -75,3 +82,7 @@ p {
     }
   }
   
+#oplossingButton, #terugButton{
+    margin: 0.5rem auto;
+    width: 15rem;
+  }
