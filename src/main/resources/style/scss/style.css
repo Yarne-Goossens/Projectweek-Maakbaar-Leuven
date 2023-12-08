@@ -239,6 +239,13 @@ input:disabled {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   outline: none;
 }
+#emailMain #emailButton {
+  background-color: whitesmoke;
+  border-radius: 2rem;
+  border-width: 2px;
+  border: solid;
+  border-color: rgb(242, 185, 80);
+}
 @media (min-width: 768px) {
   #emailMain {
     max-width: 80%;

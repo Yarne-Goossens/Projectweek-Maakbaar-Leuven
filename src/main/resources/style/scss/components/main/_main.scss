@@ -182,7 +182,18 @@ h1 {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); // Larger shadow for a "pop-out" effect
         outline: none; // Remove outline on focus
       }
+
+      
     }
+
+    #emailButton {
+        background-color: whitesmoke;
+        border-radius: 2rem;
+        border-width: 2px;
+        border: solid;
+        border-color: rgb(242, 185, 80);
+        
+      }
   
     // If you want to set a max-width and center the buttons horizontally
     // when the screen size is large, you can use media queries
