@@ -77,15 +77,15 @@ const solution_matrix = [
 	],
 	[// Is het toestel oververhit?
 		"Zorg ervoor dat de filters leeg zijn.",
-		"Controleer of dat er geen afavl, voorwerp vastzit in de slang van de stofzuiger."
+		"Controleer of dat er geen afval, voorwerp vastzit in de slang van de stofzuiger."
 	],
 	[//Zijn er geluiden die je nu hoort die je vroeger niet hoorde?
 		"Stofzuiger met kabel, stekker zit goed in het stopcontact, er is stroom, in de “aan” stand, er brandt geen licht op de stofzuiger, geen zichtbare schade aan de kabel Stofzuiger demonteren en diagnose stellen: diagnosetijd: 20min",
 		"Stofzuiger met kabel, zichtbare schade aan de kabel: Kabel breuk aan de stekker: Afknippen en herstellen Hersteltijd: 10min Nieuwe stekker: 6EUR Kabel breuk ergens anders: Stofzuiger demonteren Hersteltijd: 30min  Wisselstuk"
 	],
 	[//De stofzuiger is uitgevallen
-		"Verwijder de borstel,handvat en de slang. Moest er iets in vast zit verwijder dit en vergeet zeker ook niet de filter te leegen of te vravangen.",
-		"Er is een lek op een van deze locaties: Plastic slang:lek herstellen tape rubberen aansluiting: terug op zijn plaats zetten of vervangen."
+		"Verwijder de borstel, handvat en de slang. Moest er iets in vast zit verwijder dit en vergeet zeker ook niet de filter te legen of te vervangen.",
+		"Er is een lek op een van deze locaties: Plastic slang: lek herstellen tape rubberen aansluiting: terug op zijn plaats zetten of vervangen."
 	],
 	[//Heb je het toestel met water gepoetst?
 		"Zorg dat er niks nog nat is of steek de stofzuiger later opnieuw in het stopcontact."
@@ -93,7 +93,7 @@ const solution_matrix = [
 	[
 		"De batterij van je apparaat is defect.",
 		"Mogelijks is de batterij van je apparaat defect.",
-		"Moglijks is de batterij van je appraat defect."
+		"Mogelijks is de batterij van je apparaat defect."
 	],
 	[
 		"Verwijder de verstopping uit je stofzuiger.",
@@ -105,7 +105,7 @@ const solution_matrix = [
 	],
 	[
 		"Maak de wieltjes van de stofzuiger schoon.",
-		"Maak de wieltjes los en kuisenVervang de wielen als het bovenstaande niet helpt."
+		"Maak de wieltjes los en kuis ze. Vervang de wielen als het bovenstaande niet helpt."
 	],
 	[
 		"Verwijder de steentjes of scherpe voorwerpen."
