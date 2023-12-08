@@ -107,7 +107,7 @@ public class Profile {
         this.repairs.add(repair);
     }
 
-    // public void removeRepair(Repair repair) {
-    // this.repairs.remove(repair);
-    // }
+    public void removeRepair(Repair repair) {
+        this.repairs.remove(repair);
+    }
 }

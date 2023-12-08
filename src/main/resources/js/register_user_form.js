@@ -86,27 +86,6 @@ const registerUser = async () => {
         role: "USER",
     };
 
-    getProfiles = async () => {
-        const response = await fetch(`http://127.0.0.1:8080/api/profile/overview`, {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
-            },
-        });
-        const result = await response.json();
-
-        for (const profile of result) {
-            if (profile.email === email) {
-                addStatusError("Email is al in gebruik");
-                return 0;
-            }
-        }
-        return 0;
-    }
-
-    getProfiles();
-
     const respons = await fetch("http://localhost:8080/api/profile/add",
         {
             method: "POST",
@@ -117,13 +96,18 @@ const registerUser = async () => {
             body: JSON.stringify(profile),
         });
     console.log(respons);
-
+    if(respons.status === 500){
+        addStatusError("Email is al in gebruik");
+        return 0;
+    }
+    else{
     showToast("Registreren is gelukt!", 5000); // Show toast for 5 seconds
     setTimeout(function() {
         window.location.href = "index.html"; // Replace with your desired URL
     }, 3000); // 3000 milliseconds = 3 seconds
   
     return 1;
+}
 };
 
 document.getElementById("register_form").addEventListener("click", async (event) => {

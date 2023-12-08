@@ -1,5 +1,8 @@
 package team7.maakbaarleuven.repair.model;
 
+import java.util.ArrayList;
+
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
@@ -18,12 +21,18 @@ public class Repair {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long id;
-    // private int entryNumber;
     private String deviceType;
-    private String status;
     private String deviceModelNumber;
-    private String dateOfRepair;
+    private float purchasePrice;
+    private float willingToPay;
+    private float ageInMonths;
+    private String mainChoice;
+    private ArrayList<Integer> answersIds;
     private String location;
+    private String dateOfRepair;
+    private String status;
+
+
     @ManyToOne
     @JoinColumn(name = "profile_id")
     @JsonBackReference
@@ -32,14 +41,17 @@ public class Repair {
     public Repair() {
     }
 
-    public Repair(String deviceType, String status, String deviceModelNumber, String dateOfRepair,
-            String location) {
-        // this.entryNumber = entryNumber;
-        this.deviceType = deviceType;
-        this.status = status;
+    public Repair(String deviceType, String deviceModelNumber, float purchasePrice, float willingToPay, float ageInMonths, String mainChoice, ArrayList<Integer> answersIds, String location, String dateOfRepair, String status ) {
+        this.deviceType = "Stofzuiger";
         this.deviceModelNumber = deviceModelNumber;
+        this.purchasePrice = purchasePrice;
+        this.willingToPay = willingToPay;
+        this.ageInMonths = ageInMonths;
+        this.mainChoice = mainChoice;
+        this.answersIds = answersIds;
+        this.status = "In behandling";
         this.dateOfRepair = dateOfRepair;
-        this.location = location;
+        this.location = "Online";
     }
 
     // public void setEntryNumber(int entryNumber) {
@@ -96,5 +108,52 @@ public class Repair {
 
     public void setProfile(Profile profile) {
         this.profile = profile;
+    }
+
+    public void removeProfile() {
+        this.profile = null;
+    }
+    public float getPurchasePrice() {
+        return this.purchasePrice;
+    }
+
+    public void setPurchasePrice(float purchasePrice) {
+        this.purchasePrice = purchasePrice;
+    }
+
+    public float getWillingToPay() {
+        return this.willingToPay;
+    }
+
+    public void setWillingToPay(float willingToPay) {
+        this.willingToPay = willingToPay;
+    }
+
+    public void setAnswersIds(ArrayList<Integer> answersIds) {
+        this.answersIds = answersIds;
+    }
+
+    public float getAgeInMonths() {
+        return this.ageInMonths;
+    }
+
+    public void setAgeInMonths(float ageInMonths) {
+        this.ageInMonths = ageInMonths;
+    }
+
+    public String getMainChoice() {
+        return this.mainChoice;
+    }
+
+    public void setMainChoice(String mainChoice) {
+        this.mainChoice = mainChoice;
+    }
+
+    public ArrayList<Integer> getAnswersIds() {
+        return this.answersIds;
+    }
+
+    public void setAnswers(ArrayList<Integer> answersIds) {
+        this.answersIds = answersIds;
     }
 }
