@@ -310,6 +310,7 @@ const displayBranchQuestion = () => {
 	let clickedInputId = null;
 	let index = 1;
 	data.forEach((element) => {
+		
 		const label = document.createElement("label");
 		label.innerHTML = element;
 		div.appendChild(label);
@@ -467,7 +468,6 @@ const displaySolution = (BranchDecider) => {
 	const vitoLinkDiv = document.createElement("div");
 	let selectedProblem = "";
 	vitoLinkDiv.innerHTML = createVitoTool();
-	console.log(matrixProblems[0]);
 	const problemHeader = document.createElement("h2");
 	problemHeader.innerHTML = "Probleem";
 
@@ -581,6 +581,7 @@ const displaySolution = (BranchDecider) => {
 	} else {
 		solution.forEach((element) => {
 			const p = document.createElement("p");
+			p.setAttribute("id", "DIY_p")
 			p.innerHTML = element;
 			articleDoehetZelf.appendChild(p);
 			// p.setAttribute("class","deactivate");
@@ -590,11 +591,9 @@ const displaySolution = (BranchDecider) => {
 	}
 
 	//style kader
-	[articleDoehetZelf, articlePrijs, articleProblem, articleVideo, articleVito, articleLocaties, articleEndOfLife, articleAfspraak].forEach(
-		(element) => {
-			element.setAttribute("id", "kader");
-		}
-	);
+	[articleDoehetZelf, articlePrijs, articleProblem, articleVideo, articleVito, articleLocaties, articleEndOfLife, articleAfspraak].forEach((element) => {
+		element.setAttribute("class", "kader");
+	});
 
 	//const mapDiv = document.createElement('div');
 	//mapDiv.id = 'map';
@@ -670,7 +669,7 @@ const addToDb = async () => {
 	} catch (error) {
 		console.log("Error occurred while adding repair to database");
 		throw error;
-	}
+	};
 };
 // const testje = getRepairValue();
 // console.log("testje");

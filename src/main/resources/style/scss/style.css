@@ -203,9 +203,6 @@ input:focus {
   box-shadow: 0 0 8px rgba(0, 86, 179, 0.25);
   outline: none;
 }
-input::-moz-placeholder {
-  color: #999;
-}
 input::placeholder {
   color: #999;
 }
@@ -309,8 +306,7 @@ button:hover, button:focus {
 .home_screen .image_container img {
   width: auto;
   height: 75vh;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 @media (max-width: 960px) {
   .home_screen {
@@ -326,8 +322,15 @@ button:hover, button:focus {
   }
 }
 
+#recensiepar {
+  align-self: flex-start;
+}
+
 /* Use the original naming conventions */
-#vraag1div, #treediv, #maindiv, #nextdiv {
+#vraag1div,
+#treediv,
+#maindiv,
+#nextdiv {
   display: flex;
   flex-direction: column;
 }
@@ -366,8 +369,10 @@ button:hover, button:focus {
 }
 
 /* Common styles for select and input elements */
-select, input {
-  width: 50%; /* Adjust the width as needed */
+select,
+input {
+  width: 50%;
+  /* Adjust the width as needed */
   padding: 5px;
   margin: 5px 0;
 }
@@ -428,7 +433,7 @@ select, input {
   margin: 10px auto;
 }
 
-#kader {
+.kader {
   display: flex;
   padding: 2rem;
   margin-left: 20rem;
@@ -438,9 +443,30 @@ select, input {
   background: whitesmoke;
   border-radius: 10px;
   flex-direction: column;
-  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
+}
+
+.kaderSolution {
+  display: flex;
+  padding: 2rem;
+  margin-left: 20rem;
+  margin-right: 20rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background: gainsboro;
+  border-radius: 10px;
+  flex-direction: column;
+  -webkit-user-select: none;
+  /* Safari */
+  /* IE 10 and IE 11 */
   -moz-user-select: none;
-       user-select: none; /* Standard syntax */
+  user-select: none;
+  /* Standard syntax */
 }
 
 .deactivate * {
@@ -491,6 +517,10 @@ select, input {
   margin: 1rem auto;
   grid-column: span 2;
   width: 15rem;
+}
+
+#DIY_p {
+  margin-top: 1.5rem;
 }
 
 /* Center everything within the main element */
@@ -624,9 +654,9 @@ footer #faq:hover {
   flex-direction: column;
   -webkit-user-select: none;
   /* Safari */
+  -ms-user-select: none;
   /* IE 10 and IE 11 */
-  -moz-user-select: none;
-       user-select: none;
+  user-select: none;
   /* Standard syntax */
 }
 
@@ -780,7 +810,6 @@ label {
   background-repeat: no-repeat;
   border-radius: 8px;
   box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
-  height: -moz-fit-content;
   height: fit-content;
   margin: 6rem auto 8.1rem auto;
   width: 329px;
@@ -905,16 +934,17 @@ label {
   background-color: #f4f4f4;
 }
 
-#repairList {
+#repairList, #deviceList {
   font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(305px, 1fr));
   gap: 20px;
   padding: 20px;
   justify-content: center;
+  text-align: center;
 }
 
 #repairItem {
@@ -950,24 +980,49 @@ label {
 #userCard {
   display: flex;
   padding: 1rem;
+  min-width: 30rem;
   margin-left: 20rem;
   margin-right: 20rem;
-  margin-top: 2rem;
+  margin-top: 0rem;
   margin-bottom: 2rem;
-  background: rgb(188, 188, 188);
+  /* background: rgb(242, 185, 80); */
   border-radius: 10px;
   flex-direction: column;
   -webkit-user-select: none;
   /* Safari */
+  -ms-user-select: none;
   /* IE 10 and IE 11 */
-  -moz-user-select: none;
-       user-select: none;
+  user-select: none;
   /* Standard syntax */
   text-align: center;
+}
+#userCard h2 {
+  text-decoration: underline;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0rem;
 }
 
 .fa-trash:hover {
   cursor: pointer;
+}
+
+#flexdiv {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+#agendaHyperlink {
+  color: rgb(242, 185, 80);
+}
+#agendaHyperlink:hover {
+  font-weight: bold;
+}
+
+#oplossingButton, #terugButton {
+  margin: 0.5rem auto;
+  width: 15rem;
 }
 
 table {
