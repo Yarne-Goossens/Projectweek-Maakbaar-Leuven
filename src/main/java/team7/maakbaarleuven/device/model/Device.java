@@ -30,6 +30,7 @@ public class Device {
         this.bereidTeBetalen = bereidTeBetalen;
         this.ageInMonths = ageInMonths;
         this.diagnose = diagnose;
+        this.userId = userId;
     }
 
     public void setDeviceModelNumber(String deviceModelNumber) {
