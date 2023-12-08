@@ -140,4 +140,7 @@ const matrixDIYLinks = [
 	["https://www.youtube.com/watch?v=VvX476IRn7g"],
 	["https://www.youtube.com/watch?v=t_IznrzBsJE"],
 	["https://www.youtube.com/watch?v=jb9giwMlJc0"],
+	["https://youtu.be/oHLheMwYidY?si=l-mxZZ-4aj5Eto7T"],
+	["https://youtu.be/nUD1u4ovwXg?si=fz0KcLOkBxvRXa9A"],
+	["https://youtu.be/XfP3Tng3gr4?si=GssKf_gwaQrbcE5i"]
 ];
