@@ -540,7 +540,6 @@ const displaySolution = (BranchDecider) => {
 
 	const LabelOf = document.createElement("h2");
 	LabelOf.innerText = "Of maak meteen een afspraak";
-	LabelOf.style.textAlign = "center";
 	const buttonAfspraak = createButton("Maak een afspraak", "sendButton");
 	buttonAfspraak.addEventListener("click", function () {
 		window.location.href = "booking.html";
