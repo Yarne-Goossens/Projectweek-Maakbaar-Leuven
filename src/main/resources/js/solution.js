@@ -174,6 +174,16 @@ const displaySolution = (BranchDecider, repair) => {
     //const map = document.querySelector('map');
     //articleLocaties.appendChild(mapDiv);
 
+    const terugButton = document.createElement('button');
+    terugButton.innerHTML = "Terug";
+    terugButton.id = "terugButton";
+    terugButton.style.margin="2rem 20rem"
+    solutiondiv.appendChild(terugButton);
+
+    terugButton.addEventListener("click", async () => {
+        window.location.href = "user.html";
+    })
+
 };
 
 // const myClick = (element)=> {
@@ -201,3 +211,4 @@ const getWaardeBepaling = () => {
 
 
 // displayMainDiv();
+

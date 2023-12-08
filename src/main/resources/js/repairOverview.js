@@ -108,16 +108,7 @@ showClickedOnRepair = (repair) => {
     };
 
     const diagnosis = document.createElement('p');
-    diagnosis.innerHTML = `<a>Diagnose: ${mainChoiceConverter(repair.mainChoice)}</a>`
-
-    diagnosis.addEventListener("click", () => {
-        repairList.parentNode.removeChild(repairList);
-        main = document.getElementById('userMain');
-        const div = document.createElement('div');
-        div.id = "solutiondiv";
-        main.appendChild(div);
-        displaySolution(parseInt(repair.mainChoice), repair);
-    });
+    diagnosis.innerHTML = "Diagnose: "+ mainChoiceConverter(repair.mainChoice);
 
     const user = document.createElement('p');
     location.innerHTML = "Gebruiker: " + email;
@@ -130,11 +121,24 @@ showClickedOnRepair = (repair) => {
     newListItem.appendChild(user);
     repairList.appendChild(newListItem);
 
+    const oplossingButton = document.createElement('button');
+    oplossingButton.innerHTML = "Oplossing";
+    oplossingButton.id = "oplossingButton";
     const terugButton = document.createElement('button');
     terugButton.innerHTML = "Terug";
     terugButton.id = "terugButton";
     const bodyRepair = document.querySelector('#repairList');
+    bodyRepair.appendChild(oplossingButton);
     bodyRepair.appendChild(terugButton);
+
+    oplossingButton.addEventListener("click", () => {
+        repairList.parentNode.removeChild(repairList);
+        main = document.getElementById('userMain');
+        const div = document.createElement('div');
+        div.id = "solutiondiv";
+        main.appendChild(div);
+        displaySolution(parseInt(repair.mainChoice), repair);
+    });
 
     terugButton.addEventListener("click", async () => {
         if (sendPostRequest) {
