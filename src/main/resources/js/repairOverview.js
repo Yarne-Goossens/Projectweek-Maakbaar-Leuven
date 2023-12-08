@@ -221,8 +221,8 @@ showClickedOnRepair = async (repair) => {
     terugButton.innerHTML = "Terug";
     terugButton.id = "terugButton";
     const bodyRepair = document.querySelector('#repairList');
-    bodyRepair.appendChild(oplossingButton);
-    bodyRepair.appendChild(terugButton);
+    newListItem.appendChild(oplossingButton);
+    newListItem.appendChild(terugButton);
 
     oplossingButton.addEventListener("click", () => {
         repairList.parentNode.removeChild(repairList);
