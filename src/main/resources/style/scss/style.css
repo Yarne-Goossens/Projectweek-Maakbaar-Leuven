@@ -163,7 +163,7 @@ h1 {
 
 #treediv {
   display: grid;
-  grid-template-columns: 9fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
 }
 
@@ -224,6 +224,8 @@ select, input {
 #vraag1div {
   margin: 0 auto;
   padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 /* Style the radio buttons and labels */
@@ -278,6 +280,37 @@ select, input {
 
 .SolutionHeader {
   text-align: center;
+}
+
+.vraag_container {
+  min-width: 30rem;
+  font-size: 1.3rem;
+}
+
+.vraag_container label, .vraag_container button, .vraag_container p {
+  font-size: 1.3rem;
+}
+
+.solutiondiv p {
+  font-size: 1.3rem;
+}
+
+#maindiv label, #maindiv button {
+  font-size: 1.3rem;
+}
+
+#nextdiv label, #maindiv button {
+  font-size: 1.3rem;
+}
+
+.vraag_button, #start {
+  margin: 1rem auto;
+  grid-column: span 2;
+  width: 15rem;
+}
+
+#DIY_p {
+  margin-top: 1.5rem;
 }
 
 /* Center everything within the main element */
@@ -556,6 +589,7 @@ label {
   background-repeat: no-repeat;
   border-radius: 8px;
   box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: -moz-fit-content;
   height: fit-content;
   margin: 6rem auto 8.1rem auto;
   width: 329px;
@@ -778,30 +812,3 @@ table tr:hover {
   margin: 2px 2px;
   cursor: hand;
 }/*# sourceMappingURL=style.css.map */
-
-.vraag_container{
-  min-width: 30rem;
-  font-size: 1.3rem
-}
-
-.vraag_container label, .vraag_container button, .vraag_container p{
-  font-size: 1.3rem
-}
-
-.solutiondiv p{
-  font-size: 1.3rem
-}
-
-#maindiv label,#maindiv button{
-  font-size: 1.3rem
-}
-
-#nextdiv label,#maindiv button{
-  font-size: 1.3rem
-}
-
-.vraag_button, #start{
-  margin: 1rem auto;
-  grid-column: span 2;
-  width: 15rem;
-}
