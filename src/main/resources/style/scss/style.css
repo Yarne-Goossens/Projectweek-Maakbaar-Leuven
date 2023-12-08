@@ -770,6 +770,13 @@ p {
   cursor: pointer;
 }
 
+#agendaHyperlink {
+  color: rgb(242, 185, 80);
+}
+#agendaHyperlink:hover {
+  font-weight: bold;
+}
+
 table {
   border: none;
   width: 100%;

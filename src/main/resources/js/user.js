@@ -64,6 +64,7 @@ const createCalenderOverview = () => {
 	a.href = "https://outlook.office.com/calendar/view/month"
 	a.target = "_blank"
 	a.innerHTML = "Agenda"
+	a.id = "agendaHyperlink"
 	p.appendChild(a)
 	return p
 }

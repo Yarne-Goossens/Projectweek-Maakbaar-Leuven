@@ -67,3 +67,11 @@ p {
         cursor: pointer;
     }
 }
+
+#agendaHyperlink {
+    color: rgb(242, 185, 80);
+    &:hover {
+        font-weight: bold;
+    }
+  }
+  
