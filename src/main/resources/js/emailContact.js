@@ -12,6 +12,7 @@ const displayEmailMain = () => {
     const p = document.createElement("p");
     p.innerText = "Op deze pagina hebt u de keuze om zelfstandig de zelf-diagnose van uw toestel te starten aan de hand van een formulier of om contact op te nemen met een van onze werknemers om u te begeleiden.";
     p.style.textAlign = "center";
+    p.id = "pherstel";
     divMain.appendChild(p);
 
     const formButton = createButton("Vul het formulier zelf in", "formButton");

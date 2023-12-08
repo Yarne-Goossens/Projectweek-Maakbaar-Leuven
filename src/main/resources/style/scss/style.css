@@ -224,7 +224,7 @@ input:disabled {
 #emailMain button {
   font-size: 1rem;
   padding: 0.75rem 2rem;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   border: none;
   border-radius: 2rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -249,7 +249,7 @@ input:disabled {
 button {
   font-size: 1rem;
   padding: 0.75rem 2rem;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   border: none;
   border-radius: 2rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -925,6 +925,10 @@ label {
 }
 
 p {
+  margin: auto;
+}
+
+#pherstel {
   margin-left: 300px;
   margin-right: 300px;
 }
