@@ -139,6 +139,9 @@ showClickedOnRepair = async (repair) => {
     const diagnosis = document.createElement('p');
     diagnosis.innerHTML = `Diagnose: + <a href="">${repair.mainChoice}</a>`;
 
+    const user = document.createElement('p');
+    location.innerHTML = "Gebruiker: " + email;
+
     newListItem.appendChild(deviceType);
     newListItem.appendChild(diagnosis);
     newListItem.appendChild(status);
