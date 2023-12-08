@@ -1,7 +1,10 @@
 // 
 
 /* Use the original naming conventions */
-#vraag1div, #treediv, #maindiv, #nextdiv {
+#vraag1div,
+#treediv,
+#maindiv,
+#nextdiv {
     display: flex;
     flex-direction: column;
 }
@@ -13,11 +16,11 @@
 }
 
 #vraag1div label {
-    grid-column: 0,1;
+    grid-column: 0, 1;
 }
 
 #vraag1div input[type="radio"] {
-    grid-column: 1,2;
+    grid-column: 1, 2;
 }
 
 #treediv {
@@ -25,22 +28,27 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
 }
+
 #treediv p {
     grid-column: span 2;
-    
+
 
 }
+
 #treediv label {
     grid-column: 0,1;
+    margin: 0 auto;
 }
 
 #treediv input[type="radio"] {
-    grid-column: 1,2;
+    grid-column: 1, 2;
 }
 
 /* Common styles for select and input elements */
-select, input {
-    width: 50%; /* Adjust the width as needed */
+select,
+input {
+    width: 50%;
+    /* Adjust the width as needed */
     padding: 5px;
     margin: 5px 0;
 }
@@ -69,12 +77,14 @@ select, input {
 #error {
     color: red;
 }
+
 #vraag1div #error {
     color: red;
     display: block;
     margin: 10px auto;
 
 }
+
 #treediv #error {
     color: red;
     display: block;
@@ -88,8 +98,6 @@ select, input {
 #vraag1div {
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
 /* Style the radio buttons and labels */
@@ -106,9 +114,9 @@ select, input {
 #vraag1button {
     display: block;
     margin: 10px auto;
-}    
+}
 
-#kader{
+.kader {
     display: flex;
     padding: 2rem;
     margin-left: 20rem;
@@ -116,21 +124,43 @@ select, input {
     margin-top: 2rem;
     margin-bottom: 2rem;
     background: whitesmoke;
-    border-radius: 10px; 
+    border-radius: 10px;
     flex-direction: column;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
 }
 
-.deactivate * { 
+.kaderSolution {
+    display: flex;
+    padding: 2rem;
+    margin-left: 20rem;
+    margin-right: 20rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background: gainsboro;
+    border-radius: 10px;
+    flex-direction: column;
+    -webkit-user-select: none;
+    /* Safari */
+    /* IE 10 and IE 11 */
+    -moz-user-select: none;
+    user-select: none;
+    /* Standard syntax */
+}
+
+.deactivate * {
     display: none;
-} 
-.activate * { 
-    display: block; 
 }
 
-.videoMargin{
+.activate * {
+    display: block;
+}
+
+.videoMargin {
     margin-top: 2rem;
     display: flex;
     justify-content: center;
@@ -138,7 +168,9 @@ select, input {
     // height: 100vh; /* Set the height to 100% of the viewport height for vertical centering */
 }
 
-#map {height: 180px;}
+#map {
+    height: 180px;
+}
 
 .SolutionHeader {
     text-align: center;
