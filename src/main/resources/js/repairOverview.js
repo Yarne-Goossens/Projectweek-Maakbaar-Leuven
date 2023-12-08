@@ -203,7 +203,7 @@ showClickedOnRepair = async (repair) => {
         clearRepairOverview();
         showAllRepairs();
         showAllDevices();
-    })
+    });
 };
 
 showAllRepairs = async () => {
@@ -431,6 +431,19 @@ deviceButton.addEventListener("click", () => {
         showAllRepairs();
         showAllDevices();
     });
+
+    const terugButton = document.createElement('button');
+    terugButton.innerHTML = "Terug";
+    terugButton.id = "terugButton";
+    const bodyRepair = document.querySelector('#addDeviceDiv');
+    bodyRepair.appendChild(terugButton);
+
+    terugButton.addEventListener("click", async () => {
+        clearRepairOverview();
+        showAllRepairs();
+        showAllDevices();
+    });
+
 
     div.appendChild(label1);
     div.appendChild(input1);
