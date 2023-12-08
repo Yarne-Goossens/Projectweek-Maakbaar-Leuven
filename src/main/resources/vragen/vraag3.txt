@@ -1,0 +1,16 @@
+Afname zuigkracht / Motor oververhit
+Wat hoor je? Verhoogd motor geluid / niets
+Verstopping
+
+Verwijder
+    borstel
+    handvat
+    slang
+Zuigkracht beter?
+    verstopping in borstel
+    verstopping in handvat
+    verstopping in slang
+Filter - stofzak
+    schoonmaken, 
+    filter vervangen,
+    zak vervangen

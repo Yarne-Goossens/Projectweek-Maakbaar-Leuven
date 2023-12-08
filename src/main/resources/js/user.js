@@ -51,21 +51,8 @@ checkUserLogin = () => {
 
 			newListItem.appendChild(newLink);
 			navigationList.appendChild(newListItem);
-			
-			document.querySelector('main').appendChild(createCalenderOverview());
 		}
 	}
 };
-
-const createCalenderOverview = () => {
-	const p = document.createElement('p');
-	p.innerHTML = "Bekijk je "
-	const a = document.createElement('a')
-	a.href = "https://outlook.office.com/calendar/view/month"
-	a.target = "_blank"
-	a.innerHTML = "Agenda"
-	p.appendChild(a)
-	return p
-}
 
 window.addEventListener("load", checkUserLogin);

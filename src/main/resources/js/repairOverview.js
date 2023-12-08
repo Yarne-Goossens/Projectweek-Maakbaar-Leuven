@@ -57,6 +57,18 @@ getUserFromRepair = async (id) => {
     }
 }
 
+deleteRepair = async (id, email) => {
+    const response = await fetch(`http://127.0.0.1:8080/api/repairs/delete/${id}/${email}`, {
+        method: 'DELETE',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
+    const result = await response.json();
+    return result;
+}
+
 getAllRepairs = async () => {
     const response = await fetch(`http://127.0.0.1:8080/api/repairs/overview`, {
         method: 'GET',
@@ -87,13 +99,46 @@ changeStatus = async (id, status) => {
     return result;
 }
 
+const mainChoiceConverter = (mainChoice) => {
+    return matrixProblems[mainChoice - 1];
+};
+
+convertRepairToJSON = (repair) => {
+    const dateString = repair.dateOfRepair;
+    const inputDateString = "8/12/2023";
+    const parts = inputDateString.split('/');
+
+    // Rearrange the parts to the "YYYY-MM-DD" format
+    const formattedDate = `${parts[2]}-${parts[0].padStart(2, '0')}-${parts[1].padStart(2, '0')}`;
+    const product_age = Math.ceil((repair.ageInMonths) / 12);
+    year_of_manufacture = `${parts[2] - product_age}`
+
+    const jsondata = `{
+        "id": "rcint_38849",
+        "data_provider": "Repair Caf\u00e9 International",
+        "country": "BEL",
+        "partner_product_category": "Household appliances electric ~ Vacuum cleaner",
+        "product_category": "Vacuum",
+        "product_category_id": 34,
+        "brand": "Dyson",
+        "year_of_manufacture": "${year_of_manufacture}",
+        "product_age": "${product_age}",
+        "repair_status": "Repairable",
+        "repair_barrier_if_end_of_life": "",
+        "group_identifier": "0395",
+        "event_date": "${formattedDate}",
+        "problem": "${mainChoiceConverter(repair.mainChoice)}",
+    }`
+    return jsondata;
+}
+
 showClickedOnRepair = async (repair) => {
     const originalStatus = repair.status;
     let selectedStatus = originalStatus;
     let sendPostRequest = false;
     const repairList = document.getElementById('repairList');
     const newListItem = document.createElement('div');
-    newListItem.id = "repairItem";
+    newListItem.id = "repairItemSelected";
     const deviceType = document.createElement('p');
     deviceType.innerHTML = "Toestel: " + repair.deviceType;
     email = await getUserFromRepair(repair.id);
@@ -162,8 +207,12 @@ showClickedOnRepair = async (repair) => {
     const location = document.createElement('p');
     location.innerHTML = "Locatie: " + repair.location;
 
+    const mainChoiceConverter = (mainChoice) => {
+        return matrixProblems[mainChoice - 1];
+    };
+
     const diagnosis = document.createElement('p');
-    diagnosis.innerHTML = `Diagnose: + <a href="">${repair.mainChoice}</a>`;
+    diagnosis.innerHTML = "Diagnose: "+ mainChoiceConverter(repair.mainChoice);
 
     const user = document.createElement('p');
     location.innerHTML = "Gebruiker: " + email;
@@ -173,7 +222,6 @@ showClickedOnRepair = async (repair) => {
     newListItem.appendChild(status);
     newListItem.appendChild(dateOfRepair);
     newListItem.appendChild(location);
-    newListItem.appendChild(user);
 
     if (role !== "USER") {
         const user = document.createElement('p');
@@ -183,18 +231,33 @@ showClickedOnRepair = async (repair) => {
 
     const deleteIcon = document.createElement('a');
     deleteIcon.innerHTML = `<i class="fa fa-trash"></i>`;
-    deleteIcon.addEventListener("click", () => {
-        deleteRepair(repair.id, email);
-    })
     newListItem.appendChild(deleteIcon);
+
+    deleteIcon.addEventListener("click", async () => {
+        await deleteRepair(repair.id, email);
+        window.location.href = "user.html";
+    })
 
     repairList.appendChild(newListItem);
 
+    const oplossingButton = document.createElement('button');
+    oplossingButton.innerHTML = "Oplossing";
+    oplossingButton.id = "oplossingButton";
     const terugButton = document.createElement('button');
     terugButton.innerHTML = "Terug";
     terugButton.id = "terugButton";
     const bodyRepair = document.querySelector('#repairList');
-    bodyRepair.appendChild(terugButton);
+    newListItem.appendChild(oplossingButton);
+    newListItem.appendChild(terugButton);
+
+    oplossingButton.addEventListener("click", () => {
+        repairList.parentNode.removeChild(repairList);
+        main = document.getElementById('userMain');
+        const div = document.createElement('div');
+        div.id = "solutiondiv";
+        main.appendChild(div);
+        displaySolution(parseInt(repair.mainChoice), repair);
+    });
 
     terugButton.addEventListener("click", async () => {
         if (sendPostRequest) {
@@ -254,12 +317,24 @@ showAllRepairs = async () => {
             location.innerHTML = "Locatie: " + repair.location;
             const user = document.createElement('p');
             location.innerHTML = "Gebruiker: " + email;
+            const jsonButton = document.createElement('button');
+            jsonButton.innerHTML = "JSON";
+            jsonButton.className = "button";
+
+
+            jsondata = convertRepairToJSON(repair);
+
+            jsonButton.addEventListener("click", (event) => {
+                event.stopPropagation();
+                alert(convertRepairToJSON(repair));
+            });
 
             newListItem.appendChild(deviceType);
             newListItem.appendChild(status);
             newListItem.appendChild(dateOfRepair);
             newListItem.appendChild(location);
             newListItem.appendChild(user);
+            newListItem.appendChild(jsonButton);
             link.appendChild(newListItem);
             repairList.appendChild(link);
 
@@ -307,7 +382,6 @@ const displayUserInfo = async () => {
 
     userdiv.appendChild(card);
 }
-
 
 showAllDevices = async () => {
     const deviceList = document.getElementById('deviceList');
@@ -469,6 +543,32 @@ deviceButton.addEventListener("click", () => {
     div.appendChild(terugButton);
 
 });
+
+if (sessionStorage.getItem("role") === "REPAIR") {
+    const createCalenderOverview = () => {
+        /*const p = document.createElement('p');
+        p.innerHTML = "Bekijk je "
+        const a = document.createElement('a')
+        a.href = "https://outlook.office.com/calendar/view/month"
+        a.target = "_blank"
+        a.innerHTML = "Agenda"
+        p.appendChild(a)
+        return p*/
+        const createButton = (text, id) => {
+            const button = document.createElement("button");
+            button.innerText = text;
+            button.id = id;
+            return button;
+        };
+
+        const agendaButton = createButton("Bekijk je agenda", "agendaButton");
+        agendaButton.addEventListener("click", () => {
+            window.open("https://outlook.office.com/calendar/view/month", "_blank");
+        });
+        return agendaButton;
+    }
+    document.querySelector('main').appendChild(createCalenderOverview());
+}
 
 displayUserInfo();
 
