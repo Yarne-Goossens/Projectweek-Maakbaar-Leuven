@@ -21,6 +21,7 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public long id;
+    @Column(name="email", unique = true)
     private String email;
     private String firstname;
     private String lastname;
@@ -106,7 +107,7 @@ public class Profile {
         this.repairs.add(repair);
     }
 
-    // public void removeRepair(Repair repair) {
-    // this.repairs.remove(repair);
-    // }
+    public void removeRepair(Repair repair) {
+        this.repairs.remove(repair);
+    }
 }

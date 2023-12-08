@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +45,14 @@ public class RepairRestController {
     //     return repairService.addRepair(repair);
     // };
 
-    
+    @DeleteMapping("/delete/{repairId}/{email}")
+    public Repair deleteRepair(@PathVariable("repairId") long id, @PathVariable("email") String email) {
+        return repairService.deleteRepair(id, email);
+    }
+
+    @PostMapping("/status/{repairId}")
+    public Repair postMethodName(@PathVariable("repairId") long id, @RequestBody String status) {
+        return repairService.changeStatus(id, status);
+    }
 
 }

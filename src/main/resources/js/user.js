@@ -33,7 +33,7 @@ checkUserLogin = () => {
 		if (navigationList) {
 			var newListItem = document.createElement("li");
 			var newLink = document.createElement("a");
-			newLink.href = "admin.html";
+			newLink.href = "user.html";
 			newLink.textContent = "Admin";
 
 			newListItem.appendChild(newLink);

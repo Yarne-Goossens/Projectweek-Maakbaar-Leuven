@@ -36,7 +36,8 @@
 }
 
 #treediv label {
-    grid-column: 0, 1;
+    grid-column: 0,1;
+    margin: 0 auto;
 }
 
 #treediv input[type="radio"] {
@@ -72,8 +73,8 @@ input {
     font-weight: bold;
 }
 
-/* Styles for error text inside #nextdiv */
-#nextdiv #error {
+/* Styles for error text inside #nextdiv */ 
+#error {
     color: red;
 }
 
@@ -97,8 +98,6 @@ input {
 #vraag1div {
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
 /* Style the radio buttons and labels */
@@ -176,3 +175,30 @@ input {
 .SolutionHeader {
     text-align: center;
 }
+
+.vraag_container{
+    min-width: 30rem;
+    font-size: 1.3rem
+  }
+  
+  .vraag_container label, .vraag_container button, .vraag_container p{
+    font-size: 1.3rem
+  }
+  
+  .solutiondiv p{
+    font-size: 1.3rem
+  }
+  
+  #maindiv label,#maindiv button{
+    font-size: 1.3rem
+  }
+  
+  #nextdiv label,#maindiv button{
+    font-size: 1.3rem
+  }
+  
+  .vraag_button, #start{
+    margin: 1rem auto;
+    grid-column: span 2;
+    width: 15rem;
+  }

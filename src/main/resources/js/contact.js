@@ -5,22 +5,17 @@ const displayEmailMain = () => {
     main.appendChild(divMain);
     
     const LabelOf = document.createElement("label");
-    LabelOf.innerText = "Heb je een dringende vraag? Maak een afspraak!";
+    LabelOf.innerText = "Heb je een dringende vraag? Bel ons!";
     LabelOf.style.textAlign = "center";
-    const buttonAfspraak = createButton("Maak een afspraak", "sendButton");
-    buttonAfspraak.addEventListener("click", function () {
-        window.location.href = "booking.html";
-    });
-    buttonAfspraak.setAttribute("class", "buttonLayout2");
-    divMain.appendChild(LabelOf);
-    divMain.appendChild(buttonAfspraak);
-};
 
-const createButton = (text, id) => {
-    const button = document.createElement("button");
-    button.innerText = text;
-    button.id = id;
-    return button;
+    const LabelOfNumber = document.createElement("label");
+    LabelOfNumber.innerText = "016 37 57 00";
+    LabelOfNumber.style.textAlign = "center";
+    
+    
+    divMain.appendChild(LabelOf);
+    divMain.appendChild(LabelOfNumber);
+    divMain.appendChild(buttonAfspraak);
 };
 
 displayEmailMain();
