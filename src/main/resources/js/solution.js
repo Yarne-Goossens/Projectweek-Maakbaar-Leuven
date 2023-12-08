@@ -177,7 +177,7 @@ const displaySolution = (BranchDecider, repair) => {
     const terugButton = document.createElement('button');
     terugButton.innerHTML = "Terug";
     terugButton.id = "terugButton";
-    terugButton.style.margin="2rem 20rem"
+    terugButton.style.margin="2rem auto"
     solutiondiv.appendChild(terugButton);
 
     terugButton.addEventListener("click", async () => {
