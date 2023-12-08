@@ -115,7 +115,7 @@ showAllUsers = async () => {
 };
 
 getAllDevices = async () => {
-    const response = await fetch(`http://127.0.0.1:8080/api/devices/overview`, {
+    const response = await fetch(`http://127.0.0.1:8080/api/repairs/overview`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
@@ -130,7 +130,7 @@ getAllDevices = async () => {
 const showAllDevices = async () => {
     const devices = await getAllDevices();
     const deviceList = document.getElementById('deviceList');
-    if (deviceList) {
+    if (deviceList && devices !== null) {
         // Create the table element
         const table = document.createElement('table');
         table.style.width = '100%'; // Optional: Set table width
@@ -138,6 +138,9 @@ const showAllDevices = async () => {
 
         // Create a table row
         const trHead = document.createElement('tr');
+        const thdeviceType = document.createElement('th');
+        thdeviceType.appendChild(document.createTextNode(`thdeviceType`));
+        trHead.appendChild(thdeviceType);
     
         const thdeviceModelNumber = document.createElement('th');
         thdeviceModelNumber.appendChild(document.createTextNode(`deviceModelNumber`));
@@ -147,21 +150,37 @@ const showAllDevices = async () => {
         thpurchasePrice.appendChild(document.createTextNode(`purchase price`));
         trHead.appendChild(thpurchasePrice); 
         
-        const thbereidTeBetalen = document.createElement('th');
-        thbereidTeBetalen.appendChild(document.createTextNode(`bereid te betalen`));
-        trHead.appendChild(thbereidTeBetalen); 
+        const thwillingToPay = document.createElement('th');
+        thwillingToPay.appendChild(document.createTextNode(`willingToPay`));
+        trHead.appendChild(thwillingToPay); 
 
         const thageInMonths = document.createElement('th');
         thageInMonths.appendChild(document.createTextNode(`age in months`));
         trHead.appendChild(thageInMonths); 
        
-        const thdiagnose = document.createElement('th');
-        thdiagnose.appendChild(document.createTextNode(`diagnose`));
-        trHead.appendChild(thdiagnose); 
+        const thmainChoice = document.createElement('th');
+        thmainChoice.appendChild(document.createTextNode(`Main choice`));
+        trHead.appendChild(thmainChoice); 
 
-        const thuserId = document.createElement('th');
-        thuserId.appendChild(document.createTextNode(`userId`));
-        trHead.appendChild(thuserId); 
+        const thanswerIds = document.createElement('th');
+        thanswerIds.appendChild(document.createTextNode(`Answer Id`));
+        trHead.appendChild(thanswerIds);
+
+        const thLocation = document.createElement('td');
+        thLocation.appendChild(document.createTextNode("Location"));
+        trHead.appendChild(thLocation);
+
+        // Date of Repair cell
+        const thDateOfRepair = document.createElement('td');
+        thDateOfRepair.appendChild(document.createTextNode("Date of Repair"));
+        trHead.appendChild(thDateOfRepair);
+
+        // Status cell
+        const thStatus = document.createElement('td');
+        thStatus.appendChild(document.createTextNode("Status"));
+        trHead.appendChild(thStatus);
+
+        // Append the data row to the table
 
         // Append the row to the table
         table.appendChild(trHead);
@@ -172,32 +191,140 @@ const showAllDevices = async () => {
 
         for (const device of devices) {
             const trRow = document.createElement('tr');
+            const tddeviceType = document.createElement('td');
+            tddeviceType.appendChild(document.createTextNode(device.deviceType));
+            trRow.appendChild(tddeviceType);
             const tddeviceModelNumber = document.createElement('td');
             tddeviceModelNumber.appendChild(document.createTextNode(device.deviceModelNumber));
             trRow.appendChild(tddeviceModelNumber);
             const tdpurchasePrice = document.createElement('td');
             tdpurchasePrice.appendChild(document.createTextNode(device.purchasePrice));
             trRow.appendChild(tdpurchasePrice);
-            const tdbereidTeBetalen = document.createElement('td');
-            tdbereidTeBetalen.appendChild(document.createTextNode(device.bereidTeBetalen));
-            trRow.appendChild(tdbereidTeBetalen);
+            const tdwillingToPay = document.createElement('td');
+            tdwillingToPay.appendChild(document.createTextNode(device.willingToPay));
+            trRow.appendChild(tdwillingToPay);
             const tdageInMonths = document.createElement('td');
             tdageInMonths.appendChild(document.createTextNode(device.ageInMonths));
             trRow.appendChild(tdageInMonths);
-            const tddiagnose = document.createElement('td');
-            tddiagnose.appendChild(document.createTextNode(device.diagnose));
-            trRow.appendChild(tddiagnose);
-            const tduserId = document.createElement('td');
-            tduserId.appendChild(document.createTextNode(device.userId));
-            trRow.appendChild(tduserId);
+            const tdmainChoice = document.createElement('td');
+            tdmainChoice.appendChild(document.createTextNode(device.mainChoice));
+            trRow.appendChild(tdmainChoice);
+            const tdanswerIds = document.createElement('td');
+            tdanswerIds.appendChild(document.createTextNode(device.answerIds));
+            trRow.appendChild(tdanswerIds);
+            const tdLocation = document.createElement('td');
+            tdLocation.appendChild(document.createTextNode(device.location));
+            trRow.appendChild(tdLocation);
+            const tdDateOfRepair = document.createElement('td');
+            tdDateOfRepair.appendChild(document.createTextNode(device.dateOfRepair));
+            trRow.appendChild(tdDateOfRepair);
+            const tdStatus = document.createElement('td');
+            tdStatus.appendChild(document.createTextNode(device.status));
+            trRow.appendChild(tdStatus);
             table.appendChild(trRow);
+            
 
             
             
             };}
+            else {
+                const trRow = document.createElement('tr');
+                const tddeviceModelNumber = document.createElement('td');
+                tddeviceModelNumber.appendChild(document.createTextNode("No devices available"));
+                trRow.appendChild(tddeviceModelNumber);
+                table.appendChild(trRow);
+            }
             
         
 };
+const getDeviceTypes = async () => {
+	const response = await fetch("http://localhost:8080/api/deviceTypes/overview", {
+		method: "GET",
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json",
+		},
+	});
+	const result = await response.json();
+	return result;
+};
+
+const showAllDeviceTypes = async () => {
+    const deviceTypes = await getDeviceTypes();
+    const deviceTypeList = document.getElementById("deviceTypeList");
+    if (deviceTypeList) {
+        // Create the table element
+        const table = document.createElement("table");
+        table.style.width = "100%"; // Optional: Set table width
+        table.setAttribute("border", "1"); // Optional: Set table border
+
+        // Create a table row
+        const trHead = document.createElement("tr");
+        const thdeviceType = document.createElement("th");
+        thdeviceType.appendChild(document.createTextNode(`thdeviceType`));
+        trHead.appendChild(thdeviceType);
+
+        const thdeviceModelNumber = document.createElement("th");
+        thdeviceModelNumber.appendChild(
+            document.createTextNode(`deviceModelNumber`)
+        );
+        trHead.appendChild(thdeviceModelNumber);
+
+        const thpurchasePrice = document.createElement("th");
+        thpurchasePrice.appendChild(
+            document.createTextNode(`purchase price`)
+        );
+        trHead.appendChild(thpurchasePrice);
+
+        const thwillingToPay = document.createElement("th");
+        thwillingToPay.appendChild(
+            document.createTextNode(`willingToPay`)
+        );
+        trHead.appendChild(thwillingToPay);
+
+        const thageInMonths = document.createElement("th");
+        thageInMonths.appendChild(
+            document.createTextNode(`age in months`)
+        );
+        trHead.appendChild(thageInMonths);
+
+        const thmainChoice = document.createElement("th");
+        thmainChoice.appendChild(
+            document.createTextNode(`Main choice`)
+        );
+        trHead.appendChild(thmainChoice);
+
+        const thanswerIds = document.createElement("th");
+        thanswerIds.appendChild(
+            document.createTextNode(`Answer Id`)
+        );
+        trHead.appendChild(thanswerIds);
+
+        const thLocation = document.createElement("td");
+        thLocation.appendChild(document.createTextNode("Location"));
+        trHead.appendChild(thLocation);
+
+        // Date of Repair cell
+        const thDateOfRepair = document.createElement("td");
+        thDateOfRepair.appendChild(
+            document.createTextNode("Date of Repair")
+        );
+        trHead.appendChild(thDateOfRepair);
+
+        // Status cell
+        const thStatus = document.createElement("td");
+        thStatus.appendChild(document.createTextNode("Status"));
+        trHead.appendChild(thStatus);
+
+        // Append the data row to the table
+
+        // Append the row to the table
+        table.appendChild(trHead);
+
+        // Append the table to the div
+
+        deviceTypeList.appendChild(table);
+        }}
 
 if (sessionStorage.getItem("role") === "ADMIN") {
     //statements 
@@ -207,15 +334,25 @@ if (sessionStorage.getItem("role") === "ADMIN") {
     const btn2 = document.createElement("button");
     btn2.innerHTML = "Beheer devices";
 
+    const btn3 = document.createElement("button");
+    btn3.innerHTML = "Beheer deviceTypes";
+
+
+
     const main = document.querySelector("main");
     main.appendChild(btn1);
     main.appendChild(btn2);
+    main.appendChild(btn3);
 
     btn1.addEventListener("click", () => {
         showAllUsers();
     });
     btn2.addEventListener("click", () => {
         showAllDevices();
+    });
+    btn3.addEventListener("click", () => {
+        showAllDeviceTypes();
+
     });
     
 }

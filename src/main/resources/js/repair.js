@@ -275,22 +275,35 @@ const enterModel = () => {
 		}
 	});
 };
+const getDeviceTypes = async () => {
+	const response = await fetch("http://localhost:8080/api/deviceTypes/overview", {
+		method: "GET",
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json",
+		},
+	});
+	const result = await response.json();
+	return result;
+};
+const createDropDown = async () => {
+	const deviceTypes = await getDeviceTypes();
 
-const createDropDown = () => {
+	
 	const label = document.createElement("label");
 	label.innerHTML = "Selecteer uw apparaat: ";
 	label.id = "dropdownlabel";
 	const select = document.createElement("select");
 	select.id = "devices";
 	label.appendChild(select);
-	const option1 = document.createElement("option");
-	option1.value = "Stofzuiger";
-	option1.innerHTML = "Stofzuiger";
-	select.appendChild(option1);
-	const option2 = document.createElement("option");
-	option2.value = "...";
-	option2.innerHTML = "...";
-	select.appendChild(option2);
+	for (const deviceType of deviceTypes) {
+		const option = document.createElement("option");
+		option.value = deviceType.deviceType;
+		option.innerHTML = deviceType.deviceType;
+		select.appendChild(option);
+	}
+	
+	
 	const div = document.getElementById("maindiv");
 	div.appendChild(label);
 };
