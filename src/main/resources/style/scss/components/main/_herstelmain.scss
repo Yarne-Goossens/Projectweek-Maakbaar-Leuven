@@ -32,6 +32,7 @@
 }
 #treediv label {
     grid-column: 0,1;
+    margin: 0 auto;
 }
 
 #treediv input[type="radio"] {
@@ -65,8 +66,8 @@ select, input {
     font-weight: bold;
 }
 
-/* Styles for error text inside #nextdiv */
-#nextdiv #error {
+/* Styles for error text inside #nextdiv */ 
+#error {
     color: red;
 }
 #vraag1div #error {
@@ -88,8 +89,6 @@ select, input {
 #vraag1div {
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
 /* Style the radio buttons and labels */

@@ -32,6 +32,18 @@ getUserFromRepair = async (id) => {
     }
 }
 
+deleteRepair = async (id, email) => {
+    const response = await fetch(`http://127.0.0.1:8080/api/repairs/delete/${id}/${email}`, {
+        method: 'DELETE',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
+    const result = await response.json();
+    return result;
+}
+
 getAllRepairs = async () => {
     const response = await fetch(`http://127.0.0.1:8080/api/repairs/overview`, {
         method: 'GET',
@@ -61,7 +73,7 @@ changeStatus = async (id, status) => {
     return result;
 }
 
-showClickedOnRepair = (repair) => {
+showClickedOnRepair = async (repair) => {
     const originalStatus = repair.status;
     let selectedStatus = originalStatus;
     let sendPostRequest = false;
@@ -70,21 +82,55 @@ showClickedOnRepair = (repair) => {
     newListItem.id = "repairItem";
     const deviceType = document.createElement('p');
     deviceType.innerHTML = "Toestel: " + repair.deviceType;
+    email = await getUserFromRepair(repair.id);
 
     const status = document.createElement('p');
     status.innerHTML = "Status: "
 
-    const statusSelect = document.createElement('select');
-    const statusOptions = ["in behandeling", "voltooid"];
-    statusOptions.forEach(optionValue => {
-        const option = document.createElement('option');
-        option.value = optionValue;
-        option.text = optionValue;
-        if (optionValue === repair.status) {
-            option.selected = true;
+    const role = sessionStorage.getItem('role');
+    let statusOptions = "";
+    let statusSelect = "";
+    if (role === "REPAIR") {
+        statusSelect = document.createElement('select');
+        statusOptions = ["in afwachting", "in behandeling", "voltooid"];
+        statusOptions.forEach(optionValue => {
+            const option = document.createElement('option');
+            option.value = optionValue;
+            option.text = optionValue;
+            if (optionValue === repair.status) {
+                option.selected = true;
+            }
+            statusSelect.appendChild(option);
+        });
+    } else if (role === "USER") {
+        statusSelect = document.createElement('select');
+        if (repair.status === "in behandeling") {
+            statusOptions = ["in behandeling", "zelf opgelost"];
+        } else {
+            statusOptions = ["in afwachting", "zelf opgelost"];
         }
-        statusSelect.appendChild(option);
-    });
+        statusOptions.forEach(optionValue => {
+            const option = document.createElement('option');
+            option.value = optionValue;
+            option.text = optionValue;
+            if (optionValue === repair.status) {
+                option.selected = true;
+            }
+            statusSelect.appendChild(option);
+        });
+    } else if (role === "ADMIN") {
+        statusSelect = document.createElement('select');
+        statusOptions = ["in afwachting", "in behandeling", "voltooid", "zelf opgelost"];
+        statusOptions.forEach(optionValue => {
+            const option = document.createElement('option');
+            option.value = optionValue;
+            option.text = optionValue;
+            if (optionValue === repair.status) {
+                option.selected = true;
+            }
+            statusSelect.appendChild(option);
+        });
+    }
 
     statusSelect.addEventListener("change", (event) => {
         selectedStatus = event.target.value;
@@ -103,7 +149,7 @@ showClickedOnRepair = (repair) => {
     location.innerHTML = "Locatie: " + repair.location;
 
     const diagnosis = document.createElement('p');
-    diagnosis.innerHTML = "Diagnose: TODO"
+    diagnosis.innerHTML = `Diagnose: + <a href="">${repair.mainChoice}</a>`;
 
     const user = document.createElement('p');
     location.innerHTML = "Gebruiker: " + email;
@@ -114,6 +160,22 @@ showClickedOnRepair = (repair) => {
     newListItem.appendChild(dateOfRepair);
     newListItem.appendChild(location);
     newListItem.appendChild(user);
+
+    if (role !== "USER") {
+        const user = document.createElement('p');
+        location.innerHTML = "Gebruiker: " + email;
+        newListItem.appendChild(user);
+    }
+
+    const deleteIcon = document.createElement('a');
+    deleteIcon.innerHTML = `<i class="fa fa-trash"></i>`;
+    newListItem.appendChild(deleteIcon);
+
+    deleteIcon.addEventListener("click", async () => {
+        await deleteRepair(repair.id, email);
+        window.location.href = "user.html";
+    })
+
     repairList.appendChild(newListItem);
 
     const terugButton = document.createElement('button');
@@ -134,6 +196,7 @@ showClickedOnRepair = (repair) => {
 showAllRepairs = async () => {
     const repairList = document.getElementById('repairList');
     const role = sessionStorage.getItem('role');
+    const allRepairs = await getAllRepairs();
     const repairs = await getUserRepairs();
     if (repairs.length > 0 && role === "USER") {
         for (const repair of repairs) {
@@ -161,8 +224,7 @@ showAllRepairs = async () => {
                 showClickedOnRepair(repair);
             });
         }
-    } else if (repairs.length > 0 && role === "REPAIR") {
-        const allRepairs = await getAllRepairs();
+    } else if (allRepairs.length > 0) {
         for (const repair of allRepairs) {
             email = await getUserFromRepair(repair.id);
             const link = document.createElement('a');
@@ -227,9 +289,35 @@ const displayUserInfo = async () => {
     `;
 
     card.innerHTML = cardContent;
-    
+
 
     userdiv.appendChild(card);
+}
+
+if (sessionStorage.getItem("role") === "REPAIR") {
+    const createCalenderOverview = () => {
+        /*const p = document.createElement('p');
+        p.innerHTML = "Bekijk je "
+        const a = document.createElement('a')
+        a.href = "https://outlook.office.com/calendar/view/month"
+        a.target = "_blank"
+        a.innerHTML = "Agenda"
+        p.appendChild(a)
+        return p*/
+        const createButton = (text, id) => {
+            const button = document.createElement("button");
+            button.innerText = text;
+            button.id = id;
+            return button;
+        };
+
+        const agendaButton = createButton("Bekijk je agenda", "agendaButton");
+        agendaButton.addEventListener("click", () => {
+            window.open("https://outlook.office.com/calendar/view/month", "_blank");
+        });
+        return agendaButton;
+    }
+    document.querySelector('main').appendChild(createCalenderOverview());
 }
 
 displayUserInfo();
