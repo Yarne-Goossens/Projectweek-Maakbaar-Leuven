@@ -15,6 +15,7 @@
     gap: 20px;
     padding: 20px;
     justify-content: center;
+    text-align: center;
 }
 
 #repairItem {
@@ -74,6 +75,13 @@
     }
 }
 
+#agendaHyperlink {
+    color: rgb(242, 185, 80);
+    &:hover {
+        font-weight: bold;
+    }
+  }
+  
 #oplossingButton, #terugButton{
     margin: 0.5rem auto;
     width: 15rem;

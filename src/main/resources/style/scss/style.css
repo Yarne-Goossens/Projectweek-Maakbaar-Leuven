@@ -454,7 +454,20 @@ input {
   margin: 10px auto;
 }
 
-
+#kader {
+  display: flex;
+  padding: 2rem;
+  margin-left: 20rem;
+  margin-right: 20rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background: whitesmoke;
+  border-radius: 10px;
+  flex-direction: column;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
 
 .deactivate * {
   display: none;
@@ -649,6 +662,7 @@ footer #faq:hover {
   flex-direction: column;
   -webkit-user-select: none;
   /* Safari */
+  -ms-user-select: none;
   /* IE 10 and IE 11 */
   -moz-user-select: none;
   user-select: none;
@@ -965,6 +979,7 @@ label {
   gap: 20px;
   padding: 20px;
   justify-content: center;
+  text-align: center;
 }
 
 #repairItem {
@@ -1010,6 +1025,7 @@ label {
   flex-direction: column;
   -webkit-user-select: none;
   /* Safari */
+  -ms-user-select: none;
   /* IE 10 and IE 11 */
   -moz-user-select: none;
   user-select: none;
@@ -1019,6 +1035,13 @@ label {
 
 .fa-trash:hover {
   cursor: pointer;
+}
+
+#agendaHyperlink {
+  color: rgb(242, 185, 80);
+}
+#agendaHyperlink:hover {
+  font-weight: bold;
 }
 
 table {

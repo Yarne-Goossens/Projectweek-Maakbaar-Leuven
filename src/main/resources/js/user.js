@@ -55,4 +55,16 @@ checkUserLogin = () => {
 	}
 };
 
+const createCalenderOverview = () => {
+	const p = document.createElement('p');
+	p.innerHTML = "Bekijk je "
+	const a = document.createElement('a')
+	a.href = "https://outlook.office.com/calendar/view/month"
+	a.target = "_blank"
+	a.innerHTML = "Agenda"
+	a.id = "agendaHyperlink"
+	p.appendChild(a)
+	return p
+}
+
 window.addEventListener("load", checkUserLogin);
