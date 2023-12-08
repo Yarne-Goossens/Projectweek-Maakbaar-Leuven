@@ -32,6 +32,18 @@ getUserFromRepair = async (id) => {
     }
 }
 
+deleteRepair = async (id, email) => {
+    const response = await fetch(`http://127.0.0.1:8080/api/repairs/delete/${id}/${email}`, {
+        method: 'DELETE',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
+    const result = await response.json();
+    return result;
+}
+
 getAllRepairs = async () => {
     const response = await fetch(`http://127.0.0.1:8080/api/repairs/overview`, {
         method: 'GET',
@@ -157,10 +169,12 @@ showClickedOnRepair = async (repair) => {
 
     const deleteIcon = document.createElement('a');
     deleteIcon.innerHTML = `<i class="fa fa-trash"></i>`;
-    deleteIcon.addEventListener("click", () => {
-        deleteRepair(repair.id, email);
-    })
     newListItem.appendChild(deleteIcon);
+
+    deleteIcon.addEventListener("click", async () => {
+        await deleteRepair(repair.id, email);
+        window.location.href = "user.html";
+    })
 
     repairList.appendChild(newListItem);
 
@@ -278,6 +292,32 @@ const displayUserInfo = async () => {
 
 
     userdiv.appendChild(card);
+}
+
+if (sessionStorage.getItem("role") === "REPAIR") {
+    const createCalenderOverview = () => {
+        /*const p = document.createElement('p');
+        p.innerHTML = "Bekijk je "
+        const a = document.createElement('a')
+        a.href = "https://outlook.office.com/calendar/view/month"
+        a.target = "_blank"
+        a.innerHTML = "Agenda"
+        p.appendChild(a)
+        return p*/
+        const createButton = (text, id) => {
+            const button = document.createElement("button");
+            button.innerText = text;
+            button.id = id;
+            return button;
+        };
+
+        const agendaButton = createButton("Bekijk je agenda", "agendaButton");
+        agendaButton.addEventListener("click", () => {
+            window.open("https://outlook.office.com/calendar/view/month", "_blank");
+        });
+        return agendaButton;
+    }
+    document.querySelector('main').appendChild(createCalenderOverview());
 }
 
 displayUserInfo();
