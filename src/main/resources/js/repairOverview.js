@@ -321,12 +321,22 @@ showAllDevices = async () => {
             newListItem.id = "repairItem";
             const deviceType = document.createElement('p');
             deviceType.innerHTML = "Merk: " + device.merk;
+            const modelnr = document.createElement('p');
+            modelnr.innerHTML = "Modelnummer: " + device.deviceModelNumber;
             const age = document.createElement('p');
             age.innerHTML = "Leeftijd: " + device.ageInMonths;
+            const bereidtbt = document.createElement('p');
+            bereidtbt.innerHTML = "Bereid te betalen: " + device.bereidTeBetalen;
+            const aankoopprijs = document.createElement('p');
+            aankoopprijs.innerHTML = "Aankoopprijs: " + device.purchasePrice;
 
 
             newListItem.appendChild(deviceType);
+            newListItem.appendChild(modelnr);
             newListItem.appendChild(age);
+            newListItem.appendChild(bereidtbt);
+            newListItem.appendChild(aankoopprijs);
+
             link.appendChild(newListItem);
             deviceList.appendChild(link);
 
@@ -421,7 +431,7 @@ deviceButton.addEventListener("click", () => {
         const device = {
             deviceModelNumber: document.getElementById("input1").value,
             purchasePrice: document.getElementById("input2").value,
-            bereid_te_betalen: document.getElementById("input3").value,
+            bereidTeBetalen: document.getElementById("input3").value,
             ageInMonths: document.getElementById("input4").value,
             merk: document.getElementById("merk").value,
         };
@@ -436,12 +446,14 @@ deviceButton.addEventListener("click", () => {
     terugButton.innerHTML = "Terug";
     terugButton.id = "terugButton";
     const bodyRepair = document.querySelector('#addDeviceDiv');
-    bodyRepair.appendChild(terugButton);
 
     terugButton.addEventListener("click", async () => {
         clearRepairOverview();
+        document.getElementById("addDeviceDiv").innerHTML = "";
+        document.getElementById("deviceButton").style.display = "block";
         showAllRepairs();
         showAllDevices();
+
     });
 
 
@@ -454,6 +466,7 @@ deviceButton.addEventListener("click", () => {
     div.appendChild(label4);
     div.appendChild(input4);
     div.appendChild(button);
+    div.appendChild(terugButton);
 
 });
 
