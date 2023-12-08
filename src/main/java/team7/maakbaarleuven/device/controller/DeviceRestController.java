@@ -41,9 +41,9 @@ public class DeviceRestController {
 
     }
 
-    @PostMapping("/add/{id}")
-    public Device addDiagnose(@PathVariable("id") long id, @RequestBody String diagnose) {
-        return deviceService.addDiagnose(id, diagnose);
-
+    @GetMapping("/overview/{profileId}")
+    public List<Device> getAllDevicesByProfileId(@PathVariable("profileId") long id) {
+        System.out.println(deviceService.getAllDevicesByProfileId(id));
+        return deviceService.getAllDevicesByProfileId(id);
     }
 }

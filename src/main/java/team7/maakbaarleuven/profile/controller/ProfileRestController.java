@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import team7.maakbaarleuven.device.model.Device;
 import team7.maakbaarleuven.profile.model.Profile;
 import team7.maakbaarleuven.profile.service.ProfileService;
 import team7.maakbaarleuven.repair.model.Repair;
@@ -70,14 +71,14 @@ public class ProfileRestController {
         return profileService.addRepair(id, repair);
     }
 
+    @PostMapping("/{profileId}/addDevice")
+    public Profile adddevice(@PathVariable("profileId") long id, @RequestBody Device device) {
+        return profileService.addDevice(id, device);
+    }
+
     @PutMapping("/update")
-    public void updateProfile(@RequestBody Profile profile){
+    public void updateProfile(@RequestBody Profile profile) {
         profileService.updateProfile(profile);
     }
 
 }
-
-
-
-
-

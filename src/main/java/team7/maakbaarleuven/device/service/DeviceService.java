@@ -28,14 +28,12 @@ public class DeviceService {
         return getDeviceById(id);
     }
 
+    public List<Device> getAllDevicesByProfileId(long id) {
+        return deviceRepository.findDevicesByProfileId(id);
+    };
+
     public Device getDeviceByModelNumber(String id) {
         return deviceRepository.findByDeviceModelNumber(id);
-    }
-
-    public Device addDiagnose(long id, String diagnose) {
-        Device device = getDeviceById(id);
-        device.setDiagnose(diagnose);
-        return deviceRepository.save(device);
     }
 
 }

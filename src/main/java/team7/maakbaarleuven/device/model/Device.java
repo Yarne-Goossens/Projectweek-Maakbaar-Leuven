@@ -1,10 +1,15 @@
 package team7.maakbaarleuven.device.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import team7.maakbaarleuven.profile.model.Profile;
 
 @Entity
 @Table(name = "devices")
@@ -13,23 +18,31 @@ public class Device {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     public long id;
+    public String merk;
     public String deviceModelNumber;
     public int purchasePrice;
     public int bereidTeBetalen;
     public int ageInMonths;
-    public String diagnose;
-    public long userId;
+    public boolean isRepaired;
+
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    @JsonBackReference
+    public Profile profile;
 
     public Device() {
     }
 
-    public Device(String deviceModelNumber, int purchasePrice, int bereidTeBetalen, int ageInMonths, String diagnose,
-            long userId) {
+    public Device(String merk, String deviceModelNumber, int purchasePrice, int bereidTeBetalen, int ageInMonths,
+            String diagnose,
+            long userId, Profile profile, boolean isRepaired) {
+        this.merk = merk;
         this.deviceModelNumber = deviceModelNumber;
         this.purchasePrice = purchasePrice;
         this.bereidTeBetalen = bereidTeBetalen;
         this.ageInMonths = ageInMonths;
-        this.diagnose = diagnose;
+        this.profile = profile;
+        this.isRepaired = isRepaired;
     }
 
     public void setDeviceModelNumber(String deviceModelNumber) {
@@ -64,19 +77,19 @@ public class Device {
         this.ageInMonths = age;
     }
 
-    public String getDiagnose() {
-        return this.diagnose;
+    public Profile getProfile() {
+        return this.profile;
     }
 
-    public void setDiagnose(String diagnose) {
-        this.diagnose = diagnose;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
-    public long getUserId() {
-        return this.userId;
+    public boolean getIsRepaired() {
+        return this.isRepaired;
     }
 
-    public void setUserId(long id) {
-        this.userId = id;
+    public void setIsRepaired(boolean isRepaired) {
+        this.isRepaired = isRepaired;
     }
 }
