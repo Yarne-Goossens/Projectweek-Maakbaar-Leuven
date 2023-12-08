@@ -467,7 +467,6 @@ const displaySolution = (BranchDecider) => {
 	const vitoLinkDiv = document.createElement("div");
 	let selectedProblem = "";
 	vitoLinkDiv.innerHTML = createVitoTool();
-	console.log(matrixProblems[0]);
 	const problemHeader = document.createElement("h2");
 	problemHeader.innerHTML = "Probleem";
 
@@ -590,11 +589,9 @@ const displaySolution = (BranchDecider) => {
 	}
 
 	//style kader
-	[articleDoehetZelf, articlePrijs, articleProblem, articleVideo, articleVito, articleLocaties, articleEndOfLife, articleAfspraak].forEach(
-		(element) => {
-			element.setAttribute("id", "kader");
-		}
-	);
+	[articleDoehetZelf, articlePrijs, articleProblem, articleVideo, articleVito, articleLocaties, articleEndOfLife, articleAfspraak].forEach((element) => {
+		element.setAttribute("class", "kader");
+	});
 
 	//const mapDiv = document.createElement('div');
 	//mapDiv.id = 'map';
@@ -670,7 +667,7 @@ const addToDb = async () => {
 	} catch (error) {
 		console.log("Error occurred while adding repair to database");
 		throw error;
-	}
+	};
 };
 // const testje = getRepairValue();
 // console.log("testje");
