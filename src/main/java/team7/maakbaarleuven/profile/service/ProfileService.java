@@ -55,6 +55,10 @@ public class ProfileService {
         return false; // Email not found in the database.
     }
 
+    public void updateProfile(Profile profile) {
+        profileRepository.save(profile);
+    }
+
     public Profile addRepair(long id, Repair repair) {
         Profile profile = profileRepository.findById(id);
         profile.addRepair(repair);

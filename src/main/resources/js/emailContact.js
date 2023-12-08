@@ -4,13 +4,25 @@ const displayEmailMain = () => {
     const main = document.querySelector("main");
     main.appendChild(divMain);
 
-    const emailButton = createButton("Hulp nodig met het formulier? Stuur een mail!", "emailButton");
-    divMain.appendChild(emailButton);
-    emailButton.id = "emailButton";
+    const h1 = document.createElement("h1");
+    h1.innerText = "Kies een optie";
+    h1.style.textAlign = "center";
+    divMain.appendChild(h1);
+
+    const p = document.createElement("p");
+    p.innerText = "Op deze pagina hebt u de keuze om zelfstandig de zelf-diagnose van uw toestel te starten aan de hand van een formulier of om contact op te nemen met een van onze werknemers om u te begeleiden.";
+    p.style.textAlign = "center";
+    p.id = "pherstel";
+    divMain.appendChild(p);
 
     const formButton = createButton("Vul het formulier zelf in", "formButton");
     divMain.appendChild(formButton);
     formButton.id = "formButton";
+
+    const emailButton = createButton("Hulp nodig met het formulier? Stuur een mail!", "emailButton");
+    divMain.appendChild(emailButton);
+    emailButton.id = "emailButton";
+
 
     emailButton.addEventListener("click", () => {
         clearDiv("emailMain");
@@ -50,17 +62,8 @@ const displayEmailForm = () => {
     button.addEventListener("click", function () {
         window.location.href = "index.html";
     });
-    const LabelOf = document.createElement("label");
-    LabelOf.innerText = "Of maak meteen een afspraak";
-    LabelOf.style.textAlign = "center";
-    const buttonAfspraak = createButton("Maak een afspraak", "sendButton");
-    buttonAfspraak.addEventListener("click", function () {
-        window.location.href = "booking.html";
-    });
-    buttonAfspraak.setAttribute("class", "buttonLayout2");
+    
     mainDiv.appendChild(button);
-    mainDiv.appendChild(LabelOf);
-    mainDiv.appendChild(buttonAfspraak);
 };
 
 displayEmailMain();
