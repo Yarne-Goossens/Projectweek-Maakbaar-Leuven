@@ -169,11 +169,12 @@ showClickedOnRepair = async (repair) => {
 
     const deleteIcon = document.createElement('a');
     deleteIcon.innerHTML = `<i class="fa fa-trash"></i>`;
-    deleteIcon.addEventListener("click", () => {
-        console.log(repair.id);
-        deleteRepair(repair.id, email);
-    })
     newListItem.appendChild(deleteIcon);
+
+    deleteIcon.addEventListener("click", async () => {
+        await deleteRepair(repair.id, email);
+        window.location.href = "user.html";
+    })
 
     repairList.appendChild(newListItem);
 
