@@ -58,7 +58,7 @@ main {
 .home_screen {
     max-width: 75ch;
     margin: auto;
-    text-align: center;
+    text-align: justify;
 }
 
 body {
@@ -76,4 +76,203 @@ body {
 
 h1 {
     margin: 0 auto;
+    margin-bottom: 20px;
 }
+
+.text_index {
+    margin-bottom: 1rem;
+}
+
+#easter_egg:visited{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+#easter_egg {
+    cursor: text;
+}
+
+#dropdownlabel {
+    // Styling the label
+    display: block;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.5rem; // space between label and dropdown
+  }
+  
+  select#merk, select#devices {
+    width: 100%; // Makes the dropdown full width
+    padding: 10px 15px; // Padding inside the dropdown
+    background-color: #fff; // White background
+    border: 2px solid #ccc; // Light grey border
+    border-radius: 4px; // Rounded corners
+    font-size: 1rem; // Font size
+    color: #333; // Text color
+    -webkit-appearance: none; // Removes default styling on WebKit browsers
+    -moz-appearance: none; // Removes default styling on Firefox
+    appearance: none; // Removes default styling
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>'); // Down arrow icon
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%; // Position for the arrow icon
+    background-size: 12px; // Size of the arrow icon
+    cursor: pointer; // Changes cursor to pointer when hovering over the dropdown
+  
+    &:hover {
+      border-color: #bbb; // Darkens the border slightly on hover
+    }
+  
+    &:focus {
+      outline: none;
+      border-color: #66afe9; // Changes border color to a blue when focused
+      box-shadow: 0 0 0 0.2rem rgba(102, 175, 233, 0.25); // Adds glow effect when focused
+    }
+  }
+  
+
+  input {
+    background: #f2f2f2; // Light grey background for the input field
+    border: 2px solid #ddd; // Light grey border
+    border-radius: 8px; // Rounded corners
+    padding: 10px 15px; // Padding inside the input field
+    font-size: 16px; // Font size for the text inside
+    color: #333; // Dark grey color for the text
+    transition: border-color 0.3s, box-shadow 0.3s; // Smooth transition for focus effect
+    margin-top: 20px;
+  
+    &:focus {
+      border-color: #0056b3; // Change border color on focus
+      box-shadow: 0 0 8px rgba(0, 86, 179, 0.25); // Add a subtle shadow on focus
+      outline: none; // Remove default focus outline
+    }
+  
+    &::placeholder {
+      color: #999; // Light grey color for the placeholder text
+    }
+  
+    &:disabled {
+      background: #eaeaea; // Lighter grey background for disabled state
+      color: #999; // Light grey text for disabled state
+    }
+  }
+
+  #emailMain {
+    display: flex; // Use flexbox for easy centering
+    flex-direction: column; // Stack the buttons vertically
+    align-items: center; // Center buttons horizontally
+    justify-content: center; // Center content vertically (if #emailMain takes full height)
+    padding: 2rem; // Add some padding around the container
+  
+    button {
+      //background-color: ; // A professional blue color
+      //color: #ffffff; // White text color for contrast
+      font-size: 1rem; // Appropriate font size
+      padding: 0.75rem 2rem; // Padding for a larger click area
+      margin: 1rem 0; // Space out buttons vertically
+      border: none; // Remove default border
+      border-radius: 2rem; // Rounded corners for a modern look
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Subtle shadow for depth
+      cursor: pointer; // Change cursor to indicate button
+      text-decoration: none; // Remove underline from links
+      transition: all 0.3s ease; // Smooth transition for interaction states
+      width: auto; // Only be as wide as necessary
+      max-width: 260px; // Maximum width for larger screens
+  
+      &:hover, &:focus {
+        background-color: darken(rgb(242, 185, 80), 15%); // Darken button on hover/focus
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); // Larger shadow for a "pop-out" effect
+        outline: none; // Remove outline on focus
+      }
+
+      
+    }
+
+    #emailButton {
+        background-color: whitesmoke;
+        border-radius: 2rem;
+        border-width: 2px;
+        border: solid;
+        border-color: rgb(242, 185, 80);
+        
+      }
+  
+    // If you want to set a max-width and center the buttons horizontally
+    // when the screen size is large, you can use media queries
+    @media (min-width: 768px) {
+      max-width: 80%; // Limiting the width of the container
+      margin: 0 auto; // Auto margins for horizontal centering
+    }
+  }
+
+  button {
+    //background-color: ; // A professional blue color
+    //color: #ffffff; // White text color for contrast
+    font-size: 1rem; // Appropriate font size
+    padding: 0.75rem 2rem; // Padding for a larger click area
+    margin: 1rem 0; // Space out buttons vertically
+    border: none; // Remove default border
+    border-radius: 2rem; // Rounded corners for a modern look
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); // Subtle shadow for depth
+    cursor: pointer; // Change cursor to indicate button
+    text-decoration: none; // Remove underline from links
+    transition: all 0.3s ease; // Smooth transition for interaction states
+    width: auto; // Only be as wide as necessary
+    max-width: 260px; // Maximum width for larger screens
+
+    &:hover, &:focus {
+      background-color: darken(rgb(242, 185, 80), 15%); // Darken button on hover/focus
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); // Larger shadow for a "pop-out" effect
+      outline: none; // Remove outline on focus
+    }
+}
+  
+.home_screen {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // Set two columns
+    grid-gap: 2rem; // Space between columns
+    align-items: start;
+    width: 100%; // Grid width to 100% of its container
+    max-width: 1200px; // Increase this value to make the grid wider
+    margin: 0 auto; // Center the grid within its container
+
+  
+  
+    .text_container {
+      // This selector targets the text container
+      grid-column-start: 1;
+      max-width: 600px; // Maximum width of the text container
+      h2, p {
+        margin-bottom: 1rem; // Space between paragraphs and headings
+      }
+    }
+
+    #logoMaakbaar {
+        grid-column: 1 / span 2; // Span the logo across two columns
+        justify-self: center; // Center the logo within the two columns
+        max-width: 100%; // Ensure the logo is not bigger than the container
+        height: auto; // Maintain aspect ratio
+      }
+  
+    .image_container {
+      // This selector targets the image container
+      grid-column-start: 2;
+      max-width: 600px; // Maximum width of the image container
+      img {
+        width: auto; // The image will fill the container
+        height: 75vh; // Maintain the image's aspect ratio
+        object-fit: cover; // Cover the area of the container without stretching
+      }
+    }
+  
+    @media (max-width: 960px) {
+      // Responsive design for smaller screens
+      grid-template-columns: 1fr; // Only one column on smaller screens
+      .text_container, .image_container {
+        max-width: 100%; // Allow items to take full width on smaller screens
+      }
+    }
+
+    @media (max-width: 1200px) {
+        max-width: 100%;
+      }
+  }
+  

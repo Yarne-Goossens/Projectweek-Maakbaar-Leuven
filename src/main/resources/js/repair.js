@@ -462,6 +462,7 @@ const displaySolution = (BranchDecider) => {
 	const articlePrijs = document.createElement("article");
 	const articleDoehetZelf = document.createElement("article");
 	const articleProblem = document.createElement("article");
+	const articleAfspraak = document.createElement("article");
 	const probleemText = document.createElement("p");
 	const pr30 = document.createElement("p");
 	const pr50 = document.createElement("p");
@@ -541,6 +542,19 @@ const displaySolution = (BranchDecider) => {
 	articleVito.appendChild(vitoLinkDiv);
 	articleLocaties.appendChild(mapRepairCafés);
 
+	const LabelOf = document.createElement("label");
+	LabelOf.innerText = "Of maak meteen een afspraak";
+	LabelOf.style.textAlign = "center";
+	const buttonAfspraak = createButton("Maak een afspraak", "sendButton");
+	buttonAfspraak.addEventListener("click", function () {
+		window.location.href = "booking.html";
+	});
+	buttonAfspraak.style.margin = "0 auto";
+
+	//Afspraak childs
+	articleAfspraak.appendChild(LabelOf);
+	articleAfspraak.appendChild(buttonAfspraak);
+
 	//Volgorde solution divs
 	div.appendChild(articleProblem);
 	div.appendChild(articleVito);
@@ -549,6 +563,7 @@ const displaySolution = (BranchDecider) => {
 	div.appendChild(articleVideo);
 	div.appendChild(articleLocaties);
 	div.appendChild(articleEndOfLife);
+	div.appendChild(articleAfspraak);
 
 	//Loop to get correct solutions
 	let solution = [];
@@ -580,9 +595,11 @@ const displaySolution = (BranchDecider) => {
 	}
 
 	//style kader
-	[articleDoehetZelf, articlePrijs, articleProblem, articleVideo, articleVito, articleLocaties, articleEndOfLife].forEach((element) => {
-		element.setAttribute("id", "kader");
-	});
+	[articleDoehetZelf, articlePrijs, articleProblem, articleVideo, articleVito, articleLocaties, articleEndOfLife, articleAfspraak].forEach(
+		(element) => {
+			element.setAttribute("id", "kader");
+		}
+	);
 
 	//const mapDiv = document.createElement('div');
 	//mapDiv.id = 'map';
