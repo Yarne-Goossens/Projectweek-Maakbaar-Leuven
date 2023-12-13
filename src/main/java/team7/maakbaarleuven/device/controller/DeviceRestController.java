@@ -43,7 +43,7 @@ public class DeviceRestController {
 
     @GetMapping("/overview/{profileId}")
     public List<Device> getAllDevicesByProfileId(@PathVariable("profileId") long id) {
-        System.out.println(deviceService.getAllDevicesByProfileId(id));
+        // System.out.println(deviceService.getAllDevicesByProfileId(id));
         return deviceService.getAllDevicesByProfileId(id);
     }
 }

@@ -68,11 +68,13 @@ public class ProfileRestController {
 
     @PostMapping("/{profileId}/addRepair")
     public Profile addRepair(@PathVariable("profileId") long id, @RequestBody Repair repair) {
+        // System.out.println("Repair:" + repair.getDeviceModelNumber());
         return profileService.addRepair(id, repair);
     }
 
     @PostMapping("/{profileId}/addDevice")
     public Profile adddevice(@PathVariable("profileId") long id, @RequestBody Device device) {
+        // System.out.println("Device:" + device);
         return profileService.addDevice(id, device);
     }
 

@@ -234,6 +234,7 @@ showClickedOnRepair = async (repair) => {
 
 	const deleteIcon = document.createElement("a");
 	deleteIcon.innerHTML = `<i class="fa fa-trash"></i>`;
+	deleteIcon.style = "font-size: 1.8rem;";
 	newListItem.appendChild(deleteIcon);
 
 	deleteIcon.addEventListener("click", async () => {
@@ -247,7 +248,7 @@ showClickedOnRepair = async (repair) => {
 	oplossingButton.innerHTML = "Oplossing";
 	oplossingButton.id = "oplossingButton";
 	const terugButton = document.createElement("button");
-	terugButton.innerHTML = "Terug";
+	terugButton.innerHTML = "Terug & Opslaan";
 	terugButton.id = "terugButton";
 	const bodyRepair = document.querySelector("#repairList");
 	newListItem.appendChild(oplossingButton);
@@ -362,7 +363,7 @@ const getUser = async (email) => {
 		},
 	});
 	const result = await response.json();
-	console.log(result);
+	// console.log(result);
 	return result;
 };
 
@@ -400,7 +401,7 @@ showAllDevices = async () => {
 			const aankoopdatum = document.createElement("p");
 			aankoopdatum.innerHTML = "Aankoopdatum: " + device.purchaseDate;
 			const aankoopprijs = document.createElement("p");
-			aankoopprijs.innerHTML = "Aankoopprijs: " + device.purchasePrice;
+			aankoopprijs.innerHTML = "Aankoopprijs: € " + device.purchasePrice;
 
 			newListItem.appendChild(deviceType);
 			newListItem.appendChild(modelnr);
