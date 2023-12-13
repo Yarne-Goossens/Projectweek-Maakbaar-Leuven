@@ -117,7 +117,7 @@ convertRepairToJSON = (repair) => {
 	year_of_manufacture = `${parts[2] - product_age}`;
 
 	const jsondata = `{
-        "id": "rcint_38849${Math.random() * 100}",
+        "id": "rcint_38849${Math.ceil(Math.random() * 100)}",
         "data_provider": "Repair Caf\u00e9 International",
         "country": "BEL",
         "partner_product_category": "Household appliances electric ~ Vacuum cleaner",
