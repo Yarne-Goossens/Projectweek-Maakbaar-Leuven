@@ -1,127 +1,118 @@
 <!DOCTYPE html>
 <html lang="nl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../style/scss/normalize.css" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../style/scss/style.css" />
+		<link rel="icon" type="image/png" href="../images/MaakbaarLeuven_jpg.jpg" />
+		<script type="text/javascript" src="../js/user.js" defer></script>
+		<script type="text/javascript" src="../js/load_fragment.js" defer></script>
+		<title>MaakbaarLeuven</title>
+		<style>
+			#repair-feedback-container {
+				font-family: "Arial", sans-serif;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/scss/normalize.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../style/scss/style.css">
-    <link rel="icon" type="image/png" href="../images/MaakbaarLeuven_jpg.jpg">
-    <script type="text/javascript" src="../js/user.js" defer></script>
-    <script type="text/javascript" src="../js/load_fragment.js" defer></script>
-    <title>MaakbaarLeuven</title>
-    <style>
-        #repair-feedback-container {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+			#feedback-container {
+				width: 600px;
+				padding: 20px;
+				background-color: #f8f8f8;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				border-radius: 8px;
+				text-align: center;
+			}
 
-        #feedback-container {
-            width: 600px;
-            padding: 20px;
-            background-color: #f8f8f8;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            text-align: center;
-        }
+			.feedback {
+				margin-bottom: 20px;
+				border-bottom: 1px solid #ddd;
+				padding-bottom: 10px;
+				text-align: left;
+			}
 
-        .feedback {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-            text-align: left;
-        }
+			.user-info {
+				display: flex;
+				align-items: center;
+				margin-bottom: 10px;
+			}
 
-        .user-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
+			.user-name {
+				font-weight: bold;
+				margin-right: 10px;
+			}
 
-        .user-name {
-            font-weight: bold;
-            margin-right: 10px;
-        }
+			.feedback-text {
+				line-height: 1.5;
+			}
 
-        .feedback-text {
-            line-height: 1.5;
-        }
+			.timestamp {
+				color: #888;
+				font-size: 0.8em;
+			}
 
-        .timestamp {
-            color: #888;
-            font-size: 0.8em;
-        }
+			#recensietitel {
+				margin-bottom: 2rem;
+				margin-top: 2rem;
+			}
 
-        #recensietitel {
-            margin-bottom: 2rem;
-            margin-top: 2rem;
-        }
-
-        #recensiebutton {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: rgb(242, 185, 80);
-            color: rgb(0, 0, 0);
-            border: none;
-            border-radius: 20px;
-            /* Rounded edges */
-            font-size: 16px;
-            text-align: center;
-            text-decoration: none;
-            transition: background-color 0.3s, transform 0.2s;
-            margin: 1rem;
-            cursor: pointer;
-        }
-    </style>
-</head>
-
-<body>
-    <header id="headerContainer"></header>
-    <div id="repair-feedback-container">
-        <h1 id="recensietitel">Feedback gebruikers</h1>
-        <div id="feedback-container">
-
-            <div class="feedback">
-                <div class="user-info">
-                    <div class="user-name">Pieter de Boer</div>
-                </div>
-                <div class="feedback-text">
-                    "Snelle en professionele reparatieservice! Mijn smartphone is snel en vakkundig gerepareerd.
-                    Uitstekende service!"
-                </div>
-                <div class="timestamp">4 dagen geleden</div>
-            </div>
-
-            <div class="feedback">
-                <div class="user-info">
-                    <div class="user-name">Emma van der Meer</div>
-                </div>
-                <div class="feedback-text">
-                    "Heel tevreden met de reparatie van mijn laptop. De website is overzichtelijk en de reparatie was
-                    snel afgehandeld."
-                </div>
-                <div class="timestamp">1 week geleden</div>
-            </div>
-
-            <div class="feedback">
-                <div class="user-info">
-                    <div class="user-name">Tom Vos</div>
-                </div>
-                <div class="feedback-text">
-                    "Uitstekende klantenservice! Mijn vragen werden snel beantwoord, en mijn tablet is weer als nieuw na
-                    de reparatie."
-                </div>
-                <div class="timestamp">2 weken geleden</div>
-            </div>
-        </div>
-        <button id="recensiebutton">Laat hier je eigen feedback achter!</button>
-    </div>
-    <footer id="footerContainer"></footer>
-</body>
-
+			#recensiebutton {
+				display: inline-block;
+				padding: 10px 20px;
+				background-color: rgb(242, 185, 80);
+				color: rgb(0, 0, 0);
+				border: none;
+				border-radius: 20px;
+				/* Rounded edges */
+				font-size: 16px;
+				text-align: center;
+				text-decoration: none;
+				transition: background-color 0.3s, transform 0.2s;
+				margin: 1rem;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="headerContainer"></header>
+		<div id="repair-feedback-container">
+			<h1 id="recensietitel">Feedback gebruikers</h1>
+			<div id="feedback-container">
+				<div class="feedback">
+					<div class="user-info">
+						<div class="user-name">Pieter de Boer</div>
+					</div>
+					<div class="feedback-text">
+						"Snelle en professionele reparatieservice! Mijn smartphone is snel en vakkundig gerepareerd. Uitstekende service!"
+					</div>
+					<div class="timestamp">4 dagen geleden</div>
+				</div>
+				<div class="feedback">
+					<div class="user-info">
+						<div class="user-name">Emma van der Meer</div>
+					</div>
+					<div class="feedback-text">
+						"Heel tevreden met de reparatie van mijn laptop. De website is overzichtelijk en de reparatie was snel afgehandeld."
+					</div>
+					<div class="timestamp">1 week geleden</div>
+				</div>
+				<div class="feedback">
+					<div class="user-info">
+						<div class="user-name">Tom Vos</div>
+					</div>
+					<div class="feedback-text">
+						"Uitstekende klantenservice! Mijn vragen werden snel beantwoord en mijn tablet is weer als nieuw na de reparatie."
+					</div>
+					<div class="timestamp">2 weken geleden</div>
+				</div>
+			</div>
+			<button id="recensiebutton">Laat hier je eigen feedback achter!</button>
+		</div>
+		<footer id="footerContainer"></footer>
+	</body>
 </html>
