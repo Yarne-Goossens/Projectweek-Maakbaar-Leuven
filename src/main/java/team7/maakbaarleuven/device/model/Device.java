@@ -21,8 +21,7 @@ public class Device {
     public String merk;
     public String deviceModelNumber;
     public int purchasePrice;
-    public int bereidTeBetalen;
-    public int ageInMonths;
+    public String purchaseDate;
     public boolean isRepaired;
 
     @ManyToOne
@@ -33,14 +32,13 @@ public class Device {
     public Device() {
     }
 
-    public Device(String merk, String deviceModelNumber, int purchasePrice, int bereidTeBetalen, int ageInMonths,
+    public Device(String merk, String deviceModelNumber, int purchasePrice, String purchaseDate,
             String diagnose,
             long userId, Profile profile, boolean isRepaired) {
         this.merk = merk;
         this.deviceModelNumber = deviceModelNumber;
         this.purchasePrice = purchasePrice;
-        this.bereidTeBetalen = bereidTeBetalen;
-        this.ageInMonths = ageInMonths;
+        this.purchaseDate = purchaseDate;
         this.profile = profile;
         this.isRepaired = isRepaired;
     }
@@ -61,20 +59,12 @@ public class Device {
         return this.purchasePrice;
     }
 
-    public void setBereidTeBetalen(int bereidTeBetalen) {
-        this.bereidTeBetalen = bereidTeBetalen;
+    public void setPurchaseDate(String purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
-    public int getBereidTeBetalen() {
-        return this.bereidTeBetalen;
-    }
-
-    public int getAgeInMonths() {
-        return this.ageInMonths;
-    }
-
-    public void setAgeInMonths(int age) {
-        this.ageInMonths = age;
+    public String getPurchaseDate() {
+        return this.purchaseDate;
     }
 
     public Profile getProfile() {

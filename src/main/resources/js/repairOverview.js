@@ -397,18 +397,15 @@ showAllDevices = async () => {
 			deviceType.innerHTML = "Merk: " + device.merk;
 			const modelnr = document.createElement("p");
 			modelnr.innerHTML = "Modelnummer: " + device.deviceModelNumber;
-			const age = document.createElement("p");
-			age.innerHTML = "Leeftijd: " + device.ageInMonths;
-			const bereidtbt = document.createElement("p");
-			bereidtbt.innerHTML = "Bereid te betalen: " + device.bereidTeBetalen;
+			const aankoopdatum = document.createElement("p");
+			aankoopdatum.innerHTML = "Aankoopdatum: " + device.purchaseDate;
 			const aankoopprijs = document.createElement("p");
 			aankoopprijs.innerHTML = "Aankoopprijs: " + device.purchasePrice;
 
 			newListItem.appendChild(deviceType);
 			newListItem.appendChild(modelnr);
-			newListItem.appendChild(age);
-			newListItem.appendChild(bereidtbt);
 			newListItem.appendChild(aankoopprijs);
+			newListItem.appendChild(aankoopdatum);
 
 			link.appendChild(newListItem);
 			deviceList.appendChild(link);
@@ -488,13 +485,10 @@ deviceButton.addEventListener("click", () => {
 	const input2 = document.createElement("input");
 	input2.id = "input2";
 	const label3 = document.createElement("label");
-	label3.innerHTML = "Bereid te betalen:";
+	label3.innerHTML = "Aankoopdatum:";
 	const input3 = document.createElement("input");
 	input3.id = "input3";
-	const label4 = document.createElement("label");
-	label4.innerHTML = "Leeftijd toestel (in maanden):";
-	const input4 = document.createElement("input");
-	input4.id = "input4";
+	input3.type = "date";
 
 	const button = document.createElement("button");
 	button.innerHTML = "Voeg apparaat toe";
@@ -502,8 +496,7 @@ deviceButton.addEventListener("click", () => {
 		const device = {
 			deviceModelNumber: document.getElementById("input1").value,
 			purchasePrice: document.getElementById("input2").value,
-			bereidTeBetalen: document.getElementById("input3").value,
-			ageInMonths: document.getElementById("input4").value,
+			purchaseDate: document.getElementById("input3").value,
 			merk: document.getElementById("merk").value,
 		};
 		addDevice(device);
@@ -532,8 +525,6 @@ deviceButton.addEventListener("click", () => {
 	div.appendChild(input2);
 	div.appendChild(label3);
 	div.appendChild(input3);
-	div.appendChild(label4);
-	div.appendChild(input4);
 	div.appendChild(button);
 	div.appendChild(terugButton);
 });
