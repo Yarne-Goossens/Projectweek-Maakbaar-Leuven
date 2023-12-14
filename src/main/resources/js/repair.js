@@ -464,6 +464,7 @@ const displaySolution = (BranchDecider) => {
 	const pr30 = document.createElement("p");
 	const pr50 = document.createElement("p");
 	const pCost = document.createElement("p");
+	const herstelCost = document.createElement("p");
 	const vitoTitle = document.createElement("h2");
 	const vitoLinkDiv = document.createElement("div");
 	let selectedProblem = "";
@@ -498,6 +499,8 @@ const displaySolution = (BranchDecider) => {
 		getWaardeBepaling() * 0.3
 	}`;
 	pr50.innerHTML = `of 50% van de aankoopprijs van een nieuw toestel te betalen voor een reparatie.`;
+	const herstelPrijs = (Math.random()*50).toFixed(2);
+	herstelCost.innerHTML = `De reparatiekosten zijn € ${herstelPrijs}`;
 
 	const h2RepairCaféLocaties = document.createElement("h2");
 	const h2EndOfLife = document.createElement("h2");
@@ -533,6 +536,7 @@ const displaySolution = (BranchDecider) => {
 	articlePrijs.appendChild(pCost);
 	articlePrijs.appendChild(pr30);
 	articlePrijs.appendChild(pr50);
+	articlePrijs.appendChild(herstelCost);
 	articleVito.appendChild(vitoTitle);
 	articleVito.appendChild(vitop);
 	articleVito.appendChild(vitoLinkDiv);

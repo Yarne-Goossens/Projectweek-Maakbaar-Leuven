@@ -28,10 +28,10 @@ const main = async () => {
 		console.log(status);
 		if (status) {
 			//addStatus("login gelukt");
-			showToast("Login is gelukt! Welkom!", 2000); // Show toast for 5 seconds
+			showToast("Login is gelukt! Welkom!", 400); // Show toast for 5 seconds
 			setTimeout(function () {
 				window.location.href = "index.html"; // Replace with your desired URL
-			}, 1500); // 3000 milliseconds = 3 seconds
+			}, 300); // 3000 milliseconds = 3 seconds
 
 			const user = await getUser(profile.email);
 			console.log(user);

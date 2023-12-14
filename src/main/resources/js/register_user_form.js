@@ -1,5 +1,5 @@
 addStatusError = (status) => {
-    document.getElementById("statusError").innerHTML = "<p class='error'>" + status + "</p>";
+    document.getElementById("statusError").innerHTML = "<p class='error' style='color: red\; text-align\: center\;'>" + status + "</p>";
 };
 
 const clearStatus = (status) => (document.getElementById("statusError").innerHTML = "");

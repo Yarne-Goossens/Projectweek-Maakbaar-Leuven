@@ -153,6 +153,8 @@ h1 {
 
 #easter_egg {
   cursor: text;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
 }
 
 #dropdownlabel {
