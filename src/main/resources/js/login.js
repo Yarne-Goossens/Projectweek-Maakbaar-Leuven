@@ -33,12 +33,30 @@ const main = async () => {
 				window.location.href = "index.html"; // Replace with your desired URL
 			}, 300); // 3000 milliseconds = 3 seconds
 
-			const user = await getUser(profile.email);
+			//const user = await getUser(profile.email);
+			if (profile.email === "admin") {
+				sessionStorage.setItem("user", "admin");
+				sessionStorage.setItem("role", "ADMIN");
+				sessionStorage.setItem("id", "1");
+				sessionStorage.setItem("email", "admin@mail.com");
+			} 
+			else if (profile.email === "tech") {
+				sessionStorage.setItem("user", "tech");
+				sessionStorage.setItem("role", "REPAIR");
+				sessionStorage.setItem("id", "2");
+				sessionStorage.setItem("email", "tech@mail.com");
+			}
+			else if (profile.email === "user"){
+				sessionStorage.setItem("user", "user");
+				sessionStorage.setItem("role", "USER");
+				sessionStorage.setItem("id", "3");
+				sessionStorage.setItem("email", "user@mail.com");
+			}
 			console.log(user);
-			sessionStorage.setItem("user", user.firstname);
+			/*sessionStorage.setItem("user", user.firstname);
 			sessionStorage.setItem("role", user.role);
 			sessionStorage.setItem("id", user.id);
-			sessionStorage.setItem("email", user.email);
+			sessionStorage.setItem("email", user.email);*/
 			//             window.location.href = "user.html";
 			checkUserLogin();
 		} else {
@@ -48,28 +66,30 @@ const main = async () => {
 };
 
 const authenticate = async (profile) => {
-	try {
-		const response = await fetch(`http://127.0.0.1:8080/api/profile/authenticate`, {
-			method: "POST",
-			headers: {
-				Accept: "application/json",
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(profile),
-		});
-		console.log(response);
+	//try {
+	//	const response = await fetch(`http://127.0.0.1:8080/api/profile/authenticate`, {
+	//		method: "POST",
+	//		headers: {
+	//			Accept: "application/json",
+	//			"Content-Type": "application/json",
+	//		},
+	//		body: JSON.stringify(profile),
+	//	});
+	//	console.log(response);
+//
+	//	// if (!response.ok) {
+	//	//     throw new Error(`Failed to fetch: ${response.status} - ${response.statusText}`);
+	//	// }
+//
+	//	const result = await response.json();
+	//	return result;
+	//} catch (error) {
+	//	// Handle the error here, log it, or return an appropriate error message.
+	//	console.error("Error in fetch request:", error);
+	//	throw error; // Optionally, re-throw the error for further handling.
+	//}
 
-		// if (!response.ok) {
-		//     throw new Error(`Failed to fetch: ${response.status} - ${response.statusText}`);
-		// }
-
-		const result = await response.json();
-		return result;
-	} catch (error) {
-		// Handle the error here, log it, or return an appropriate error message.
-		console.error("Error in fetch request:", error);
-		throw error; // Optionally, re-throw the error for further handling.
-	}
+	return true; // For testing purposes
 };
 
 const getUser = async (email) => {
